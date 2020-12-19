@@ -25,7 +25,12 @@ namespace Bugtracker
             DataSet db = Connection.GetDbConn().GetDataSet($"SELECT username FROM user");
             DataRow sectionDBValue = db.Tables[0].Rows[0];
 
-            comboBox1.Items.Add(sectionDBValue.ItemArray[0].ToString());
+            //comboBox1.Items.Add(sectionDBValue.ItemArray[0].ToString());
+
+            //bind the datasource to the combo box
+            comboBox1.DataSource = db.Tables[0];
+            comboBox1.ValueMember = "username";
+            comboBox1.DisplayMember = "idUser";
         }
     }
 }
