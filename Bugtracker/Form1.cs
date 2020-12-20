@@ -32,5 +32,11 @@ namespace Bugtracker
             comboBox1.ValueMember = "username";
             comboBox1.DisplayMember = "idUser";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlUser test = new SqlUser();
+                test.InsertUser(textBox1.Text, textBox2.Text, textBox3.Text);
+        }
     }
 }

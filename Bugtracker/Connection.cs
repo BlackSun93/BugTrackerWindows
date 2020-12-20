@@ -15,6 +15,9 @@ namespace Bugtracker
         /// I want a connection class like we used in the feedback project. This class will deal with making connections to the DB
         /// This might be complicated by the cloud-hosted nature of the DB but i'm sure we'll figure it out
         /// please note that differeing from the feedback project, we use MySqlConnection instead of SqlConnection
+        /// I have an issue now ehre i want all requests to the DB to be parameterised however MySqlCommands
+        /// need a string and the connToDb string. ConnToDb is private to this class so either 
+        /// make it public and allow multiple classes to access it or put all sql requests here
 
     {
       
@@ -22,8 +25,10 @@ namespace Bugtracker
         // Private object of the class
         private static Connection _instance;
 
-        private string connStr;
-        private MySqlConnection connToDb;
+        //private string connStr;
+        // public MySqlConnection connToDb;
+        public static string connStr;
+        public static MySqlConnection connToDb;
 
         /// <summary>
         /// default constructor
@@ -82,6 +87,14 @@ namespace Bugtracker
                 MySqlCommand command = new MySqlCommand(queryString, connToDb);
                 command.Connection.Open();
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public void TestCommand(MySqlCommand test)
+        {
+            using (connToDb = new MySqlConnection(connStr))
+            {
+
             }
         }
     }
