@@ -36,6 +36,12 @@ namespace Bugtracker
                 }
 
             }
+
+        }
+        public static string GetProjects()
+        {
+            string query = $"SELECT * FROM project";
+            return query;
         }
     }
 }
