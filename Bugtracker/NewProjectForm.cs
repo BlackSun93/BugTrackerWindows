@@ -20,7 +20,7 @@ namespace Bugtracker
         private void Button_BackBtn_Click(object sender, EventArgs e)
         {
             ProjectsForm pf = new ProjectsForm();
-            this.Hide();
+            Hide();
             pf.Show();
         }
 

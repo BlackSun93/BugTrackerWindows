@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace Bugtracker
@@ -15,94 +12,100 @@ namespace Bugtracker
         public ProjectsForm()
         {
             InitializeComponent();
-            DrawProjects();
-        }
-
-        private void DrawProjects()
-        {
-            int projectNameStart = 0;
-            int projectDecStart = 0;
-            int panelStart = 0;
-            DataSet projects = Connection.GetDbConn().GetDataSet(SqlProject.GetProjects());
-            //DataRow sectionDBValue = projects.Tables[0].Rows[0];
-            foreach (DataRow project in projects.Tables)
-            {
-                
-                this.panel2.Controls.Add(this.label3);
-                this.panel2.Controls.Add(this.label2);
-                this.panel2.Location = new System.Drawing.Point(218, 93);
-                this.panel2.Name = "panel2";
-                this.panel2.Size = new System.Drawing.Size(165, 146);
-                this.panel2.TabIndex = 1;
-            
-                // 
-                // label3
-                // 
-                this.label3.AutoSize = true;
-                this.label3.Location = new System.Drawing.Point(23, 40);
-                this.label3.Name = "label3";
-                this.label3.Size = new System.Drawing.Size(35, 13);
-                this.label3.TabIndex = 1;
-                this.label3.Text = "label3";
-                // 
-                // label2
-                // 
-                this.label2.AutoSize = true;
-                this.label2.Location = new System.Drawing.Point(20, 12);
-                this.label2.Name = "label2";
-                this.label2.Size = new System.Drawing.Size(35, 13);
-                this.label2.TabIndex = 0;
-                this.label2.Text = "label2";
-                this.Controls.Add(this.panel2);
-                //panel.name = ""
-                projectNameStart++;
-                projectDecStart++;
-                panelStart++;
-            }
-
-
-            //throw new NotImplementedException();
-        }
-        /*
-         * // Creating and setting the properties of label
-int yCoord = firstSectionStartingYCoord + (numberOfSections * spacingBetweenSections) + (numberOfComments * spacingBetweenComments);
-Label section = new Label();
-section.AutoSize = true;
-section.Text = dr["sectionName"].ToString();
-section.Location = new Point(220, yCoord);
-section.ForeColor = Color.DodgerBlue;
-section.Anchor = AnchorStyles.Top;
-section.Font = new Font("Microsoft Sans Serif", 14);
-// Adding this label to form
-this.Controls.Add(section);*/
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void propertyGrid1_Click(object sender, EventArgs e)
-        {
-
+            DrawPanels();
         }
 
         private void newProject_Click(object sender, EventArgs e)
         {
             NewProjectForm np = new NewProjectForm();
-            this.Hide();
+            Hide();
             np.Show();
         }
 
-        
+        private void DrawPanels()
+        {
+            int rowWidth = 32;
+            //bool firstColumn = true;
+            int rowNumber = 0;
+            int projectPosition = 0;
+            int firstColumnX = 32;
+            int firstColumnY = 32;
+            int lastColumnY = firstColumnY;
+            int lastX = firstColumnX;
+            int lastY = firstColumnY;
+            int newX;
+            int newY;
+
+            DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
+
+            foreach (DataRow project in projects.Rows)
+            {
+                Panel Panel_ProjectPanel = new Panel();
+                Panel_ProjectPanel.Name = "ProjectPanel_" + project["idproject"].ToString();
+                Panel_ProjectPanel.BackColor = Color.White;
+                Panel_ProjectPanel.Width = 230;
+                Panel_ProjectPanel.Height = 146;
+
+                Label Label_ProjectName = new Label();
+                Label_ProjectName.Name = "ProjectName_" + project["idproject"].ToString();
+                Label_ProjectName.Location = new Point(16, 16);
+                Label_ProjectName.Text = project["projName"].ToString();
+
+                Label Label_ProjectDescription = new Label();
+                Label_ProjectDescription.Name = "ProjectDescription_" + project["idproject"].ToString();
+                Label_ProjectDescription.Location = new Point(16, 64);
+                Label_ProjectDescription.Text = project["description"].ToString();
+
+                Controls.Add(Panel_DisplayProjects);
+                Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
+                Panel_ProjectPanel.Controls.Add(Label_ProjectName);
+                Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
+                rowWidth += Panel_ProjectPanel.Width + 32;
+
+                // First Column on First Row
+                if (projectPosition == 0 && rowNumber == 0)
+                {
+                    newX = firstColumnX;
+                    newY = firstColumnY;
+                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    lastX = newX;
+                    lastY = newY;
+                    //firstColumn = false;
+                }
+                // First Column on Next Row
+                else if (rowWidth > Panel_DisplayProjects.Width)
+                {
+                    newX = firstColumnX;
+                    newY = lastColumnY + 32 + Panel_ProjectPanel.Height;
+                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    lastX = newX;
+                    lastY = newY;
+
+                    rowWidth = 32;
+                    rowNumber++;
+                    lastColumnY = newY;
+                }
+                // Next Column on Next Row
+                else if (rowWidth <= Panel_DisplayProjects.Width && rowNumber > 0)
+                {
+                    newX = lastX + 262;
+                    newY = lastColumnY + 32 + Panel_ProjectPanel.Height;
+                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    lastX = newX;
+                    lastY = newY;
+                }
+                // Next Column on Current Row
+                else if (rowWidth <= Panel_DisplayProjects.Width)
+                {
+                    newX = lastX + 262;
+                    newY = lastY;
+                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    lastX = newX;
+                    lastY = newY;
+                }
+                
+                projectPosition++;
+            }
+        }
     }
 }

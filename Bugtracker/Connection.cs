@@ -76,6 +76,26 @@ namespace Bugtracker
 
         /// <summary>
         /// 
+        /// </summary>
+        /// <param name="sqlQuery"></param>
+        /// <returns></returns>
+        public DataTable GetDataTable(string sqlQuery)
+        {
+            DataTable dataTable = new DataTable(); // Create empty dataset
+            using (connToDb = new MySqlConnection(connStr))
+            {
+                // Open connection
+                connToDb.Open();
+                // Create the object dataadapter to send query to db
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, connToDb);
+                adapter.Fill(dataTable);
+
+            }
+            return dataTable;
+        }
+
+        /// <summary>
+        /// 
         ///   executes code on the DB and doesn't return anything
         /// 
         /// </summary>
