@@ -12,6 +12,7 @@ namespace Bugtracker
     class SqlUser
     {
         
+        
          private MySqlCommand _insertUser = new MySqlCommand("INSERT INTO user " +
           "(username, email, password) VALUES (@username, @email, @password)", Connection.connToDb);
 

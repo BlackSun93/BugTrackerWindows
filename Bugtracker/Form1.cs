@@ -38,5 +38,12 @@ namespace Bugtracker
             SqlUser test = new SqlUser();
                 test.InsertUser(textBox1.Text, textBox2.Text, textBox3.Text);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ProjectsForm p = new ProjectsForm();
+            this.Hide();
+            p.Show();
+        }
     }
 }

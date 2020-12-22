@@ -14,6 +14,7 @@ using System.Windows.Forms;
         right click the project - nuget manager - entityframework 6.4.4 + mysql data.entity 8.0.17 
         8.0.22 fails and is a known bug https://bugs.mysql.com/bug.php?id=97448
         */
+        /* programatically make projects for project form */
 
 
 
