@@ -24,8 +24,9 @@ namespace Bugtracker
 
         private void DrawPanels()
         {
-            int rowWidth = 32;
-            //bool firstColumn = true;
+            Panel_DisplayProjects.Controls.Clear();
+            int separatorDistance = 32;
+            int rowWidth = separatorDistance;
             int rowNumber = 0;
             int projectPosition = 0;
             int firstColumnX = 32;
@@ -60,36 +61,13 @@ namespace Bugtracker
                 Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectName);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
-                rowWidth += Panel_ProjectPanel.Width + 32;
+                rowWidth += Panel_ProjectPanel.Width + separatorDistance;
 
                 // First Column on First Row
                 if (projectPosition == 0 && rowNumber == 0)
                 {
                     newX = firstColumnX;
                     newY = firstColumnY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-                    //firstColumn = false;
-                }
-                // First Column on Next Row
-                else if (rowWidth > Panel_DisplayProjects.Width)
-                {
-                    newX = firstColumnX;
-                    newY = lastColumnY + 32 + Panel_ProjectPanel.Height;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-
-                    rowWidth = 32;
-                    rowNumber++;
-                    lastColumnY = newY;
-                }
-                // Next Column on Next Row
-                else if (rowWidth <= Panel_DisplayProjects.Width && rowNumber > 0)
-                {
-                    newX = lastX + 262;
-                    newY = lastColumnY + 32 + Panel_ProjectPanel.Height;
                     Panel_ProjectPanel.Location = new Point(newX, newY);
                     lastX = newX;
                     lastY = newY;
@@ -103,9 +81,37 @@ namespace Bugtracker
                     lastX = newX;
                     lastY = newY;
                 }
+                // First Column on Next Row
+                else if (rowWidth > Panel_DisplayProjects.Width)
+                {
+                    newX = firstColumnX;
+                    newY = lastColumnY + Panel_ProjectPanel.Height + separatorDistance;
+                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    lastX = newX;
+                    lastY = newY;
+
+                    rowWidth = separatorDistance;
+                    rowNumber++;
+                    lastColumnY = newY;
+                }
+                // Next Column on Next Row
+                else if (rowNumber > 0 && rowWidth <= Panel_DisplayProjects.Width)
+                {
+                    newX = lastX + 262;
+                    newY = lastColumnY + Panel_ProjectPanel.Height + separatorDistance;
+                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    lastX = newX;
+                    lastY = newY;
+                }
                 
+
                 projectPosition++;
             }
+        }
+
+        private void ProjectsForm_Resize(object sender, EventArgs e)
+        {
+            DrawPanels();
         }
     }
 }

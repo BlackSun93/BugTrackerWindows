@@ -115,6 +115,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "project";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Resize += new System.EventHandler(this.ProjectsForm_Resize);
             this.Panel_Navigation.ResumeLayout(false);
             this.Panel_Navigation.PerformLayout();
             this.Panel_DisplayProjects.ResumeLayout(false);
