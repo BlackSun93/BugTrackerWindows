@@ -6,9 +6,11 @@ namespace Bugtracker
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        Window display;
+        public Form1(Window window)
         {
             InitializeComponent();
+            display = window;
             LoadCheckBox();
 
         }
@@ -34,9 +36,8 @@ namespace Bugtracker
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            ProjectsForm instance_ProjectsForm = new ProjectsForm();
-            Hide();
-            instance_ProjectsForm.Show();
+
+            display.DisplayProjectsForm();
         }
     }
 }

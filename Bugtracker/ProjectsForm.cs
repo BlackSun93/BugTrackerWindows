@@ -8,17 +8,18 @@ namespace Bugtracker
 {
     public partial class ProjectsForm : Form
     {
-        public ProjectsForm()
+        Window display;
+        public ProjectsForm(Window window)
         {
             InitializeComponent();
+            display = window;
             DrawPanels();
+
         }
 
         private void Button_NewProject_Click(object sender, EventArgs e)
         {
-            NewProjectForm np = new NewProjectForm();
-            Hide();
-            np.Show();
+            display.DisplayNewProjectForm();
         }
 
         private void DrawPanels()
@@ -95,7 +96,7 @@ namespace Bugtracker
                     lastY = newY;
 
                     rowWidth = separatorDistance + Panel_ProjectPanel.Width + separatorDistance;
-                    columnHeight += Panel_ProjectPanel.Height + separatorDistance;
+                    //columnHeight += Panel_ProjectPanel.Height + separatorDistance;
                     rowNumber++;
                     totalRows++;
 
@@ -114,9 +115,18 @@ namespace Bugtracker
             }
         }
 
-        private void ProjectsForm_Resize(object sender, EventArgs e)
+        public void ProjectsForm_Resize(object sender, EventArgs e)
         {
             DrawPanels();
+            Width = display.Width;
+            Height = display.Height;
+        }
+
+        public void testResize()
+        {
+            DrawPanels();
+            Width = display.Width;
+            Height = display.Height;
         }
     }
 }

@@ -93,16 +93,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 561);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.Button_BackBtn);
             this.Controls.Add(this.Button_SaveProject);
             this.Controls.Add(this.Label_ProjectDescription);
             this.Controls.Add(this.RichTextBox_Description);
             this.Controls.Add(this.Label_ProjectName);
             this.Controls.Add(this.TextBox_ProjectName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "NewProjectForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewProjectForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);

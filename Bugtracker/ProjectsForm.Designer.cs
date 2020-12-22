@@ -52,7 +52,7 @@
             this.Panel_Navigation.Controls.Add(this.Label_Bug);
             this.Panel_Navigation.Location = new System.Drawing.Point(0, 0);
             this.Panel_Navigation.Name = "Panel_Navigation";
-            this.Panel_Navigation.Size = new System.Drawing.Size(192, 563);
+            this.Panel_Navigation.Size = new System.Drawing.Size(192, 602);
             this.Panel_Navigation.TabIndex = 0;
             // 
             // Label_Recent
@@ -119,7 +119,7 @@
             this.Panel_DisplayProjects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.Panel_DisplayProjects.Location = new System.Drawing.Point(202, 120);
             this.Panel_DisplayProjects.Name = "Panel_DisplayProjects";
-            this.Panel_DisplayProjects.Size = new System.Drawing.Size(570, 429);
+            this.Panel_DisplayProjects.Size = new System.Drawing.Size(586, 468);
             this.Panel_DisplayProjects.TabIndex = 3;
             // 
             // Panel_Management
@@ -129,7 +129,7 @@
             this.Panel_Management.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
             this.Panel_Management.Location = new System.Drawing.Point(189, 0);
             this.Panel_Management.Name = "Panel_Management";
-            this.Panel_Management.Size = new System.Drawing.Size(594, 64);
+            this.Panel_Management.Size = new System.Drawing.Size(626, 64);
             this.Panel_Management.TabIndex = 1;
             // 
             // Button_NewProject
@@ -141,7 +141,7 @@
             this.Button_NewProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_NewProject.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_NewProject.ForeColor = System.Drawing.Color.White;
-            this.Button_NewProject.Location = new System.Drawing.Point(664, 81);
+            this.Button_NewProject.Location = new System.Drawing.Point(680, 81);
             this.Button_NewProject.Name = "Button_NewProject";
             this.Button_NewProject.Size = new System.Drawing.Size(108, 26);
             this.Button_NewProject.TabIndex = 4;
@@ -154,11 +154,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.Button_NewProject);
             this.Controls.Add(this.Panel_Navigation);
             this.Controls.Add(this.Panel_Management);
             this.Controls.Add(this.Panel_DisplayProjects);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ProjectsForm";
             this.ShowIcon = false;

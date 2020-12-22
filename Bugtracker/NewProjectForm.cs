@@ -12,16 +12,17 @@ namespace Bugtracker
 {
     public partial class NewProjectForm : Form
     {
-        public NewProjectForm()
+        Window display;
+        public NewProjectForm(Window window)
         {
             InitializeComponent();
+            display = window;
+            
         }
 
         private void Button_BackBtn_Click(object sender, EventArgs e)
         {
-            ProjectsForm pf = new ProjectsForm();
-            Hide();
-            pf.Show();
+            display.DisplayProjectsForm();
         }
 
         private void Button_SaveProject_Click(object sender, EventArgs e)
