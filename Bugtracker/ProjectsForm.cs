@@ -14,7 +14,7 @@ namespace Bugtracker
             DrawPanels();
         }
 
-        private void NewProject_Click(object sender, EventArgs e)
+        private void Button_NewProject_Click(object sender, EventArgs e)
         {
             NewProjectForm np = new NewProjectForm();
             Hide();
@@ -25,19 +25,19 @@ namespace Bugtracker
         {
             Panel_DisplayProjects.Controls.Clear();
 
-            int separatorDistance = 32;
-            int rowWidth = separatorDistance;
-            int columnHeight = separatorDistance;
-            int totalRows = 0;
-            int rowNumber = totalRows;
-            int projectPosition = 0;
-            int firstColumnX = separatorDistance;
-            int firstColumnY = separatorDistance;
-            int lastColumnY;
-            int lastX = firstColumnX;
-            int lastY = firstColumnY;
-            int newX;
-            int newY;
+            int separatorDistance = 32,
+                rowWidth = separatorDistance,
+                columnHeight = separatorDistance,
+                totalRows = 0,
+                rowNumber = totalRows,
+                projectPosition = 0,
+                firstColumnX = separatorDistance,
+                firstColumnY = separatorDistance,
+                lastColumnY,
+                lastX = firstColumnX,
+                lastY = firstColumnY,
+                newX,
+                newY;
 
             DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
 
