@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Bugtracker
 {
@@ -16,14 +9,14 @@ namespace Bugtracker
         public Form1()
         {
             InitializeComponent();
-            loadCheckBox();
+            LoadCheckBox();
 
         }
 
-        void loadCheckBox()
+        void LoadCheckBox()
         {
             DataSet db = Connection.GetDbConn().GetDataSet($"SELECT username FROM user");
-            DataRow sectionDBValue = db.Tables[0].Rows[0];
+            //DataRow sectionDBValue = db.Tables[0].Rows[0];
 
             //comboBox1.Items.Add(sectionDBValue.ItemArray[0].ToString());
 
@@ -33,17 +26,17 @@ namespace Bugtracker
             comboBox1.DisplayMember = "idUser";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             SqlUser test = new SqlUser();
                 test.InsertUser(textBox1.Text, textBox2.Text, textBox3.Text);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
-            ProjectsForm p = new ProjectsForm();
-            this.Hide();
-            p.Show();
+            ProjectsForm instance_ProjectsForm = new ProjectsForm();
+            Hide();
+            instance_ProjectsForm.Show();
         }
     }
 }

@@ -32,10 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.newProject = new System.Windows.Forms.Button();
             this.Panel_DisplayProjects = new System.Windows.Forms.Panel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.Panel_Management = new System.Windows.Forms.Panel();
             this.Panel_Navigation.SuspendLayout();
-            this.Panel_DisplayProjects.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Navigation
@@ -67,28 +65,19 @@
             this.newProject.TabIndex = 2;
             this.newProject.Text = "New Project";
             this.newProject.UseVisualStyleBackColor = true;
-            this.newProject.Click += new System.EventHandler(this.newProject_Click);
+            this.newProject.Click += new System.EventHandler(this.NewProject_Click);
             // 
             // Panel_DisplayProjects
             // 
             this.Panel_DisplayProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_DisplayProjects.AutoScroll = true;
             this.Panel_DisplayProjects.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Panel_DisplayProjects.Controls.Add(this.vScrollBar1);
             this.Panel_DisplayProjects.Location = new System.Drawing.Point(166, 111);
             this.Panel_DisplayProjects.Name = "Panel_DisplayProjects";
-            this.Panel_DisplayProjects.Size = new System.Drawing.Size(606, 438);
+            this.Panel_DisplayProjects.Size = new System.Drawing.Size(617, 452);
             this.Panel_DisplayProjects.TabIndex = 3;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.vScrollBar1.Location = new System.Drawing.Point(574, 12);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 414);
-            this.vScrollBar1.TabIndex = 0;
             // 
             // Panel_Management
             // 
@@ -118,7 +107,6 @@
             this.Resize += new System.EventHandler(this.ProjectsForm_Resize);
             this.Panel_Navigation.ResumeLayout(false);
             this.Panel_Navigation.PerformLayout();
-            this.Panel_DisplayProjects.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -129,7 +117,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button newProject;
         private System.Windows.Forms.Panel Panel_DisplayProjects;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Panel Panel_Management;
     }
 }

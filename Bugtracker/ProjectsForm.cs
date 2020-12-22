@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 
@@ -15,7 +14,7 @@ namespace Bugtracker
             DrawPanels();
         }
 
-        private void newProject_Click(object sender, EventArgs e)
+        private void NewProject_Click(object sender, EventArgs e)
         {
             NewProjectForm np = new NewProjectForm();
             Hide();
@@ -28,12 +27,13 @@ namespace Bugtracker
 
             int separatorDistance = 32;
             int rowWidth = separatorDistance;
+            int columnHeight = separatorDistance;
             int totalRows = 0;
             int rowNumber = totalRows;
             int projectPosition = 0;
             int firstColumnX = separatorDistance;
             int firstColumnY = separatorDistance;
-            int lastColumnY = firstColumnY;
+            int lastColumnY;
             int lastX = firstColumnX;
             int lastY = firstColumnY;
             int newX;
@@ -43,21 +43,27 @@ namespace Bugtracker
 
             foreach (DataRow project in projects.Rows)
             {
-                Panel Panel_ProjectPanel = new Panel();
-                Panel_ProjectPanel.Name = "ProjectPanel_" + project["idproject"].ToString();
-                Panel_ProjectPanel.BackColor = Color.White;
-                Panel_ProjectPanel.Width = 230;
-                Panel_ProjectPanel.Height = 146;
+                Panel Panel_ProjectPanel = new Panel
+                {
+                    Name = "ProjectPanel_" + project["idproject"].ToString(),
+                    BackColor = Color.White,
+                    Width = 230,
+                    Height = 146
+                };
 
-                Label Label_ProjectName = new Label();
-                Label_ProjectName.Name = "ProjectName_" + project["idproject"].ToString();
-                Label_ProjectName.Location = new Point(16, 16);
-                Label_ProjectName.Text = project["projName"].ToString();
+                Label Label_ProjectName = new Label
+                {
+                    Name = "ProjectName_" + project["idproject"].ToString(),
+                    Location = new Point(16, 16),
+                    Text = project["projName"].ToString()
+                };
 
-                Label Label_ProjectDescription = new Label();
-                Label_ProjectDescription.Name = "ProjectDescription_" + project["idproject"].ToString();
-                Label_ProjectDescription.Location = new Point(16, 64);
-                Label_ProjectDescription.Text = project["description"].ToString();
+                Label Label_ProjectDescription = new Label
+                {
+                    Name = "ProjectDescription_" + project["idproject"].ToString(),
+                    Location = new Point(16, 64),
+                    Text = project["description"].ToString()
+                };
 
                 Controls.Add(Panel_DisplayProjects);
                 Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
@@ -89,6 +95,7 @@ namespace Bugtracker
                     lastY = newY;
 
                     rowWidth = separatorDistance + Panel_ProjectPanel.Width + separatorDistance;
+                    columnHeight += Panel_ProjectPanel.Height + separatorDistance;
                     rowNumber++;
                     totalRows++;
 
