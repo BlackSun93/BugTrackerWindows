@@ -80,7 +80,7 @@ namespace Bugtracker
                 // First Column on Next Row
                 else if (rowWidth > Panel_DisplayProjects.Width)
                 {
-                    lastColumnY = (firstColumnY + Panel_ProjectPanel.Height + separatorDistance) * totalRows;
+                    lastColumnY = ((firstColumnY + Panel_ProjectPanel.Height) * totalRows) + separatorDistance;
                     
                     newX = firstColumnX;
                     newY = lastColumnY;
@@ -96,7 +96,7 @@ namespace Bugtracker
                 // Next Column on Current Row
                 else if (rowWidth <= Panel_DisplayProjects.Width)
                 {
-                    newX = lastX + 262;
+                    newX = lastX + Panel_ProjectPanel.Width + separatorDistance;
                     newY = lastY;
                     Panel_ProjectPanel.Location = new Point(newX, newY);
                     lastX = newX;
