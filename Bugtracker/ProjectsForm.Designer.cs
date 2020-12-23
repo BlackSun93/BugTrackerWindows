@@ -37,12 +37,9 @@
             this.Panel_DisplayProjects = new System.Windows.Forms.Panel();
             this.Panel_Management = new System.Windows.Forms.Panel();
             this.Button_NewProject = new System.Windows.Forms.Button();
-            this.Label_WindowSize = new System.Windows.Forms.Label();
-            this.Label_WindowClientSize = new System.Windows.Forms.Label();
             this.Panel_BorderRight = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Panel_Navigation.SuspendLayout();
-            this.Panel_Management.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Navigation
@@ -58,7 +55,7 @@
             this.Panel_Navigation.Location = new System.Drawing.Point(0, 0);
             this.Panel_Navigation.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Navigation.Name = "Panel_Navigation";
-            this.Panel_Navigation.Size = new System.Drawing.Size(192, 560);
+            this.Panel_Navigation.Size = new System.Drawing.Size(192, 561);
             this.Panel_Navigation.TabIndex = 0;
             // 
             // Label_Recent
@@ -126,7 +123,7 @@
             this.Panel_DisplayProjects.Location = new System.Drawing.Point(192, 106);
             this.Panel_DisplayProjects.Margin = new System.Windows.Forms.Padding(0, 0, 32, 32);
             this.Panel_DisplayProjects.Name = "Panel_DisplayProjects";
-            this.Panel_DisplayProjects.Size = new System.Drawing.Size(560, 422);
+            this.Panel_DisplayProjects.Size = new System.Drawing.Size(560, 423);
             this.Panel_DisplayProjects.TabIndex = 3;
             // 
             // Panel_Management
@@ -134,8 +131,6 @@
             this.Panel_Management.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Management.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
-            this.Panel_Management.Controls.Add(this.Label_WindowClientSize);
-            this.Panel_Management.Controls.Add(this.Label_WindowSize);
             this.Panel_Management.Location = new System.Drawing.Point(192, 0);
             this.Panel_Management.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_Management.Name = "Panel_Management";
@@ -144,39 +139,21 @@
             // 
             // Button_NewProject
             // 
-            this.Button_NewProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_NewProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
             this.Button_NewProject.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_NewProject.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Button_NewProject.FlatAppearance.BorderSize = 0;
             this.Button_NewProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_NewProject.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_NewProject.ForeColor = System.Drawing.Color.White;
-            this.Button_NewProject.Location = new System.Drawing.Point(644, 72);
-            this.Button_NewProject.Margin = new System.Windows.Forms.Padding(8, 8, 32, 8);
+            this.Button_NewProject.Location = new System.Drawing.Point(224, 80);
+            this.Button_NewProject.Margin = new System.Windows.Forms.Padding(32, 8, 8, 0);
             this.Button_NewProject.Name = "Button_NewProject";
             this.Button_NewProject.Size = new System.Drawing.Size(108, 26);
             this.Button_NewProject.TabIndex = 4;
             this.Button_NewProject.Text = "+ Project";
             this.Button_NewProject.UseVisualStyleBackColor = false;
             this.Button_NewProject.Click += new System.EventHandler(this.Button_NewProject_Click);
-            // 
-            // Label_WindowSize
-            // 
-            this.Label_WindowSize.AutoSize = true;
-            this.Label_WindowSize.Location = new System.Drawing.Point(6, 9);
-            this.Label_WindowSize.Name = "Label_WindowSize";
-            this.Label_WindowSize.Size = new System.Drawing.Size(35, 13);
-            this.Label_WindowSize.TabIndex = 5;
-            this.Label_WindowSize.Text = "label1";
-            // 
-            // Label_WindowClientSize
-            // 
-            this.Label_WindowClientSize.AutoSize = true;
-            this.Label_WindowClientSize.Location = new System.Drawing.Point(6, 24);
-            this.Label_WindowClientSize.Name = "Label_WindowClientSize";
-            this.Label_WindowClientSize.Size = new System.Drawing.Size(35, 13);
-            this.Label_WindowClientSize.TabIndex = 6;
-            this.Label_WindowClientSize.Text = "label1";
             // 
             // Panel_BorderRight
             // 
@@ -185,24 +162,23 @@
             this.Panel_BorderRight.Location = new System.Drawing.Point(784, 0);
             this.Panel_BorderRight.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_BorderRight.Name = "Panel_BorderRight";
-            this.Panel_BorderRight.Size = new System.Drawing.Size(16, 600);
+            this.Panel_BorderRight.Size = new System.Drawing.Size(16, 561);
             this.Panel_BorderRight.TabIndex = 5;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.Location = new System.Drawing.Point(0, 560);
+            this.panel1.Location = new System.Drawing.Point(0, 561);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 38);
+            this.panel1.Size = new System.Drawing.Size(800, 39);
             this.panel1.TabIndex = 6;
             // 
             // ProjectsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.panel1);
@@ -219,8 +195,6 @@
             this.Text = "BugTracker";
             this.Panel_Navigation.ResumeLayout(false);
             this.Panel_Navigation.PerformLayout();
-            this.Panel_Management.ResumeLayout(false);
-            this.Panel_Management.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -236,8 +210,6 @@
         private System.Windows.Forms.Label Label_Projects;
         private System.Windows.Forms.Label Label_Dashboard;
         private System.Windows.Forms.Button Button_NewProject;
-        private System.Windows.Forms.Label Label_WindowSize;
-        private System.Windows.Forms.Label Label_WindowClientSize;
         private System.Windows.Forms.Panel Panel_BorderRight;
         private System.Windows.Forms.Panel panel1;
     }

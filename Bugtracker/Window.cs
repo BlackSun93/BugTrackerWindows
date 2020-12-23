@@ -15,7 +15,6 @@ namespace Bugtracker
         {
             
             InitializeComponent();
-            //DisplayForm1();
             DisplayProjectsForm();
         }
         public void DisplayForm1()

@@ -40,7 +40,7 @@ namespace Bugtracker
         }
         public static string GetProjects()
         {
-            string query = $"SELECT * FROM project";
+            string query = $"SELECT * FROM project ORDER BY projName ASC";
             return query;
         }
     }
