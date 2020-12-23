@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bugtracker
@@ -22,14 +15,17 @@ namespace Bugtracker
         {
             
             InitializeComponent();
-            DisplayForm1();
+            //DisplayForm1();
+            DisplayProjectsForm();
         }
         public void DisplayForm1()
         {
             currentForm = "Form1";
             Controls.Clear();
-            f1 = new Form1(this);
-            f1.TopLevel = false;
+            f1 = new Form1(this)
+            {
+                TopLevel = false
+            };
             Controls.Add(f1);
             f1.Show();
         }
@@ -38,8 +34,10 @@ namespace Bugtracker
         {
             currentForm = "DisplayProjectsForm";
             Controls.Clear();
-            projForm = new ProjectsForm(this);
-            projForm.TopLevel = false;
+            projForm = new ProjectsForm(this)
+            {
+                TopLevel = false
+            };
             Controls.Add(projForm);
             projForm.Show();
         }
@@ -47,14 +45,18 @@ namespace Bugtracker
         {
             currentForm = "DisplayNewProjectForm";
             Controls.Clear();
-            newProjForm = new NewProjectForm(this);
-            newProjForm.TopLevel = false;
+            newProjForm = new NewProjectForm(this)
+            {
+                TopLevel = false
+            };
             Controls.Add(newProjForm);
             newProjForm.Show();
         }
 
-        private void Window_Resize(object sender, EventArgs e)
+        public void Window_Resize(object sender, EventArgs e)
         {
+
+            //projForm.doResize();
             switch (currentForm)
             {
                 case "Form1":
@@ -62,14 +64,9 @@ namespace Bugtracker
                     break;
 
                 case "DisplayProjectsForm":
-                    //On resize, should change the width of the project form to the size of the window, however on resize, form
-                    //contents remain as if it was fullscreened. WE can get this working by calling the form's constructor
-                    //however this clears the form and redisplays it on resize which clears out al fields (textboxes, richtext etc)
-                    //and is also pretty slow.
-                    //projForm.Resize += new System.EventHandler(projForm.ProjectsForm_Resize);
-                    projForm.Width = Width;
-                    projForm.Height = Height;
-                    //DisplayProjectsForm();
+
+                    projForm.doResize();
+
                     break;
 
                 case "DisplayNewProjectForm":

@@ -15,6 +15,8 @@ namespace Bugtracker
             display = window;
             DrawPanels();
 
+            Label_WindowSize.Text = "Window Size: " + display.Size;
+            Label_WindowClientSize.Text = "ProjectForm Size: " + Size;
         }
 
         private void Button_NewProject_Click(object sender, EventArgs e)
@@ -28,7 +30,6 @@ namespace Bugtracker
 
             int separatorDistance = 32,
                 rowWidth = separatorDistance,
-                columnHeight = separatorDistance,
                 totalRows = 0,
                 rowNumber = totalRows,
                 projectPosition = 0,
@@ -48,21 +49,29 @@ namespace Bugtracker
                 {
                     Name = "ProjectPanel_" + project["idproject"].ToString(),
                     BackColor = Color.White,
-                    Width = 230,
-                    Height = 146
+                    Width = 240,
+                    Height = 240,
                 };
 
                 Label Label_ProjectName = new Label
                 {
                     Name = "ProjectName_" + project["idproject"].ToString(),
                     Location = new Point(16, 16),
+                    Font = new Font("Arial", 14f, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(82, 82, 82),
+                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 4), //50
+                    AutoSize = true,
                     Text = project["projName"].ToString()
                 };
 
                 Label Label_ProjectDescription = new Label
                 {
                     Name = "ProjectDescription_" + project["idproject"].ToString(),
-                    Location = new Point(16, 64),
+                    Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16), //62
+                    Font = new Font("Arial", 8f, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(82, 82, 82),
+                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 2),
+                    AutoSize = true,
                     Text = project["description"].ToString()
                 };
 
@@ -96,7 +105,6 @@ namespace Bugtracker
                     lastY = newY;
 
                     rowWidth = separatorDistance + Panel_ProjectPanel.Width + separatorDistance;
-                    //columnHeight += Panel_ProjectPanel.Height + separatorDistance;
                     rowNumber++;
                     totalRows++;
 
@@ -115,18 +123,12 @@ namespace Bugtracker
             }
         }
 
-        public void ProjectsForm_Resize(object sender, EventArgs e)
+        public void doResize()
         {
-            DrawPanels();
-            Width = display.Width;
-            Height = display.Height;
-        }
+            Size = new Size(display.Width, display.Height);
 
-        public void testResize()
-        {
             DrawPanels();
-            Width = display.Width;
-            Height = display.Height;
+
         }
     }
 }
