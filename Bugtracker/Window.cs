@@ -55,21 +55,27 @@ namespace Bugtracker
 
         private void Window_Resize(object sender, EventArgs e)
         {
+            // CONSIDER VIABILITY OF THESE FUNCTIONS, MAYBE ON-RESIZE SHOULD ONLY DEAL WITH ELEMENTS REQUIREING
+            // RESIZE RATHER THAN RELOAD WHOLE FORM
             switch (currentForm)
             {
                 case "Form1":
+                    
                     DisplayForm1();
+                    
                     break;
 
                 case "DisplayProjectsForm":
                     //On resize, should change the width of the project form to the size of the window, however on resize, form
-                    //contents remain as if it was fullscreened. WE can get this working by calling the form's constructor
-                    //however this clears the form and redisplays it on resize which clears out al fields (textboxes, richtext etc)
+                    //contents remain as if it was fullscreened. WE can get this working by calling the form's Display(formname)()
+                    //however this clears the form and redisplays it on resize which clears out all fields (textboxes, richtext etc)
                     //and is also pretty slow.
                     //projForm.Resize += new System.EventHandler(projForm.ProjectsForm_Resize);
                     projForm.Width = Width;
                     projForm.Height = Height;
                     //DisplayProjectsForm();
+
+                    projForm.testResize();
                     break;
 
                 case "DisplayNewProjectForm":
