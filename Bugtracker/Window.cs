@@ -55,12 +55,12 @@ namespace Bugtracker
 
         public void Window_Resize(object sender, EventArgs e)
         {
-
-            //projForm.doResize();
             switch (currentForm)
             {
                 case "Form1":
+                    
                     DisplayForm1();
+                    
                     break;
 
                 case "DisplayProjectsForm":

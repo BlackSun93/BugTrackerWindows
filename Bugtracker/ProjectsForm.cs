@@ -29,6 +29,7 @@ namespace Bugtracker
             Panel_DisplayProjects.Controls.Clear();
 
             int separatorDistance = 32,
+                maxWidth = display.Width, //added
                 rowWidth = separatorDistance,
                 totalRows = 0,
                 rowNumber = totalRows,
@@ -45,6 +46,7 @@ namespace Bugtracker
 
             foreach (DataRow project in projects.Rows)
             {
+                //For each project in the project table, make a panel that contains that project's title and description
                 Panel Panel_ProjectPanel = new Panel
                 {
                     Name = "ProjectPanel_" + project["idproject"].ToString(),
@@ -75,10 +77,14 @@ namespace Bugtracker
                     Text = project["description"].ToString()
                 };
 
+                //add this panel to the projectsForm, add the labels to the new panel
                 Controls.Add(Panel_DisplayProjects);
                 Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectName);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
+
+                //to keep track of when a new row is needed, rowWidth is the total of all panel widths + separator distance
+
                 rowWidth += Panel_ProjectPanel.Width + separatorDistance;
 
                 // First Column on First Row
@@ -94,7 +100,8 @@ namespace Bugtracker
                     totalRows++;
                 }
                 // First Column on Next Row
-                else if (rowWidth > Panel_DisplayProjects.Width)
+                // else if (rowWidth > Panel_DisplayProjects.Width)
+                else if (rowWidth > maxWidth) //changed to take max width of the display
                 {
                     lastColumnY = ((firstColumnY + Panel_ProjectPanel.Height) * totalRows) + separatorDistance;
                     
@@ -110,7 +117,8 @@ namespace Bugtracker
 
                 }
                 // Next Column on Current Row
-                else if (rowWidth <= Panel_DisplayProjects.Width)
+                //else if (rowWidth <= Panel_DisplayProjects.Width) CHANGED as this was writing the 2nd row weirdly
+                else if (rowWidth <= maxWidth)
                 {
                     newX = lastX + Panel_ProjectPanel.Width + separatorDistance;
                     newY = lastY;
@@ -128,7 +136,6 @@ namespace Bugtracker
             Size = new Size(display.Width, display.Height);
 
             DrawPanels();
-
         }
     }
 }
