@@ -32,5 +32,10 @@ namespace Bugtracker
             TextBox_ProjectName.Clear();
             RichTextBox_Description.Clear();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -73,6 +73,7 @@ namespace Bugtracker
                     AutoSize = true,
                     Text = project["description"].ToString()
                 };
+                Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => ProjectClicked(sender, e, project["idproject"].ToString()));
 
                 Controls.Add(Panel_DisplayProjects);
                 Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
@@ -128,6 +129,12 @@ namespace Bugtracker
             Size = new Size(display.Width, display.Height);
 
             DrawPanels();
+        }
+
+        private void ProjectClicked(object sender, EventArgs e, string id)
+        {
+
+            display.DisplayBugsForm(id);
         }
     }
 }

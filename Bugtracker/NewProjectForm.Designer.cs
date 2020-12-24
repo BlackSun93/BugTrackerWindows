@@ -34,6 +34,7 @@
             this.Label_ProjectDescription = new System.Windows.Forms.Label();
             this.Button_SaveProject = new System.Windows.Forms.Button();
             this.Button_BackBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TextBox_ProjectName
@@ -89,11 +90,22 @@
             this.Button_BackBtn.UseVisualStyleBackColor = true;
             this.Button_BackBtn.Click += new System.EventHandler(this.Button_BackBtn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(555, 240);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // NewProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Button_BackBtn);
             this.Controls.Add(this.Button_SaveProject);
             this.Controls.Add(this.Label_ProjectDescription);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.Label Label_ProjectDescription;
         private System.Windows.Forms.Button Button_SaveProject;
         private System.Windows.Forms.Button Button_BackBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
