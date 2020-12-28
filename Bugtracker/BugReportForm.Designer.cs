@@ -114,6 +114,7 @@
             this.Button_Save.TabIndex = 8;
             this.Button_Save.Text = "Save";
             this.Button_Save.UseVisualStyleBackColor = true;
+            this.Button_Save.Click += new System.EventHandler(this.Button_Save_Click);
             // 
             // Button_Back
             // 
@@ -123,6 +124,8 @@
             this.Button_Back.TabIndex = 9;
             this.Button_Back.Text = "Back";
             this.Button_Back.UseVisualStyleBackColor = true;
+            this.Button_Back.Click += new System.EventHandler(this.Button_Back_Click);
+            
             // 
             // BugReportForm
             // 

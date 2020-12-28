@@ -37,8 +37,8 @@
             this.Label_Tracker = new System.Windows.Forms.Label();
             this.Label_Bug = new System.Windows.Forms.Label();
             this.Panel_Management = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.Button_NewBug = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.Panel_Navigation.SuspendLayout();
             this.Panel_Management.SuspendLayout();
             this.SuspendLayout();
@@ -147,15 +147,6 @@
             this.Panel_Management.Size = new System.Drawing.Size(600, 66);
             this.Panel_Management.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 93);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
             // Button_NewBug
             // 
             this.Button_NewBug.Location = new System.Drawing.Point(498, 30);
@@ -164,7 +155,16 @@
             this.Button_NewBug.TabIndex = 0;
             this.Button_NewBug.Text = "Report A Bug";
             this.Button_NewBug.UseVisualStyleBackColor = true;
-           // this.Button_NewBug.Click += new System.EventHandler((sender, e) => this.Button_NewBug_Click(sender, e, id));
+            this.Button_NewBug.Click += new System.EventHandler(this.Button_NewBug_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(225, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
             // 
             // BugsForm
             // 

@@ -14,6 +14,7 @@ namespace Bugtracker
     public partial class BugsForm : Form
     {
         Window display;
+        string currentProject;
         public BugsForm(Window window, string id)
         {
             {
@@ -22,7 +23,7 @@ namespace Bugtracker
                 LoadBugs(id);
                 Size = new Size(display.Width, display.Height);
                 label1.Text = this.Size.ToString();
-                NewBugOnClick(id);
+                currentProject = id;
                 
             }
         }
@@ -145,16 +146,16 @@ namespace Bugtracker
         /// <param name="id"></param>
         private void NewBugOnClick(string id)
         {
-            //Button_NewBug
+            display.DisplayBugReportForm(id);
         }
         private void BugClicked(object sender, EventArgs e, string id)
         {
 
         }
 
-        private void Button_NewBug_Click(object sender, EventArgs e, string id)
+        private void Button_NewBug_Click_1(object sender, EventArgs e)
         {
-            display.DisplayBugReportForm(id);
+            display.DisplayBugReportForm(currentProject);
         }
     }
 }
