@@ -10,6 +10,7 @@ namespace Bugtracker
         ProjectsForm projForm;
         NewProjectForm newProjForm;
         BugsForm bugsForm;
+        BugReportForm bugReportForm;
 
         string currentForm;
         public Window()
@@ -62,6 +63,17 @@ namespace Bugtracker
             };
             Controls.Add(bugsForm);
             bugsForm.Show();
+        }
+        public void DisplayBugReportForm(string id)
+        {
+            currentForm = "DisplayBugReportForm";
+            Controls.Clear();
+            bugReportForm = new BugReportForm(this, id)
+            {
+                TopLevel = false
+            };
+            Controls.Add(bugReportForm);
+            bugReportForm.Show();
         }
 
 

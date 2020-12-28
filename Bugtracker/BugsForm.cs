@@ -20,7 +20,9 @@ namespace Bugtracker
                 InitializeComponent();
                 display = window;
                 LoadBugs(id);
-               
+                Size = new Size(display.Width, display.Height);
+                label1.Text = this.Size.ToString();
+                NewBugOnClick(id);
                 
             }
         }
@@ -83,7 +85,7 @@ namespace Bugtracker
                     AutoSize = true,
                     Text = project["description"].ToString()
                 };
-                Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, project["idproject"].ToString()));
+               // Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, project["idproject"].ToString()));
 
                 Controls.Add(Panel_DisplayBugs);
                 Panel_DisplayBugs.Controls.Add(Panel_ProjectPanel);
@@ -133,11 +135,26 @@ namespace Bugtracker
                 projectPosition++;
             }
 
-          
+        }
+
+        /// <summary>
+        /// cant pass arguements into initialiseComponent function which means .designer code
+        /// cant pass the project's ID into the new bug form. Adding the onclick function
+        /// here instead of in .designer code should work
+        /// </summary>
+        /// <param name="id"></param>
+        private void NewBugOnClick(string id)
+        {
+            //Button_NewBug
         }
         private void BugClicked(object sender, EventArgs e, string id)
         {
 
+        }
+
+        private void Button_NewBug_Click(object sender, EventArgs e, string id)
+        {
+            display.DisplayBugReportForm(id);
         }
     }
 }
