@@ -22,6 +22,28 @@ namespace Bugtracker
             return query;
         }
 
+        private MySqlCommand _updateStatus = new MySqlCommand("UPDATE bug SET status = @status WHERE idbug = @id",
+            Connection.connToDb);
+        public  void UpdateStatus(string id, string status)
+        {
+            _updateStatus.Parameters.Clear();
+            _updateStatus.Parameters.AddWithValue("@status", status);
+            _updateStatus.Parameters.AddWithValue("@id", id);
+            using (Connection.connToDb = new MySqlConnection(Connection.connStr))
+            {
+                try
+                {
+                    _updateStatus.Connection.Open();
+                    _updateStatus.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    //Will trial this with a .ToString of the sql query (i have no idea if this will work)
+                    MessageBox.Show("This query will fail " + e.Message + _updateStatus.ToString());
+                }
+            }
+        }
+
         //public static string 
         private MySqlCommand _insertBug = new MySqlCommand("INSERT INTO bug " +
          "(title, description, location, timePosted, status, poster, project, priority) " +

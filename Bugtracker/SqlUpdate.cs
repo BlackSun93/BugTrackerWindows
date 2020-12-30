@@ -8,12 +8,41 @@ using System.Windows.Forms;
 
 namespace Bugtracker
 {
+    //CALLING TABLE UPDATE WAS A BAD IDEA, IF YOU NEED TO USE TABLE NAME, SURROUND WITH `` AS UPDATE IS KEYWORD
     class SqlUpdate
     {
         public static string GetUpdates(string bugId)
         {
-            string query = $"SELECT * FROM update WHERE bug = '{bugId}' ORDER BY timePosted ASC";
+            string query = $"SELECT * FROM `update` WHERE bug = '{bugId}'"; // ORDER BY timePosted ASC";
             return query;
+        }
+
+        private MySqlCommand _insertUpdate = new MySqlCommand("INSERT INTO `update` " +
+         "(postedBy, comment, bug) VALUES (@postedBy, @comment, @bug)", Connection.connToDb);
+
+        public void InsertUpdate(string postedBy, string comment, string bug)
+        {
+            // Set parameters
+            _insertUpdate.Parameters.Clear();
+            _insertUpdate.Parameters.AddWithValue("@postedBy", postedBy);
+            _insertUpdate.Parameters.AddWithValue("@comment", comment);
+            _insertUpdate.Parameters.AddWithValue("@bug", bug);
+
+            using (Connection.connToDb = new MySqlConnection(Connection.connStr))
+            {
+                try
+                {
+                    _insertUpdate.Connection.Open();
+                    _insertUpdate.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    //Will trial this with a .ToString of the sql query (i have no idea if this will work)
+                    MessageBox.Show("This query will fail " + e.Message + _insertUpdate.ToString());
+                }
+
+            }
+
         }
     }
 }

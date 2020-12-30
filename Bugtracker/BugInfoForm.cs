@@ -29,7 +29,7 @@ namespace Bugtracker
             currentBug = bugId;
             //label1.Text = this.Size.ToString();
             
-            //DoResize();
+            DoResize();
         }
 
         private void LoadInfo(string bugId)
@@ -46,6 +46,62 @@ namespace Bugtracker
         private void LoadUpdatesToList(string bugId)
         {
             //needs to go to db with bug id, return a table of updates and store these in a list
+            DataTable updates = Connection.GetDbConn().GetDataTable(SqlUpdate.GetUpdates(bugId));
+            foreach (DataRow update in updates.Rows)
+            {
+                UpdateObject up = new UpdateObject( update["idupdate"].ToString(), 
+                    update["postedBy"].ToString(),  update["comment"].ToString(), update["bug"].ToString());
+                UpdateObject.Updates.Add(up);
+            }
+        }
+
+        private void ShowUpdates()
+        {
+            foreach (UpdateObject update in UpdateObject.Updates)
+            {
+                CreateDisplayElements(update);
+                //PlaceDisplayElements(whateverCreateMakes);
+            }
+        }
+
+        private void CreateDisplayElements(UpdateObject update)
+        {
+            Panel Panel_UpdatePanel = new Panel
+            {
+                Name = "UpdatePanel_" + update.id,
+                BackColor = Color.White,
+                Width = 430,
+                Height = 150,
+            };
+
+            Label Label_ProjectName = new Label
+            {
+                Name = "UpdatePoster_" + update.posterId, //this wants to translate to the poster's username
+                Location = new Point(8, 8),
+                Font = new Font("Arial", 14f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(82, 82, 82),
+                MaximumSize = new Size(Panel_UpdatePanel.Width - 32, Panel_UpdatePanel.Height / 4), //50
+                AutoSize = true,
+                Text = "Posted By: " + update.posterId
+            };
+
+            RichTextBox RichText_UpdateComment = new RichTextBox
+            {
+                Name = "UpdateComment_" + update.comment,
+                Location = new Point(16, (Panel_UpdatePanel.Height / 4) + 16), //62
+                Font = new Font("Arial", 8f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(82, 82, 82),
+                MaximumSize = new Size(Panel_UpdatePanel.Width - 32, Panel_UpdatePanel.Height / 2),
+                AutoSize = true,
+                Text = update.comment,
+                ReadOnly = true
+                
+            };
+
+            Controls.Add(Panel_Updates);
+            Panel_Updates.Controls.Add(Panel_UpdatePanel);
+            Panel_UpdatePanel.Controls.Add(Label_ProjectName);
+            Panel_UpdatePanel.Controls.Add(RichText_UpdateComment);
         }
 
         private void Button_Back_Click(object sender, EventArgs e)
@@ -60,6 +116,15 @@ namespace Bugtracker
         private void Button_AddUpdate_Click(object sender, EventArgs e)
         {
             display.DisplayPostUpdateForm(currentBug);
+        }
+        private void DoResize()
+        {
+            Size = new Size(display.Width, display.Height);
+            Panel_Updates.Width = display.Width - (Window.widthOffset + 10); //as per the comment in window class,
+                                                                             //i dont really know why it needs this 10 added
+            Panel_Updates.Height = display.Height - Window.heightOffset;
+
+            ShowUpdates();
         }
     }
 }
