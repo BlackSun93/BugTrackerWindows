@@ -108,7 +108,7 @@
             // 
             // Button_Save
             // 
-            this.Button_Save.Location = new System.Drawing.Point(564, 431);
+            this.Button_Save.Location = new System.Drawing.Point(508, 431);
             this.Button_Save.Name = "Button_Save";
             this.Button_Save.Size = new System.Drawing.Size(91, 29);
             this.Button_Save.TabIndex = 8;
@@ -125,11 +125,10 @@
             this.Button_Back.Text = "Back";
             this.Button_Back.UseVisualStyleBackColor = true;
             this.Button_Back.Click += new System.EventHandler(this.Button_Back_Click);
-            
             // 
             // BugReportForm
             // 
-            this.ClientSize = new System.Drawing.Size(763, 547);
+            this.ClientSize = new System.Drawing.Size(620, 480);
             this.Controls.Add(this.Button_Back);
             this.Controls.Add(this.Button_Save);
             this.Controls.Add(this.ComboBox_Priority);
@@ -141,6 +140,7 @@
             this.Controls.Add(this.TextBox_Title);
             this.Controls.Add(this.Label_Title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(620, 480);
             this.Name = "BugReportForm";
             this.ResumeLayout(false);
             this.PerformLayout();

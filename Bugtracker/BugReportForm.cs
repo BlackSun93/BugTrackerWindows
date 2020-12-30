@@ -65,6 +65,9 @@ namespace Bugtracker
             display.DisplayBugsForm(currentProject);
         }
 
-      
+      public void DoResize()
+        {
+
+        }
     }
 }

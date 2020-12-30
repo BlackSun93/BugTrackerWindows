@@ -23,7 +23,9 @@ namespace Bugtracker
                 LoadBugs(id);
                 Size = new Size(display.Width, display.Height);
                 label1.Text = this.Size.ToString();
-                currentProject = id;
+                currentProject = id; //need to track which project is being viewed so that newly reported bugs are
+                //connected to the correct project and so on returning from the new bug screen, the correct project
+                //is loaded. id is passed from a function applied to the panels in ProjectsForm
                 
             }
         }
@@ -34,7 +36,7 @@ namespace Bugtracker
         }
 
         private void LoadBugs(string id)
-        {
+        {   //please read comment below regarding logic used and variable names (taken from ProjectsForm code)
             //go to the database with the project id, get a table containing all the bugs attached to this project
             //display these bugs to the screen
             Panel_DisplayBugs.Controls.Clear();
@@ -53,9 +55,12 @@ namespace Bugtracker
                 newY;
 
             DataTable bugs = Connection.GetDbConn().GetDataTable(SqlBug.GetBugs(id));
+            //gets all bugs in the selected project
 
             foreach (DataRow project in bugs.Rows)
             {
+                //PLEASE NOTE this is copied from the logic used in displaying projects SO VARIABLE NAMES ARE COPIED
+                //IT WORKS BUT THESE NEED RENAMING AND PANEL CONTENTS NEED CHANGING (i.e poster, date, priority etc)
                 //For each project in the project table, make a panel that contains that project's title and description
                 Panel Panel_ProjectPanel = new Panel
                 {
@@ -86,7 +91,7 @@ namespace Bugtracker
                     AutoSize = true,
                     Text = project["description"].ToString()
                 };
-               // Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, project["idproject"].ToString()));
+                Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, project["idbug"].ToString()));
 
                 Controls.Add(Panel_DisplayBugs);
                 Panel_DisplayBugs.Controls.Add(Panel_ProjectPanel);
@@ -138,24 +143,19 @@ namespace Bugtracker
 
         }
 
-        /// <summary>
-        /// cant pass arguements into initialiseComponent function which means .designer code
-        /// cant pass the project's ID into the new bug form. Adding the onclick function
-        /// here instead of in .designer code should work
-        /// </summary>
-        /// <param name="id"></param>
-        private void NewBugOnClick(string id)
-        {
-            display.DisplayBugReportForm(id);
-        }
+      
         private void BugClicked(object sender, EventArgs e, string id)
         {
 
         }
-
-        private void Button_NewBug_Click_1(object sender, EventArgs e)
+        private void Button_NewBug_Click(object sender, EventArgs e)
         {
             display.DisplayBugReportForm(currentProject);
+        }
+
+        private void Button_Back_Click(object sender, EventArgs e)
+        {
+            display.DisplayProjectsForm();
         }
     }
 }

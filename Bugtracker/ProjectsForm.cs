@@ -13,8 +13,11 @@ namespace Bugtracker
         {
             InitializeComponent();
             display = window;
+            
             Size = new Size(display.Width, display.Height);
-            DrawPanels();
+            doResize();
+            //doResize used because this resizes the displayProjects panel then draws the panels to it
+            //DrawPanels();
         }
 
         private void Button_NewProject_Click(object sender, EventArgs e)
@@ -24,6 +27,8 @@ namespace Bugtracker
 
         private void DrawPanels()
         {
+            //Panel_DisplayProjects.Size = Size;
+            
             Panel_DisplayProjects.Controls.Clear();
 
             int separatorDistance = 32,
@@ -41,6 +46,11 @@ namespace Bugtracker
 
             DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
 
+            /////////////////// debug
+            label1.Text = Panel_DisplayProjects.Size.ToString();
+            label2.Text = Size.ToString();
+            
+            /////////////////////
             foreach (DataRow project in projects.Rows)
             {
                 //For each project in the project table, make a panel that contains that project's title and description
@@ -127,6 +137,9 @@ namespace Bugtracker
         public void doResize()
         {
             Size = new Size(display.Width, display.Height);
+            Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 10); //as per the comment in window class,
+                                                                                     //i dont really know why it needs this 10 added
+            Panel_DisplayProjects.Height = display.Height - Window.heightOffset;
 
             DrawPanels();
         }
