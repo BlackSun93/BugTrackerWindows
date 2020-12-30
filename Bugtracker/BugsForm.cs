@@ -151,7 +151,7 @@ namespace Bugtracker
       
         private void BugClicked(object sender, EventArgs e, string id)
         {
-
+            display.DisplayBugInfoForm(id);
         }
         private void Button_NewBug_Click(object sender, EventArgs e)
         {

@@ -16,6 +16,12 @@ namespace Bugtracker
             return query;
         }
 
+        public static string GetOneBug (string id)
+        {
+            string query = $"SELECT * FROM bug WHERE idbug = '{id}'";
+            return query;
+        }
+
         //public static string 
         private MySqlCommand _insertBug = new MySqlCommand("INSERT INTO bug " +
          "(title, description, location, timePosted, status, poster, project, priority) " +

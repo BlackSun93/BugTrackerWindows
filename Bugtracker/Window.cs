@@ -11,6 +11,8 @@ namespace Bugtracker
         NewProjectForm newProjForm;
         BugsForm bugsForm;
         BugReportForm bugReportForm;
+        BugInfoForm bugInfoForm;
+        PostUpdateForm postUpdateForm;
         public static int heightOffset;
         public static int widthOffset; // These will be calculated in the resize function, static so that other forms
                                         //can use their value to position forms on the FormContent Panel
@@ -92,6 +94,32 @@ namespace Bugtracker
             Panel_FormContent.Controls.Add(bugReportForm);
             //Controls.Add(bugReportForm);
             bugReportForm.Show();
+        }
+        public void DisplayBugInfoForm(string id)
+        {
+            currentForm = "DisplayBugInfoForm";
+            Panel_FormContent.Controls.Clear();
+            //Controls.Clear();
+            bugInfoForm = new BugInfoForm(this, id)
+            {
+                TopLevel = false
+            };
+            Panel_FormContent.Controls.Add(bugInfoForm);
+            //Controls.Add(bugReportForm);
+            bugInfoForm.Show();
+        }
+        public void DisplayPostUpdateForm(string id)
+        {
+            currentForm = "DisplayPostUpdateForm";
+            Panel_FormContent.Controls.Clear();
+            //Controls.Clear();
+            postUpdateForm = new PostUpdateForm(this, id) //,id
+            {
+                TopLevel = false
+            };
+            Panel_FormContent.Controls.Add(postUpdateForm);
+            //Controls.Add(bugReportForm);
+            postUpdateForm.Show();
         }
 
 
