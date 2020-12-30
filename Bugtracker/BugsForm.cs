@@ -20,13 +20,13 @@ namespace Bugtracker
             {
                 InitializeComponent();
                 display = window;
-                LoadBugs(id);
+                //LoadBugs(id);
                 Size = new Size(display.Width, display.Height);
                 label1.Text = this.Size.ToString();
                 currentProject = id; //need to track which project is being viewed so that newly reported bugs are
                 //connected to the correct project and so on returning from the new bug screen, the correct project
                 //is loaded. id is passed from a function applied to the panels in ProjectsForm
-                
+                DoResize();
             }
         }
 
@@ -35,10 +35,16 @@ namespace Bugtracker
             display.DisplayProjectsForm();
         }
 
-        private void LoadBugs(string id)
+        private void LoadBugs()
         {   //please read comment below regarding logic used and variable names (taken from ProjectsForm code)
             //go to the database with the project id, get a table containing all the bugs attached to this project
             //display these bugs to the screen
+
+            DataTable bugs = Connection.GetDbConn().GetDataTable(SqlBug.GetBugs(currentProject));
+            //gets all bugs in the selected project
+        
+
+        
             Panel_DisplayBugs.Controls.Clear();
 
             int separatorDistance = 32,
@@ -54,8 +60,7 @@ namespace Bugtracker
                 newX,
                 newY;
 
-            DataTable bugs = Connection.GetDbConn().GetDataTable(SqlBug.GetBugs(id));
-            //gets all bugs in the selected project
+            
 
             foreach (DataRow project in bugs.Rows)
             {
@@ -156,6 +161,15 @@ namespace Bugtracker
         private void Button_Back_Click(object sender, EventArgs e)
         {
             display.DisplayProjectsForm();
+        }
+        public void DoResize()
+        {
+            Size = new Size(display.Width, display.Height);
+            Panel_DisplayBugs.Width = display.Width - (Window.widthOffset + 10); //as per the comment in window class,
+                                                                                     //i dont really know why it needs this 10 added
+            Panel_DisplayBugs.Height = display.Height - Window.heightOffset;
+
+            LoadBugs();
         }
     }
 }

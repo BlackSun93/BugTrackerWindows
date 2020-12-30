@@ -129,6 +129,12 @@ namespace Bugtracker
                 case "DisplayReportBugForm":
 
                     break;
+                case "DisplayBugsForm":
+                    bugsForm.DoResize();
+                    //when screen resized, needs to redraw all the panels containing bug info. I dont want it to requery 
+                    //the DB as resize should only focus on redrawing  (and it's hard to pass the project id around)
+                    //id stored in currentProject variable in bugsForm - no need to pass id
+                    break;
             }
 
         }

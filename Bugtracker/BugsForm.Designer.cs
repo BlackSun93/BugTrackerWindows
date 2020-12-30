@@ -45,6 +45,7 @@
             // 
             // Panel_DisplayBugs
             // 
+            this.Panel_DisplayBugs.AutoScroll = true;
             this.Panel_DisplayBugs.Location = new System.Drawing.Point(12, 38);
             this.Panel_DisplayBugs.Name = "Panel_DisplayBugs";
             this.Panel_DisplayBugs.Size = new System.Drawing.Size(596, 408);
