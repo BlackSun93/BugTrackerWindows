@@ -92,7 +92,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(555, 240);
+            this.button1.Location = new System.Drawing.Point(510, 242);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -104,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(620, 480);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Button_BackBtn);
             this.Controls.Add(this.Button_SaveProject);
@@ -113,7 +113,7 @@
             this.Controls.Add(this.Label_ProjectName);
             this.Controls.Add(this.TextBox_ProjectName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(620, 480);
             this.Name = "NewProjectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewProjectForm";
