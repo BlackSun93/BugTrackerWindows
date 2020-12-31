@@ -19,12 +19,21 @@ namespace Bugtracker
             //doResize used because this resizes the displayProjects panel then draws the panels to it
             //DrawPanels();
         }
-
+        /// <summary>
+        /// function that runs when new project button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_NewProject_Click(object sender, EventArgs e)
         {
             display.DisplayNewProjectForm();
         }
 
+        /// <summary>
+        /// This querys the database and draws a panel, with info about the project, for each project in the db
+        /// a method is also added to each panel so that on click, their project page is opened
+        /// This needs to be changed to not query the db as this function runs whenever the window is resized
+        /// </summary>
         private void DrawPanels()
         {
             //Panel_DisplayProjects.Size = Size;
@@ -49,11 +58,12 @@ namespace Bugtracker
             /////////////////// debug
             label1.Text = Panel_DisplayProjects.Size.ToString();
             label2.Text = Size.ToString();
-            
             /////////////////////
             foreach (DataRow project in projects.Rows)
             {
                 //For each project in the project table, make a panel that contains that project's title and description
+                //maybe make a drawing class to manage this code, could pass in the panel to add things to
+                //(here it would be Panel_DisplayProjects)
                 Panel Panel_ProjectPanel = new Panel
                 {
                     Name = "ProjectPanel_" + project["idproject"].ToString(),
@@ -92,8 +102,9 @@ namespace Bugtracker
 
                 rowWidth += Panel_ProjectPanel.Width + separatorDistance;
 
+                //below code handles changing the location of the project panels
                 // First Column on First Row
-                if (projectPosition == 0 && totalRows == 0)
+                if (projectPosition == 0 && totalRows == 0)//first panel
                 {
                     newX = firstColumnX;
                     newY = firstColumnY;
@@ -105,7 +116,7 @@ namespace Bugtracker
                     totalRows++;
                 }
                 // First Column on Next Row
-                else if (rowWidth > Panel_DisplayProjects.Width)
+                else if (rowWidth > Panel_DisplayProjects.Width) //if width would be wider than the panel, make a new row
                 {
                     lastColumnY = ((firstColumnY + Panel_ProjectPanel.Height) * totalRows) + separatorDistance;
                     
@@ -121,7 +132,7 @@ namespace Bugtracker
 
                 }
                 // Next Column on Current Row
-                else if (rowWidth <= Panel_DisplayProjects.Width)
+                else if (rowWidth <= Panel_DisplayProjects.Width) //if space, draw panel on same row 
                 {
                     newX = lastX + Panel_ProjectPanel.Width + separatorDistance;
                     newY = lastY;
@@ -134,6 +145,9 @@ namespace Bugtracker
             }
         }
 
+        /// <summary>
+        /// runs from window class, when window is resized, runs this code
+        /// </summary>
         public void doResize()
         {
             Size = new Size(display.Width, display.Height);
@@ -144,6 +158,12 @@ namespace Bugtracker
             DrawPanels();
         }
 
+        /// <summary>
+        /// Run this when a project's panel is clicked on
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="id"></param>
         private void ProjectClicked(object sender, EventArgs e, string id)
         {
 

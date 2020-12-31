@@ -97,7 +97,7 @@ namespace Bugtracker
                     Text = project["description"].ToString()
                 };
                 Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, project["idbug"].ToString()));
-
+                // this is adding an on click method to each generated panel
                 Controls.Add(Panel_DisplayBugs);
                 Panel_DisplayBugs.Controls.Add(Panel_ProjectPanel);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectName);

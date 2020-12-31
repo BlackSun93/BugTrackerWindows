@@ -33,6 +33,11 @@ namespace Bugtracker
             display.DisplayBugsForm(currentProject);
         }
 
+        /// <summary>
+        /// Save button clicked, makes a new bug in the database with entered information
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Save_Click(object sender, EventArgs e)
         {
             string title,

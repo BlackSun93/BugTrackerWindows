@@ -25,6 +25,11 @@ namespace Bugtracker
             display.DisplayProjectsForm();
         }
 
+        /// <summary>
+        /// On save button press, inserts a new project into the database with entered information
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_SaveProject_Click(object sender, EventArgs e)
         {
             SqlProject newProject = new SqlProject();

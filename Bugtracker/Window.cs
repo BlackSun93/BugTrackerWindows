@@ -5,7 +5,7 @@ namespace Bugtracker
 {
     public partial class Window : Form
     {
-
+        // Instantiate each form type
         Form1 f1;
         ProjectsForm projForm;
         NewProjectForm newProjForm;
@@ -24,6 +24,11 @@ namespace Bugtracker
             InitializeComponent();
             DisplayProjectsForm();
         }
+
+        /// <summary>
+        /// Display functions create a new instance of the form, then adds that form to the Panel_FormContent
+        /// Should be the same for all forms
+        /// </summary>
         public void DisplayForm1()
         {
             currentForm = "Form1";
@@ -123,11 +128,18 @@ namespace Bugtracker
         }
 
 
+        /// <summary>
+        /// Some logic to handle window resizing, when window resized, runs the correct function depending on current form
+        /// This is useful on pages like ProjectsForm where the amount of projects on the page
+        /// changes depending on the size of the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Window_Resize(object sender, EventArgs e)
         {
             //Panel_FormContent.Size = Size; panel now outsizes window
-             heightOffset = Panel_Management.Height + 40; //I guess 40 and 20 is the size of the windows
-             widthOffset = Panel_Navigation.Width + 20;   //toolbar and margins
+            heightOffset = Panel_Management.Height + 40; //I guess 40 and 20 is the size of the windows
+            widthOffset = Panel_Navigation.Width + 20;   //toolbar and margins
             Panel_FormContent.Height = Height - heightOffset;
             Panel_FormContent.Width = Width - widthOffset ;
             //Here the form content panel needs to be resized if the window ever changes size. However
@@ -151,7 +163,7 @@ namespace Bugtracker
                     break;
 
                 case "DisplayNewProjectForm":
-                    DisplayNewProjectForm();
+                    //DisplayNewProjectForm();
                     break;
 
                 case "DisplayReportBugForm":

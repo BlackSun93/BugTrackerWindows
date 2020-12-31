@@ -32,6 +32,10 @@ namespace Bugtracker
             DoResize();
         }
 
+        /// <summary>
+        /// on page load, get info about the selected bug from the DB, changes labels to display info
+        /// </summary>
+        /// <param name="bugId"></param>
         private void LoadInfo(string bugId)
         {
             //needs to populate labels and rich text box
@@ -43,6 +47,13 @@ namespace Bugtracker
             Label_Poster.Text = row["poster"].ToString(); //this will show id, either use FK to get name or translate
 
         }
+
+        /// <summary>
+        /// Go to DB with bug's ID, return all updates on this bug. make update objects with these updates
+        /// and add them to a list of updates
+        /// this code will be reused whenever we query the db (projects, bugs etc)
+        /// </summary>
+        /// <param name="bugId"></param>
         private void LoadUpdatesToList(string bugId)
         {
             //needs to go to db with bug id, return a table of updates and store these in a list
@@ -54,7 +65,10 @@ namespace Bugtracker
                 UpdateObject.Updates.Add(up);
             }
         }
-
+        /// <summary>
+        /// maybe can do without this as it just calls another function
+        /// for each update in the updates list, make a panel for it
+        /// </summary>
         private void ShowUpdates()
         {
             foreach (UpdateObject update in UpdateObject.Updates)
@@ -64,6 +78,11 @@ namespace Bugtracker
             }
         }
 
+        /// <summary>
+        /// code lifted from creating the project panels - needs work to get updates displaying nicely
+        /// also needs logic for drawing panels below
+        /// </summary>
+        /// <param name="update"></param>
         private void CreateDisplayElements(UpdateObject update)
         {
             Panel Panel_UpdatePanel = new Panel
@@ -117,6 +136,8 @@ namespace Bugtracker
         {
             display.DisplayPostUpdateForm(currentBug);
         }
+
+
         private void DoResize()
         {
             Size = new Size(display.Width, display.Height);
