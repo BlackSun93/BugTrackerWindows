@@ -26,7 +26,20 @@ namespace Bugtracker
         /// <param name="e"></param>
         private void Button_NewProject_Click(object sender, EventArgs e)
         {
+            ProjectObject.Projects.Clear();
             display.DisplayNewProjectForm();
+        }
+
+        private void LoadProjectsToList()
+        {
+            //gets all the projects stored in the DB and puts them in a list
+            DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
+            foreach (DataRow project in projects.Rows)
+            {
+                ProjectObject up = new ProjectObject(project["idproject"].ToString(),
+                    project["projName"].ToString(), project["user"].ToString(), project["description"].ToString());
+                ProjectObject.Projects.Add(up);
+            }
         }
 
         /// <summary>
@@ -36,8 +49,9 @@ namespace Bugtracker
         /// </summary>
         private void DrawPanels()
         {
+            LoadProjectsToList();
             //Panel_DisplayProjects.Size = Size;
-            
+
             Panel_DisplayProjects.Controls.Clear();
 
             int separatorDistance = 32,
@@ -53,20 +67,20 @@ namespace Bugtracker
                 newX,
                 newY;
 
-            DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
+            //DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
 
             /////////////////// debug
             label1.Text = Panel_DisplayProjects.Size.ToString();
             label2.Text = Size.ToString();
             /////////////////////
-            foreach (DataRow project in projects.Rows)
+            foreach (ProjectObject project in ProjectObject.Projects)
             {
                 //For each project in the project table, make a panel that contains that project's title and description
                 //maybe make a drawing class to manage this code, could pass in the panel to add things to
                 //(here it would be Panel_DisplayProjects)
                 Panel Panel_ProjectPanel = new Panel
                 {
-                    Name = "ProjectPanel_" + project["idproject"].ToString(),
+                    Name = "ProjectPanel_" + project.idproject,
                     BackColor = Color.White,
                     Width = 220,
                     Height = 220,
@@ -74,26 +88,26 @@ namespace Bugtracker
 
                 Label Label_ProjectName = new Label
                 {
-                    Name = "ProjectName_" + project["idproject"].ToString(),
+                    Name = "ProjectName_" + project.idproject,
                     Location = new Point(16, 16),
                     Font = new Font("Arial", 14f, FontStyle.Bold),
                     ForeColor = Color.FromArgb(82, 82, 82),
                     MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 4), //50
                     AutoSize = true,
-                    Text = project["projName"].ToString()
+                    Text = project.projName
                 };
 
-                Label Label_ProjectDescription = new Label
-                {
-                    Name = "ProjectDescription_" + project["idproject"].ToString(),
-                    Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16), //62
-                    Font = new Font("Arial", 8f, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(82, 82, 82),
-                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 2),
-                    AutoSize = true,
-                    Text = project["description"].ToString()
+            Label Label_ProjectDescription = new Label
+            {
+                Name = "ProjectDescription_" + project.idproject,
+                Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16), //62
+                Font = new Font("Arial", 8f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(82, 82, 82),
+                MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 2),
+                AutoSize = true,
+                Text = project.description
                 };
-                Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => ProjectClicked(sender, e, project["idproject"].ToString()));
+                Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
 
                 Controls.Add(Panel_DisplayProjects);
                 Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
@@ -150,7 +164,8 @@ namespace Bugtracker
         /// </summary>
         public void doResize()
         {
-            Size = new Size(display.Width, display.Height);
+            ProjectObject.Projects.Clear();
+           Size = new Size(display.Width, display.Height);
             Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 10); //as per the comment in window class,
                                                                                      //i dont really know why it needs this 10 added
             Panel_DisplayProjects.Height = display.Height - Window.heightOffset;
@@ -166,7 +181,7 @@ namespace Bugtracker
         /// <param name="id"></param>
         private void ProjectClicked(object sender, EventArgs e, string id)
         {
-
+            ProjectObject.Projects.Clear();
             display.DisplayBugsForm(id);
         }
     }
