@@ -116,6 +116,7 @@
     <Compile Include="Displayed Forms\PostUpdateForm.Designer.cs">
       <DependentUpon>PostUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Object Classes\BugObject.cs" />
     <Compile Include="Object Classes\ProjectObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Displayed Forms\ProjectsForm.cs">

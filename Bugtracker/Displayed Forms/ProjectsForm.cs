@@ -165,7 +165,7 @@ namespace Bugtracker
         public void doResize()
         {
             ProjectObject.Projects.Clear();
-           Size = new Size(display.Width, display.Height);
+            Size = new Size(display.Width, display.Height);
             Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 10); //as per the comment in window class,
                                                                                      //i dont really know why it needs this 10 added
             Panel_DisplayProjects.Height = display.Height - Window.heightOffset;

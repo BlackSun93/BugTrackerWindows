@@ -35,12 +35,24 @@ namespace Bugtracker
             display.DisplayProjectsForm();
         }
 
+        private void LoadProjectsToList()
+        {
+            //gets all the projects stored in the DB and puts them in a list
+            DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
+            foreach (DataRow project in projects.Rows)
+            {
+                ProjectObject up = new ProjectObject(project["idproject"].ToString(),
+                    project["projName"].ToString(), project["user"].ToString(), project["description"].ToString());
+                ProjectObject.Projects.Add(up);
+            }
+        }
         private void LoadBugs()
         {   //please read comment below regarding logic used and variable names (taken from ProjectsForm code)
             //go to the database with the project id, get a table containing all the bugs attached to this project
             //display these bugs to the screen
 
-            DataTable bugs = Connection.GetDbConn().GetDataTable(SqlBug.GetBugs(currentProject));
+            //DataTable bugs = Connection.GetDbConn().GetDataTable(SqlBug.GetBugs(currentProject));
+            
             //gets all bugs in the selected project
         
 
