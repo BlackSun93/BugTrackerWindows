@@ -71,9 +71,12 @@ namespace Bugtracker
         /// </summary>
         private void ShowUpdates()
         {
+            int panelYpos = 0;
             foreach (UpdateObject update in UpdateObject.Updates)
             {
-                CreateDisplayElements(update);
+                CreateDisplayElements(update, panelYpos);
+                //add height of panel plus 10 pixel gap
+                panelYpos += 160;
                 //PlaceDisplayElements(whateverCreateMakes);
             }
         }
@@ -81,16 +84,20 @@ namespace Bugtracker
         /// <summary>
         /// code lifted from creating the project panels - needs work to get updates displaying nicely
         /// also needs logic for drawing panels below
+        /// 
+        /// panels should get drawn under each other now
         /// </summary>
         /// <param name="update"></param>
-        private void CreateDisplayElements(UpdateObject update)
+        private void CreateDisplayElements(UpdateObject update, int panelYpos)
         {
+            
             Panel Panel_UpdatePanel = new Panel
             {
                 Name = "UpdatePanel_" + update.id,
                 BackColor = Color.White,
                 Width = 430,
                 Height = 150,
+                Location = new Point(0, panelYpos)
             };
 
             Label Label_ProjectName = new Label
