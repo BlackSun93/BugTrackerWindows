@@ -135,12 +135,13 @@ namespace Bugtracker
             //THIS NEEDS TO BE CHANGED, IDEALLY WHEN PAGE LOADED, CREATE BUG INSTANCE INSTEAD OF ANOTHER QUERY
             DataTable bugInfo = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(currentBug));
             DataRow row = bugInfo.Rows[0];
-
+            UpdateObject.Updates.Clear();
             display.DisplayBugsForm(row["project"].ToString());
         }
 
         private void Button_AddUpdate_Click(object sender, EventArgs e)
         {
+            UpdateObject.Updates.Clear();
             display.DisplayPostUpdateForm(currentBug);
         }
 

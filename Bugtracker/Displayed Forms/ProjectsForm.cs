@@ -15,6 +15,7 @@ namespace Bugtracker
             display = window;
             
             Size = new Size(display.Width, display.Height);
+            LoadProjectsToList();
             doResize();
             //doResize used because this resizes the displayProjects panel then draws the panels to it
             //DrawPanels();
@@ -49,7 +50,7 @@ namespace Bugtracker
         /// </summary>
         private void DrawPanels()
         {
-            LoadProjectsToList();
+            
             //Panel_DisplayProjects.Size = Size;
 
             Panel_DisplayProjects.Controls.Clear();
@@ -166,7 +167,7 @@ namespace Bugtracker
         /// </summary>
         public void doResize()
         {
-            ProjectObject.Projects.Clear();
+            //ProjectObject.Projects.Clear();
             Size = new Size(display.Width, display.Height);
             Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 40); //as per the comment in window class,
                                                                                      //i dont really know why it needs this 10 added
