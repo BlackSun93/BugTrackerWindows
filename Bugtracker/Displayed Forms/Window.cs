@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Bugtracker
@@ -38,6 +39,7 @@ namespace Bugtracker
                 TopLevel = false
             };
             Controls.Add(f1);
+            ResetButtons();
             f1.Show();
             //Panel_FormContent.Controls.Clear();
             //Panel_FormContent.Controls.Add(f1);
@@ -58,6 +60,8 @@ namespace Bugtracker
             //Controls.Add(projForm);
             //Panel_FormContent.Size = Size;
             //projForm.Size = Panel_FormContent.Size;
+            ResetButtons();
+            Label_Projects.ForeColor = Color.FromArgb(255, 85, 0);
             projForm.Show();
         }
         public void DisplayNewProjectForm()
@@ -71,6 +75,7 @@ namespace Bugtracker
                 TopLevel = false
             };
             Panel_FormContent.Controls.Add(newProjForm);
+            ResetButtons();
             //Controls.Add(newProjForm);
             newProjForm.Show();
         }
@@ -84,6 +89,7 @@ namespace Bugtracker
                 TopLevel = false
             };
             Panel_FormContent.Controls.Add(bugsForm);
+            ResetButtons();
             //Controls.Add(bugsForm);
             bugsForm.Show();
         }
@@ -97,6 +103,7 @@ namespace Bugtracker
                 TopLevel = false
             };
             Panel_FormContent.Controls.Add(bugReportForm);
+            ResetButtons();
             //Controls.Add(bugReportForm);
             bugReportForm.Show();
         }
@@ -110,6 +117,7 @@ namespace Bugtracker
                 TopLevel = false
             };
             Panel_FormContent.Controls.Add(bugInfoForm);
+            ResetButtons();
             //Controls.Add(bugReportForm);
             bugInfoForm.Show();
         }
@@ -123,6 +131,7 @@ namespace Bugtracker
                 TopLevel = false
             };
             Panel_FormContent.Controls.Add(postUpdateForm);
+            ResetButtons();
             //Controls.Add(bugReportForm);
             postUpdateForm.Show();
         }
@@ -177,6 +186,28 @@ namespace Bugtracker
                     break;
             }
 
+        }
+
+        private void ResetButtons()
+        {
+            Label_Dashboard.ForeColor = Color.FromArgb(82, 82, 82);
+            Label_Projects.ForeColor = Color.FromArgb(82, 82, 82);
+            Label_Recent.ForeColor = Color.FromArgb(82, 82, 82);
+        }
+
+        private void Label_Dashboard_Click(object sender, EventArgs e)
+        {
+            // need to add a dashboard form
+        }
+
+        private void Label_Projects_Click(object sender, EventArgs e)
+        {
+            DisplayProjectsForm();
+        }
+
+        private void Label_Recent_Click(object sender, EventArgs e)
+        {
+            // need to add a recent bugs form
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Bugtracker
                 display = window;
                 //LoadBugs(id);
                 Size = new Size(display.Width, display.Height);
-                label1.Text = this.Size.ToString();
+                //label1.Text = this.Size.ToString();
                 currentProject = id; //need to track which project is being viewed so that newly reported bugs are
                 //connected to the correct project and so on returning from the new bug screen, the correct project
                 //is loaded. id is passed from a function applied to the panels in ProjectsForm
@@ -51,7 +51,7 @@ namespace Bugtracker
             //go to the database with the project id, get a table containing all the bugs attached to this project
             //display these bugs to the screen
 
-            //DataTable bugs = Connection.GetDbConn().GetDataTable(SqlBug.GetBugs(currentProject));
+            DataTable bugs = Connection.GetDbConn().GetDataTable(SqlBug.GetBugs(currentProject));
             
             //gets all bugs in the selected project
         

@@ -60,7 +60,7 @@ namespace Bugtracker
                 rowNumber = totalRows,
                 projectPosition = 0,
                 firstColumnX = separatorDistance,
-                firstColumnY = separatorDistance,
+                firstColumnY = separatorDistance/2,
                 lastColumnY,
                 lastX = firstColumnX,
                 lastY = firstColumnY,
@@ -70,8 +70,8 @@ namespace Bugtracker
             //DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
 
             /////////////////// debug
-            label1.Text = Panel_DisplayProjects.Size.ToString();
-            label2.Text = Size.ToString();
+            //label1.Text = Panel_DisplayProjects.Size.ToString();
+            //label2.Text = Size.ToString();
             /////////////////////
             foreach (ProjectObject project in ProjectObject.Projects)
             {
@@ -92,7 +92,7 @@ namespace Bugtracker
                     Location = new Point(16, 16),
                     Font = new Font("Arial", 14f, FontStyle.Bold),
                     ForeColor = Color.FromArgb(82, 82, 82),
-                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 4), //50
+                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 4),
                     AutoSize = true,
                     Text = project.projName
                 };
@@ -100,14 +100,16 @@ namespace Bugtracker
             Label Label_ProjectDescription = new Label
             {
                 Name = "ProjectDescription_" + project.idproject,
-                Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16), //62
+                Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16),
                 Font = new Font("Arial", 8f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(82, 82, 82),
                 MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 2),
                 AutoSize = true,
                 Text = project.description
                 };
-                Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
+                Panel_ProjectPanel.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
+                Label_ProjectName.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
+                Label_ProjectDescription.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
 
                 Controls.Add(Panel_DisplayProjects);
                 Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
@@ -166,9 +168,9 @@ namespace Bugtracker
         {
             ProjectObject.Projects.Clear();
             Size = new Size(display.Width, display.Height);
-            Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 10); //as per the comment in window class,
+            Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 40); //as per the comment in window class,
                                                                                      //i dont really know why it needs this 10 added
-            Panel_DisplayProjects.Height = display.Height - Window.heightOffset;
+            Panel_DisplayProjects.Height = display.Height - (Window.heightOffset + 80);
 
             DrawPanels();
         }

@@ -28,20 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.Panel_DisplayBugs = new System.Windows.Forms.Panel();
             this.Button_NewBug = new System.Windows.Forms.Button();
             this.Button_Back = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
             // 
             // Panel_DisplayBugs
             // 
@@ -79,7 +69,6 @@
             this.ClientSize = new System.Drawing.Size(620, 480);
             this.Controls.Add(this.Button_Back);
             this.Controls.Add(this.Button_NewBug);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.Panel_DisplayBugs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(620, 480);
@@ -88,13 +77,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BugsForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Panel_DisplayBugs;
         private System.Windows.Forms.Button Button_NewBug;
         private System.Windows.Forms.Button Button_Back;
