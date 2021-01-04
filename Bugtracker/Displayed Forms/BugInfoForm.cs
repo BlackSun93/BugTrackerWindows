@@ -24,12 +24,12 @@ namespace Bugtracker
 
             InitializeComponent();
             display = window;
-            LoadInfo(selectedBug.idbug);
+            
             LoadUpdatesToList(selectedBug.idbug);
             Size = new Size(display.Width, display.Height);
             currentBug = selectedBug;
             //label1.Text = this.Size.ToString();
-            
+            LoadInfo();
             DoResize();
         }
 
@@ -37,16 +37,21 @@ namespace Bugtracker
         /// on page load, get info about the selected bug from the DB, changes labels to display info
         /// </summary>
         /// <param name="bugId"></param>
-        private void LoadInfo(string bugId)
+        private void LoadInfo()
         {
             //needs to populate labels and rich text box
-            DataTable bugInfo = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
+            /*DataTable bugInfo = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
             DataRow row = bugInfo.Rows[0];
 
             Label_Title.Text = row["title"].ToString();
             RichText_Description.Text = row["description"].ToString();
-            Label_Poster.Text = row["poster"].ToString(); //this will show id, either use FK to get name or translate
+            Label_Poster.Text = row["poster"].ToString(); //this will show id, either use FK to get name or translate */
 
+            Label_Title.Text = currentBug.title;
+            RichText_Description.Text = currentBug.description;
+            Label_Poster.Text = currentBug.poster;
+            Label_Priority.Text = currentBug.priority;
+            Label_Status.Text = currentBug.status;
         }
 
         /// <summary>
