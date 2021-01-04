@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bugtracker
 {
-    class BugObject
+    public class BugObject
     {
         public string idbug, title, description, location, status, poster, project, priority;
         public DateTime timePosted;

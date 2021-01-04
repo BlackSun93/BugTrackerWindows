@@ -13,20 +13,21 @@ namespace Bugtracker
     public partial class BugInfoForm : Form
     {
         Window display;
-        string currentBug;
+
+        BugObject currentBug;
         //how to go back to the correct project after a bug has been selected?
         //bug info loaded so we can use the project section of it
-        public BugInfoForm(Window window, string bugId)
+        public BugInfoForm(Window window, BugObject selectedBug)
         {
             //this form should show info on the bug such as title, description AND updates
             //this form should show the user a button to add an update on the bug
 
             InitializeComponent();
             display = window;
-            LoadInfo(bugId);
-            LoadUpdatesToList(bugId);
+            LoadInfo(selectedBug.idbug);
+            LoadUpdatesToList(selectedBug.idbug);
             Size = new Size(display.Width, display.Height);
-            currentBug = bugId;
+            currentBug = selectedBug;
             //label1.Text = this.Size.ToString();
             
             DoResize();
@@ -117,7 +118,7 @@ namespace Bugtracker
                 Location = new Point(16, (Panel_UpdatePanel.Height / 4) + 16), //62
                 Font = new Font("Arial", 8f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(82, 82, 82),
-                MaximumSize = new Size(Panel_UpdatePanel.Width - 32, Panel_UpdatePanel.Height / 2),
+                MaximumSize = new Size(Panel_UpdatePanel.Width - 8, Panel_UpdatePanel.Height / 2),
                 AutoSize = true,
                 Text = update.comment,
                 ReadOnly = true
@@ -133,10 +134,10 @@ namespace Bugtracker
         private void Button_Back_Click(object sender, EventArgs e)
         {
             //THIS NEEDS TO BE CHANGED, IDEALLY WHEN PAGE LOADED, CREATE BUG INSTANCE INSTEAD OF ANOTHER QUERY
-            DataTable bugInfo = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(currentBug));
-            DataRow row = bugInfo.Rows[0];
+           /* DataTable bugInfo = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(currentBug.idbug));
+            DataRow row = bugInfo.Rows[0]; */
             UpdateObject.Updates.Clear();
-            display.DisplayBugsForm(row["project"].ToString());
+            display.DisplayBugsForm(currentBug.project);
         }
 
         private void Button_AddUpdate_Click(object sender, EventArgs e)

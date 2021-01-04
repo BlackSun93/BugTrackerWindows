@@ -76,50 +76,65 @@ namespace Bugtracker
                 //PLEASE NOTE this is copied from the logic used in displaying projects SO VARIABLE NAMES ARE COPIED
                 //IT WORKS BUT THESE NEED RENAMING AND PANEL CONTENTS NEED CHANGING (i.e poster, date, priority etc)
                 //For each project in the project table, make a panel that contains that project's title and description
-                Panel Panel_ProjectPanel = new Panel
+                Panel Panel_BugPanel = new Panel
                 {
-                    Name = "ProjectPanel_" + bug.idbug,
+                    Name = "BugPanel_" + bug.idbug,
                     BackColor = Color.White,
                     Width = 220,
                     Height = 220,
                 };
 
-                Label Label_ProjectName = new Label
+                Label Label_BugName = new Label
                 {
-                    Name = "ProjectName_" + bug.idbug,
+                    Name = "BugName_" + bug.idbug,
                     Location = new Point(16, 16),
                     Font = new Font("Arial", 14f, FontStyle.Bold),
                     ForeColor = Color.FromArgb(82, 82, 82),
-                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 4), //50
+                    MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 4), //50
                     AutoSize = true,
                     Text = bug.title
                 };
 
-                Label Label_ProjectDescription = new Label
+                Label Label_BugDescription = new Label
                 {
-                    Name = "ProjectDescription_" + bug.idbug,
-                    Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16), //62
+                    Name = "BugDescription_" + bug.idbug,
+                    Location = new Point(16, (Panel_BugPanel.Height / 4) + 16), //62
                     Font = new Font("Arial", 8f, FontStyle.Bold),
                     ForeColor = Color.FromArgb(82, 82, 82),
-                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 2),
+                    MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 2),
                     AutoSize = true,
                     Text = bug.description
                 };
-                Panel_ProjectPanel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, bug.idbug));
-                // this is adding an on click method to each generated panel
-                Controls.Add(Panel_DisplayBugs);
-                Panel_DisplayBugs.Controls.Add(Panel_ProjectPanel);
-                Panel_ProjectPanel.Controls.Add(Label_ProjectName);
-                Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
 
-                rowWidth += Panel_ProjectPanel.Width + separatorDistance;
+                Label label_BugStatus = new Label
+                {
+                    Name = "BugStatus_" + bug.idbug,
+                    Location = new Point(16, (Panel_BugPanel.Height - 16)), //62
+                    Font = new Font("Arial", 8f, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(82, 82, 82),
+                    MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 2),
+                    AutoSize = true,
+                    Text = bug.status
+                };
+                Panel_BugPanel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, bug));
+                Label_BugName.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, bug));
+                Label_BugDescription.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, bug));
+                // this is adding an on click method to each generated panel, as per code used on projectform
+                //click function added to text elements so user can click anywhere on the panel
+                Controls.Add(Panel_DisplayBugs);
+                Panel_DisplayBugs.Controls.Add(Panel_BugPanel);
+                Panel_BugPanel.Controls.Add(Label_BugName);
+                Panel_BugPanel.Controls.Add(Label_BugDescription);
+                Panel_BugPanel.Controls.Add(label_BugStatus);
+
+                rowWidth += Panel_BugPanel.Width + separatorDistance;
 
                 // First Column on First Row
                 if (projectPosition == 0 && totalRows == 0)
                 {
                     newX = firstColumnX;
                     newY = firstColumnY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    Panel_BugPanel.Location = new Point(newX, newY);
                     lastX = newX;
                     lastY = newY;
 
@@ -129,15 +144,15 @@ namespace Bugtracker
                 // First Column on Next Row
                 else if (rowWidth > Panel_DisplayBugs.Width)
                 {
-                    lastColumnY = ((firstColumnY + Panel_ProjectPanel.Height) * totalRows) + separatorDistance;
+                    lastColumnY = ((firstColumnY + Panel_BugPanel.Height) * totalRows) + separatorDistance;
 
                     newX = firstColumnX;
                     newY = lastColumnY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    Panel_BugPanel.Location = new Point(newX, newY);
                     lastX = newX;
                     lastY = newY;
 
-                    rowWidth = separatorDistance + Panel_ProjectPanel.Width + separatorDistance;
+                    rowWidth = separatorDistance + Panel_BugPanel.Width + separatorDistance;
                     rowNumber++;
                     totalRows++;
 
@@ -145,9 +160,9 @@ namespace Bugtracker
                 // Next Column on Current Row
                 else if (rowWidth <= Panel_DisplayBugs.Width)
                 {
-                    newX = lastX + Panel_ProjectPanel.Width + separatorDistance;
+                    newX = lastX + Panel_BugPanel.Width + separatorDistance;
                     newY = lastY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
+                    Panel_BugPanel.Location = new Point(newX, newY);
                     lastX = newX;
                     lastY = newY;
                 }
@@ -158,10 +173,10 @@ namespace Bugtracker
         }
 
       
-        private void BugClicked(object sender, EventArgs e, string id)
+        private void BugClicked(object sender, EventArgs e, BugObject selectedBug)
         {
             BugObject.Bugs.Clear();
-            display.DisplayBugInfoForm(id);
+            display.DisplayBugInfoForm(selectedBug);
 
         }
         private void Button_NewBug_Click(object sender, EventArgs e)

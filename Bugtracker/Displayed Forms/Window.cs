@@ -107,12 +107,12 @@ namespace Bugtracker
             //Controls.Add(bugReportForm);
             bugReportForm.Show();
         }
-        public void DisplayBugInfoForm(string id)
+        public void DisplayBugInfoForm(BugObject selectedBug)
         {
             currentForm = "DisplayBugInfoForm";
             Panel_FormContent.Controls.Clear();
             //Controls.Clear();
-            bugInfoForm = new BugInfoForm(this, id)
+            bugInfoForm = new BugInfoForm(this, selectedBug)
             {
                 TopLevel = false
             };
@@ -121,12 +121,12 @@ namespace Bugtracker
             //Controls.Add(bugReportForm);
             bugInfoForm.Show();
         }
-        public void DisplayPostUpdateForm(string id)
+        public void DisplayPostUpdateForm(BugObject selectedBug)
         {
             currentForm = "DisplayPostUpdateForm";
             Panel_FormContent.Controls.Clear();
             //Controls.Clear();
-            postUpdateForm = new PostUpdateForm(this, id) //,id
+            postUpdateForm = new PostUpdateForm(this, selectedBug) //,id
             {
                 TopLevel = false
             };
