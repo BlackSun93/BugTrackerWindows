@@ -99,25 +99,23 @@ namespace Bugtracker
         /// <param name="toRetrieve"></param>
         private void GetFromDbTable (MySqlCommand toRetrieve)
         {
-            List<string> data = new List<string>();
-            // UserObject loggedIn; out of scope for return
+            //List<string> data = new List<string>();
+            
             using (Connection.connToDb = new MySqlConnection(Connection.connStr))
             {
                 try
                 {
-                    
                     toRetrieve.Connection.Open();
                     MySqlDataReader table = toRetrieve.ExecuteReader(); //you have to use read() before getting vals
                     while (table.Read())
                     {
-                        data.Add(table[0].ToString());
+                       /* data.Add(table[0].ToString());
                         data.Add(table[1].ToString());
-                        data.Add(table[2].ToString()); 
-                         //loggedIn = new UserObject(table[0].ToString(), table[1].ToString()); loggedin out of return scope
-                        
+                        data.Add(table[2].ToString()); */
+                       UserObject.loggedUser = new UserObject(table[0].ToString(), table[1].ToString());
                     }
-                    UserObject loggedIn = new UserObject(data[0], data[1]);
-                    UserObject.loggedUser = loggedIn;
+                    //UserObject loggedIn = new UserObject(data[0], data[1]);
+                    //UserObject.loggedUser = loggedIn;
                     
 
                 }
