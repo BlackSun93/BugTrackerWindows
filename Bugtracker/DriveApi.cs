@@ -18,8 +18,7 @@ namespace Bugtracker
     {
         // If modifying these scopes, delete your previously saved credentials at ~/bin/debug/BugTracker-a00ef4c2ddef.json
         static string[] Scopes = { DriveService.Scope.DriveReadonly, DriveService.Scope.Drive }; // Holds the chosen scope(s) used to interact with google drive files
-        static string ApplicationName = "BugTracker"; // The name of the application as per the Google Developer account project
-        static GoogleCredential Credential;
+        static UserCredential Credential;
         static DriveService Service;
         static IList<Google.Apis.Drive.v3.Data.File> FileList; // Allows files to be referenced by index without storing locally
 
@@ -32,21 +31,17 @@ namespace Bugtracker
 
         }
 
-        private static GoogleCredential GetCredentials()
+        private static UserCredential GetCredentials()
         {
-            GoogleCredential credential;
+            UserCredential credential;
 
-            using (FileStream stream = new FileStream(@"Properties\BugTracker-a00ef4c2ddef.json", FileMode.Open, FileAccess.Read))
+            using (FileStream stream = new FileStream(@"Properties\credentials.json", FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
                 string credPath = "token.json";
-                credential = GoogleCredential.FromStream(stream);
-                if (credential.IsCreateScopedRequired)
-                {
-                    credential = credential.CreateScoped(Scopes);
-                }
-                new FileDataStore(credPath, true);
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CancellationToken.None, new FileDataStore(credPath, true)).Result;
+
                 MessageBox.Show("Credential file saved to: " + credPath); //for testing
             }
 
@@ -64,7 +59,7 @@ namespace Bugtracker
             return new DriveService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = Credential,
-                ApplicationName = ApplicationName,
+                ApplicationName = "BugTracker",
             });
 
         }
