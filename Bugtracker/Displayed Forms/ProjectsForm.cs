@@ -14,6 +14,7 @@ namespace Bugtracker
             InitializeComponent();
             display = window;
             
+            Label_loggedUser.Text = UserObject.loggedUser.username;
             Size = new Size(display.Width, display.Height);
             LoadProjectsToList();
             doResize();
@@ -186,6 +187,21 @@ namespace Bugtracker
         {
             ProjectObject.Projects.Clear();
             display.DisplayBugsForm(id);
+        }
+
+        /// <summary>
+        /// im srry this button hasnt been renamed yet
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DebugButton_Login_Click(object sender, EventArgs e)
+        {
+            UserObject.loggedUser.username = "";
+            UserObject.loggedUser.iduser = "";
+            this.Hide();
+            display.Hide();
+            LoginForm lf = new LoginForm();
+            lf.Show();
         }
     }
 }

@@ -31,6 +31,8 @@
             this.Panel_DisplayProjects = new System.Windows.Forms.Panel();
             this.Button_NewProject = new System.Windows.Forms.Button();
             this.Button_Back = new System.Windows.Forms.Button();
+            this.DebugButton_Login = new System.Windows.Forms.Button();
+            this.Label_loggedUser = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Panel_DisplayProjects
@@ -78,12 +80,33 @@
             this.Button_Back.Text = "Back";
             this.Button_Back.UseVisualStyleBackColor = false;
             // 
+            // DebugButton_Login
+            // 
+            this.DebugButton_Login.Location = new System.Drawing.Point(319, 19);
+            this.DebugButton_Login.Name = "DebugButton_Login";
+            this.DebugButton_Login.Size = new System.Drawing.Size(114, 23);
+            this.DebugButton_Login.TabIndex = 6;
+            this.DebugButton_Login.Text = "LogOut";
+            this.DebugButton_Login.UseVisualStyleBackColor = true;
+            this.DebugButton_Login.Click += new System.EventHandler(this.DebugButton_Login_Click);
+            // 
+            // Label_loggedUser
+            // 
+            this.Label_loggedUser.AutoSize = true;
+            this.Label_loggedUser.Location = new System.Drawing.Point(461, 28);
+            this.Label_loggedUser.Name = "Label_loggedUser";
+            this.Label_loggedUser.Size = new System.Drawing.Size(35, 13);
+            this.Label_loggedUser.TabIndex = 7;
+            this.Label_loggedUser.Text = "label1";
+            // 
             // ProjectsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(631, 493);
+            this.Controls.Add(this.Label_loggedUser);
+            this.Controls.Add(this.DebugButton_Login);
             this.Controls.Add(this.Button_Back);
             this.Controls.Add(this.Button_NewProject);
             this.Controls.Add(this.Panel_DisplayProjects);
@@ -94,6 +117,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BugTracker";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,5 +125,7 @@
         private System.Windows.Forms.Panel Panel_DisplayProjects;
         private System.Windows.Forms.Button Button_NewProject;
         private System.Windows.Forms.Button Button_Back;
+        private System.Windows.Forms.Button DebugButton_Login;
+        private System.Windows.Forms.Label Label_loggedUser;
     }
 }
