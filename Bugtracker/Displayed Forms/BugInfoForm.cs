@@ -63,11 +63,12 @@ namespace Bugtracker
         private void LoadUpdatesToList(string bugId)
         {
             //needs to go to db with bug id, return a table of updates and store these in a list
+            //
             DataTable updates = Connection.GetDbConn().GetDataTable(SqlUpdate.GetUpdates(bugId));
             foreach (DataRow update in updates.Rows)
             {
                 UpdateObject up = new UpdateObject( update["idupdate"].ToString(), 
-                    update["postedBy"].ToString(),  update["comment"].ToString(), update["bug"].ToString());
+                    update["postedBy"].ToString(),  update["comment"].ToString(), update["bug"].ToString(), update["newStatus"].ToString());
                 UpdateObject.Updates.Add(up);
             }
         }
@@ -89,9 +90,8 @@ namespace Bugtracker
 
         /// <summary>
         /// code lifted from creating the project panels - needs work to get updates displaying nicely
-        /// also needs logic for drawing panels below
-        /// 
         /// panels should get drawn under each other now
+        /// needs consideration for making a drawPanels class to make these
         /// </summary>
         /// <param name="update"></param>
         private void CreateDisplayElements(UpdateObject update, int panelYpos)
@@ -108,7 +108,7 @@ namespace Bugtracker
 
             Label Label_ProjectName = new Label
             {
-                Name = "UpdatePoster_" + update.posterId, //this wants to translate to the poster's username
+                Name = "UpdatePoster_" + update.posterId, //this is now the poster's username
                 Location = new Point(8, 8),
                 Font = new Font("Arial", 14f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(82, 82, 82),
@@ -117,13 +117,25 @@ namespace Bugtracker
                 Text = "Posted By: " + update.posterId
             };
 
+            Label Label_UpdateStatus = new Label
+            {
+                Name = "UpdateStatus_" + update.newStatus, 
+                Location = new Point(430 - 180, 8), //Panel_UpdatePanel.Width - this.Width - 8, wanted to do the width of the panel - the length of the label - a margin
+                Font = new Font("Arial", 10f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(82, 82, 82),
+                MaximumSize = new Size(Panel_UpdatePanel.Width - 32, Panel_UpdatePanel.Height / 4), //50
+                AutoSize = true,
+                Text = "Status: " + update.newStatus
+            };
+
             RichTextBox RichText_UpdateComment = new RichTextBox
             {
                 Name = "UpdateComment_" + update.comment,
                 Location = new Point(16, (Panel_UpdatePanel.Height / 4) + 16), //62
                 Font = new Font("Arial", 8f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(82, 82, 82),
-                MaximumSize = new Size(Panel_UpdatePanel.Width - 8, Panel_UpdatePanel.Height / 2),
+                Size = new Size(Panel_UpdatePanel.Width - 32, Panel_UpdatePanel.Height / 2), 
+                MaximumSize = new Size(Panel_UpdatePanel.Width - 16 , Panel_UpdatePanel.Height / 2),
                 AutoSize = true,
                 Text = update.comment,
                 ReadOnly = true
@@ -134,6 +146,7 @@ namespace Bugtracker
             Panel_Updates.Controls.Add(Panel_UpdatePanel);
             Panel_UpdatePanel.Controls.Add(Label_ProjectName);
             Panel_UpdatePanel.Controls.Add(RichText_UpdateComment);
+            Panel_UpdatePanel.Controls.Add(Label_UpdateStatus);
         }
 
         private void Button_Back_Click(object sender, EventArgs e)

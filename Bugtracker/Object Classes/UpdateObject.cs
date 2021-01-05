@@ -8,18 +8,19 @@ namespace Bugtracker
 {
     class UpdateObject
     {
-        public string id, posterId, comment, bugId;
+        public string id, posterId, comment, bugId, newStatus;
         public static List<UpdateObject> Updates = new List<UpdateObject>(); //this is to be used whenever updates need storing
         //this will need clearing when navigating away from pages that show updates
 
 
-        public UpdateObject(string id, string posterId, string comment, string bugId)
+        public UpdateObject(string id, string posterId, string comment, string bugId, string newStatus)
         {
             //UpdateObject up = new UpdateObject(id, posterId, comment, bugId);
             this.id = id;
             this.posterId = posterId;
             this.comment = comment;
-            this.bugId = bugId; 
+            this.bugId = bugId;
+            this.newStatus = newStatus;
         }
 
       
