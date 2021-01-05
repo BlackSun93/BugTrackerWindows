@@ -12,31 +12,53 @@ namespace Bugtracker
     class DrawPanels
     {
         Window display;
+        
+        /// <summary>
+        /// this generates the large panels that the projects are attached to
+        /// </summary>
+        /// <param name="toDrawTo"></param>
+        /// <param name="sections"></param>
+        /// <param name="window"></param>
+        public void BasePanels (Panel toDrawTo, List<List<ProjectObject>> sections, Window window)
+        {
+
+            int howManyPanels = sections.Count();
+            display = window;
+            toDrawTo.Controls.Clear();
+            for (int i = 0; i < sections.Count; i++)
+            {
+                Panel Panel_Container = new Panel
+                {
+                    Name = "Panel_" + i, //just the name for the panel to attach other panels to
+                    BackColor = Color.Yellow,
+                    MaximumSize = new Size(((display.Width / 2) - 200), toDrawTo.Height),
+                    Width = toDrawTo.Width,
+                    Height = toDrawTo.Height,
+                };
+                toDrawTo.Controls.Add(Panel_Container);
+                GridDraw(toDrawTo, Panel_Container, i);
+                foreach (List<ProjectObject> dataset in sections )
+                {
+                    ProjectPanels(Panel_Container, dataset, window);
+                    
+                }
+            }
+        }
+
+        /// <summary>
+        /// this logic generates the clickable panels that display projects
+        /// </summary>
+        /// <param name="toDrawTo"></param>
+        /// <param name="dataset"></param>
+        /// <param name="window"></param>
         public void ProjectPanels (Panel toDrawTo, List<ProjectObject> dataset, Window window)
         {
             display = window;
             toDrawTo.Controls.Clear();
 
-            int separatorDistance = 32,
-                rowWidth = separatorDistance,
-                totalRows = 0,
-                rowNumber = totalRows,
-                projectPosition = 0,
-                firstColumnX = separatorDistance,
-                firstColumnY = separatorDistance / 2,
-                lastColumnY,
-                lastX = firstColumnX,
-                lastY = firstColumnY,
-                newX,
-                newY;
-
-            //DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
-
-            /////////////////// debug
-            //label1.Text = Panel_DisplayProjects.Size.ToString();
-            //label2.Text = Size.ToString();
-            /////////////////////
-            foreach (ProjectObject project in ProjectObject.Projects)
+            int i = 0; //needs this to allow GridDraw to know if 1st panel of not
+            int totalRows = 0;
+            foreach (ProjectObject project in dataset)
             {
                 //For each project in the project table, make a panel that contains that project's title and description
                 //maybe make a drawing class to manage this code, could pass in the panel to add things to
@@ -83,49 +105,10 @@ namespace Bugtracker
                 Panel_ProjectPanel.Controls.Add(Label_ProjectName);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
 
-                rowWidth += Panel_ProjectPanel.Width + separatorDistance;
+                GridDraw(toDrawTo, Panel_ProjectPanel, i);
+                i++;
 
-                //below code handles changing the location of the project panels
-                // First Column on First Row
-                if (projectPosition == 0 && totalRows == 0)//first panel
-                {
-                    newX = firstColumnX;
-                    newY = firstColumnY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-
-                    rowNumber++;
-                    totalRows++;
-                }
-                // First Column on Next Row
-                else if (rowWidth > toDrawTo.Width) //if width would be wider than the panel, make a new row
-                {
-                    lastColumnY = ((firstColumnY + Panel_ProjectPanel.Height) * totalRows) + separatorDistance;
-
-                    newX = firstColumnX;
-                    newY = lastColumnY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-
-                    rowWidth = separatorDistance + Panel_ProjectPanel.Width + separatorDistance;
-                    rowNumber++;
-                    totalRows++;
-
-                }
-                // Next Column on Current Row
-                else if (rowWidth <= toDrawTo.Width) //if space, draw panel on same row 
-                {
-                    newX = lastX + Panel_ProjectPanel.Width + separatorDistance;
-                    newY = lastY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-                }
-
-                projectPosition++;
-            }
+            } 
 
         }
         private void ProjectClicked(object sender, EventArgs e, string id)
@@ -138,6 +121,62 @@ namespace Bugtracker
             //controls instead of using new forms)
             display.DisplayBugsForm(id);
             //get it so that Window.display.DisplayBugsForm(id) works?
+        }
+
+        private void GridDraw(Panel toDrawTo, Panel newPanel, int projectPosition) //needs to know if its drawing 1st panel or no
+        {
+            int separatorDistance = 32,
+              rowWidth = separatorDistance,
+              totalRows = 0, //cant set to 0 here as this happens for each project (may explain why all drawing to 0th line)
+              rowNumber = totalRows,
+              //projectPosition = 0,
+              firstColumnX = separatorDistance,
+              firstColumnY = separatorDistance / 2,
+              lastColumnY,
+              lastX = firstColumnX,
+              lastY = firstColumnY,
+              newX,
+              newY;
+            rowWidth += newPanel.Width + separatorDistance; //rowwidth is always reset here
+
+            //below code handles changing the location of the project panels
+            // First Column on First Row
+            if (projectPosition == 0 && totalRows == 0)//first panel
+            {
+                newX = firstColumnX;
+                newY = firstColumnY;
+                newPanel.Location = new Point(newX, newY);
+                lastX = newX;
+                lastY = newY;
+
+                rowNumber++;
+                totalRows++;
+            }
+            // First Column on Next Row
+            else if (rowWidth > toDrawTo.Width) //if width would be wider than the panel, make a new row
+            {
+                lastColumnY = ((firstColumnY + toDrawTo.Height) * totalRows) + separatorDistance;
+
+                newX = firstColumnX;
+                newY = lastColumnY;
+                newPanel.Location = new Point(newX, newY);
+                lastX = newX;
+                lastY = newY;
+
+                rowWidth = separatorDistance + newPanel.Width + separatorDistance;
+                rowNumber++;
+                totalRows++;
+
+            }
+            // Next Column on Current Row
+            else if (rowWidth <= toDrawTo.Width) //if space, draw panel on same row 
+            {
+                newX = lastX + newPanel.Width + separatorDistance;
+                newY = lastY;
+                newPanel.Location = new Point(newX, newY);
+                lastX = newX;
+                lastY = newY;
+            }
         }
     }
     
