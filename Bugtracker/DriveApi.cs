@@ -15,22 +15,37 @@ namespace Bugtracker
 {
     class DriveApi
     {
+        private static DriveApi _instance; // single instance of class
+
         // If modifying these scopes, delete your previously saved credentials at ~/bin/debug/credentials.json
-        static string[] Scopes = { DriveService.Scope.DriveReadonly, DriveService.Scope.Drive }; // Holds the chosen scope(s) used to interact with google drive files
-        static UserCredential Credential; // Holds the access token needed to access google drive
-        static DriveService Service; // Used to create, search and download files from the google drive
-        static IList<Google.Apis.Drive.v3.Data.File> FileList; // Allows files to be referenced by index without storing locally
+        string[] scopes = { DriveService.Scope.DriveReadonly, DriveService.Scope.Drive }; // Holds the chosen scope(s) used to interact with google drive files
+        UserCredential credential; // Holds the access token needed to access google drive
+        DriveService service; // Used to create, search and download files from the google drive
+        IList<Google.Apis.Drive.v3.Data.File> fileList; // Allows files to be referenced by index without storing locally
 
-
-        public static void InitialiseDrive()
+        public static DriveApi GetDriveService()
         {
-            Credential = GetCredentials();
-            Service = GetService();
-            InitialiseFiles();
+            if (_instance == null)
+            {
+                _instance = new DriveApi();
+                _instance.InitialiseDrive();
+            }
 
+            return _instance;
         }
 
-        private static UserCredential GetCredentials()
+        /// <summary>
+        /// Called only when the instance of class is created.
+        /// Authenticates user & the google drive service and saves all image metadata to an Ilist.
+        /// </summary>
+        private void InitialiseDrive()
+        {
+            credential = GetCredentials();
+            service = GetService();
+            InitialiseFiles();
+        }
+
+        private UserCredential GetCredentials()
         {
             UserCredential credential;
 
@@ -39,7 +54,7 @@ namespace Bugtracker
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.
                 string credPath = "token.json";
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, Scopes, "user", CancellationToken.None, new FileDataStore(credPath, true)).Result;
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets, scopes, "user", CancellationToken.None, new FileDataStore(credPath, true)).Result;
             }
 
             return credential;
@@ -47,33 +62,37 @@ namespace Bugtracker
 
         /// <summary>
         /// Create Drive API service.
-        /// This 
+        /// This is used to interact with files on the google drive.
         /// </summary>
         /// <returns>
         /// Google Drive Service
         /// </returns>
-        private static DriveService GetService()
+        private DriveService GetService()
         {
             return new DriveService(new BaseClientService.Initializer()
             {
-                HttpClientInitializer = Credential,
+                HttpClientInitializer = credential,
                 ApplicationName = "bug-tracker",
             });
 
         }
 
-        private static void InitialiseFiles()
+        /// <summary>
+        /// Reads all files on the google drive.
+        /// These can be referenced through an Ilist.
+        /// </summary>
+        private void InitialiseFiles()
         {
             //Define parameters of request
-            FilesResource.ListRequest listRequest = Service.Files.List();
+            FilesResource.ListRequest listRequest = service.Files.List();
             listRequest.PageSize = 10; // to be changed accordingly when bugs are paginated.
             listRequest.Fields = "nextPageToken, files(id, name)";
 
-            FileList = listRequest.Execute().Files; // initialise the ilist with data form the images located on google drive
+            fileList = listRequest.Execute().Files; // initialise the ilist with data form the images located on google drive
 
-            if (FileList != null && FileList.Count > 0)
+            if (fileList != null && fileList.Count > 0)
             {
-                foreach (var file in FileList)
+                foreach (var file in fileList)
                 {
                     DownloadImage(file); // for now all files are downloaded and stored locally at runtime.
                 }
@@ -89,11 +108,11 @@ namespace Bugtracker
         /// This is fine for now but will look into a more efficient method when the number of downloads impacts performance.
         /// </summary>
         /// <param name="file"></param>
-        private static void DownloadImage(Google.Apis.Drive.v3.Data.File file)
+        private void DownloadImage(Google.Apis.Drive.v3.Data.File file)
         {
             using (FileStream stream = new FileStream(file.Name, FileMode.OpenOrCreate))
             {
-                var request = Service.Files.Copy(file, file.Id);
+                var request = service.Files.Copy(file, file.Id);
             }
         }
     }
