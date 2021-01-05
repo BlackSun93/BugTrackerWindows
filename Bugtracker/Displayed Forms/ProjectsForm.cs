@@ -9,13 +9,14 @@ namespace Bugtracker
     public partial class ProjectsForm : Form
     {
         Window display;
+        DrawPanels dp = new DrawPanels();
         public ProjectsForm(Window window)
         {
             InitializeComponent();
             display = window;
-            
+            int w = window.Width;
             Label_loggedUser.Text = UserObject.loggedUser.username;
-            Size = new Size(display.Width, display.Height);
+            Size = new Size(window.Width, window.Height);
             LoadProjectsToList();
             doResize();
             //doResize used because this resizes the displayProjects panel then draws the panels to it
@@ -49,7 +50,7 @@ namespace Bugtracker
         /// a method is also added to each panel so that on click, their project page is opened
         /// This needs to be changed to not query the db as this function runs whenever the window is resized
         /// </summary>
-        private void DrawPanels()
+        /* private void DrawPanels()
         {
             
             //Panel_DisplayProjects.Size = Size;
@@ -161,7 +162,7 @@ namespace Bugtracker
 
                 projectPosition++;
             }
-        }
+        } */
 
         /// <summary>
         /// runs from window class, when window is resized, runs this code
@@ -173,8 +174,15 @@ namespace Bugtracker
             Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 40); //as per the comment in window class,
                                                                                      //i dont really know why it needs this 10 added
             Panel_DisplayProjects.Height = display.Height - (Window.heightOffset + 80);
+            //making an instance of drawpanels means it's not static (so display doesnt have to be passed) however
+            //now we have to pass in ProjectPanel arguements (although this would be required anyway with
+            // multiple panels), i would rather not make a new instance of the draw class on ever resize
+            
+            dp.ProjectPanels(Panel_DisplayProjects, ProjectObject.Projects, display);
+            //dp.projectpanels(panel_yourProjects, userlist)
+            //dp.projectpanes(panel_followedprojs, followedlist
 
-            DrawPanels();
+            //DrawPanels();
         }
 
         /// <summary>
@@ -188,6 +196,7 @@ namespace Bugtracker
             ProjectObject.Projects.Clear();
             display.DisplayBugsForm(id);
         }
+       
 
         /// <summary>
         /// im srry this button hasnt been renamed yet

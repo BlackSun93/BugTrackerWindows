@@ -14,17 +14,23 @@ namespace Bugtracker
         BugReportForm bugReportForm;
         BugInfoForm bugInfoForm;
         PostUpdateForm postUpdateForm;
+        
         public static int heightOffset;
         public static int widthOffset; // These will be calculated in the resize function, static so that other forms
-                                        //can use their value to position forms on the FormContent Panel
+                                       //can use their value to position forms on the FormContent Panel
+        //public static Window display = new Window(); //instead of passing this around everywhere, make it static?
 
         string currentForm;
         public Window()
         {
             
             InitializeComponent();
-            DisplayProjectsForm();
+            Console.WriteLine(this.Size); // static instance of instance has a size here but not but not in project
+            //for constructor
+            DisplayProjectsForm();// cant call the object in its constructor
+            
         }
+      
 
         /// <summary>
         /// Display functions create a new instance of the form, then adds that form to the Panel_FormContent
@@ -83,6 +89,8 @@ namespace Bugtracker
         {
             currentForm = "DisplayBugsForm";
             Panel_FormContent.Controls.Clear();
+            //i assume making a new window instance with the blank constructor has something to do with 'object
+            //reference not set to an object' error
             //Controls.Clear();
             bugsForm = new BugsForm(this, id)
             {

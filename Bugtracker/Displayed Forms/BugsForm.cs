@@ -32,7 +32,7 @@ namespace Bugtracker
 
         private void BackBtn_Click(object sender, EventArgs e)
         {
-            display.DisplayProjectsForm();
+            //display.DisplayProjectsForm();
         }
 
         private void LoadBugsToList(string projectId)

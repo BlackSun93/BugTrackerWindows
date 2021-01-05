@@ -37,7 +37,7 @@ namespace Bugtracker
         private void Button2_Click(object sender, EventArgs e)
         {
 
-            display.DisplayProjectsForm();
+            //display.DisplayProjectsForm();
         }
     }
 }
