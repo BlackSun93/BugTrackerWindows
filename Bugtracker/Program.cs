@@ -30,7 +30,7 @@ namespace Bugtracker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DriveApi.InitialiseDrive();
+            DriveApi.GetDriveService();
             Application.Run(new Window());
         }
     }
