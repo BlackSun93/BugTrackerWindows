@@ -110,10 +110,10 @@ namespace Bugtracker
         /// <param name="file"></param>
         private void DownloadImage(Google.Apis.Drive.v3.Data.File file)
         {
-            using (FileStream stream = new FileStream(file.Name, FileMode.OpenOrCreate))
-            {
-                var request = service.Files.Copy(file, file.Id);
-            }
+            FileStream stream = new FileStream(file.Name, FileMode.OpenOrCreate); // the stream must remain open for the lifetime of the image 
+
+            var request = service.Files.Get(file.Id);
+            request.DownloadWithStatus(stream);
         }
     }
 }
