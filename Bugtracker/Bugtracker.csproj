@@ -119,6 +119,12 @@
       <DependentUpon>BugsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Connection.cs" />
+    <Compile Include="Displayed Forms\DashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Displayed Forms\DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Displayed Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\BugsForm.resx">
       <DependentUpon>BugsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Displayed Forms\DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

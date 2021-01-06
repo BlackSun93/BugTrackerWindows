@@ -12,6 +12,7 @@ namespace Bugtracker
         public DateTime timePosted;
         public static List<BugObject> Bugs = new List<BugObject>(); //this is to be used whenever projects need storing
         //this will need clearing when navigating away from pages that show updates
+        public static List<BugObject> followedBugs = new List<BugObject>();
 
 
         public BugObject(string idbug, string title, string description, string location, 

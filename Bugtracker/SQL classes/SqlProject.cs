@@ -49,5 +49,19 @@ namespace Bugtracker
             string query = $"SELECT * FROM project WHERE user = {userid} ORDER BY projName ASC";
             return query;
         }
+
+        /// <summary>
+        /// gets all projects that a given user is following
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public static string GetFollowedProjects(string userid)
+        {
+            string query = $"SELECT * FROM projectusers " +
+                $"INNER JOIN project ON projectusers.user = project.user " +
+                $"WHERE project.user = { userid }";
+            return query;
+        }
+
     }
 }

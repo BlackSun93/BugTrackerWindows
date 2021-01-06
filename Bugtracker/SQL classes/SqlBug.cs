@@ -22,6 +22,19 @@ namespace Bugtracker
             return query;
         }
 
+        /// <summary>
+        /// gets all bugs that a given user is following
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public static string GetFollowedBugs(string userid)
+        {
+            string query = $"SELECT * FROM bug " +
+                $"INNER JOIN follow ON follow.bug = bug.idbug " +
+                $"WHERE follow.user = { userid }";
+            return query;
+        }
+
         private MySqlCommand _updateStatus = new MySqlCommand("UPDATE bug SET status = @status WHERE idbug = @id",
             Connection.connToDb);
         public  void UpdateStatus(string id, string status)
