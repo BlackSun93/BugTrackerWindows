@@ -43,8 +43,8 @@ namespace Bugtracker
             // THESE ARE EXAMPLES, WE SHOULD FIGURE OUT WHAT PROJECTS PEOPLE WILL WANT TO SEE
             // this is also written as dashboard will employ similar methods of panel drawings
             
-
-            /*DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
+            
+            DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
             foreach (DataRow userProject in userProjects.Rows)
             {
                 ProjectObject up = new ProjectObject(userProject["idproject"].ToString(),
@@ -52,7 +52,7 @@ namespace Bugtracker
                 ProjectObject.UserProjects.Add(up);
                 
             }
-            projectLists.Add(ProjectObject.UserProjects); */
+            //projectLists.Add(ProjectObject.UserProjects); 
 
             DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
             foreach (DataRow project in projects.Rows)
@@ -62,6 +62,7 @@ namespace Bugtracker
                 ProjectObject.Projects.Add(up1);
             }
             projectLists.Add(ProjectObject.Projects);
+            projectLists.Add(ProjectObject.UserProjects);
         }
 
        

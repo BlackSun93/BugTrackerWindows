@@ -14,7 +14,7 @@ namespace Bugtracker
         private MySqlCommand _insertProject = new MySqlCommand("INSERT INTO project " +
          "(projName, user, description) VALUES (@projName, @user, @description)", Connection.connToDb);
 
-        public void InserProject(string projName, int user, string description)
+        public void InserProject(string projName, string user, string description)
         {
             // Set parameters
             _insertProject.Parameters.Clear();

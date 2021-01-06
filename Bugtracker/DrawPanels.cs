@@ -10,47 +10,65 @@ using System.Drawing;
 namespace Bugtracker
 {
     class DrawPanels
-    {
+    { // https://stackoverflow.com/questions/8763716/slowness-in-c-net-windows-form-resize-when-form-has-many-dropdownlist-controls
         Window display;
-        public static List<Panel> panelList = new List<Panel>();
+        public static List<Panel> masterPanelList = new List<Panel>();
+        public static List<Panel> projectPanelList = new List<Panel>();
         /// <summary>
         /// this generates the large panels that the projects are attached to
         /// maybe there can be a check to see how many of these panels are getting drawn on a row
         /// if only 1 is being drawn, change location to somewhere more central
         /// in case usr is somewhere between normal size window and fullscreen
         /// </summary>
-        /// <param name="toDrawTo"></param>
-        /// <param name="sections"></param>
-        /// <param name="window"></param>
-        public void BasePanels (Panel toDrawTo, List<List<ProjectObject>> sections, Window window)
-        {
-            panelList.Clear();
+        /// <param name="toDrawTo"> the panel drawn on the form, master panel </param>
+        /// <param name="sections"> a list of ProjectObject lists (see inside projectObject class) </param>
+        /// <param name="window"> the display window </param>
+        public void BasePanels (Panel masterPanel, List<List<ProjectObject>> sections, Window window)
+        {// list of lists is used to allow us to easily make container panels by telling it how many lists
+            //we need a panel for
+            masterPanelList.Clear();
             int howManyPanels = sections.Count();
             display = window;
-            toDrawTo.Controls.Clear();
-            for (int i = 0; i < sections.Count; i++)
+            masterPanel.Controls.Clear();
+            // for each  project list, make a conatiner panel, draw that panel to the master panel on the form, 
+            // then add the contents of that list to this panel. 
+            // 
+            foreach (List<ProjectObject> list in sections)
             {
                 Panel Panel_Container = new Panel
                 {
-                    Name = "Panel_" + i, //just the name for the panel to attach other panels to
-                    BackColor = Color.Yellow,
-                    MaximumSize = new Size(((display.Width / 2) - 200), toDrawTo.Height),
-                    Width = toDrawTo.Width,
-                    Height = toDrawTo.Height,
+                    Location = new Point(16, 16),
+                    BackColor = Color.Yellow, //i apologise for the colour
+                    //MaximumSize = new Size(((display.Width / 2) - 200), toDrawTo.Height),
+                    //Width = 530, // i want this size to fill the master panel on projectsForm when window at min size
+                    // 2 project panels take up 536 px with their separators (3 * 32px) + (2*220px))
+                    Width = (masterPanel.Width / howManyPanels),
+                    Height = masterPanel.Height - 20, //max height of panel to draw to
+                    MaximumSize = new Size (536, masterPanel.Height),
+                    MinimumSize = new Size (536, masterPanel.Height),
                     AutoScroll = true
                 };
-                toDrawTo.Controls.Add(Panel_Container);
-                //to use drawGrid, have to add container panel to the list then clear it after
-                panelList.Add(Panel_Container);
-                GridDraw(toDrawTo, panelList);
-                panelList.Clear();
 
-                foreach (List<ProjectObject> dataset in sections )
+                masterPanel.Controls.Add(Panel_Container);
+                //to use drawGrid, have to add container panel to the list then clear it after
+                //panelList.Add(Panel_Container);
+                // draw container panel to master
+                //GridDraw(masterPanel, panelList); // to draw to is the master panel
+               //panelList.Clear();
+                // create a panel for each project in the list and add them to the panel list. GridDraw is called 
+                // at the end of this function too, to draw those panels into Panel_Container
+                ProjectPanels(Panel_Container, list, window);
+                masterPanelList.Add(Panel_Container);
+                //needs to add to panel list after creation but panelList needs to be used by the project panels
+                //could make another panel list
+                /*foreach (List<ProjectObject> dataset in sections )
                 {
                     ProjectPanels(Panel_Container, dataset, window);
                     
-                }
+                } */
             }
+            GridDraw(masterPanel, masterPanelList); // to draw to is the master panel
+            masterPanelList.Clear();
         }
 
         /// <summary>
@@ -59,14 +77,11 @@ namespace Bugtracker
         /// <param name="toDrawTo"></param>
         /// <param name="dataset"></param>
         /// <param name="window"></param>
-        public void ProjectPanels (Panel toDrawTo, List<ProjectObject> dataset, Window window)
+        public void ProjectPanels (Panel containerPanel, List<ProjectObject> dataset, Window window)
         {
+            projectPanelList.Clear(); // clear panel list 
             display = window;
-            toDrawTo.Controls.Clear();
-            
-
-            
-            int totalRows = 0;
+            containerPanel.Controls.Clear();
             foreach (ProjectObject project in dataset)
             {
                 //For each project object in the database, make a panel, display elements, give it an on click method
@@ -108,31 +123,27 @@ namespace Bugtracker
                 Label_ProjectDescription.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
 
                 //Controls.Add(Panel_DisplayProjects); isn't the base panel added as a control from the design form?
-                toDrawTo.Controls.Add(Panel_ProjectPanel);
+                containerPanel.Controls.Add(Panel_ProjectPanel);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectName);
                 Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
 
                 //problem is here, how would you take this outside of the loop?
 
                 //GridDraw(toDrawTo, Panel_ProjectPanel, i);
-                
+
                 //could use .Count of the dataset (to get how many projects need to be made)
                 //list of panels?
-                panelList.Add(Panel_ProjectPanel);
+                projectPanelList.Add(Panel_ProjectPanel);
             }
-            GridDraw(toDrawTo, panelList);
-
+            GridDraw(containerPanel, projectPanelList);
+            projectPanelList.Clear(); //needs to clear the panel list once projects are drawn to their panels so master panels can be 
+            //located afterwards
         }
         private void ProjectClicked(object sender, EventArgs e, string id)
         {
             ProjectObject.Projects.Clear(); //clear the list, we will need to clear all lists when more are added
             // i dont want to have to pass the display instance all the way to here
-            //Window w = new Window("im so sorry");
-            //this creates a new window with nothing on it (i think) and so we cant use DisplayBugsForm
-            //on it (as the w instance of Window isn;t even initialised) (and doing so would defeat the purpose of adding as 
-            //controls instead of using new forms)
             display.DisplayBugsForm(id);
-            //get it so that Window.display.DisplayBugsForm(id) works?
         }
 
         /// <summary>
@@ -159,11 +170,11 @@ namespace Bugtracker
               lastY = firstColumnY,
               newX,
               newY;
+           
             
             foreach (Panel panel in newPanels)
-            {
-                //below code handles changing the location of the project panels
-                // First Column on First Row
+            { 
+                rowWidth += panel.Width + separatorDistance; //incrememnts by 1 panel and separator
                 if (projectPosition == 0 && totalRows == 0)//first panel
                 {
                     newX = firstColumnX;
@@ -174,12 +185,11 @@ namespace Bugtracker
 
                     rowNumber++;
                     totalRows++;
-                    rowWidth += newPanels[0].Width + separatorDistance; //rowwidth is always reset here // gets the width of a panel
                 }
                 // First Column on Next Row
                 else if (rowWidth > toDrawTo.Width) //if width would be wider than the panel, make a new row
                 {
-                    lastColumnY = ((firstColumnY + newPanels[0].Height) * totalRows) + separatorDistance;
+                    lastColumnY = ((firstColumnY + panel.Height) * totalRows) + separatorDistance;
 
                     newX = firstColumnX;
                     newY = lastColumnY;
@@ -187,10 +197,10 @@ namespace Bugtracker
                     lastX = newX;
                     lastY = newY;
 
-                    rowWidth = separatorDistance ;
+                    rowWidth = separatorDistance + panel.Width + separatorDistance;
                     rowNumber++;
                     totalRows++;
-                    //only increase rowidth if something was placed on the row, otherwise reset rowwidth
+
                 }
                 // Next Column on Current Row
                 else if (rowWidth <= toDrawTo.Width) //if space, draw panel on same row 
@@ -200,9 +210,7 @@ namespace Bugtracker
                     panel.Location = new Point(newX, newY);
                     lastX = newX;
                     lastY = newY;
-                    rowWidth += newPanels[0].Width + separatorDistance; //rowwidth is always reset here // gets the width of a panel
                 }
-                
             }
 
             
