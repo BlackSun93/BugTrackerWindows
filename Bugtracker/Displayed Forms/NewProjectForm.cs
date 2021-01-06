@@ -33,7 +33,7 @@ namespace Bugtracker
         private void Button_SaveProject_Click(object sender, EventArgs e)
         {
             SqlProject newProject = new SqlProject();
-            newProject.InserProject(TextBox_ProjectName.Text, 41 , RichTextBox_Description.Text);
+            newProject.InserProject(TextBox_ProjectName.Text, UserObject.loggedUser.iduser , RichTextBox_Description.Text);
             TextBox_ProjectName.Clear();
             RichTextBox_Description.Clear();
         }

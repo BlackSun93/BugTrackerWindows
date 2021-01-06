@@ -14,7 +14,7 @@ namespace Bugtracker
         private MySqlCommand _insertProject = new MySqlCommand("INSERT INTO project " +
          "(projName, user, description) VALUES (@projName, @user, @description)", Connection.connToDb);
 
-        public void InserProject(string projName, int user, string description)
+        public void InserProject(string projName, string user, string description)
         {
             // Set parameters
             _insertProject.Parameters.Clear();
@@ -41,6 +41,12 @@ namespace Bugtracker
         public static string GetProjects()
         {
             string query = $"SELECT * FROM project ORDER BY projName ASC";
+            return query;
+        }
+
+        public static string GetUserProjects(string userid)
+        {
+            string query = $"SELECT * FROM project WHERE user = {userid} ORDER BY projName ASC";
             return query;
         }
     }

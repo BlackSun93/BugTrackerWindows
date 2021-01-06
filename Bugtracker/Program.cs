@@ -31,6 +31,7 @@ namespace Bugtracker
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DriveApi.GetDriveService();
+           
             Application.Run(new Window());
         }
     }

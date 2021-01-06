@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
-
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Bugtracker
@@ -9,13 +9,15 @@ namespace Bugtracker
     public partial class ProjectsForm : Form
     {
         Window display;
+        DrawPanels dp = new DrawPanels();
+        List<List<ProjectObject>> projectLists = new List<List<ProjectObject>>();
         public ProjectsForm(Window window)
         {
             InitializeComponent();
             display = window;
-            
+            int w = window.Width;
             Label_loggedUser.Text = UserObject.loggedUser.username;
-            Size = new Size(display.Width, display.Height);
+            Size = new Size(window.Width, window.Height);
             LoadProjectsToList();
             doResize();
             //doResize used because this resizes the displayProjects panel then draws the panels to it
@@ -29,139 +31,41 @@ namespace Bugtracker
         private void Button_NewProject_Click(object sender, EventArgs e)
         {
             ProjectObject.Projects.Clear();
+            ProjectObject.UserProjects.Clear();
             display.DisplayNewProjectForm();
         }
 
         private void LoadProjectsToList()
         {
             //gets all the projects stored in the DB and puts them in a list
+            //this will now populate multiple lists (for now it will have all projects 
+            // named 'userprojects' (projects the logged in user made) and 'projects' (all projects)
+            // THESE ARE EXAMPLES, WE SHOULD FIGURE OUT WHAT PROJECTS PEOPLE WILL WANT TO SEE
+            // this is also written as dashboard will employ similar methods of panel drawings
+            
+            
+            DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
+            foreach (DataRow userProject in userProjects.Rows)
+            {
+                ProjectObject up = new ProjectObject(userProject["idproject"].ToString(),
+                    userProject["projName"].ToString(), userProject["user"].ToString(), userProject["description"].ToString());
+                ProjectObject.UserProjects.Add(up);
+                
+            }
+            //projectLists.Add(ProjectObject.UserProjects); 
+
             DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
             foreach (DataRow project in projects.Rows)
             {
-                ProjectObject up = new ProjectObject(project["idproject"].ToString(),
+                ProjectObject up1 = new ProjectObject(project["idproject"].ToString(),
                     project["projName"].ToString(), project["user"].ToString(), project["description"].ToString());
-                ProjectObject.Projects.Add(up);
+                ProjectObject.Projects.Add(up1);
             }
+            projectLists.Add(ProjectObject.Projects);
+            projectLists.Add(ProjectObject.UserProjects);
         }
 
-        /// <summary>
-        /// This querys the database and draws a panel, with info about the project, for each project in the db
-        /// a method is also added to each panel so that on click, their project page is opened
-        /// This needs to be changed to not query the db as this function runs whenever the window is resized
-        /// </summary>
-        private void DrawPanels()
-        {
-            
-            //Panel_DisplayProjects.Size = Size;
-
-            Panel_DisplayProjects.Controls.Clear();
-
-            int separatorDistance = 32,
-                rowWidth = separatorDistance,
-                totalRows = 0,
-                rowNumber = totalRows,
-                projectPosition = 0,
-                firstColumnX = separatorDistance,
-                firstColumnY = separatorDistance/2,
-                lastColumnY,
-                lastX = firstColumnX,
-                lastY = firstColumnY,
-                newX,
-                newY;
-
-            //DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
-
-            /////////////////// debug
-            //label1.Text = Panel_DisplayProjects.Size.ToString();
-            //label2.Text = Size.ToString();
-            /////////////////////
-            foreach (ProjectObject project in ProjectObject.Projects)
-            {
-                //For each project in the project table, make a panel that contains that project's title and description
-                //maybe make a drawing class to manage this code, could pass in the panel to add things to
-                //(here it would be Panel_DisplayProjects)
-                Panel Panel_ProjectPanel = new Panel
-                {
-                    Name = "ProjectPanel_" + project.idproject,
-                    BackColor = Color.White,
-                    Width = 220,
-                    Height = 220,
-                };
-
-                Label Label_ProjectName = new Label
-                {
-                    Name = "ProjectName_" + project.idproject,
-                    Location = new Point(16, 16),
-                    Font = new Font("Arial", 14f, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(82, 82, 82),
-                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 4),
-                    AutoSize = true,
-                    Text = project.projName
-                };
-
-            Label Label_ProjectDescription = new Label
-            {
-                Name = "ProjectDescription_" + project.idproject,
-                Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16),
-                Font = new Font("Arial", 8f, FontStyle.Bold),
-                ForeColor = Color.FromArgb(82, 82, 82),
-                MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 2),
-                AutoSize = true,
-                Text = project.description
-                };
-                Panel_ProjectPanel.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
-                Label_ProjectName.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
-                Label_ProjectDescription.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
-
-                Controls.Add(Panel_DisplayProjects);
-                Panel_DisplayProjects.Controls.Add(Panel_ProjectPanel);
-                Panel_ProjectPanel.Controls.Add(Label_ProjectName);
-                Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
-
-                rowWidth += Panel_ProjectPanel.Width + separatorDistance;
-
-                //below code handles changing the location of the project panels
-                // First Column on First Row
-                if (projectPosition == 0 && totalRows == 0)//first panel
-                {
-                    newX = firstColumnX;
-                    newY = firstColumnY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-
-                    rowNumber++;
-                    totalRows++;
-                }
-                // First Column on Next Row
-                else if (rowWidth > Panel_DisplayProjects.Width) //if width would be wider than the panel, make a new row
-                {
-                    lastColumnY = ((firstColumnY + Panel_ProjectPanel.Height) * totalRows) + separatorDistance;
-                    
-                    newX = firstColumnX;
-                    newY = lastColumnY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-
-                    rowWidth = separatorDistance + Panel_ProjectPanel.Width + separatorDistance;
-                    rowNumber++;
-                    totalRows++;
-
-                }
-                // Next Column on Current Row
-                else if (rowWidth <= Panel_DisplayProjects.Width) //if space, draw panel on same row 
-                {
-                    newX = lastX + Panel_ProjectPanel.Width + separatorDistance;
-                    newY = lastY;
-                    Panel_ProjectPanel.Location = new Point(newX, newY);
-                    lastX = newX;
-                    lastY = newY;
-                }
-
-                projectPosition++;
-            }
-        }
+       
 
         /// <summary>
         /// runs from window class, when window is resized, runs this code
@@ -173,8 +77,16 @@ namespace Bugtracker
             Panel_DisplayProjects.Width = display.Width - (Window.widthOffset + 40); //as per the comment in window class,
                                                                                      //i dont really know why it needs this 10 added
             Panel_DisplayProjects.Height = display.Height - (Window.heightOffset + 80);
+            //making an instance of drawpanels means it's not static (so display doesnt have to be passed) however
+            //now we have to pass in ProjectPanel arguements (although this would be required anyway with
+            // multiple panels), i would rather not make a new instance of the draw class on ever resize
+            dp.BasePanels(Panel_DisplayProjects, projectLists, display);
+           // dp.ProjectPanels(Panel_DisplayProjects, ProjectObject.Projects, display);
+            //dp.ProjectPanels(Panel_UserProjects, ProjectObject.UserProjects, display);
+            //dp.projectpanels(panel_yourProjects, userlist)
+            //dp.projectpanes(panel_followedprojs, followedlist
 
-            DrawPanels();
+            //DrawPanels();
         }
 
         /// <summary>
@@ -186,8 +98,10 @@ namespace Bugtracker
         private void ProjectClicked(object sender, EventArgs e, string id)
         {
             ProjectObject.Projects.Clear();
+            ProjectObject.UserProjects.Clear();
             display.DisplayBugsForm(id);
         }
+       
 
         /// <summary>
         /// im srry this button hasnt been renamed yet
@@ -196,6 +110,8 @@ namespace Bugtracker
         /// <param name="e"></param>
         private void DebugButton_Login_Click(object sender, EventArgs e)
         {
+            ProjectObject.Projects.Clear();
+            ProjectObject.UserProjects.Clear();
             UserObject.loggedUser.username = "";
             UserObject.loggedUser.iduser = "";
             this.Hide();

@@ -33,16 +33,19 @@
             this.Button_Back = new System.Windows.Forms.Button();
             this.DebugButton_Login = new System.Windows.Forms.Button();
             this.Label_loggedUser = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Panel_DisplayProjects.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_DisplayProjects
             // 
             this.Panel_DisplayProjects.AutoScroll = true;
             this.Panel_DisplayProjects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.Panel_DisplayProjects.Location = new System.Drawing.Point(0, 58);
+            this.Panel_DisplayProjects.Controls.Add(this.label2);
+            this.Panel_DisplayProjects.Location = new System.Drawing.Point(1, 70);
             this.Panel_DisplayProjects.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_DisplayProjects.Name = "Panel_DisplayProjects";
-            this.Panel_DisplayProjects.Size = new System.Drawing.Size(631, 435);
+            this.Panel_DisplayProjects.Size = new System.Drawing.Size(630, 420);
             this.Panel_DisplayProjects.TabIndex = 3;
             // 
             // Button_NewProject
@@ -99,6 +102,15 @@
             this.Label_loggedUser.TabIndex = 7;
             this.Label_loggedUser.Text = "label1";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "ALL projects";
+            // 
             // ProjectsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +128,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BugTracker";
+            this.Panel_DisplayProjects.ResumeLayout(false);
+            this.Panel_DisplayProjects.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +141,6 @@
         private System.Windows.Forms.Button Button_Back;
         private System.Windows.Forms.Button DebugButton_Login;
         private System.Windows.Forms.Label Label_loggedUser;
+        private System.Windows.Forms.Label label2;
     }
 }

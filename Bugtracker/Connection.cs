@@ -29,8 +29,6 @@ namespace Bugtracker
         private Connection()
         {
             connStr = Properties.Settings.Default.database;
-            
-
         }
 
         /// <summary>
