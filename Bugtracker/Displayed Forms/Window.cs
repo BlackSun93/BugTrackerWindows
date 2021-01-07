@@ -207,8 +207,8 @@ namespace Bugtracker
                     //the DB as resize should only focus on redrawing  (and it's hard to pass the project id around)
                     //id stored in currentProject variable in bugsForm - no need to pass id
                     break;
-                case "DashboardForm":
-                    dashboardForm.resize();
+                case "DisplayDashboardForm":
+                    dashboardForm.Resize();
                     break;
             }
 

@@ -41,10 +41,10 @@ namespace Bugtracker
             InitializeComponent();
             bugLists.Clear();
             display = window;
-            //Size = new Size(window.Width, window.Height);
+            Size = new Size(window.Width, window.Height);
             LoadProfileInfo(userId); // loads lists with user's information
             //DrawListsIntoPanels(List<>)
-            resize();
+            Resize();
             
         }
 
@@ -97,8 +97,12 @@ namespace Bugtracker
 
         }
 
-        public void resize()
+        public void Resize()
         {
+            Size = new Size(display.Width, display.Height);
+            Panel_MasterPanel.Width = display.Width - (Window.widthOffset + 40); //as per the comment in window class,
+                                                                                 //i dont really know why it needs this 10 added
+            Panel_MasterPanel.Height = display.Height - (Window.heightOffset + 80);
             dbp.BasePanels(Panel_MasterPanel, bugLists, display, display.Width);
         }
     }

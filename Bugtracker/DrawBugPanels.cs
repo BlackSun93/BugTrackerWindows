@@ -34,7 +34,7 @@ namespace Bugtracker
                     //MaximumSize = new Size(((display.Width / 2) - 200), toDrawTo.Height),
                     //Width = 530, // i want this size to fill the master panel on projectsForm when window at min size
                     // 2 project panels take up 536 px with their separators (3 * 32px) + (2*220px))
-                    Width = (masterPanel.Width / howManyPanels),
+                    Width = (masterPanel.Width / howManyPanels - 64),
                     Height = masterPanel.Height - 20, //max height of panel to draw to
                     //MaximumSize = new Size(masterPanelSize/howManyPanels, masterPanel.Height),
                     //MinimumSize = new Size(masterPanelSize, masterPanel.Height),
@@ -62,6 +62,18 @@ namespace Bugtracker
             DrawPanels.GridDraw(masterPanel, masterPanelList); // to draw to is the master panel
             masterPanelList.Clear();
         }
+        private void PlacePanelYaxis(Panel containerPanel, List<Panel> bugPanels)
+        {
+            int panelYpos = 16;
+            foreach (Panel bugPanel in bugPanels )
+            {
+                containerPanel.Controls.Add(bugPanel);
+                bugPanel.Location = new Point(16,panelYpos);
+                //add height of panel plus 10 pixel gap
+                panelYpos += 56;
+            }
+        }
+
 
         /// <summary>
         /// this logic generates the clickable panels that display projects
@@ -88,15 +100,15 @@ namespace Bugtracker
                 {
                     //Name = "ProjectPanel_" + bug.idproject,
                     BackColor = Color.White,
-                    Width = containerPanel.Width,
-                    Height = 104,
+                    Width = containerPanel.Width-32,
+                    Height = 32,
                 };
 
                 Label Label_BugTitle = new Label
                 {
                     //Name = "ProjectName_" + bug.idproject,
                     Location = new Point(16 ,Panel_BugPanel.Height/2 - 4 ),
-                    Font = new Font("Arial", 14f, FontStyle.Bold),
+                    Font = new Font("Arial", 8f, FontStyle.Bold),
                     ForeColor = Color.FromArgb(82, 82, 82),
                     //MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 4),
                     //AutoSize = true,
@@ -107,7 +119,7 @@ namespace Bugtracker
                 {
                     //Name = "ProjectDescription_" + bug.idproject,
                     Location = new Point(Panel_BugPanel.Width/3, Panel_BugPanel.Height / 2 - 4),
-                    Font = new Font("Arial", 14f, FontStyle.Bold),
+                    Font = new Font("Arial", 8f, FontStyle.Bold),
                     ForeColor = Color.FromArgb(82, 82, 82),
                     //MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 2),
                     //AutoSize = true,
@@ -134,7 +146,7 @@ namespace Bugtracker
                 //list of panels?
                 bugPanelList.Add(Panel_BugPanel);
             }
-            DrawPanels.GridDraw(containerPanel, bugPanelList);
+            PlacePanelYaxis(containerPanel, bugPanelList);
             bugPanelList.Clear(); //needs to clear the panel list once projects are drawn to their panels so master panels can be 
             //located afterwards
         }
