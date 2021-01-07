@@ -14,6 +14,7 @@ namespace Bugtracker
         //this will need clearing when navigating away from pages that show updates
         public static List<BugObject> followedBugs = new List<BugObject>();
         public static List<BugObject> toDoBugs = new List<BugObject>();
+        public static List<BugObject> recentBugs = new List<BugObject>();
         //public static List<BugObject> 
 
 

@@ -143,6 +143,7 @@ namespace Bugtracker
         {
             ProjectObject.Projects.Clear(); //clear the list, we will need to clear all lists when more are added
             // i dont want to have to pass the display instance all the way to here
+            ProjectObject.UserProjects.Clear();
             display.DisplayBugsForm(id);
         }
 
@@ -155,7 +156,7 @@ namespace Bugtracker
         /// <param name="toDrawTo"></param>
         /// <param name="newPanel"></param>
         /// <param name="projectPosition"></param>
-        private void GridDraw(Panel toDrawTo, List<Panel> newPanels) //needs to know if its drawing 1st panel or no
+        public static void GridDraw(Panel toDrawTo, List<Panel> newPanels) //needs to know if its drawing 1st panel or no
         {
 
             int separatorDistance = 32,

@@ -14,6 +14,7 @@ namespace Bugtracker
         BugReportForm bugReportForm;
         BugInfoForm bugInfoForm;
         PostUpdateForm postUpdateForm;
+        DashboardForm dashboardForm;
         
         public static int heightOffset;
         public static int widthOffset; // These will be calculated in the resize function, static so that other forms
@@ -143,6 +144,20 @@ namespace Bugtracker
             //Controls.Add(bugReportForm);
             postUpdateForm.Show();
         }
+        public void DisplayDashboardForm(string id)
+        {
+            currentForm = "DisplayDashboardForm";
+            Panel_FormContent.Controls.Clear();
+            //Controls.Clear();
+            dashboardForm = new DashboardForm(this, id) //,id
+            {
+                TopLevel = false
+            };
+            Panel_FormContent.Controls.Add(dashboardForm);
+            ResetButtons();
+            //Controls.Add(bugReportForm);
+            dashboardForm.Show();
+        }
 
 
         /// <summary>
@@ -192,6 +207,9 @@ namespace Bugtracker
                     //the DB as resize should only focus on redrawing  (and it's hard to pass the project id around)
                     //id stored in currentProject variable in bugsForm - no need to pass id
                     break;
+                case "DashboardForm":
+                    dashboardForm.resize();
+                    break;
             }
 
         }
@@ -206,6 +224,7 @@ namespace Bugtracker
         private void Label_Dashboard_Click(object sender, EventArgs e)
         {
             // need to add a dashboard form
+            DisplayDashboardForm(UserObject.loggedUser.iduser);
         }
 
         private void Label_Projects_Click(object sender, EventArgs e)

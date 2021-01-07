@@ -10,9 +10,20 @@ namespace Bugtracker
 {
     class SqlBug
     {
-        public static string ToDoList(string id)
+        public static string UpdateCount(string id) //counts how many update are on a bug, this is used in drawbugpanels
+            // 
         {
-            string query = $"SELECT * FROM bug WHERE poster = '{id}' ORDER BY priority ASC LIMIT 5";
+            string query = $"SELECT count(idupdate) as `count` FROM `update` WHERE bug = '{id}'";
+            return query;
+        }
+        public static string RecentList(string id) //gets recent bugs
+        {
+            string query = $"SELECT * FROM bug WHERE poster = '{id}' AND status != 'solved' ORDER BY timePosted DESC LIMIT 5";
+            return query;
+        }
+        public static string ToDoList(string id) //it would be nice to also order by OLDEST first
+        {
+            string query = $"SELECT * FROM bug WHERE poster = '{id}' AND status != 'solved' ORDER BY priority DESC LIMIT 5";
             return query;
         }
         public static string GetBugs(string id)
