@@ -10,6 +10,11 @@ namespace Bugtracker
 {
     class SqlBug
     {
+        public static string ToDoList(string id)
+        {
+            string query = $"SELECT * FROM bug WHERE poster = '{id}' ORDER BY priority ASC LIMIT 5";
+            return query;
+        }
         public static string GetBugs(string id)
         {
             string query = $"SELECT * FROM bug WHERE project = '{id}' ORDER BY timePosted ASC";

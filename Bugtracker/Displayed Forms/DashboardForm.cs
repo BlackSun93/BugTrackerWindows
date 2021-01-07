@@ -17,6 +17,7 @@ using System.Windows.Forms;
 /// to do list: when looking at bug info page , user would get an option to 'add to to do list' which would be a application 
 /// side list containing bugs. user might get the option to go to 'next' in to do list or even a panel that shows
 /// bugs in the list on the side of the screen. 
+/// https://stackoverflow.com/questions/4452590/c-sharp-get-the-item-type-for-a-generic-list
 /// </summary>
 
 namespace Bugtracker
@@ -58,17 +59,28 @@ namespace Bugtracker
                 solvedBugNo = result["solved"].ToString();
                 inProgressBugNo = result["progress"].ToString();
             }
-            /*DataTable bugUserPosted = Connection.GetDbConn().GetDataTable(SqlBug.GetUserPosted(UserObject.loggedUser.iduser));
-            foreach (DataRow bugUserPosted in bugUserPosted.Rows)
-            {
-                BugObject up = new BugObject(bugUserPosted["idbug"].ToString(),
-                     bugUserPosted["title"].ToString(), bugUserPosted["description"].ToString(), bugUserPosted["location"].ToString(),
-                     bugUserPosted["status"].ToString(), bugUserPosted["poster"].ToString(),
-                     bugUserPosted["project"].ToString(), bugUserPosted["priority"].ToString(), 
-                     Convert.ToDateTime(bugUserPosted["timePosted"]));
-                BugObject.Bugs.Add(up);
 
-            } */
+            //to do list is 5 bugs user posted of high imprtance and oldest at the top
+            DataTable toDoList = Connection.GetDbConn().GetDataTable(SqlBug.ToDoList(UserObject.loggedUser.iduser));
+            foreach (DataRow toDo in toDoList.Rows)
+            {
+                BugObject up = new BugObject(toDo["idbug"].ToString(),
+                     toDo["title"].ToString(), toDo["description"].ToString(), toDo["location"].ToString(),
+                     toDo["status"].ToString(), toDo["poster"].ToString(),
+                     toDo["project"].ToString(), toDo["priority"].ToString(),
+                     Convert.ToDateTime(toDo["timePosted"]));
+                BugObject.toDoBugs.Add(up);
+                /*DataTable bugUserPosted = Connection.GetDbConn().GetDataTable(SqlBug.GetUserPosted(UserObject.loggedUser.iduser));
+                foreach (DataRow bugUserPosted in bugUserPosted.Rows)
+                {
+                    BugObject up = new BugObject(bugUserPosted["idbug"].ToString(),
+                         bugUserPosted["title"].ToString(), bugUserPosted["description"].ToString(), bugUserPosted["location"].ToString(),
+                         bugUserPosted["status"].ToString(), bugUserPosted["poster"].ToString(),
+                         bugUserPosted["project"].ToString(), bugUserPosted["priority"].ToString(), 
+                         Convert.ToDateTime(bugUserPosted["timePosted"]));
+                    BugObject.Bugs.Add(up);
+
+                } */
 
                 // get user's projects
                 /* DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
@@ -96,7 +108,7 @@ namespace Bugtracker
                         userProject["projName"].ToString(), userProject["user"].ToString(), userProject["description"].ToString());
                     ProjectObject.UserProjects.Add(up); */
 
-        }
+            }
 
         }
     }

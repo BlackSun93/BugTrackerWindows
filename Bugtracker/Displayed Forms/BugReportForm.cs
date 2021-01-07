@@ -19,10 +19,24 @@ namespace Bugtracker
             display = window;
             InitializeComponent();
             currentProject = id;
+
+            
+                var itemList = new List<Item>()
+            {
+                new Item() { Text = "Low", Value = "1" },
+                new Item() { Text = "Med", Value = "2" },
+                new Item() { Text = "High", Value = "3" }
+            };
+
+            ComboBox_Priority.DataSource = itemList;
+            ComboBox_Priority.DisplayMember = "Text";
+            ComboBox_Priority.ValueMember = "Value";
+            
+
             // we will enumerate these or something
-            ComboBox_Priority.Items.Add("low");
-            ComboBox_Priority.Items.Add("med");
-            ComboBox_Priority.Items.Add("high");
+            //these should numbers but display as high med low
+          
+            
 
         }
 
@@ -57,8 +71,10 @@ namespace Bugtracker
             //for this info, for now we're using 41 as test user in DB
             poster = "41";
             project = currentProject;
-            priority = ComboBox_Priority.Text;
-           
+            var prior = (Item)ComboBox_Priority.SelectedItem;
+            priority =  prior.Value;
+
+
 
 
             SqlBug newBug = new SqlBug();
@@ -74,5 +90,10 @@ namespace Bugtracker
         {
 
         }
+    }
+    public class Item
+    {
+        public string Value { get; set; }
+        public string Text { get; set; }
     }
 }
