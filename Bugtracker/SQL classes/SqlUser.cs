@@ -11,6 +11,26 @@ namespace Bugtracker
 {
     class SqlUser
     {
+        public static string GetNumberBugs(string id)
+        {
+            //how many user posted that are still in prog
+            // select count (idbug) from bug where poster = {this user} AND bug.status = "in progress"
+            //select (how many bugs user posted that are solved), (how many bugs user posted that are in progress), (how many total)
+            // select count(idbug) FROM bug WHERE poster = {id} AND status = `solved`
+            string query = $"SELECT a.solved, b.progress, c.total  "+
+                           $" FROM " +
+                           $" (select count(idbug) as solved " +
+                           $" FROM bug " +
+                           $" WHERE poster = '{id}' AND status = 'solved') as a, " +
+                           $" (select count(idbug) as progress " +
+                           $" FROM bug  " +
+                           $" WHERE poster = '{id}' AND status = 'in progress') as b, " +
+                           $" (select count(idbug) as total " +
+                           $" FROM bug " +
+                           $" WHERE poster = '{id}') as c";
+            return query;
+        }
+
         /// <summary>
         /// get user commands are used when logging in on the login form, gets the user matching given log credentials
         /// </summary>

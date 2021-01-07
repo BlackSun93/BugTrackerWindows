@@ -13,6 +13,7 @@ namespace Bugtracker
         List<List<ProjectObject>> projectLists = new List<List<ProjectObject>>();
         public ProjectsForm(Window window)
         {
+            ProjectObject.UserProjects.Clear();
             InitializeComponent();
             display = window;
             int w = window.Width;
