@@ -114,8 +114,10 @@ namespace Bugtracker
                 ForeColor = Color.FromArgb(82, 82, 82),
                 MaximumSize = new Size(Panel_UpdatePanel.Width - 32, Panel_UpdatePanel.Height / 4), //50
                 AutoSize = true,
-                Text = "Posted By: " + update.posterId
-            };
+                Text = "Posted By: " + update.posterId,
+                
+                Cursor = Cursors.Hand
+        };
 
             Label Label_UpdateStatus = new Label
             {

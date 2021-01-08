@@ -93,7 +93,7 @@
             // Label_Dashboard
             // 
             this.Label_Dashboard.AutoSize = true;
-            this.Label_Dashboard.Cursor = System.Windows.Forms.Cursors.No;
+            this.Label_Dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Dashboard.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.Label_Dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
             this.Label_Dashboard.Location = new System.Drawing.Point(16, 204);
@@ -159,7 +159,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BugTracker";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Resize += new System.EventHandler(this.Window_Resize);
+            this.ResizeEnd += new System.EventHandler(this.Window_Resize);
             this.Panel_Navigation.ResumeLayout(false);
             this.Panel_Navigation.PerformLayout();
             this.ResumeLayout(false);

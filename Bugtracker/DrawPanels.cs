@@ -46,7 +46,7 @@ namespace Bugtracker
                     Height = masterPanel.Height - 20, //max height of panel to draw to
                     MaximumSize = new Size (536, masterPanel.Height),
                     MinimumSize = new Size (536, masterPanel.Height),
-                    AutoScroll = true
+                    AutoScroll = false
                 };
 
                 masterPanel.Controls.Add(Panel_Container);
