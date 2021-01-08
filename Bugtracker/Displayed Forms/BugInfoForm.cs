@@ -106,7 +106,7 @@ namespace Bugtracker
                 Location = new Point(0, panelYpos)
             };
 
-            Label Label_ProjectName = new Label
+            Label Label_PostedBy = new Label
             {
                 Name = "UpdatePoster_" + update.posterId, //this is now the poster's username
                 Location = new Point(8, 8),
@@ -130,6 +130,7 @@ namespace Bugtracker
 
             RichTextBox RichText_UpdateComment = new RichTextBox
             {
+                // this works but can't scroll through updates if mouse cursor is inside richtextbox
                 Name = "UpdateComment_" + update.comment,
                 Location = new Point(16, (Panel_UpdatePanel.Height / 4) + 16), //62
                 Font = new Font("Arial", 8f, FontStyle.Bold),
@@ -141,10 +142,14 @@ namespace Bugtracker
                 ReadOnly = true
                 
             };
+            // i want the username to be clickable to take the user to the update poster's page
+            // however update's posterId is now username and not their iduser
+            // so conversion will be needed
+            Label_PostedBy.Click += new EventHandler((sender, e) => UserClicked(sender, e, update.posterId.ToString()));
 
             Controls.Add(Panel_Updates);
             Panel_Updates.Controls.Add(Panel_UpdatePanel);
-            Panel_UpdatePanel.Controls.Add(Label_ProjectName);
+            Panel_UpdatePanel.Controls.Add(Label_PostedBy);
             Panel_UpdatePanel.Controls.Add(RichText_UpdateComment);
             Panel_UpdatePanel.Controls.Add(Label_UpdateStatus);
         }
@@ -164,7 +169,11 @@ namespace Bugtracker
             display.DisplayPostUpdateForm(currentBug);
         }
 
-
+        private void UserClicked(object sender, EventArgs e, string id)
+        {
+            
+            display.DisplayDashboardForm(id);
+        }
         private void DoResize()
         {
             Size = new Size(display.Width, display.Height);
