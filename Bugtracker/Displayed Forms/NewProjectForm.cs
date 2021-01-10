@@ -13,6 +13,7 @@ namespace Bugtracker
     public partial class NewProjectForm : Form
     {
         Window display;
+
         public NewProjectForm(Window window)
         {
             InitializeComponent();
@@ -32,8 +33,17 @@ namespace Bugtracker
         /// <param name="e"></param>
         private void Button_SaveProject_Click(object sender, EventArgs e)
         {
+            int isPrivate;
             SqlProject newProject = new SqlProject();
-            newProject.InserProject(TextBox_ProjectName.Text, UserObject.loggedUser.iduser , RichTextBox_Description.Text);
+            if (CheckBox_PrivateProject.Checked)
+            {
+                isPrivate = 1;
+            }
+            else
+            {
+                isPrivate = 0;
+            }
+            newProject.InserProject(TextBox_ProjectName.Text, UserObject.loggedUser.iduser , RichTextBox_Description.Text, isPrivate);
             TextBox_ProjectName.Clear();
             RichTextBox_Description.Clear();
         }

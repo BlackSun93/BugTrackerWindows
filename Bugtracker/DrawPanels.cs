@@ -84,48 +84,48 @@ namespace Bugtracker
             containerPanel.Controls.Clear();
             foreach (ProjectObject project in dataset)
             {
+                Panel Panel_ProjectPanel = CreatePanel(Color.White, 220, 220);
+                Label Label_ProjectName = CreateNameLabel(project, Panel_ProjectPanel);
+                if (project.isPrivate == 1 && (project.user != UserObject.loggedUser.iduser)) // private projects
+                {
+                    Button Button_RequestAccess = new Button()
+                    {
+                        Location = new Point(100, 180),
+                        Text = "Request Access",
+                        Font = new Font("Arial", 8f, FontStyle.Bold),
+                        AutoSize = true,
+                        
+                    };
+                    Button_RequestAccess.Click += new EventHandler((sender, e) => RequestAccess(sender, e, project));
+                    Panel_ProjectPanel.Controls.Add(Button_RequestAccess);
+                    containerPanel.Controls.Add(Panel_ProjectPanel);
+                    
+                }
+
+                else //if (project.isPrivate == 0)
+                {
+                    Label Label_ProjectDescription = CreateDescriptionLabel(project, Panel_ProjectPanel);
+
+                    Panel_ProjectPanel.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project));
+                    Label_ProjectName.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project));
+                    Label_ProjectDescription.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project));
+
+                    //Controls.Add(Panel_DisplayProjects); isn't the base panel added as a control from the design form?
+                    containerPanel.Controls.Add(Panel_ProjectPanel);
+                    Panel_ProjectPanel.Controls.Add(Label_ProjectName);
+                    Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
+                }
                 //For each project object in the database, make a panel, display elements, give it an on click method
-                Panel Panel_ProjectPanel = new Panel
-                {
-                    Name = "ProjectPanel_" + project.idproject,
-                    BackColor = Color.White,
-                    Width = 220,
-                    Height = 220,
-                };
-
-                Label Label_ProjectName = new Label
-                {
-                    Name = "ProjectName_" + project.idproject,
-                    Location = new Point(16, 16),
-                    Font = new Font("Arial", 14f, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(82, 82, 82),
-                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 4),
-                    AutoSize = true,
-                    Text = project.projName
-                };
-
-                Label Label_ProjectDescription = new Label
-                {
-                    Name = "ProjectDescription_" + project.idproject,
-                    Location = new Point(16, (Panel_ProjectPanel.Height / 4) + 16),
-                    Font = new Font("Arial", 8f, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(82, 82, 82),
-                    MaximumSize = new Size(Panel_ProjectPanel.Width - 32, Panel_ProjectPanel.Height / 2),
-                    AutoSize = true,
-                    Text = project.description
-                };
                 
+
+
+
+
+
                 //on click method is applied on each panel generated as dataset list is iterated over
                 //we can move logic into drawpanels class
-                
-                Panel_ProjectPanel.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
-                Label_ProjectName.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
-                Label_ProjectDescription.Click += new EventHandler((sender, e) => ProjectClicked(sender, e, project.idproject.ToString()));
 
-                //Controls.Add(Panel_DisplayProjects); isn't the base panel added as a control from the design form?
-                containerPanel.Controls.Add(Panel_ProjectPanel);
-                Panel_ProjectPanel.Controls.Add(Label_ProjectName);
-                Panel_ProjectPanel.Controls.Add(Label_ProjectDescription);
+                
 
                 //problem is here, how would you take this outside of the loop?
 
@@ -139,12 +139,31 @@ namespace Bugtracker
             projectPanelList.Clear(); //needs to clear the panel list once projects are drawn to their panels so master panels can be 
             //located afterwards
         }
-        private void ProjectClicked(object sender, EventArgs e, string id)
+        private void ProjectClicked(object sender, EventArgs e, ProjectObject project)
         {
+            // check if project is private, if it is then
+           // if(project.isPrivate == 1)
+            
+               /* if ((project.user != UserObject.loggedUser.iduser) && project.isPrivate == 1) // if the user isn't the project owner
+                {
+                    // go to db, try to return a row from allowedusers which has this project id and this userid
+                    // formname. showdialouge 
+
+                    DataTable isUserAllowed = Connection.GetDbConn().GetDataTable(SqlProject.CheckUserAccess(UserObject.loggedUser.iduser, project.idproject)); 
+
+                   if (isUserAllowed.Rows.Count == 0) // if no result
+                   {
+                        
+                   }
+                
+                } */
+            // checked if user is in this project's 'allowUsers' table
+            // if so, open displaybugsform, if not then show message box advising of no access
+            // post project - poster is added to allowedaccess table + project is created
             ProjectObject.Projects.Clear(); //clear the list, we will need to clear all lists when more are added
             // i dont want to have to pass the display instance all the way to here
             ProjectObject.UserProjects.Clear();
-            display.DisplayBugsForm(id);
+            display.DisplayBugsForm(project.idproject.ToString());
         }
 
         /// <summary>
@@ -215,6 +234,60 @@ namespace Bugtracker
             }
 
             
+        }
+
+        private Panel CreatePanel( Color backColor, int height, int width)
+        {
+            Panel Panel_ProjectPanel = new Panel
+            {
+                
+                BackColor = backColor,
+                Width = width,
+                Height = height,
+            };
+
+            return Panel_ProjectPanel;
+        }
+
+           
+        
+        private Label CreateNameLabel  (ProjectObject project, Panel toAddTo)
+        {
+            Label Label_ProjectName = new Label
+            {
+                
+                Location = new Point(16, 16),
+                Font = new Font("Arial", 14f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(82, 82, 82),
+                MaximumSize = new Size(toAddTo.Width - 32, toAddTo.Height / 4),
+                AutoSize = true,
+                Text = project.projName
+            };
+            return Label_ProjectName;
+
+        }
+        private Label CreateDescriptionLabel (ProjectObject project, Panel toAddTo)
+        {
+            Label Label_ProjectDescription = new Label
+            {
+                
+                Location = new Point(16, (toAddTo.Height / 4) + 16),
+                Font = new Font("Arial", 8f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(82, 82, 82),
+                MaximumSize = new Size(toAddTo.Width - 32, toAddTo.Height / 2),
+                AutoSize = true,
+                Text = project.description
+            };
+            return Label_ProjectDescription;
+        }
+
+        private void RequestAccess (object sender, EventArgs e, ProjectObject project) 
+        {
+            // create a follow project object which will notify the project poster that a user wants access
+            SqlProject sq = new SqlProject();
+            Connection.GetDbConn().CreateCommand(SqlProject.FollowProject(UserObject.loggedUser.iduser, project.idproject));
+            
+            MessageBox.Show("Request sent to project creator");
         }
     }
     

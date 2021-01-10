@@ -34,7 +34,7 @@
             this.Label_ProjectDescription = new System.Windows.Forms.Label();
             this.Button_SaveProject = new System.Windows.Forms.Button();
             this.Button_BackBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CheckBox_PrivateProject = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // TextBox_ProjectName
@@ -90,22 +90,22 @@
             this.Button_BackBtn.UseVisualStyleBackColor = true;
             this.Button_BackBtn.Click += new System.EventHandler(this.Button_BackBtn_Click);
             // 
-            // button1
+            // CheckBox_PrivateProject
             // 
-            this.button1.Location = new System.Drawing.Point(510, 242);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CheckBox_PrivateProject.AutoSize = true;
+            this.CheckBox_PrivateProject.Location = new System.Drawing.Point(88, 247);
+            this.CheckBox_PrivateProject.Name = "CheckBox_PrivateProject";
+            this.CheckBox_PrivateProject.Size = new System.Drawing.Size(398, 17);
+            this.CheckBox_PrivateProject.TabIndex = 7;
+            this.CheckBox_PrivateProject.Text = "Check Box To Make Project Private (only users you select can see/ post bugs)";
+            this.CheckBox_PrivateProject.UseVisualStyleBackColor = true;
             // 
             // NewProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 480);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CheckBox_PrivateProject);
             this.Controls.Add(this.Button_BackBtn);
             this.Controls.Add(this.Button_SaveProject);
             this.Controls.Add(this.Label_ProjectDescription);
@@ -130,6 +130,6 @@
         private System.Windows.Forms.Label Label_ProjectDescription;
         private System.Windows.Forms.Button Button_SaveProject;
         private System.Windows.Forms.Button Button_BackBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox CheckBox_PrivateProject;
     }
 }

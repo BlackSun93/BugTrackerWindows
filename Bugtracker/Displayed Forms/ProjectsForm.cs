@@ -49,7 +49,8 @@ namespace Bugtracker
             foreach (DataRow userProject in userProjects.Rows)
             {
                 ProjectObject up = new ProjectObject(userProject["idproject"].ToString(),
-                    userProject["projName"].ToString(), userProject["user"].ToString(), userProject["description"].ToString());
+                    userProject["projName"].ToString(), userProject["user"].ToString(), userProject["description"].ToString(),
+                    Convert.ToInt32(userProject["isPrivate"]));
                 ProjectObject.UserProjects.Add(up);
                 
             }
@@ -59,7 +60,8 @@ namespace Bugtracker
             foreach (DataRow project in projects.Rows)
             {
                 ProjectObject up1 = new ProjectObject(project["idproject"].ToString(),
-                    project["projName"].ToString(), project["user"].ToString(), project["description"].ToString());
+                    project["projName"].ToString(), project["user"].ToString(), project["description"].ToString(),
+                    Convert.ToInt32(project["isPrivate"]));
                 ProjectObject.Projects.Add(up1);
             }
             projectLists.Add(ProjectObject.Projects);

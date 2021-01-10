@@ -11,16 +11,21 @@ namespace Bugtracker
 {
     class SqlProject
     {
-        private MySqlCommand _insertProject = new MySqlCommand("INSERT INTO project " +
-         "(projName, user, description) VALUES (@projName, @user, @description)", Connection.connToDb);
+        // only allow bugs to be posted on public projects once an allowedusers row is made with the userid/ projid
+        // for private project, assume that project owner is ok with any allowed users to post bugs
+        // do allowedusers stuff through this class? 
 
-        public void InserProject(string projName, string user, string description)
+        private MySqlCommand _insertProject = new MySqlCommand("INSERT INTO project " +
+         "(projName, user, description, isPrivate) VALUES (@projName, @user, @description, @isPrivate)", Connection.connToDb);
+
+        public void InserProject(string projName, string user, string description, int isPrivate)
         {
             // Set parameters
             _insertProject.Parameters.Clear();
             _insertProject.Parameters.AddWithValue("@projName", projName);
             _insertProject.Parameters.AddWithValue("@user", user);
             _insertProject.Parameters.AddWithValue("@description", description);
+            _insertProject.Parameters.AddWithValue("@isPrivate", isPrivate);
 
             using (Connection.connToDb = new MySqlConnection(Connection.connStr))
             {
@@ -38,6 +43,12 @@ namespace Bugtracker
             }
 
         }
+
+        public static string FollowProject(string userId, string projectId)
+        {
+            string query = $"INSERT INTO projectusers (user, project) VALUES ({userId}, {projectId})";
+            return query;
+        }
         public static string GetProjects()
         {
             string query = $"SELECT * FROM project ORDER BY projName ASC";
@@ -49,6 +60,13 @@ namespace Bugtracker
             string query = $"SELECT * FROM project WHERE user = {userid} ORDER BY projName ASC";
             return query;
         }
+        public static string CheckUserAccess(string userid, string projectId)
+        {
+            string query = $"SELECT * FROM allowedusers WHERE userId = {userid} AND idproject = {projectId}";
+            return query;
+        }
+
+
 
         /// <summary>
         /// gets all projects that a given user is following
