@@ -46,7 +46,7 @@
             this.Label_Tracker = new System.Windows.Forms.Label();
             this.Label_Bug = new System.Windows.Forms.Label();
             this.Panel_TopBar = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Label_Title = new System.Windows.Forms.Label();
             this.PictureBox_LogoSmall = new System.Windows.Forms.PictureBox();
             this.Button_Minimize = new System.Windows.Forms.Button();
             this.Button_Maximize = new System.Windows.Forms.Button();
@@ -54,6 +54,7 @@
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Label_ForgotPassword = new System.Windows.Forms.Label();
             this.Button_Reset = new System.Windows.Forms.Button();
+            this.Button_PasswordVisibility = new System.Windows.Forms.Button();
             this.Panel_Login.SuspendLayout();
             this.Panel_Slider.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -114,6 +115,7 @@
             // Panel_Login
             // 
             this.Panel_Login.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Panel_Login.Controls.Add(this.Button_PasswordVisibility);
             this.Panel_Login.Controls.Add(this.Button_Reset);
             this.Panel_Login.Controls.Add(this.Label_ForgotPassword);
             this.Panel_Login.Controls.Add(this.Label_NoAccount);
@@ -266,9 +268,7 @@
             // 
             // Panel_TopBar
             // 
-            this.Panel_TopBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_TopBar.Controls.Add(this.label3);
+            this.Panel_TopBar.Controls.Add(this.Label_Title);
             this.Panel_TopBar.Controls.Add(this.PictureBox_LogoSmall);
             this.Panel_TopBar.Controls.Add(this.Button_Minimize);
             this.Panel_TopBar.Controls.Add(this.Button_Maximize);
@@ -282,17 +282,17 @@
             this.Panel_TopBar.TabIndex = 8;
             this.Panel_TopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel_TopBar_MouseMove);
             // 
-            // label3
+            // Label_Title
             // 
-            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(30, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 32);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "BugTracker";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Label_Title.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.Label_Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.Label_Title.Location = new System.Drawing.Point(30, 0);
+            this.Label_Title.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_Title.Name = "Label_Title";
+            this.Label_Title.Size = new System.Drawing.Size(76, 32);
+            this.Label_Title.TabIndex = 4;
+            this.Label_Title.Text = "BugTracker";
+            this.Label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PictureBox_LogoSmall
             // 
@@ -399,6 +399,19 @@
             this.ToolTip.SetToolTip(this.Button_Reset, "Reset your password");
             this.Button_Reset.UseVisualStyleBackColor = false;
             // 
+            // Button_PasswordVisibility
+            // 
+            this.Button_PasswordVisibility.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_PasswordVisibility.FlatAppearance.BorderSize = 0;
+            this.Button_PasswordVisibility.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_PasswordVisibility.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_PasswordVisibility.Location = new System.Drawing.Point(389, 246);
+            this.Button_PasswordVisibility.Name = "Button_PasswordVisibility";
+            this.Button_PasswordVisibility.Size = new System.Drawing.Size(32, 32);
+            this.Button_PasswordVisibility.TabIndex = 45;
+            this.Button_PasswordVisibility.UseVisualStyleBackColor = false;
+            this.Button_PasswordVisibility.Visible = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,7 +452,7 @@
         private System.Windows.Forms.Button Button_Close;
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.PictureBox PictureBox_LogoSmall;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Label_Title;
         private System.Windows.Forms.Label Label_LoginTitle;
         private System.Windows.Forms.Label Label_Bug;
         private System.Windows.Forms.Label Label_Tracker;
@@ -452,5 +465,6 @@
         private System.Windows.Forms.Label Label_NoAccount;
         private System.Windows.Forms.Label Label_ForgotPassword;
         private System.Windows.Forms.Button Button_Reset;
+        private System.Windows.Forms.Button Button_PasswordVisibility;
     }
 }
