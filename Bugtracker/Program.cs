@@ -32,7 +32,7 @@ namespace Bugtracker
             Application.SetCompatibleTextRenderingDefault(false);
             DriveApi.GetDriveService();
            
-            Application.Run(new Window());
+            Application.Run(new LoginForm());
         }
     }
 }

@@ -1,18 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Bugtracker
 {
     public partial class LoginForm : Form
     {
+
+        public const int WM_NCLBUTTONDOWN = 0x00A1;
+        public const int HT_CAPTION = 0x2;
+        public System.Drawing.Bitmap CLOSE = Properties.Resources.bt_close;
+        public System.Drawing.Bitmap MINIMIZE = Properties.Resources.bt_minimize;
+        public System.Drawing.Bitmap MAXIMIZE = Properties.Resources.bt_maximize;
+        public System.Drawing.Bitmap MAXIMIZE_DISABLED = Properties.Resources.bt_maximize_disabled;
+        public System.Drawing.Bitmap RESTORE = Properties.Resources.bt_restore;
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         public LoginForm()
         {
             InitializeComponent();
@@ -50,6 +57,41 @@ namespace Bugtracker
                 this.Show();
             }
             
+        }
+
+        private void Panel_TopBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void Button_Close_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_Maximize_Click(object sender, EventArgs e)
+        {
+            // Disabled
+            if (WindowState == FormWindowState.Maximized)
+            {
+                //Button_Maximize.BackgroundImage = RESTORE;
+                //WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                //WindowState = FormWindowState.Maximized;
+                //Button_Maximize.BackgroundImage = MAXIMIZE;
+            }
+
+        }
+
+        private void Button_Minimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }
