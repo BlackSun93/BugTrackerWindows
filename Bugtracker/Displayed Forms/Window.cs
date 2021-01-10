@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace Bugtracker
 {
@@ -15,6 +17,7 @@ namespace Bugtracker
         BugInfoForm bugInfoForm;
         PostUpdateForm postUpdateForm;
         DashboardForm dashboardForm;
+        SettingsForm settingsForm;
         
         public static int heightOffset;
         public static int widthOffset; // These will be calculated in the resize function, static so that other forms
@@ -26,6 +29,9 @@ namespace Bugtracker
         {
             
             InitializeComponent();
+            //set colours from config file for user's chosen panel colours
+            Recolor();
+            Panel_Management.BringToFront();
             Console.WriteLine(this.Size); // static instance of instance has a size here but not but not in project
             //for constructor
             DisplayProjectsForm();// cant call the object in its constructor
@@ -159,6 +165,21 @@ namespace Bugtracker
             dashboardForm.Show();
         }
 
+        public void DisplaySettingsForm()
+        {
+            currentForm = "DisplaySettingsForm";
+            Panel_FormContent.Controls.Clear();
+            //Controls.Clear();
+            settingsForm = new SettingsForm(this)
+            {
+                TopLevel = false
+            };
+            Panel_FormContent.Controls.Add(settingsForm);
+            ResetButtons();
+            //Controls.Add(settingsForm);
+            settingsForm.Show();
+        }
+
 
         /// <summary>
         /// Some logic to handle window resizing, when window resized, runs the correct function depending on current form
@@ -210,6 +231,9 @@ namespace Bugtracker
                 case "DisplayDashboardForm":
                     dashboardForm.Resize();
                     break;
+                case "DisplaySettingsForm":
+
+                    break;
             }
 
         }
@@ -235,6 +259,23 @@ namespace Bugtracker
         private void Label_Recent_Click(object sender, EventArgs e)
         {
             // need to add a recent bugs form
+        }
+
+        private void Label_Settings_Click(object sender, EventArgs e)
+        {
+            DisplaySettingsForm();
+        }
+
+        public void Recolor()
+        {
+            label1.Text = Convert.ToString(Panel_Management.Visible);
+            //string color = ConfigurationManager.AppSettings["managementPanel_Color"];
+            Color color = Properties.Settings.Default.managementPanel_Color;
+            Panel_Management.BackColor = color;
+            Panel_Management.BringToFront();
+            Panel_Management.Show();
+            label1.Text = Convert.ToString(Panel_Management.Visible);
+            label2.Text = Panel_Management.BackColor.Name;
         }
     }
 }

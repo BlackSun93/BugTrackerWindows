@@ -9,5 +9,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Server=eu-cdbr-west-03.cleardb.net;Database=heroku_3835ffde4fd7d35;User=bfa06a527d639b;Password=0b8fd376</Value>
     </Setting>
+    <Setting Name="managementPanel_Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 85, 0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
