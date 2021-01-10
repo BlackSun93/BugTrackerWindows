@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace Bugtracker
 {
@@ -20,6 +21,8 @@ namespace Bugtracker
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
+        char position = 'r';
+
         public LoginForm()
         {
             InitializeComponent();
@@ -27,10 +30,33 @@ namespace Bugtracker
 
         private void Button_Register_Click(object sender, EventArgs e)
         {
-            RegistrationForm rf = new RegistrationForm();
-            rf.Show();
-            this.Hide();
-            
+            //RegistrationForm rf = new RegistrationForm();
+            //rf.Show();
+            //Hide();
+
+            int ix = Panel_Slider.Location.X;
+            int x = Panel_Slider.Location.X;
+            int y = Panel_Slider.Location.Y;
+
+            if (position == 'r')
+            {
+                while (Panel_Slider.Location.X != 0)
+                {
+                    x -= 1;
+                    Panel_Slider.Location = new Point(x, y);
+                }
+                position = 'l';
+            }
+            else if (position == 'l')
+            {
+                while (Panel_Slider.Location.X != ix)
+                {
+                    x += 1;
+                    Panel_Slider.Location = new Point(x, y);
+                }
+                position = 'r';
+            }
+
         }
 
         /// <summary>
