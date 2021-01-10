@@ -42,24 +42,24 @@
             this.Label_Username = new System.Windows.Forms.Label();
             this.Label_LoginTitle = new System.Windows.Forms.Label();
             this.Panel_Slider = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Label_Tracker = new System.Windows.Forms.Label();
             this.Label_Bug = new System.Windows.Forms.Label();
             this.Panel_TopBar = new System.Windows.Forms.Panel();
             this.Label_Title = new System.Windows.Forms.Label();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.Label_ForgotPassword = new System.Windows.Forms.Label();
+            this.Button_Reset = new System.Windows.Forms.Button();
             this.PictureBox_LogoSmall = new System.Windows.Forms.PictureBox();
             this.Button_Minimize = new System.Windows.Forms.Button();
             this.Button_Maximize = new System.Windows.Forms.Button();
             this.Button_Close = new System.Windows.Forms.Button();
-            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.Label_ForgotPassword = new System.Windows.Forms.Label();
-            this.Button_Reset = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Button_PasswordVisibility = new System.Windows.Forms.Button();
             this.Panel_Login.SuspendLayout();
             this.Panel_Slider.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Panel_TopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LogoSmall)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBox_Username
@@ -105,7 +105,8 @@
             this.Button_Register.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Register.Name = "Button_Register";
             this.Button_Register.Size = new System.Drawing.Size(78, 26);
-            this.Button_Register.TabIndex = 3;
+            this.Button_Register.TabIndex = 0;
+            this.Button_Register.TabStop = false;
             this.Button_Register.Text = "Register";
             this.Button_Register.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ToolTip.SetToolTip(this.Button_Register, "Create a new account");
@@ -167,8 +168,10 @@
             this.TextBox_Password.Margin = new System.Windows.Forms.Padding(32, 3, 32, 3);
             this.TextBox_Password.Name = "TextBox_Password";
             this.TextBox_Password.Size = new System.Drawing.Size(389, 19);
-            this.TextBox_Password.TabIndex = 40;
+            this.TextBox_Password.TabIndex = 1;
             this.TextBox_Password.UseSystemPasswordChar = true;
+            this.TextBox_Password.TextChanged += new System.EventHandler(this.TextBox_Password_TextChanged);
+            this.TextBox_Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_Password_KeyDown);
             // 
             // Label_Password
             // 
@@ -231,17 +234,6 @@
             this.Panel_Slider.Size = new System.Drawing.Size(456, 494);
             this.Panel_Slider.TabIndex = 7;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 289);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(96, 104);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // Label_Tracker
             // 
             this.Label_Tracker.AutoSize = true;
@@ -294,78 +286,6 @@
             this.Label_Title.Text = "BugTracker";
             this.Label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // PictureBox_LogoSmall
-            // 
-            this.PictureBox_LogoSmall.BackgroundImage = global::Bugtracker.Properties.Resources.bt_logo_small;
-            this.PictureBox_LogoSmall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PictureBox_LogoSmall.Location = new System.Drawing.Point(0, 0);
-            this.PictureBox_LogoSmall.Margin = new System.Windows.Forms.Padding(0);
-            this.PictureBox_LogoSmall.Name = "PictureBox_LogoSmall";
-            this.PictureBox_LogoSmall.Size = new System.Drawing.Size(30, 32);
-            this.PictureBox_LogoSmall.TabIndex = 3;
-            this.PictureBox_LogoSmall.TabStop = false;
-            // 
-            // Button_Minimize
-            // 
-            this.Button_Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_Minimize.BackColor = System.Drawing.Color.Transparent;
-            this.Button_Minimize.BackgroundImage = global::Bugtracker.Properties.Resources.bt_minimize;
-            this.Button_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Button_Minimize.FlatAppearance.BorderSize = 0;
-            this.Button_Minimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(110)))));
-            this.Button_Minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
-            this.Button_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Minimize.Location = new System.Drawing.Point(822, 0);
-            this.Button_Minimize.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_Minimize.Name = "Button_Minimize";
-            this.Button_Minimize.Size = new System.Drawing.Size(30, 32);
-            this.Button_Minimize.TabIndex = 2;
-            this.ToolTip.SetToolTip(this.Button_Minimize, "Minimize");
-            this.Button_Minimize.UseVisualStyleBackColor = false;
-            this.Button_Minimize.Click += new System.EventHandler(this.Button_Minimize_Click);
-            // 
-            // Button_Maximize
-            // 
-            this.Button_Maximize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_Maximize.BackColor = System.Drawing.Color.Transparent;
-            this.Button_Maximize.BackgroundImage = global::Bugtracker.Properties.Resources.bt_maximize_disabled;
-            this.Button_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Button_Maximize.FlatAppearance.BorderSize = 0;
-            this.Button_Maximize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(110)))));
-            this.Button_Maximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
-            this.Button_Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Maximize.Location = new System.Drawing.Point(852, 0);
-            this.Button_Maximize.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_Maximize.Name = "Button_Maximize";
-            this.Button_Maximize.Size = new System.Drawing.Size(30, 32);
-            this.Button_Maximize.TabIndex = 1;
-            this.ToolTip.SetToolTip(this.Button_Maximize, "Maximize");
-            this.Button_Maximize.UseVisualStyleBackColor = false;
-            this.Button_Maximize.Click += new System.EventHandler(this.Button_Maximize_Click);
-            // 
-            // Button_Close
-            // 
-            this.Button_Close.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_Close.BackColor = System.Drawing.Color.Transparent;
-            this.Button_Close.BackgroundImage = global::Bugtracker.Properties.Resources.bt_close;
-            this.Button_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Button_Close.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Button_Close.FlatAppearance.BorderSize = 0;
-            this.Button_Close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(110)))));
-            this.Button_Close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
-            this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Close.Location = new System.Drawing.Point(882, 0);
-            this.Button_Close.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_Close.Name = "Button_Close";
-            this.Button_Close.Size = new System.Drawing.Size(30, 32);
-            this.Button_Close.TabIndex = 0;
-            this.ToolTip.SetToolTip(this.Button_Close, "Close");
-            this.Button_Close.UseVisualStyleBackColor = false;
-            this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
-            // 
             // Label_ForgotPassword
             // 
             this.Label_ForgotPassword.AutoSize = true;
@@ -393,24 +313,117 @@
             this.Button_Reset.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Reset.Name = "Button_Reset";
             this.Button_Reset.Size = new System.Drawing.Size(78, 26);
-            this.Button_Reset.TabIndex = 44;
+            this.Button_Reset.TabIndex = 0;
+            this.Button_Reset.TabStop = false;
             this.Button_Reset.Text = "Reset";
             this.Button_Reset.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ToolTip.SetToolTip(this.Button_Reset, "Reset your password");
             this.Button_Reset.UseVisualStyleBackColor = false;
             // 
+            // PictureBox_LogoSmall
+            // 
+            this.PictureBox_LogoSmall.BackgroundImage = global::Bugtracker.Properties.Resources.bt_logo_small;
+            this.PictureBox_LogoSmall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_LogoSmall.Location = new System.Drawing.Point(0, 0);
+            this.PictureBox_LogoSmall.Margin = new System.Windows.Forms.Padding(0);
+            this.PictureBox_LogoSmall.Name = "PictureBox_LogoSmall";
+            this.PictureBox_LogoSmall.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_LogoSmall.TabIndex = 3;
+            this.PictureBox_LogoSmall.TabStop = false;
+            // 
+            // Button_Minimize
+            // 
+            this.Button_Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_Minimize.BackColor = System.Drawing.Color.Transparent;
+            this.Button_Minimize.BackgroundImage = global::Bugtracker.Properties.Resources.bt_minimize;
+            this.Button_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Button_Minimize.FlatAppearance.BorderSize = 0;
+            this.Button_Minimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(110)))));
+            this.Button_Minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.Button_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Minimize.Location = new System.Drawing.Point(822, 0);
+            this.Button_Minimize.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Minimize.Name = "Button_Minimize";
+            this.Button_Minimize.Size = new System.Drawing.Size(30, 32);
+            this.Button_Minimize.TabIndex = 2;
+            this.Button_Minimize.TabStop = false;
+            this.ToolTip.SetToolTip(this.Button_Minimize, "Minimize");
+            this.Button_Minimize.UseVisualStyleBackColor = false;
+            this.Button_Minimize.Click += new System.EventHandler(this.Button_Minimize_Click);
+            // 
+            // Button_Maximize
+            // 
+            this.Button_Maximize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_Maximize.BackColor = System.Drawing.Color.Transparent;
+            this.Button_Maximize.BackgroundImage = global::Bugtracker.Properties.Resources.bt_maximize_disabled;
+            this.Button_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Button_Maximize.FlatAppearance.BorderSize = 0;
+            this.Button_Maximize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(110)))));
+            this.Button_Maximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.Button_Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Maximize.Location = new System.Drawing.Point(852, 0);
+            this.Button_Maximize.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Maximize.Name = "Button_Maximize";
+            this.Button_Maximize.Size = new System.Drawing.Size(30, 32);
+            this.Button_Maximize.TabIndex = 1;
+            this.Button_Maximize.TabStop = false;
+            this.ToolTip.SetToolTip(this.Button_Maximize, "Maximize");
+            this.Button_Maximize.UseVisualStyleBackColor = false;
+            this.Button_Maximize.Click += new System.EventHandler(this.Button_Maximize_Click);
+            // 
+            // Button_Close
+            // 
+            this.Button_Close.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_Close.BackColor = System.Drawing.Color.Transparent;
+            this.Button_Close.BackgroundImage = global::Bugtracker.Properties.Resources.bt_close;
+            this.Button_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Button_Close.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Button_Close.FlatAppearance.BorderSize = 0;
+            this.Button_Close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(110)))));
+            this.Button_Close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Close.Location = new System.Drawing.Point(882, 0);
+            this.Button_Close.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Close.Name = "Button_Close";
+            this.Button_Close.Size = new System.Drawing.Size(30, 32);
+            this.Button_Close.TabIndex = 0;
+            this.Button_Close.TabStop = false;
+            this.ToolTip.SetToolTip(this.Button_Close, "Close");
+            this.Button_Close.UseVisualStyleBackColor = false;
+            this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 289);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(96, 104);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Button_PasswordVisibility
             // 
+            this.Button_PasswordVisibility.BackgroundImage = global::Bugtracker.Properties.Resources.bt_pass_show;
+            this.Button_PasswordVisibility.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Button_PasswordVisibility.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_PasswordVisibility.FlatAppearance.BorderSize = 0;
+            this.Button_PasswordVisibility.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Button_PasswordVisibility.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Button_PasswordVisibility.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_PasswordVisibility.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_PasswordVisibility.Location = new System.Drawing.Point(389, 246);
             this.Button_PasswordVisibility.Name = "Button_PasswordVisibility";
             this.Button_PasswordVisibility.Size = new System.Drawing.Size(32, 32);
-            this.Button_PasswordVisibility.TabIndex = 45;
+            this.Button_PasswordVisibility.TabIndex = 0;
+            this.Button_PasswordVisibility.TabStop = false;
             this.Button_PasswordVisibility.UseVisualStyleBackColor = false;
             this.Button_PasswordVisibility.Visible = false;
+            this.Button_PasswordVisibility.Click += new System.EventHandler(this.Button_PasswordVisibility_Click);
             // 
             // LoginForm
             // 
@@ -432,9 +445,9 @@
             this.Panel_Login.PerformLayout();
             this.Panel_Slider.ResumeLayout(false);
             this.Panel_Slider.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Panel_TopBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LogoSmall)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

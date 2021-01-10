@@ -10,18 +10,23 @@ namespace Bugtracker
 
         public const int WM_NCLBUTTONDOWN = 0x00A1;
         public const int HT_CAPTION = 0x2;
-        public System.Drawing.Bitmap CLOSE = Properties.Resources.bt_close;
-        public System.Drawing.Bitmap MINIMIZE = Properties.Resources.bt_minimize;
-        public System.Drawing.Bitmap MAXIMIZE = Properties.Resources.bt_maximize;
-        public System.Drawing.Bitmap MAXIMIZE_DISABLED = Properties.Resources.bt_maximize_disabled;
-        public System.Drawing.Bitmap RESTORE = Properties.Resources.bt_restore;
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
+        public Bitmap CLOSE = Properties.Resources.bt_close;
+        public Bitmap MINIMIZE = Properties.Resources.bt_minimize;
+        public Bitmap MAXIMIZE = Properties.Resources.bt_maximize;
+        public Bitmap MAXIMIZE_DISABLED = Properties.Resources.bt_maximize_disabled;
+        public Bitmap RESTORE = Properties.Resources.bt_restore;
+        private Bitmap HIDE = Properties.Resources.bt_pass_hide;
+        private Bitmap SHOW = Properties.Resources.bt_pass_show;
+
         char position = 'r';
+
+        private bool passwordVisible = false;
 
         public LoginForm()
         {
@@ -118,6 +123,43 @@ namespace Bugtracker
         private void Button_Minimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void Button_PasswordVisibility_Click(object sender, EventArgs e)
+        {
+            if (passwordVisible == false)
+            {
+                passwordVisible = true;
+                Button_PasswordVisibility.Image = HIDE;
+                TextBox_Password.UseSystemPasswordChar = false;
+            }
+            else if (passwordVisible == true)
+            {
+                passwordVisible = false;
+                Button_PasswordVisibility.Image = SHOW;
+                TextBox_Password.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void TextBox_Password_TextChanged(object sender, EventArgs e)
+        {
+            if (TextBox_Password.Text.Length > 0)
+            {
+                Button_PasswordVisibility.Show();
+            }
+            else
+            {
+                Button_PasswordVisibility.Hide();
+            }
+            
+        }
+
+        private void TextBox_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                Button_Login_Click(this,null);
+            }
         }
     }
 }

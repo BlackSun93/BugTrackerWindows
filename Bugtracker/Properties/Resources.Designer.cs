@@ -123,6 +123,26 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_pass_hide {
+            get {
+                object obj = ResourceManager.GetObject("bt_pass-hide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_pass_show {
+            get {
+                object obj = ResourceManager.GetObject("bt_pass-show", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_restore {
             get {
                 object obj = ResourceManager.GetObject("bt_restore", resourceCulture);
