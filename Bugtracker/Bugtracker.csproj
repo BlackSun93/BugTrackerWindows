@@ -131,6 +131,12 @@
     <Compile Include="Displayed Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Displayed Forms\NotificationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Displayed Forms\NotificationsForm.Designer.cs">
+      <DependentUpon>NotificationsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Displayed Forms\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL classes\SqlBug.cs" />
+    <Compile Include="SQL classes\SqlNotifications.cs" />
     <Compile Include="SQL classes\SqlProject.cs" />
     <Compile Include="SQL classes\SqlUpdate.cs" />
     <Compile Include="SQL classes\SqlUser.cs" />
@@ -200,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Displayed Forms\NotificationsForm.resx">
+      <DependentUpon>NotificationsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>

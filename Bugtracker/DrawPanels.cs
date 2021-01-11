@@ -46,7 +46,7 @@ namespace Bugtracker
                     Height = masterPanel.Height - 20, //max height of panel to draw to
                     MaximumSize = new Size (536, masterPanel.Height),
                     MinimumSize = new Size (536, masterPanel.Height),
-                    AutoScroll = false
+                    AutoScroll = true
                 };
 
                 masterPanel.Controls.Add(Panel_Container);
@@ -284,10 +284,18 @@ namespace Bugtracker
         private void RequestAccess (object sender, EventArgs e, ProjectObject project) 
         {
             // create a follow project object which will notify the project poster that a user wants access
-            SqlProject sq = new SqlProject();
-            Connection.GetDbConn().CreateCommand(SqlProject.FollowProject(UserObject.loggedUser.iduser, project.idproject));
+            try
+            {
+                SqlProject sq = new SqlProject();
+                Connection.GetDbConn().CreateCommand(SqlProject.FollowProject(UserObject.loggedUser.iduser, project.idproject));
+
+                MessageBox.Show("Request sent to project creator");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Request already sent");
+            }
             
-            MessageBox.Show("Request sent to project creator");
         }
     }
     
