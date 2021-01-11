@@ -42,13 +42,13 @@ namespace Bugtracker
         {
             string query = $"SELECT * FROM project ORDER BY projName ASC";
             return query;
-        }
+        } 
 
         public static string GetUserProjects(string userid)
         {
             string query = $"SELECT * FROM project WHERE user = {userid} ORDER BY projName ASC";
             return query;
-        }
+        } 
 
         /// <summary>
         /// gets all projects that a given user is following

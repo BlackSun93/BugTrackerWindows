@@ -45,14 +45,14 @@ namespace Bugtracker
             // this is also written as dashboard will employ similar methods of panel drawings
             
             
-            DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
+             DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
             foreach (DataRow userProject in userProjects.Rows)
             {
                 ProjectObject up = new ProjectObject(userProject["idproject"].ToString(),
                     userProject["projName"].ToString(), userProject["user"].ToString(), userProject["description"].ToString());
                 ProjectObject.UserProjects.Add(up);
                 
-            }
+            } 
             //projectLists.Add(ProjectObject.UserProjects); 
 
             DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
@@ -61,7 +61,7 @@ namespace Bugtracker
                 ProjectObject up1 = new ProjectObject(project["idproject"].ToString(),
                     project["projName"].ToString(), project["user"].ToString(), project["description"].ToString());
                 ProjectObject.Projects.Add(up1);
-            }
+            } 
             projectLists.Add(ProjectObject.Projects);
             projectLists.Add(ProjectObject.UserProjects);
         }

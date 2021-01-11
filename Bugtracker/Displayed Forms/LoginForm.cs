@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Drawing;
+using System.Data;
 
 namespace Bugtracker
 {
@@ -71,7 +72,14 @@ namespace Bugtracker
         private void Button_Login_Click(object sender, EventArgs e)
         {
             SqlUser login = new SqlUser();
-            login.GetUser(TextBox_LoginUsername.Text, TextBox_LoginPassword.Text);
+            string aaa = TextBox_LoginUsername.Text;
+            string bb = TextBox_LoginPassword.Text;
+            string oi = $"SELECT * from user WHERE username = '{aaa}' AND password = '{bb}'";
+            DataTable db = Connection.GetDbConn().GetDataTable(oi );
+            //login.GetUser(TextBox_LoginUsername.Text, TextBox_LoginPassword.Text);
+
+            UserObject.loggedUser.username= db.Rows[0].ItemArray[1].ToString();
+            UserObject.loggedUser.iduser = db.Rows[0].ItemArray[0].ToString();
             if (UserObject.loggedUser.username != "")
             {
                 Hide();
