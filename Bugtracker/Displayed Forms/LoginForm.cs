@@ -25,6 +25,9 @@ namespace Bugtracker
         private Bitmap SHOW = Properties.Resources.bt_pass_show;
 
         char position = 'r';
+        int ix;
+        int x;
+        int y;
 
         private bool passwordVisible = false;
 
@@ -39,28 +42,23 @@ namespace Bugtracker
             //rf.Show();
             //Hide();
 
-            int ix = Panel_Slider.Location.X;
-            int x = Panel_Slider.Location.X;
-            int y = Panel_Slider.Location.Y;
+            TextBox_LoginUsername.Clear();
+            TextBox_LoginPassword.Clear();
 
-            if (position == 'r')
+            Panel_Registration.Hide();
+
+            ix = Panel_Slider.Location.X;
+            x = Panel_Slider.Location.X;
+            y = Panel_Slider.Location.Y;
+
+            while (Panel_Slider.Location.X != 0)
             {
-                while (Panel_Slider.Location.X != 0)
-                {
-                    x -= 1;
-                    Panel_Slider.Location = new Point(x, y);
-                }
-                position = 'l';
+                x -= 1;
+                Panel_Slider.Location = new Point(x, y);
             }
-            else if (position == 'l')
-            {
-                while (Panel_Slider.Location.X != ix)
-                {
-                    x += 1;
-                    Panel_Slider.Location = new Point(x, y);
-                }
-                position = 'r';
-            }
+            position = 'l';
+
+            Panel_Registration.Show();
 
         }
 
@@ -73,19 +71,19 @@ namespace Bugtracker
         private void Button_Login_Click(object sender, EventArgs e)
         {
             SqlUser login = new SqlUser();
-            login.GetUser(TextBox_Username.Text, TextBox_Password.Text);
+            login.GetUser(TextBox_LoginUsername.Text, TextBox_LoginPassword.Text);
             if (UserObject.loggedUser.username != "")
             {
-                this.Hide();
+                Hide();
                 Window w = new Window();
                 w.Show();
             }
             else 
             {
-                TextBox_Username.Clear();
-                TextBox_Password.Clear();
+                TextBox_LoginUsername.Clear();
+                TextBox_LoginPassword.Clear();
                 MessageBox.Show("incorrect credentials ");
-                this.Show();
+                Show();
             }
             
         }
@@ -130,26 +128,26 @@ namespace Bugtracker
             if (passwordVisible == false)
             {
                 passwordVisible = true;
-                Button_PasswordVisibility.Image = HIDE;
-                TextBox_Password.UseSystemPasswordChar = false;
+                Button_LoginPasswordVisibility.Image = HIDE;
+                TextBox_LoginPassword.UseSystemPasswordChar = false;
             }
             else if (passwordVisible == true)
             {
                 passwordVisible = false;
-                Button_PasswordVisibility.Image = SHOW;
-                TextBox_Password.UseSystemPasswordChar = true;
+                Button_LoginPasswordVisibility.Image = SHOW;
+                TextBox_LoginPassword.UseSystemPasswordChar = true;
             }
         }
 
         private void TextBox_Password_TextChanged(object sender, EventArgs e)
         {
-            if (TextBox_Password.Text.Length > 0)
+            if (TextBox_LoginPassword.Text.Length > 0)
             {
-                Button_PasswordVisibility.Show();
+                Button_LoginPasswordVisibility.Show();
             }
             else
             {
-                Button_PasswordVisibility.Hide();
+                Button_LoginPasswordVisibility.Hide();
             }
             
         }
@@ -160,6 +158,28 @@ namespace Bugtracker
             {
                 Button_Login_Click(this,null);
             }
+        }
+
+        private void Button_GoToLogin_Click(object sender, EventArgs e)
+        {
+            TextBox_RegisterUsername.Clear();
+            TextBox_RegisterPassword.Clear();
+            TextBox_RegisterEmail.Clear();
+
+            Panel_Login.Hide();
+
+            x = Panel_Slider.Location.X;
+            y = Panel_Slider.Location.Y;
+
+            while (Panel_Slider.Location.X != ix)
+            {
+                x += 1;
+                Panel_Slider.Location = new Point(x, y);
+            }
+            position = 'r';
+
+            Panel_Login.Show();
+
         }
     }
 }
