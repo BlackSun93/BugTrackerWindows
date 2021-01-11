@@ -75,11 +75,11 @@ namespace Bugtracker
 
         //public static string 
         private MySqlCommand _insertBug = new MySqlCommand("INSERT INTO bug " +
-         "(title, description, location, timePosted, status, poster, project, priority) " +
-            "VALUES (@title, @description, @location, @timePosted, @status, @poster, @project, @priority)", Connection.connToDb);
+         "(title, description, location, timePosted, status, poster, project, priority, referencedBug) " +
+            "VALUES (@title, @description, @location, @timePosted, @status, @poster, @project, @priority, @referencedBug)", Connection.connToDb);
 
         public void InsertBug(string title, string description, string location, DateTime timePosted, string status,
-                                                                    string poster, string project, string priority)
+                                                       string poster, string project, string priority, string referencedBug)
         {
             // Set parameters
             _insertBug.Parameters.Clear();
@@ -91,6 +91,7 @@ namespace Bugtracker
             _insertBug.Parameters.AddWithValue("@poster", poster);
             _insertBug.Parameters.AddWithValue("@project", project);
             _insertBug.Parameters.AddWithValue("@priority", priority);
+            _insertBug.Parameters.AddWithValue("@referencedBug", referencedBug);
 
             using (Connection.connToDb = new MySqlConnection(Connection.connStr))
             {

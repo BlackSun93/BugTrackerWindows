@@ -20,8 +20,19 @@ namespace Bugtracker
             InitializeComponent();
             currentProject = id;
 
+            DataSet db = Connection.GetDbConn().GetDataSet($"SELECT idbug, title FROM bug WHERE project = {currentProject}");
+
+            //bind the datasource to the combo box
+            Combo_RefExistBug.DataSource = db.Tables[0];
             
-                var itemList = new List<Item>()
+            Combo_RefExistBug.ValueMember = "idbug";
+            Combo_RefExistBug.DisplayMember = "title";
+            Combo_RefExistBug.SelectedItem = null;
+            Combo_RefExistBug.SelectedText = "Select a bug to reference";
+            //Combo_RefExistBug.Items.Insert(0, "");
+            //Combo_RefExistBug.SelectedIndex = 0;
+
+            var itemList = new List<Item>()
             {
                 new Item() { Text = "Low", Value = "1" },
                 new Item() { Text = "Med", Value = "2" },
@@ -60,8 +71,10 @@ namespace Bugtracker
                 status,
                 poster,
                 project,
+                referencedBug,
                 priority;
             DateTime timePosted;
+            //var referencedBug = "";
             title = TextBox_Title.Text;
             description = RichText_Description.Text;
             location = TextBox_Location.Text;
@@ -69,16 +82,25 @@ namespace Bugtracker
             status = "In Progress";
             //maybe on log in have a class (loggedUser) which stores the logged in user's ID, then go to that class
             //for this info, for now we're using 41 as test user in DB
-            poster = "41";
+            poster = UserObject.loggedUser.iduser;
             project = currentProject;
             var prior = (Item)ComboBox_Priority.SelectedItem;
             priority =  prior.Value;
+            if (Combo_RefExistBug.SelectedItem == null)
+            {
+                referencedBug = "0";
+            }
+            else
+            {
+                referencedBug = Combo_RefExistBug.SelectedValue.ToString();
+            }
+            
 
 
 
 
             SqlBug newBug = new SqlBug();
-            newBug.InsertBug(title,  description,  location,  timePosted,  status,  poster,  project,  priority);
+            newBug.InsertBug(title,  description,  location,  timePosted,  status,  poster,  project,  priority, referencedBug);
 
 
             //InsertBug(string title, int description, string location, DateTime timePosted, string status,
@@ -90,6 +112,8 @@ namespace Bugtracker
         {
 
         }
+
+       
     }
     public class Item
     {

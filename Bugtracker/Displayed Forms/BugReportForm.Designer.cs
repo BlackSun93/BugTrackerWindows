@@ -38,6 +38,8 @@
             this.ComboBox_Priority = new System.Windows.Forms.ComboBox();
             this.Button_Save = new System.Windows.Forms.Button();
             this.Button_Back = new System.Windows.Forms.Button();
+            this.Combo_RefExistBug = new System.Windows.Forms.ComboBox();
+            this.Label_RefExistBug = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Label_Title
@@ -76,7 +78,7 @@
             // Label_Location
             // 
             this.Label_Location.AutoSize = true;
-            this.Label_Location.Location = new System.Drawing.Point(197, 277);
+            this.Label_Location.Location = new System.Drawing.Point(197, 249);
             this.Label_Location.Name = "Label_Location";
             this.Label_Location.Size = new System.Drawing.Size(48, 13);
             this.Label_Location.TabIndex = 4;
@@ -84,7 +86,7 @@
             // 
             // TextBox_Location
             // 
-            this.TextBox_Location.Location = new System.Drawing.Point(200, 313);
+            this.TextBox_Location.Location = new System.Drawing.Point(200, 285);
             this.TextBox_Location.Name = "TextBox_Location";
             this.TextBox_Location.Size = new System.Drawing.Size(229, 20);
             this.TextBox_Location.TabIndex = 5;
@@ -92,7 +94,7 @@
             // Label_Priority
             // 
             this.Label_Priority.AutoSize = true;
-            this.Label_Priority.Location = new System.Drawing.Point(197, 359);
+            this.Label_Priority.Location = new System.Drawing.Point(197, 322);
             this.Label_Priority.Name = "Label_Priority";
             this.Label_Priority.Size = new System.Drawing.Size(67, 13);
             this.Label_Priority.TabIndex = 6;
@@ -101,7 +103,7 @@
             // ComboBox_Priority
             // 
             this.ComboBox_Priority.FormattingEnabled = true;
-            this.ComboBox_Priority.Location = new System.Drawing.Point(200, 396);
+            this.ComboBox_Priority.Location = new System.Drawing.Point(200, 359);
             this.ComboBox_Priority.Name = "ComboBox_Priority";
             this.ComboBox_Priority.Size = new System.Drawing.Size(229, 21);
             this.ComboBox_Priority.TabIndex = 7;
@@ -126,9 +128,28 @@
             this.Button_Back.UseVisualStyleBackColor = true;
             this.Button_Back.Click += new System.EventHandler(this.Button_Back_Click);
             // 
+            // Combo_RefExistBug
+            // 
+            this.Combo_RefExistBug.FormattingEnabled = true;
+            this.Combo_RefExistBug.Location = new System.Drawing.Point(452, 150);
+            this.Combo_RefExistBug.Name = "Combo_RefExistBug";
+            this.Combo_RefExistBug.Size = new System.Drawing.Size(121, 21);
+            this.Combo_RefExistBug.TabIndex = 10;
+            // 
+            // Label_RefExistBug
+            // 
+            this.Label_RefExistBug.AutoSize = true;
+            this.Label_RefExistBug.Location = new System.Drawing.Point(443, 110);
+            this.Label_RefExistBug.Name = "Label_RefExistBug";
+            this.Label_RefExistBug.Size = new System.Drawing.Size(156, 13);
+            this.Label_RefExistBug.TabIndex = 11;
+            this.Label_RefExistBug.Text = "Select existing bug to reference";
+            // 
             // BugReportForm
             // 
             this.ClientSize = new System.Drawing.Size(620, 480);
+            this.Controls.Add(this.Label_RefExistBug);
+            this.Controls.Add(this.Combo_RefExistBug);
             this.Controls.Add(this.Button_Back);
             this.Controls.Add(this.Button_Save);
             this.Controls.Add(this.ComboBox_Priority);
@@ -159,5 +180,7 @@
         private System.Windows.Forms.ComboBox ComboBox_Priority;
         private System.Windows.Forms.Button Button_Save;
         private System.Windows.Forms.Button Button_Back;
+        private System.Windows.Forms.ComboBox Combo_RefExistBug;
+        private System.Windows.Forms.Label Label_RefExistBug;
     }
 }
