@@ -24,13 +24,14 @@ namespace Bugtracker
 
             InitializeComponent();
             display = window;
-            
+            Label_RefBug.Text = "";
             LoadUpdatesToList(selectedBug.idbug);
             Size = new Size(display.Width, display.Height);
             currentBug = selectedBug;
             //label1.Text = this.Size.ToString();
             LoadInfo();
             DoResize();
+           
         }
 
         /// <summary>
@@ -52,6 +53,13 @@ namespace Bugtracker
             Label_Poster.Text = currentBug.poster;
             Label_Priority.Text = currentBug.priority;
             Label_Status.Text = currentBug.status;
+            if (currentBug.referencedBug != "")
+            {
+                BugObject refBug = BugObject.Bugs.Find(i => i.idbug == currentBug.referencedBug);
+                Label_RefBug.Text = refBug.title;
+                
+                Label_RefBug.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, refBug));
+            }
         }
 
         /// <summary>
@@ -159,8 +167,9 @@ namespace Bugtracker
         private void Button_Back_Click(object sender, EventArgs e)
         {
             //THIS NEEDS TO BE CHANGED, IDEALLY WHEN PAGE LOADED, CREATE BUG INSTANCE INSTEAD OF ANOTHER QUERY
-           /* DataTable bugInfo = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(currentBug.idbug));
-            DataRow row = bugInfo.Rows[0]; */
+            /* DataTable bugInfo = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(currentBug.idbug));
+             DataRow row = bugInfo.Rows[0]; */
+            BugObject.Bugs.Clear();
             UpdateObject.Updates.Clear();
             display.DisplayBugsForm(currentBug.project);
         }
@@ -173,7 +182,7 @@ namespace Bugtracker
 
         private void UserClicked(object sender, EventArgs e, string id)
         {
-            
+            BugObject.Bugs.Clear();
             display.DisplayDashboardForm(id);
         }
         private void DoResize()
@@ -184,6 +193,14 @@ namespace Bugtracker
             Panel_Updates.Height = display.Height - Window.heightOffset;
 
             ShowUpdates();
+        }
+        private void BugClicked(object sender, EventArgs e, BugObject selectedBug)
+        {
+            //BugObject.Bugs.Clear();
+            // if a bug is referenced, should be able to find that bug object in this list so
+            // that the label showing that bug's id is clickable in the info form
+            display.DisplayBugInfoForm(selectedBug);
+
         }
     }
 }

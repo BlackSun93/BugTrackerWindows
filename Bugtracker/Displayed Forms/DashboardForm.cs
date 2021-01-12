@@ -75,7 +75,7 @@ namespace Bugtracker
                 BugObject up = new BugObject(toDo["idbug"].ToString(),
                      toDo["title"].ToString(), toDo["description"].ToString(), toDo["location"].ToString(),
                      toDo["status"].ToString(), toDo["poster"].ToString(),
-                     toDo["project"].ToString(), toDo["priority"].ToString(),
+                     toDo["project"].ToString(), toDo["priority"].ToString(), toDo["referencedBug"].ToString(),
                      Convert.ToDateTime(toDo["timePosted"]));
                 BugObject.toDoBugs.Add(up);
             }
@@ -87,7 +87,7 @@ namespace Bugtracker
                 BugObject up = new BugObject(recent["idbug"].ToString(),
                      recent["title"].ToString(), recent["description"].ToString(), recent["location"].ToString(),
                      recent["status"].ToString(), recent["poster"].ToString(),
-                     recent["project"].ToString(), recent["priority"].ToString(),
+                     recent["project"].ToString(), recent["priority"].ToString(), recent["referencedBug"].ToString(),
                      Convert.ToDateTime(recent["timePosted"]));
                 BugObject.recentBugs.Add(up);
             }

@@ -41,6 +41,8 @@
             this.Label_DescStatus = new System.Windows.Forms.Label();
             this.Label_Priority = new System.Windows.Forms.Label();
             this.Label_Status = new System.Windows.Forms.Label();
+            this.Label_DescRefBug = new System.Windows.Forms.Label();
+            this.Label_RefBug = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Label_DescBugTitle
@@ -161,11 +163,31 @@
             this.Label_Status.TabIndex = 14;
             this.Label_Status.Text = "label1";
             // 
+            // Label_DescRefBug
+            // 
+            this.Label_DescRefBug.AutoSize = true;
+            this.Label_DescRefBug.Location = new System.Drawing.Point(69, 329);
+            this.Label_DescRefBug.Name = "Label_DescRefBug";
+            this.Label_DescRefBug.Size = new System.Drawing.Size(88, 13);
+            this.Label_DescRefBug.TabIndex = 15;
+            this.Label_DescRefBug.Text = "Referenced Bug:";
+            // 
+            // Label_RefBug
+            // 
+            this.Label_RefBug.AutoSize = true;
+            this.Label_RefBug.Location = new System.Drawing.Point(164, 329);
+            this.Label_RefBug.Name = "Label_RefBug";
+            this.Label_RefBug.Size = new System.Drawing.Size(35, 13);
+            this.Label_RefBug.TabIndex = 16;
+            this.Label_RefBug.Text = "label1";
+            // 
             // BugInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 480);
+            this.Controls.Add(this.Label_RefBug);
+            this.Controls.Add(this.Label_DescRefBug);
             this.Controls.Add(this.Label_Status);
             this.Controls.Add(this.Label_Priority);
             this.Controls.Add(this.Label_DescStatus);
@@ -203,5 +225,7 @@
         private System.Windows.Forms.Label Label_DescStatus;
         private System.Windows.Forms.Label Label_Priority;
         private System.Windows.Forms.Label Label_Status;
+        private System.Windows.Forms.Label Label_DescRefBug;
+        private System.Windows.Forms.Label Label_RefBug;
     }
 }

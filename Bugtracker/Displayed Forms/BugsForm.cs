@@ -43,7 +43,8 @@ namespace Bugtracker
             {
                 BugObject up = new BugObject(bug["idbug"].ToString(),
                     bug["title"].ToString(), bug["description"].ToString(), bug["location"].ToString(), bug["status"].ToString(),
-                     bug["poster"].ToString(), bug["project"].ToString(), bug["priority"].ToString(), Convert.ToDateTime(bug["timePosted"]));
+                     bug["poster"].ToString(), bug["project"].ToString(), bug["priority"].ToString(),
+                      bug["referencedBug"].ToString(), Convert.ToDateTime(bug["timePosted"]));
                 BugObject.Bugs.Add(up);
             }
         }
@@ -175,7 +176,9 @@ namespace Bugtracker
       
         private void BugClicked(object sender, EventArgs e, BugObject selectedBug)
         {
-            BugObject.Bugs.Clear();
+            //BugObject.Bugs.Clear();
+            // if a bug is referenced, should be able to find that bug object in this list so
+            // that the label showing that bug's id is clickable in the info form
             display.DisplayBugInfoForm(selectedBug);
 
         }

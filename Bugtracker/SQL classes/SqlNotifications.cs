@@ -15,6 +15,14 @@ namespace Bugtracker
     /// and a notiftype table will ref this table with relevant information
     /// new notiftype object for each relevant user for each new notification
     /// 
+    /// 
+    /// payload : target split
+    /// payload = potentially all notif types, all ids, types, stauses, etc etc - ONLY 1 LINE MADE
+    /// tagrget/s = all users to notify- foreach user in users (users = select userid where {userid} AND {proj/bugid} in followtable
+    ///  insert into TONOTIFY {user}, {notifId} read(default false)
+    ///  if {thisuser} in tonotify table select * from tonotify inner join notificationpayload where {thisuser}
+    ///  more granularity on paylodnotif, targetnotif
+    ///  
     /// </summary>
     class SqlNotifications
     {
@@ -23,17 +31,21 @@ namespace Bugtracker
         ///  have to check if an instance already exists (in case upgrading user from follow to allow)
         /// </summary>
         private MySqlCommand _insertNotification = new MySqlCommand("INSERT INTO notification " +
-        "(user, project, isFollow, isAllowed) " +
-           "VALUES (@user, @project, @isFollow, @isAllowed)", Connection.connToDb);
+        "(usernotif, project, bug, update, type, status, timestamp) " +
+           "VALUES (@usernotif, @project, @bug, @update, @type, @status, @timestamp)", Connection.connToDb);
 
-        public void InsertNotification(string user, string project, string isFollow,  string isAllowed)
+        public void InsertNotification(string usernotif, string project, string bug,  string update,
+            string type, string status, DateTime timestamp)
         {
             // Set parameters
             _insertNotification.Parameters.Clear();
-            _insertNotification.Parameters.AddWithValue("@user", user);
+            _insertNotification.Parameters.AddWithValue("@usernotif", usernotif);
             _insertNotification.Parameters.AddWithValue("@project", project);
-            _insertNotification.Parameters.AddWithValue("@isFollow", isFollow);
-            _insertNotification.Parameters.AddWithValue("@isAllowed", isAllowed);
+            _insertNotification.Parameters.AddWithValue("@bug", bug);
+            _insertNotification.Parameters.AddWithValue("@update", update);
+            _insertNotification.Parameters.AddWithValue("@type", type);
+            _insertNotification.Parameters.AddWithValue("@status", status);
+            _insertNotification.Parameters.AddWithValue("@timestamp", timestamp);
             using (Connection.connToDb = new MySqlConnection(Connection.connStr))
             {
                 try
@@ -50,22 +62,19 @@ namespace Bugtracker
         }
 
         /// <summary>
-        /// have to check over all notification instances to see which notification table rows
-        ///  need a notifType creating, this will contain relevant info to send to relevant users
+        /// handles notifying relevant users of a notification and tracking if they have read it or not
         /// </summary>
-        private MySqlCommand _insertNotifType = new MySqlCommand("INSERT INTO notiftype " +
-       "(toNotifyId, type, relatedId, bug, timestamp) " +
-          "VALUES (@toNotifyId, @type, @relatedId, @bug, @timestamp)", Connection.connToDb);
+        private MySqlCommand _insertNotifType = new MySqlCommand("INSERT INTO tonotify " +
+       "(notifid, userid, read) " +
+          "VALUES (@notifid, @userid, @read)", Connection.connToDb);
 
-        public void InsertNotifType(string toNotifyId, string type, string relatedId, string bug, DateTime timestamp)
+        public void InsertNotifType(string notifid, string userid, string read)
         {
             // Set parameters
             _insertNotifType.Parameters.Clear();
-            _insertNotifType.Parameters.AddWithValue("@toNotifyId", toNotifyId);
-            _insertNotifType.Parameters.AddWithValue("@type", type);
-            _insertNotifType.Parameters.AddWithValue("@relatedId", relatedId);
-            _insertNotifType.Parameters.AddWithValue("@bug", bug);
-            _insertNotifType.Parameters.AddWithValue("@timestamp", timestamp);
+            _insertNotifType.Parameters.AddWithValue("@notifid", notifid);
+            _insertNotifType.Parameters.AddWithValue("@userid", userid);
+            _insertNotifType.Parameters.AddWithValue("@read", read);
             using (Connection.connToDb = new MySqlConnection(Connection.connStr))
             {
                 try
