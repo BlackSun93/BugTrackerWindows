@@ -186,6 +186,12 @@
     <Compile Include="Displayed Forms\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginPanel.Designer.cs">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Displayed Forms\BugInfoForm.resx">
       <DependentUpon>BugInfoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +237,9 @@
     </Compile>
     <EmbeddedResource Include="Displayed Forms\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPanel.resx">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\credentials.json">

@@ -17,6 +17,17 @@ namespace Bugtracker
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
+
         public Bitmap CLOSE = Properties.Resources.bt_close;
         public Bitmap MINIMIZE = Properties.Resources.bt_minimize;
         public Bitmap MAXIMIZE = Properties.Resources.bt_maximize;
@@ -26,18 +37,40 @@ namespace Bugtracker
         private Bitmap SHOW = Properties.Resources.bt_pass_show;
 
         char position = 'r';
-        int ix;
         int x;
         int y;
 
         private bool passwordVisible = false;
 
+        LoginPanel loginPanel;
+
         public LoginForm()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
+            loginPanel = new LoginPanel();
+            loginPanel.Location = new Point(Width/2, -10);
+            loginPanel.Owner = this;
+            loginPanel.Show();
+
         }
 
-        private void Button_Register_Click(object sender, EventArgs e)
+        protected override void OnMove(EventArgs e)
+        {
+            base.OnMove(e);
+            if (position == 'r')
+            {
+                loginPanel.Location = new Point(Left + (Width / 2), Top - 20);
+            }
+            else if (position == 'l')
+            {
+                loginPanel.Location = new Point(Left, Top - 20);
+            }
+            
+        }
+
+        private void Button_GoToRegister_Click(object sender, EventArgs e)
         {
             //RegistrationForm rf = new RegistrationForm();
             //rf.Show();
@@ -46,20 +79,19 @@ namespace Bugtracker
             TextBox_LoginUsername.Clear();
             TextBox_LoginPassword.Clear();
 
-            Panel_Registration.Hide();
+            //Panel_Registration.Hide();
 
-            ix = Panel_Slider.Location.X;
-            x = Panel_Slider.Location.X;
-            y = Panel_Slider.Location.Y;
+            x = loginPanel.Location.X;
+            y = loginPanel.Location.Y;
 
-            while (Panel_Slider.Location.X != 0)
+            while (loginPanel.Location.X != Left)
             {
                 x -= 1;
-                Panel_Slider.Location = new Point(x, y);
+                loginPanel.Location = new Point(x, y);
             }
             position = 'l';
 
-            Panel_Registration.Show();
+            //Panel_Registration.Show();
 
         }
 
@@ -105,7 +137,7 @@ namespace Bugtracker
             }
         }
 
-        private void Button_Close_Click(object sender, EventArgs e)
+        private void Button_LoginClose_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -126,7 +158,7 @@ namespace Bugtracker
 
         }
 
-        private void Button_Minimize_Click(object sender, EventArgs e)
+        private void Button_LoginMinimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
@@ -174,20 +206,39 @@ namespace Bugtracker
             TextBox_RegisterPassword.Clear();
             TextBox_RegisterEmail.Clear();
 
-            Panel_Login.Hide();
+            //Panel_Login.Hide();
 
-            x = Panel_Slider.Location.X;
-            y = Panel_Slider.Location.Y;
+            x = loginPanel.Location.X;
+            y = loginPanel.Location.Y;
 
-            while (Panel_Slider.Location.X != ix)
+            while (loginPanel.Location.X != (Left + (Width / 2)))
             {
                 x += 1;
-                Panel_Slider.Location = new Point(x, y);
+                loginPanel.Location = new Point(x, y);
             }
             position = 'r';
 
-            Panel_Login.Show();
+            //Panel_Login.Show();
 
+        }
+
+        private void Button_RegisterClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_RegisterMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void Button_Register_Click(object sender, EventArgs e)
+        {
+            string username = TextBox_RegisterUsername.Text;
+            string email = TextBox_RegisterEmail.Text;
+            string password = TextBox_RegisterPassword.Text;
+            SqlUser newUser = new SqlUser();
+            newUser.InsertUser(username, email, password);
         }
     }
 }
