@@ -352,7 +352,7 @@ namespace Bugtracker
                 loginPassX = Label_LoginPassword.Location.X;
                 loginPassY = Label_LoginPassword.Location.Y;
 
-                while (Label_LoginPassword.Location.Y != 255)
+                while (Label_LoginPassword.Location.Y != 253)
                 {
                     loginPassY += 1;
                     Label_LoginPassword.Location = new Point(loginPassX, loginPassY);
@@ -444,7 +444,7 @@ namespace Bugtracker
                 registerPassX = Label_RegisterPassword.Location.X;
                 registerPassY = Label_RegisterPassword.Location.Y;
 
-                while (Label_RegisterPassword.Location.Y != 255)
+                while (Label_RegisterPassword.Location.Y != 253)
                 {
                     registerPassY += 1;
                     Label_RegisterPassword.Location = new Point(registerPassX, registerPassY);
@@ -480,7 +480,7 @@ namespace Bugtracker
                 registerEmailX = Label_RegisterEmail.Location.X;
                 registerEmailY = Label_RegisterEmail.Location.Y;
 
-                while (Label_RegisterEmail.Location.Y != 340)
+                while (Label_RegisterEmail.Location.Y != 339)
                 {
                     registerEmailY += 1;
                     Label_RegisterEmail.Location = new Point(registerEmailX, registerEmailY);
@@ -517,6 +517,16 @@ namespace Bugtracker
         private void PictureBox_RegisterEmail_Click(object sender, EventArgs e)
         {
             TextBox_RegisterEmail.Focus();
+        }
+
+        private void Panel_Login_Click(object sender, EventArgs e)
+        {
+            Panel_Login.Focus();
+        }
+
+        private void Panel_Registration_Click(object sender, EventArgs e)
+        {
+            Panel_Registration.Focus();
         }
     }
 }
