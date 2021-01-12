@@ -233,6 +233,9 @@ namespace Bugtracker
 
             Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
             Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
+            PictureBox_LoginUsername.BackgroundImage = USERNAME;
+            PictureBox_LoginPassword.BackgroundImage = PASSWORD;
         }
 
         private void Button_GoToLogin_Click(object sender, EventArgs e)
