@@ -295,6 +295,9 @@
   <ItemGroup>
     <None Include="Resources\bt_login-email.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_error.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

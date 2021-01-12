@@ -36,6 +36,10 @@ namespace Bugtracker
         public Bitmap RESTORE = Properties.Resources.bt_restore;
         private Bitmap HIDE = Properties.Resources.bt_pass_hide;
         private Bitmap SHOW = Properties.Resources.bt_pass_show;
+        private Bitmap USERNAME = Properties.Resources.bt_login_username;
+        private Bitmap PASSWORD = Properties.Resources.bt_login_password;
+        private Bitmap EMAIL = Properties.Resources.bt_login_email;
+        private Bitmap ERROR = Properties.Resources.bt_error;
 
         char position = 'r';
         int x;
@@ -101,14 +105,14 @@ namespace Bugtracker
             string tempUsername = TextBox_LoginUsername.Text;
             string tempPassword = TextBox_LoginPassword.Text;
             string tempQuery = $"SELECT * from user WHERE username = '{tempUsername}' AND password = '{tempPassword}'";
-            DataTable db = Connection.GetDbConn().GetDataTable(tempQuery );
+            DataTable db = Connection.GetDbConn().GetDataTable(tempQuery);
             //login.GetUser(TextBox_LoginUsername.Text, TextBox_LoginPassword.Text);
 
-            UserObject.loggedUser.username= db.Rows[0].ItemArray[1].ToString();
-            UserObject.loggedUser.iduser = db.Rows[0].ItemArray[0].ToString();
-
-            if (UserObject.loggedUser.username != "")
+            if (db.Rows.Count != 0)
             {
+                UserObject.loggedUser.username = db.Rows[0].ItemArray[1].ToString();
+                UserObject.loggedUser.iduser = db.Rows[0].ItemArray[0].ToString();
+
                 if (CheckBox_StayLoggedIn.CheckState == CheckState.Checked)
                 {
                     Properties.Settings.Default.StayLoggedIn = true;
@@ -122,17 +126,20 @@ namespace Bugtracker
 
                 Hide();
                 loginPanel.Hide();
-                Window w = new Window();
-                w.Show();
+                Window window = new Window();
+                window.Show();
             }
-            else 
+            else
             {
-                TextBox_LoginUsername.Clear();
-                TextBox_LoginPassword.Clear();
+                Label_LoginUsernameSeparator.BackColor = Color.FromArgb(255, 85, 85);
+                Label_LoginPasswordSeparator.BackColor = Color.FromArgb(255, 85, 85);
+                TextBox_LoginUsername.ForeColor = Color.FromArgb(255, 85, 85);
+                TextBox_LoginPassword.ForeColor = Color.FromArgb(255, 85, 85);
+                PictureBox_LoginUsername.BackgroundImage = ERROR;
+                PictureBox_LoginPassword.BackgroundImage = ERROR;
+
                 MessageBox.Show("incorrect credentials ");
-                Show();
             }
-            
         }
 
         private void Panel_TopBar_MouseMove(object sender, MouseEventArgs e)
@@ -319,7 +326,9 @@ namespace Bugtracker
 
         private void TextBox_LoginUsername_Enter(object sender, EventArgs e)
         {
-            Label_LoginUsernameSeparator.BackColor = Color.FromArgb(255, 86, 0);
+            Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            TextBox_LoginUsername.ForeColor = Color.FromArgb(82, 82, 82);
+            PictureBox_LoginUsername.BackgroundImage = USERNAME;
 
             if (TextBox_LoginUsername.TextLength == 0)
             {
@@ -353,13 +362,16 @@ namespace Bugtracker
             }
             else
             {
+                TextBox_LoginUsername.ForeColor = Color.FromArgb(38, 174, 96);
                 Label_LoginUsernameSeparator.BackColor = Color.FromArgb(38, 174, 96);
             }
         }
 
         private void TextBox_LoginPassword_Enter(object sender, EventArgs e)
         {
-            Label_LoginPasswordSeparator.BackColor = Color.FromArgb(255, 86, 0);
+            Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            TextBox_LoginPassword.ForeColor = Color.FromArgb(82, 82, 82);
+            PictureBox_LoginPassword.BackgroundImage = PASSWORD;
 
             if (TextBox_LoginPassword.TextLength == 0)
             {
@@ -393,6 +405,7 @@ namespace Bugtracker
             }
             else
             {
+                TextBox_LoginPassword.ForeColor = Color.FromArgb(38, 174, 96);
                 Label_LoginPasswordSeparator.BackColor = Color.FromArgb(38, 174, 96);
             }
         }
@@ -577,11 +590,6 @@ namespace Bugtracker
         private void Panel_Registration_Click(object sender, EventArgs e)
         {
             Panel_Registration.Focus();
-        }
-
-        private void CheckBox_StayLoggedIn_CheckedChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void Button_ForgotPassword_MouseMove(object sender, MouseEventArgs e)
