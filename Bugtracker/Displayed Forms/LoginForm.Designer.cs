@@ -38,9 +38,8 @@
             this.PictureBox_LoginPassword = new System.Windows.Forms.PictureBox();
             this.PictureBox_LoginUsername = new System.Windows.Forms.PictureBox();
             this.Button_LoginPasswordVisibility = new System.Windows.Forms.Button();
-            this.Button_Reset = new System.Windows.Forms.Button();
-            this.Label_ForgotPassword = new System.Windows.Forms.Label();
-            this.Label_NoAccount = new System.Windows.Forms.Label();
+            this.Button_ForgotPassword = new System.Windows.Forms.Button();
+            this.Label_LoginOr = new System.Windows.Forms.Label();
             this.Label_LoginPasswordSeparator = new System.Windows.Forms.Label();
             this.Label_LoginPassword = new System.Windows.Forms.Label();
             this.Label_LoginUsernameSeparator = new System.Windows.Forms.Label();
@@ -63,7 +62,6 @@
             this.Label_RegisterEmailSeparator = new System.Windows.Forms.Label();
             this.Label_RegisterEmail = new System.Windows.Forms.Label();
             this.Button_RegisterPasswordVisibility = new System.Windows.Forms.Button();
-            this.Label_HaveAccount = new System.Windows.Forms.Label();
             this.Label_RegisterPasswordSeparator = new System.Windows.Forms.Label();
             this.Label_RegisterPassword = new System.Windows.Forms.Label();
             this.Label_RegisterUsernameSeparator = new System.Windows.Forms.Label();
@@ -73,6 +71,7 @@
             this.TextBox_RegisterUsername = new System.Windows.Forms.TextBox();
             this.TextBox_RegisterPassword = new System.Windows.Forms.TextBox();
             this.TextBox_RegisterEmail = new System.Windows.Forms.TextBox();
+            this.Label_RegisterOr = new System.Windows.Forms.Label();
             this.Panel_Login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginUsername)).BeginInit();
@@ -127,17 +126,17 @@
             this.Button_GoToRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_GoToRegister.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.Button_GoToRegister.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
-            this.Button_GoToRegister.Location = new System.Drawing.Point(202, 453);
+            this.Button_GoToRegister.Location = new System.Drawing.Point(185, 453);
             this.Button_GoToRegister.Margin = new System.Windows.Forms.Padding(0);
             this.Button_GoToRegister.Name = "Button_GoToRegister";
             this.Button_GoToRegister.Size = new System.Drawing.Size(78, 26);
             this.Button_GoToRegister.TabIndex = 0;
             this.Button_GoToRegister.TabStop = false;
             this.Button_GoToRegister.Text = "Register";
-            this.Button_GoToRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.Button_GoToRegister, "Create a new account");
             this.Button_GoToRegister.UseVisualStyleBackColor = false;
             this.Button_GoToRegister.Click += new System.EventHandler(this.Button_GoToRegister_Click);
+            this.Button_GoToRegister.MouseLeave += new System.EventHandler(this.Button_GoToRegister_MouseLeave);
+            this.Button_GoToRegister.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button_GoToRegister_MouseMove);
             // 
             // Panel_Login
             // 
@@ -146,9 +145,8 @@
             this.Panel_Login.Controls.Add(this.PictureBox_LoginPassword);
             this.Panel_Login.Controls.Add(this.PictureBox_LoginUsername);
             this.Panel_Login.Controls.Add(this.Button_LoginPasswordVisibility);
-            this.Panel_Login.Controls.Add(this.Button_Reset);
-            this.Panel_Login.Controls.Add(this.Label_ForgotPassword);
-            this.Panel_Login.Controls.Add(this.Label_NoAccount);
+            this.Panel_Login.Controls.Add(this.Button_ForgotPassword);
+            this.Panel_Login.Controls.Add(this.Label_LoginOr);
             this.Panel_Login.Controls.Add(this.Label_LoginPasswordSeparator);
             this.Panel_Login.Controls.Add(this.Label_LoginPassword);
             this.Panel_Login.Controls.Add(this.Label_LoginUsernameSeparator);
@@ -222,51 +220,42 @@
             this.Button_LoginPasswordVisibility.Visible = false;
             this.Button_LoginPasswordVisibility.Click += new System.EventHandler(this.Button_PasswordVisibility_Click);
             // 
-            // Button_Reset
+            // Button_ForgotPassword
             // 
-            this.Button_Reset.AutoSize = true;
-            this.Button_Reset.BackColor = System.Drawing.Color.Transparent;
-            this.Button_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Reset.FlatAppearance.BorderSize = 0;
-            this.Button_Reset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Button_Reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.Button_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Reset.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.Button_Reset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
-            this.Button_Reset.Location = new System.Drawing.Point(202, 307);
-            this.Button_Reset.Margin = new System.Windows.Forms.Padding(0);
-            this.Button_Reset.Name = "Button_Reset";
-            this.Button_Reset.Size = new System.Drawing.Size(78, 26);
-            this.Button_Reset.TabIndex = 0;
-            this.Button_Reset.TabStop = false;
-            this.Button_Reset.Text = "Reset";
-            this.Button_Reset.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.Button_Reset, "Reset your password");
-            this.Button_Reset.UseVisualStyleBackColor = false;
+            this.Button_ForgotPassword.AutoSize = true;
+            this.Button_ForgotPassword.BackColor = System.Drawing.Color.Transparent;
+            this.Button_ForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_ForgotPassword.FlatAppearance.BorderSize = 0;
+            this.Button_ForgotPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Button_ForgotPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Button_ForgotPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_ForgotPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.Button_ForgotPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.Button_ForgotPassword.Location = new System.Drawing.Point(270, 281);
+            this.Button_ForgotPassword.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_ForgotPassword.Name = "Button_ForgotPassword";
+            this.Button_ForgotPassword.Size = new System.Drawing.Size(160, 26);
+            this.Button_ForgotPassword.TabIndex = 0;
+            this.Button_ForgotPassword.TabStop = false;
+            this.Button_ForgotPassword.Text = "Forgot my password";
+            this.Button_ForgotPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip.SetToolTip(this.Button_ForgotPassword, "Recieve an email to reset your password");
+            this.Button_ForgotPassword.UseVisualStyleBackColor = false;
+            this.Button_ForgotPassword.MouseLeave += new System.EventHandler(this.Button_ForgotPassword_MouseLeave);
+            this.Button_ForgotPassword.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button_ForgotPassword_MouseMove);
             // 
-            // Label_ForgotPassword
+            // Label_LoginOr
             // 
-            this.Label_ForgotPassword.AutoSize = true;
-            this.Label_ForgotPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.Label_ForgotPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_ForgotPassword.Location = new System.Drawing.Point(29, 312);
-            this.Label_ForgotPassword.Margin = new System.Windows.Forms.Padding(29, 32, 0, 0);
-            this.Label_ForgotPassword.Name = "Label_ForgotPassword";
-            this.Label_ForgotPassword.Size = new System.Drawing.Size(171, 16);
-            this.Label_ForgotPassword.TabIndex = 43;
-            this.Label_ForgotPassword.Text = "Forgot your password?";
-            // 
-            // Label_NoAccount
-            // 
-            this.Label_NoAccount.AutoSize = true;
-            this.Label_NoAccount.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.Label_NoAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_NoAccount.Location = new System.Drawing.Point(29, 458);
-            this.Label_NoAccount.Margin = new System.Windows.Forms.Padding(29, 32, 0, 0);
-            this.Label_NoAccount.Name = "Label_NoAccount";
-            this.Label_NoAccount.Size = new System.Drawing.Size(173, 16);
-            this.Label_NoAccount.TabIndex = 42;
-            this.Label_NoAccount.Text = "Don\'t have an account?";
+            this.Label_LoginOr.AutoSize = true;
+            this.Label_LoginOr.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.Label_LoginOr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.Label_LoginOr.Location = new System.Drawing.Point(212, 434);
+            this.Label_LoginOr.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.Label_LoginOr.Name = "Label_LoginOr";
+            this.Label_LoginOr.Size = new System.Drawing.Size(23, 16);
+            this.Label_LoginOr.TabIndex = 42;
+            this.Label_LoginOr.Text = "or";
+            this.Label_LoginOr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Label_LoginPasswordSeparator
             // 
@@ -478,28 +467,28 @@
             this.Button_GoToLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_GoToLogin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.Button_GoToLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
-            this.Button_GoToLogin.Location = new System.Drawing.Point(218, 453);
+            this.Button_GoToLogin.Location = new System.Drawing.Point(187, 453);
             this.Button_GoToLogin.Margin = new System.Windows.Forms.Padding(0);
             this.Button_GoToLogin.Name = "Button_GoToLogin";
             this.Button_GoToLogin.Size = new System.Drawing.Size(78, 26);
             this.Button_GoToLogin.TabIndex = 0;
             this.Button_GoToLogin.TabStop = false;
             this.Button_GoToLogin.Text = "Login";
-            this.Button_GoToLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.Button_GoToLogin, "Log into your account");
             this.Button_GoToLogin.UseVisualStyleBackColor = false;
             this.Button_GoToLogin.Click += new System.EventHandler(this.Button_GoToLogin_Click);
+            this.Button_GoToLogin.MouseLeave += new System.EventHandler(this.Button_GoToLogin_MouseLeave);
+            this.Button_GoToLogin.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button_GoToLogin_MouseMove);
             // 
             // Panel_Registration
             // 
             this.Panel_Registration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Panel_Registration.Controls.Add(this.Label_RegisterOr);
             this.Panel_Registration.Controls.Add(this.PictureBox_RegisterEmail);
             this.Panel_Registration.Controls.Add(this.PictureBox_RegisterPassword);
             this.Panel_Registration.Controls.Add(this.PictureBox_RegisterUsername);
             this.Panel_Registration.Controls.Add(this.Label_RegisterEmailSeparator);
             this.Panel_Registration.Controls.Add(this.Label_RegisterEmail);
             this.Panel_Registration.Controls.Add(this.Button_RegisterPasswordVisibility);
-            this.Panel_Registration.Controls.Add(this.Label_HaveAccount);
             this.Panel_Registration.Controls.Add(this.Label_RegisterPasswordSeparator);
             this.Panel_Registration.Controls.Add(this.Label_RegisterPassword);
             this.Panel_Registration.Controls.Add(this.Label_RegisterUsernameSeparator);
@@ -595,18 +584,6 @@
             this.Button_RegisterPasswordVisibility.UseVisualStyleBackColor = false;
             this.Button_RegisterPasswordVisibility.Visible = false;
             this.Button_RegisterPasswordVisibility.Click += new System.EventHandler(this.Button_RegisterPasswordVisibility_Click);
-            // 
-            // Label_HaveAccount
-            // 
-            this.Label_HaveAccount.AutoSize = true;
-            this.Label_HaveAccount.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.Label_HaveAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_HaveAccount.Location = new System.Drawing.Point(29, 458);
-            this.Label_HaveAccount.Margin = new System.Windows.Forms.Padding(29, 32, 0, 0);
-            this.Label_HaveAccount.Name = "Label_HaveAccount";
-            this.Label_HaveAccount.Size = new System.Drawing.Size(189, 16);
-            this.Label_HaveAccount.TabIndex = 42;
-            this.Label_HaveAccount.Text = "Already have an account?";
             // 
             // Label_RegisterPasswordSeparator
             // 
@@ -726,6 +703,19 @@
             this.TextBox_RegisterEmail.Enter += new System.EventHandler(this.TextBox_RegisterEmail_Enter);
             this.TextBox_RegisterEmail.Leave += new System.EventHandler(this.TextBox_RegisterEmail_Leave);
             // 
+            // Label_RegisterOr
+            // 
+            this.Label_RegisterOr.AutoSize = true;
+            this.Label_RegisterOr.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.Label_RegisterOr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.Label_RegisterOr.Location = new System.Drawing.Point(215, 434);
+            this.Label_RegisterOr.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.Label_RegisterOr.Name = "Label_RegisterOr";
+            this.Label_RegisterOr.Size = new System.Drawing.Size(23, 16);
+            this.Label_RegisterOr.TabIndex = 46;
+            this.Label_RegisterOr.Text = "or";
+            this.Label_RegisterOr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -775,13 +765,11 @@
         private System.Windows.Forms.Label Label_LoginPasswordSeparator;
         private System.Windows.Forms.TextBox TextBox_LoginPassword;
         private System.Windows.Forms.Label Label_LoginPassword;
-        private System.Windows.Forms.Label Label_NoAccount;
-        private System.Windows.Forms.Label Label_ForgotPassword;
-        private System.Windows.Forms.Button Button_Reset;
+        private System.Windows.Forms.Label Label_LoginOr;
+        private System.Windows.Forms.Button Button_ForgotPassword;
         private System.Windows.Forms.Button Button_LoginPasswordVisibility;
         private System.Windows.Forms.Panel Panel_Registration;
         private System.Windows.Forms.Button Button_RegisterPasswordVisibility;
-        private System.Windows.Forms.Label Label_HaveAccount;
         private System.Windows.Forms.Label Label_RegisterPasswordSeparator;
         private System.Windows.Forms.TextBox TextBox_RegisterPassword;
         private System.Windows.Forms.Label Label_RegisterPassword;
@@ -802,5 +790,6 @@
         private System.Windows.Forms.PictureBox PictureBox_RegisterPassword;
         private System.Windows.Forms.PictureBox PictureBox_RegisterUsername;
         private System.Windows.Forms.CheckBox CheckBox_StayLoggedIn;
+        private System.Windows.Forms.Label Label_RegisterOr;
     }
 }

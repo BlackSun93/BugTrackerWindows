@@ -583,5 +583,35 @@ namespace Bugtracker
         {
             
         }
+
+        private void Button_ForgotPassword_MouseMove(object sender, MouseEventArgs e)
+        {
+            Button_ForgotPassword.ForeColor = Color.FromArgb(255, 85, 0);
+        }
+
+        private void Button_ForgotPassword_MouseLeave(object sender, EventArgs e)
+        {
+            Button_ForgotPassword.ForeColor = Color.FromArgb(119, 119, 136);
+        }
+
+        private void Button_GoToRegister_MouseMove(object sender, MouseEventArgs e)
+        {
+            Button_GoToRegister.ForeColor = Color.FromArgb(19, 174, 71);
+        }
+
+        private void Button_GoToRegister_MouseLeave(object sender, EventArgs e)
+        {
+            Button_GoToRegister.ForeColor = Color.FromArgb(255, 85, 0);
+        }
+
+        private void Button_GoToLogin_MouseMove(object sender, MouseEventArgs e)
+        {
+            Button_GoToLogin.ForeColor = Color.FromArgb(19, 174, 71);
+        }
+
+        private void Button_GoToLogin_MouseLeave(object sender, EventArgs e)
+        {
+            Button_GoToLogin.ForeColor = Color.FromArgb(255, 85, 0);
+        }
     }
 }
