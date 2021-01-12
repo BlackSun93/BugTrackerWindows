@@ -70,31 +70,6 @@ namespace Bugtracker
             
         }
 
-        private void Button_GoToRegister_Click(object sender, EventArgs e)
-        {
-            //RegistrationForm rf = new RegistrationForm();
-            //rf.Show();
-            //Hide();
-
-            TextBox_LoginUsername.Clear();
-            TextBox_LoginPassword.Clear();
-
-            //Panel_Registration.Hide();
-
-            x = loginPanel.Location.X;
-            y = loginPanel.Location.Y;
-
-            while (loginPanel.Location.X != Left)
-            {
-                x -= 1;
-                loginPanel.Location = new Point(x, y);
-            }
-            position = 'l';
-
-            //Panel_Registration.Show();
-
-        }
-
         /// <summary>
         /// on login clicked, go to sqlUser class and attempt to find this user + make a UserObject instance of 
         /// logged user with the details
@@ -167,15 +142,11 @@ namespace Bugtracker
         {
             if (passwordVisible == false)
             {
-                passwordVisible = true;
-                Button_LoginPasswordVisibility.Image = HIDE;
-                TextBox_LoginPassword.UseSystemPasswordChar = false;
+                ShowPasswords();
             }
             else if (passwordVisible == true)
             {
-                passwordVisible = false;
-                Button_LoginPasswordVisibility.Image = SHOW;
-                TextBox_LoginPassword.UseSystemPasswordChar = true;
+                HidePasswords();
             }
         }
 
@@ -200,13 +171,29 @@ namespace Bugtracker
             }
         }
 
+        private void Button_GoToRegister_Click(object sender, EventArgs e)
+        {
+            TextBox_LoginUsername.Clear();
+            TextBox_LoginPassword.Clear();
+
+            x = loginPanel.Location.X;
+            y = loginPanel.Location.Y;
+
+            while (loginPanel.Location.X != Left)
+            {
+                x -= 1;
+                loginPanel.Location = new Point(x, y);
+            }
+            position = 'l';
+            passwordVisible = false;
+            HidePasswords();
+        }
+
         private void Button_GoToLogin_Click(object sender, EventArgs e)
         {
             TextBox_RegisterUsername.Clear();
             TextBox_RegisterPassword.Clear();
             TextBox_RegisterEmail.Clear();
-
-            //Panel_Login.Hide();
 
             x = loginPanel.Location.X;
             y = loginPanel.Location.Y;
@@ -217,8 +204,8 @@ namespace Bugtracker
                 loginPanel.Location = new Point(x, y);
             }
             position = 'r';
-
-            //Panel_Login.Show();
+            passwordVisible = false;
+            HidePasswords();
 
         }
 
@@ -239,6 +226,48 @@ namespace Bugtracker
             string password = TextBox_RegisterPassword.Text;
             SqlUser newUser = new SqlUser();
             newUser.InsertUser(username, email, password);
+        }
+
+        private void Button_RegisterPasswordVisibility_Click(object sender, EventArgs e)
+        {
+            if (passwordVisible == false)
+            {
+                ShowPasswords();
+            }
+            else if (passwordVisible == true)
+            {
+                HidePasswords();
+            }
+        }
+
+        private void TextBox_RegisterPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (TextBox_RegisterPassword.Text.Length > 0)
+            {
+                Button_RegisterPasswordVisibility.Show();
+            }
+            else
+            {
+                Button_RegisterPasswordVisibility.Hide();
+            }
+        }
+
+        private void HidePasswords()
+        {
+            passwordVisible = false;
+            Button_LoginPasswordVisibility.Image = SHOW;
+            Button_RegisterPasswordVisibility.Image = SHOW;
+            TextBox_LoginPassword.UseSystemPasswordChar = true;
+            TextBox_RegisterPassword.UseSystemPasswordChar = true;
+        }
+
+        private void ShowPasswords()
+        {
+            passwordVisible = true;
+            Button_LoginPasswordVisibility.Image = HIDE;
+            Button_RegisterPasswordVisibility.Image = HIDE;
+            TextBox_LoginPassword.UseSystemPasswordChar = false;
+            TextBox_RegisterPassword.UseSystemPasswordChar = false;
         }
     }
 }

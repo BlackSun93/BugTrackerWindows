@@ -507,6 +507,7 @@
             this.Button_RegisterPasswordVisibility.TabStop = false;
             this.Button_RegisterPasswordVisibility.UseVisualStyleBackColor = false;
             this.Button_RegisterPasswordVisibility.Visible = false;
+            this.Button_RegisterPasswordVisibility.Click += new System.EventHandler(this.Button_RegisterPasswordVisibility_Click);
             // 
             // Label_HaveAccount
             // 
@@ -541,6 +542,7 @@
             this.TextBox_RegisterPassword.Size = new System.Drawing.Size(389, 19);
             this.TextBox_RegisterPassword.TabIndex = 1;
             this.TextBox_RegisterPassword.UseSystemPasswordChar = true;
+            this.TextBox_RegisterPassword.TextChanged += new System.EventHandler(this.TextBox_RegisterPassword_TextChanged);
             // 
             // Label_RegisterPassword
             // 
@@ -631,7 +633,7 @@
             this.MinimumSize = new System.Drawing.Size(912, 526);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginForm";
+            this.Text = "BugTracker";
             this.Panel_Login.ResumeLayout(false);
             this.Panel_Login.PerformLayout();
             this.Panel_TopBar.ResumeLayout(false);

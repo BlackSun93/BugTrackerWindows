@@ -71,7 +71,7 @@
             this.Label_Bug.TabIndex = 10;
             this.Label_Bug.Text = "BUG";
             // 
-            // TestForm
+            // LoginPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,11 +84,11 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(456, 566);
             this.MinimumSize = new System.Drawing.Size(456, 566);
-            this.Name = "TestForm";
+            this.Name = "LoginPanel";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "TestForm";
+            this.Text = "BugTracker";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
