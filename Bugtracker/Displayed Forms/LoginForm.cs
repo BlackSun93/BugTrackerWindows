@@ -328,6 +328,7 @@ namespace Bugtracker
         {
             Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
             TextBox_LoginUsername.ForeColor = Color.FromArgb(82, 82, 82);
+            TextBox_LoginUsername.SelectAll();
             PictureBox_LoginUsername.BackgroundImage = USERNAME;
 
             if (TextBox_LoginUsername.TextLength == 0)
@@ -342,6 +343,14 @@ namespace Bugtracker
                     Thread.Sleep(3);
                 }
             }
+            TextBox_LoginUsername.SelectAll();
+            TextBox_LoginUsername.Focus();
+        }
+
+        private void TextBox_LoginUsername_Click(object sender, EventArgs e)
+        {
+            TextBox_LoginUsername.SelectAll();
+            TextBox_LoginUsername.Focus();
         }
 
         private void TextBox_LoginUsername_Leave(object sender, EventArgs e)
@@ -385,6 +394,14 @@ namespace Bugtracker
                     Thread.Sleep(3);
                 }
             }
+            TextBox_LoginPassword.SelectAll();
+            TextBox_LoginPassword.Focus();
+        }
+
+        private void TextBox_LoginPassword_Click(object sender, EventArgs e)
+        {
+            TextBox_LoginPassword.SelectAll();
+            TextBox_LoginPassword.Focus();
         }
 
         private void TextBox_LoginPassword_Leave(object sender, EventArgs e)
