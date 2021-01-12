@@ -190,8 +190,12 @@ namespace Bugtracker
                 loginPanel.Location = new Point(x, y);
             }
             position = 'l';
+
             passwordVisible = false;
             HidePasswords();
+
+            Label_LoginUsername.Location = new Point(61, 164);
+            Label_LoginPassword.Location = new Point(61, 255);
         }
 
         private void Button_GoToLogin_Click(object sender, EventArgs e)
@@ -302,7 +306,7 @@ namespace Bugtracker
                 loginUserX = Label_LoginUsername.Location.X;
                 loginUserY = Label_LoginUsername.Location.Y;
 
-                while (Label_LoginUsername.Location.Y != 161)
+                while (Label_LoginUsername.Location.Y != 164)
                 {
                     loginUserY += 1;
                     Label_LoginUsername.Location = new Point(loginUserX, loginUserY);
@@ -338,7 +342,7 @@ namespace Bugtracker
                 loginPassX = Label_LoginPassword.Location.X;
                 loginPassY = Label_LoginPassword.Location.Y;
 
-                while (Label_LoginPassword.Location.Y != 250)
+                while (Label_LoginPassword.Location.Y != 255)
                 {
                     loginPassY += 1;
                     Label_LoginPassword.Location = new Point(loginPassX, loginPassY);
@@ -353,6 +357,16 @@ namespace Bugtracker
         }
 
         private void Label_LoginPassword_Click(object sender, EventArgs e)
+        {
+            TextBox_LoginPassword.Focus();
+        }
+
+        private void PictureBox_LoginUsername_Click(object sender, EventArgs e)
+        {
+            TextBox_LoginUsername.Focus();
+        }
+
+        private void PictureBox_LoginPassword_Click(object sender, EventArgs e)
         {
             TextBox_LoginPassword.Focus();
         }

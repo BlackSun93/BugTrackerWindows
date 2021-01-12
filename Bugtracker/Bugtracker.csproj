@@ -286,6 +286,12 @@
   <ItemGroup>
     <None Include="Resources\bt_pass-hide.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-password.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
