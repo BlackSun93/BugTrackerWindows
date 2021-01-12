@@ -153,7 +153,7 @@ namespace Bugtracker
 
         private void Button_LoginClose_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void Button_Maximize_Click(object sender, EventArgs e)
@@ -268,7 +268,7 @@ namespace Bugtracker
 
         private void Button_RegisterClose_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void Button_RegisterMinimize_Click(object sender, EventArgs e)
