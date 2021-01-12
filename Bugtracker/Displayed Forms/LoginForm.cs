@@ -202,6 +202,9 @@ namespace Bugtracker
 
             Label_LoginUsername.Location = new Point(61, 164);
             Label_LoginPassword.Location = new Point(61, 255);
+
+            Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
         }
 
         private void Button_GoToLogin_Click(object sender, EventArgs e)
@@ -226,6 +229,10 @@ namespace Bugtracker
             Label_RegisterUsername.Location = new Point(61, 164);
             Label_RegisterPassword.Location = new Point(61, 255);
             Label_RegisterEmail.Location = new Point(61, 340);
+
+            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(119, 119, 136);
         }
 
         private void Button_RegisterClose_Click(object sender, EventArgs e)
@@ -309,10 +316,10 @@ namespace Bugtracker
 
         private void TextBox_LoginUsername_Leave(object sender, EventArgs e)
         {
-            Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
-
             if (TextBox_LoginUsername.TextLength == 0)
             {
+                Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
                 loginUserX = Label_LoginUsername.Location.X;
                 loginUserY = Label_LoginUsername.Location.Y;
 
@@ -322,6 +329,10 @@ namespace Bugtracker
                     Label_LoginUsername.Location = new Point(loginUserX, loginUserY);
                     Thread.Sleep(3);
                 }
+            }
+            else
+            {
+                Label_LoginUsernameSeparator.BackColor = Color.FromArgb(38, 174, 96);
             }
         }
 
@@ -345,10 +356,10 @@ namespace Bugtracker
 
         private void TextBox_LoginPassword_Leave(object sender, EventArgs e)
         {
-            Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
-
             if (TextBox_LoginPassword.TextLength == 0)
             {
+                Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
                 loginPassX = Label_LoginPassword.Location.X;
                 loginPassY = Label_LoginPassword.Location.Y;
 
@@ -358,6 +369,10 @@ namespace Bugtracker
                     Label_LoginPassword.Location = new Point(loginPassX, loginPassY);
                     Thread.Sleep(3);
                 }
+            }
+            else
+            {
+                Label_LoginPasswordSeparator.BackColor = Color.FromArgb(38, 174, 96);
             }
         }
 
@@ -401,10 +416,10 @@ namespace Bugtracker
 
         private void TextBox_RegisterUsername_Leave(object sender, EventArgs e)
         {
-            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
-
             if (TextBox_RegisterUsername.TextLength == 0)
             {
+                Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
                 registerUserX = Label_RegisterUsername.Location.X;
                 registerUserY = Label_RegisterUsername.Location.Y;
 
@@ -414,6 +429,10 @@ namespace Bugtracker
                     Label_RegisterUsername.Location = new Point(registerUserX, registerUserY);
                     Thread.Sleep(3);
                 }
+            }
+            else
+            {
+                Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(38, 174, 96);
             }
         }
 
@@ -437,10 +456,10 @@ namespace Bugtracker
 
         private void TextBox_RegisterPassword_Leave(object sender, EventArgs e)
         {
-            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
-
             if (TextBox_RegisterPassword.TextLength == 0)
             {
+                Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
                 registerPassX = Label_RegisterPassword.Location.X;
                 registerPassY = Label_RegisterPassword.Location.Y;
 
@@ -450,6 +469,10 @@ namespace Bugtracker
                     Label_RegisterPassword.Location = new Point(registerPassX, registerPassY);
                     Thread.Sleep(3);
                 }
+            }
+            else
+            {
+                Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(38, 174, 96);
             }
         }
 
@@ -473,10 +496,12 @@ namespace Bugtracker
 
         private void TextBox_RegisterEmail_Leave(object sender, EventArgs e)
         {
-            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
 
             if (TextBox_RegisterEmail.TextLength == 0)
             {
+                Label_RegisterEmailSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
                 registerEmailX = Label_RegisterEmail.Location.X;
                 registerEmailY = Label_RegisterEmail.Location.Y;
 
@@ -486,6 +511,10 @@ namespace Bugtracker
                     Label_RegisterEmail.Location = new Point(registerEmailX, registerEmailY);
                     Thread.Sleep(3);
                 }
+            }
+            else
+            {
+                Label_RegisterEmailSeparator.BackColor = Color.FromArgb(38, 174, 96);
             }
         }
 
