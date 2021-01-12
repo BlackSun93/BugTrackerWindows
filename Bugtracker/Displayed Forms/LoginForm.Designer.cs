@@ -38,7 +38,7 @@
             this.Button_Reset = new System.Windows.Forms.Button();
             this.Label_ForgotPassword = new System.Windows.Forms.Label();
             this.Label_NoAccount = new System.Windows.Forms.Label();
-            this.Label_LoginLoginPasswordSeparator = new System.Windows.Forms.Label();
+            this.Label_LoginPasswordSeparator = new System.Windows.Forms.Label();
             this.TextBox_LoginPassword = new System.Windows.Forms.TextBox();
             this.Label_LoginPassword = new System.Windows.Forms.Label();
             this.Label_LoginUsernameSeparator = new System.Windows.Forms.Label();
@@ -82,7 +82,10 @@
             this.TextBox_LoginUsername.Margin = new System.Windows.Forms.Padding(32, 3, 32, 3);
             this.TextBox_LoginUsername.Name = "TextBox_LoginUsername";
             this.TextBox_LoginUsername.Size = new System.Drawing.Size(389, 19);
-            this.TextBox_LoginUsername.TabIndex = 0;
+            this.TextBox_LoginUsername.TabIndex = 1;
+            this.TextBox_LoginUsername.TabStop = false;
+            this.TextBox_LoginUsername.Enter += new System.EventHandler(this.TextBox_LoginUsername_Enter);
+            this.TextBox_LoginUsername.Leave += new System.EventHandler(this.TextBox_LoginUsername_Leave);
             // 
             // Button_Login
             // 
@@ -96,7 +99,8 @@
             this.Button_Login.Location = new System.Drawing.Point(32, 397);
             this.Button_Login.Name = "Button_Login";
             this.Button_Login.Size = new System.Drawing.Size(389, 26);
-            this.Button_Login.TabIndex = 2;
+            this.Button_Login.TabIndex = 0;
+            this.Button_Login.TabStop = false;
             this.Button_Login.Text = "Login";
             this.Button_Login.UseVisualStyleBackColor = false;
             this.Button_Login.Click += new System.EventHandler(this.Button_Login_Click);
@@ -131,8 +135,7 @@
             this.Panel_Login.Controls.Add(this.Button_Reset);
             this.Panel_Login.Controls.Add(this.Label_ForgotPassword);
             this.Panel_Login.Controls.Add(this.Label_NoAccount);
-            this.Panel_Login.Controls.Add(this.Label_LoginLoginPasswordSeparator);
-            this.Panel_Login.Controls.Add(this.TextBox_LoginPassword);
+            this.Panel_Login.Controls.Add(this.Label_LoginPasswordSeparator);
             this.Panel_Login.Controls.Add(this.Label_LoginPassword);
             this.Panel_Login.Controls.Add(this.Label_LoginUsernameSeparator);
             this.Panel_Login.Controls.Add(this.Label_LoginUsername);
@@ -140,6 +143,7 @@
             this.Panel_Login.Controls.Add(this.Button_Login);
             this.Panel_Login.Controls.Add(this.Button_GoToRegister);
             this.Panel_Login.Controls.Add(this.TextBox_LoginUsername);
+            this.Panel_Login.Controls.Add(this.TextBox_LoginPassword);
             this.Panel_Login.Location = new System.Drawing.Point(0, 32);
             this.Panel_Login.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_Login.MaximumSize = new System.Drawing.Size(456, 494);
@@ -213,15 +217,14 @@
             this.Label_NoAccount.TabIndex = 42;
             this.Label_NoAccount.Text = "Don\'t have an account?";
             // 
-            // Label_LoginLoginPasswordSeparator
+            // Label_LoginPasswordSeparator
             // 
-            this.Label_LoginLoginPasswordSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.Label_LoginLoginPasswordSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Label_LoginLoginPasswordSeparator.Location = new System.Drawing.Point(32, 278);
-            this.Label_LoginLoginPasswordSeparator.Margin = new System.Windows.Forms.Padding(32, 3, 32, 0);
-            this.Label_LoginLoginPasswordSeparator.Name = "Label_LoginLoginPasswordSeparator";
-            this.Label_LoginLoginPasswordSeparator.Size = new System.Drawing.Size(389, 2);
-            this.Label_LoginLoginPasswordSeparator.TabIndex = 41;
+            this.Label_LoginPasswordSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.Label_LoginPasswordSeparator.Location = new System.Drawing.Point(32, 278);
+            this.Label_LoginPasswordSeparator.Margin = new System.Windows.Forms.Padding(32, 3, 32, 0);
+            this.Label_LoginPasswordSeparator.Name = "Label_LoginPasswordSeparator";
+            this.Label_LoginPasswordSeparator.Size = new System.Drawing.Size(389, 2);
+            this.Label_LoginPasswordSeparator.TabIndex = 41;
             // 
             // TextBox_LoginPassword
             // 
@@ -232,27 +235,30 @@
             this.TextBox_LoginPassword.Margin = new System.Windows.Forms.Padding(32, 3, 32, 3);
             this.TextBox_LoginPassword.Name = "TextBox_LoginPassword";
             this.TextBox_LoginPassword.Size = new System.Drawing.Size(389, 19);
-            this.TextBox_LoginPassword.TabIndex = 1;
+            this.TextBox_LoginPassword.TabIndex = 2;
+            this.TextBox_LoginPassword.TabStop = false;
             this.TextBox_LoginPassword.UseSystemPasswordChar = true;
             this.TextBox_LoginPassword.TextChanged += new System.EventHandler(this.TextBox_Password_TextChanged);
+            this.TextBox_LoginPassword.Enter += new System.EventHandler(this.TextBox_LoginPassword_Enter);
             this.TextBox_LoginPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_Password_KeyDown);
+            this.TextBox_LoginPassword.Leave += new System.EventHandler(this.TextBox_LoginPassword_Leave);
             // 
             // Label_LoginPassword
             // 
             this.Label_LoginPassword.AutoSize = true;
             this.Label_LoginPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.Label_LoginPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.Label_LoginPassword.Location = new System.Drawing.Point(29, 223);
+            this.Label_LoginPassword.Location = new System.Drawing.Point(29, 250);
             this.Label_LoginPassword.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_LoginPassword.Name = "Label_LoginPassword";
             this.Label_LoginPassword.Size = new System.Drawing.Size(86, 19);
             this.Label_LoginPassword.TabIndex = 39;
             this.Label_LoginPassword.Text = "Password";
+            this.Label_LoginPassword.Click += new System.EventHandler(this.Label_LoginPassword_Click);
             // 
             // Label_LoginUsernameSeparator
             // 
-            this.Label_LoginUsernameSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.Label_LoginUsernameSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Label_LoginUsernameSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
             this.Label_LoginUsernameSeparator.Location = new System.Drawing.Point(32, 189);
             this.Label_LoginUsernameSeparator.Margin = new System.Windows.Forms.Padding(32, 3, 32, 0);
             this.Label_LoginUsernameSeparator.Name = "Label_LoginUsernameSeparator";
@@ -264,12 +270,13 @@
             this.Label_LoginUsername.AutoSize = true;
             this.Label_LoginUsername.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.Label_LoginUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.Label_LoginUsername.Location = new System.Drawing.Point(29, 135);
+            this.Label_LoginUsername.Location = new System.Drawing.Point(29, 161);
             this.Label_LoginUsername.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_LoginUsername.Name = "Label_LoginUsername";
             this.Label_LoginUsername.Size = new System.Drawing.Size(87, 19);
             this.Label_LoginUsername.TabIndex = 5;
             this.Label_LoginUsername.Text = "Username";
+            this.Label_LoginUsername.Click += new System.EventHandler(this.Label_LoginUsername_Click);
             // 
             // Label_LoginTitle
             // 
@@ -459,8 +466,7 @@
             // 
             // Label_RegisterEmailSeparator
             // 
-            this.Label_RegisterEmailSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.Label_RegisterEmailSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Label_RegisterEmailSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
             this.Label_RegisterEmailSeparator.Location = new System.Drawing.Point(32, 365);
             this.Label_RegisterEmailSeparator.Margin = new System.Windows.Forms.Padding(32, 3, 32, 0);
             this.Label_RegisterEmailSeparator.Name = "Label_RegisterEmailSeparator";
@@ -476,7 +482,8 @@
             this.TextBox_RegisterEmail.Margin = new System.Windows.Forms.Padding(32, 3, 32, 3);
             this.TextBox_RegisterEmail.Name = "TextBox_RegisterEmail";
             this.TextBox_RegisterEmail.Size = new System.Drawing.Size(389, 19);
-            this.TextBox_RegisterEmail.TabIndex = 44;
+            this.TextBox_RegisterEmail.TabIndex = 2;
+            this.TextBox_RegisterEmail.TabStop = false;
             // 
             // Label_RegisterEmail
             // 
@@ -523,8 +530,7 @@
             // 
             // Label_RegisterPasswordSeparator
             // 
-            this.Label_RegisterPasswordSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.Label_RegisterPasswordSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Label_RegisterPasswordSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
             this.Label_RegisterPasswordSeparator.Location = new System.Drawing.Point(32, 278);
             this.Label_RegisterPasswordSeparator.Margin = new System.Windows.Forms.Padding(32, 3, 32, 0);
             this.Label_RegisterPasswordSeparator.Name = "Label_RegisterPasswordSeparator";
@@ -541,6 +547,7 @@
             this.TextBox_RegisterPassword.Name = "TextBox_RegisterPassword";
             this.TextBox_RegisterPassword.Size = new System.Drawing.Size(389, 19);
             this.TextBox_RegisterPassword.TabIndex = 1;
+            this.TextBox_RegisterPassword.TabStop = false;
             this.TextBox_RegisterPassword.UseSystemPasswordChar = true;
             this.TextBox_RegisterPassword.TextChanged += new System.EventHandler(this.TextBox_RegisterPassword_TextChanged);
             // 
@@ -558,8 +565,7 @@
             // 
             // Label_RegisterUsernameSeparator
             // 
-            this.Label_RegisterUsernameSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.Label_RegisterUsernameSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Label_RegisterUsernameSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
             this.Label_RegisterUsernameSeparator.Location = new System.Drawing.Point(32, 189);
             this.Label_RegisterUsernameSeparator.Margin = new System.Windows.Forms.Padding(32, 3, 32, 0);
             this.Label_RegisterUsernameSeparator.Name = "Label_RegisterUsernameSeparator";
@@ -602,7 +608,8 @@
             this.Button_Register.Location = new System.Drawing.Point(32, 397);
             this.Button_Register.Name = "Button_Register";
             this.Button_Register.Size = new System.Drawing.Size(389, 26);
-            this.Button_Register.TabIndex = 2;
+            this.Button_Register.TabIndex = 3;
+            this.Button_Register.TabStop = false;
             this.Button_Register.Text = "Create";
             this.Button_Register.UseVisualStyleBackColor = false;
             this.Button_Register.Click += new System.EventHandler(this.Button_Register_Click);
@@ -617,6 +624,7 @@
             this.TextBox_RegisterUsername.Name = "TextBox_RegisterUsername";
             this.TextBox_RegisterUsername.Size = new System.Drawing.Size(389, 19);
             this.TextBox_RegisterUsername.TabIndex = 0;
+            this.TextBox_RegisterUsername.TabStop = false;
             // 
             // LoginForm
             // 
@@ -659,7 +667,7 @@
         private System.Windows.Forms.Label Label_LoginTitle;
         private System.Windows.Forms.Label Label_LoginUsername;
         private System.Windows.Forms.Label Label_LoginUsernameSeparator;
-        private System.Windows.Forms.Label Label_LoginLoginPasswordSeparator;
+        private System.Windows.Forms.Label Label_LoginPasswordSeparator;
         private System.Windows.Forms.TextBox TextBox_LoginPassword;
         private System.Windows.Forms.Label Label_LoginPassword;
         private System.Windows.Forms.Label Label_NoAccount;

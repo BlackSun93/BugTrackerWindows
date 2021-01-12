@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Data;
+using System.Threading;
 
 namespace Bugtracker
 {
@@ -39,6 +40,10 @@ namespace Bugtracker
         char position = 'r';
         int x;
         int y;
+        int loginUserX;
+        int loginUserY;
+        int loginPassX;
+        int loginPassY;
 
         private bool passwordVisible = false;
 
@@ -268,6 +273,88 @@ namespace Bugtracker
             Button_RegisterPasswordVisibility.Image = HIDE;
             TextBox_LoginPassword.UseSystemPasswordChar = false;
             TextBox_RegisterPassword.UseSystemPasswordChar = false;
+        }
+
+        private void TextBox_LoginUsername_Enter(object sender, EventArgs e)
+        {
+            Label_LoginUsernameSeparator.BackColor = Color.FromArgb(255, 86, 0);
+
+            if (TextBox_LoginUsername.TextLength == 0)
+            {
+                loginUserX = Label_LoginUsername.Location.X;
+                loginUserY = Label_LoginUsername.Location.Y;
+
+                while (Label_LoginUsername.Location.Y != 135)
+                {
+                    loginUserY -= 1;
+                    Label_LoginUsername.Location = new Point(loginUserX, loginUserY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_LoginUsername_Leave(object sender, EventArgs e)
+        {
+            Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
+            if (TextBox_LoginUsername.TextLength == 0)
+            {
+                loginUserX = Label_LoginUsername.Location.X;
+                loginUserY = Label_LoginUsername.Location.Y;
+
+                while (Label_LoginUsername.Location.Y != 161)
+                {
+                    loginUserY += 1;
+                    Label_LoginUsername.Location = new Point(loginUserX, loginUserY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_LoginPassword_Enter(object sender, EventArgs e)
+        {
+            Label_LoginPasswordSeparator.BackColor = Color.FromArgb(255, 86, 0);
+
+            if (TextBox_LoginPassword.TextLength == 0)
+            {
+                loginPassX = Label_LoginPassword.Location.X;
+                loginPassY = Label_LoginPassword.Location.Y;
+
+                while (Label_LoginPassword.Location.Y != 223)
+                {
+                    loginPassY -= 1;
+                    Label_LoginPassword.Location = new Point(loginPassX, loginPassY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_LoginPassword_Leave(object sender, EventArgs e)
+        {
+            Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
+            if (TextBox_LoginPassword.TextLength == 0)
+            {
+                loginPassX = Label_LoginPassword.Location.X;
+                loginPassY = Label_LoginPassword.Location.Y;
+
+                while (Label_LoginPassword.Location.Y != 250)
+                {
+                    loginPassY += 1;
+                    Label_LoginPassword.Location = new Point(loginPassX, loginPassY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void Label_LoginUsername_Click(object sender, EventArgs e)
+        {
+            TextBox_LoginUsername.Focus();
+        }
+
+        private void Label_LoginPassword_Click(object sender, EventArgs e)
+        {
+            TextBox_LoginPassword.Focus();
         }
     }
 }
