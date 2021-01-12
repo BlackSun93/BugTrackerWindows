@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.Panel_Navigation = new System.Windows.Forms.Panel();
+            this.Label_Notification = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Label_Settings = new System.Windows.Forms.Label();
             this.Label_Recent = new System.Windows.Forms.Label();
             this.Label_Projects = new System.Windows.Forms.Label();
             this.Panel_DisplayBugs = new System.Windows.Forms.Panel();
@@ -37,9 +41,6 @@
             this.Label_Bug = new System.Windows.Forms.Label();
             this.Panel_Management = new System.Windows.Forms.Panel();
             this.Panel_FormContent = new System.Windows.Forms.Panel();
-            this.Label_Settings = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Panel_Navigation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             this.Panel_Navigation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Panel_Navigation.BackColor = System.Drawing.Color.White;
+            this.Panel_Navigation.Controls.Add(this.Label_Notification);
             this.Panel_Navigation.Controls.Add(this.label2);
             this.Panel_Navigation.Controls.Add(this.label1);
             this.Panel_Navigation.Controls.Add(this.Label_Settings);
@@ -62,6 +64,50 @@
             this.Panel_Navigation.Name = "Panel_Navigation";
             this.Panel_Navigation.Size = new System.Drawing.Size(152, 561);
             this.Panel_Navigation.TabIndex = 2;
+            // 
+            // Label_Notification
+            // 
+            this.Label_Notification.AutoSize = true;
+            this.Label_Notification.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Label_Notification.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.Label_Notification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.Label_Notification.Location = new System.Drawing.Point(20, 378);
+            this.Label_Notification.Name = "Label_Notification";
+            this.Label_Notification.Size = new System.Drawing.Size(125, 22);
+            this.Label_Notification.TabIndex = 8;
+            this.Label_Notification.Text = "Notifications";
+            this.Label_Notification.Click += new System.EventHandler(this.Label_Notification_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
+            // Label_Settings
+            // 
+            this.Label_Settings.AutoSize = true;
+            this.Label_Settings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Label_Settings.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.Label_Settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.Label_Settings.Location = new System.Drawing.Point(20, 460);
+            this.Label_Settings.Name = "Label_Settings";
+            this.Label_Settings.Size = new System.Drawing.Size(86, 22);
+            this.Label_Settings.TabIndex = 5;
+            this.Label_Settings.Text = "Settings";
+            this.Label_Settings.Click += new System.EventHandler(this.Label_Settings_Click);
             // 
             // Label_Recent
             // 
@@ -142,7 +188,6 @@
             this.Panel_Management.Name = "Panel_Management";
             this.Panel_Management.Size = new System.Drawing.Size(631, 66);
             this.Panel_Management.TabIndex = 3;
-            this.Panel_Management.Visible = true;
             // 
             // Panel_FormContent
             // 
@@ -151,37 +196,6 @@
             this.Panel_FormContent.Name = "Panel_FormContent";
             this.Panel_FormContent.Size = new System.Drawing.Size(631, 493);
             this.Panel_FormContent.TabIndex = 4;
-            // 
-            // Label_Settings
-            // 
-            this.Label_Settings.AutoSize = true;
-            this.Label_Settings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Label_Settings.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.Label_Settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.Label_Settings.Location = new System.Drawing.Point(20, 460);
-            this.Label_Settings.Name = "Label_Settings";
-            this.Label_Settings.Size = new System.Drawing.Size(86, 22);
-            this.Label_Settings.TabIndex = 5;
-            this.Label_Settings.Text = "Settings";
-            this.Label_Settings.Click += new System.EventHandler(this.Label_Settings_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "label2";
             // 
             // Window
             // 
@@ -219,5 +233,6 @@
         private System.Windows.Forms.Label Label_Settings;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Label_Notification;
     }
 }

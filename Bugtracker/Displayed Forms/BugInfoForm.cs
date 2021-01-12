@@ -56,7 +56,7 @@ namespace Bugtracker
             // as bug list is no longer cleared when going into the bug info form, we can use the referenced
             // bug's id to find the ref'd bug in the list so we have a bug to pass into the bugclicked 
             // method. we can also get its title to display as label text.
-            if (currentBug.referencedBug != null)
+            if (currentBug.referencedBug != "0")
             {
                 BugObject refBug = BugObject.Bugs.Find(i => i.idbug == currentBug.referencedBug);
                 Label_RefBug.Text = refBug.title;

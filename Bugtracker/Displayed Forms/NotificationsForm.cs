@@ -55,12 +55,57 @@ namespace Bugtracker
             // if it's a new post then user will want to see the bug's updated status - can deref relatedid for status
 
             DataTable table = Connection.GetDbConn().GetDataTable($"SELECT * FROM tonotify INNER JOIN notification as n " +
-                $"on n.idnotification = tonotify.notifid WHERE tonotify.userid = {UserObject.loggedUser.iduser}");
-            //foreach { DataRow row in table}
-            //{
-            //    // display the notification differently depending on type, add on click to show related info
-            //}
+                $"on n.idnotification = tonotify.notifid WHERE tonotify.userid = {UserObject.loggedUser.iduser} " +
+                $"ORDER BY n.timestamp ASC");
+            int panelYpos = 16;
+            foreach (DataRow row in table.Rows)
+            {
+                string labeltext = "";
+                string userNotifFrom = row[4].ToString();
+                string projId = row[5].ToString();
+                string bugId = row[6].ToString();
+                string timestamp = row[10].ToString();
+                string status = row[9].ToString();
+                // display the notification differently depending on type, add on click to show related info
+                switch (row[8])
+                {
+                    case "new bug":
+                        labeltext = "New bug: " +  bugId + " on project: " + projId + " from user: " + userNotifFrom + " at: " + timestamp + ".";
+                        DataTable dataset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
+                        BugObject newbug = new BugObject(dataset.Rows[0]["idbug"].ToString(),
+                    dataset.Rows[0]["title"].ToString(), dataset.Rows[0]["description"].ToString(), dataset.Rows[0]["location"].ToString(),
+                    dataset.Rows[0]["status"].ToString(),
+                     dataset.Rows[0]["poster"].ToString(), dataset.Rows[0]["project"].ToString(), dataset.Rows[0]["priority"].ToString(),
+                      dataset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(dataset.Rows[0]["timePosted"]));
 
+                        Label notifLabel = new Label
+                        {
+                            Location = new Point(16, panelYpos),
+                            Font = new Font("Arial", 8f, FontStyle.Bold),
+                            ForeColor = Color.FromArgb(82, 82, 82),
+                            //MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 4),
+                            AutoSize = true,
+                            Text = labeltext
+                        };
+                        notifLabel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, newbug));
+
+                        Panel_MasterPanel.Controls.Add(notifLabel);
+                        break;
+
+                }
+               
+                    
+                    //add height of panel plus 10 pixel gap
+                    panelYpos += 56;
+                
+
+            }
+            
+            
+        }
+        private void BugClicked(object sender, EventArgs e, BugObject bug)
+        {
+            display.DisplayBugInfoForm(bug);
         }
     }
 }

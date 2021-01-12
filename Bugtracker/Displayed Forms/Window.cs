@@ -18,6 +18,7 @@ namespace Bugtracker
         PostUpdateForm postUpdateForm;
         DashboardForm dashboardForm;
         SettingsForm settingsForm;
+        NotificationsForm notificationForm;
         
         public static int heightOffset;
         public static int widthOffset; // These will be calculated in the resize function, static so that other forms
@@ -179,6 +180,25 @@ namespace Bugtracker
             //Controls.Add(settingsForm);
             settingsForm.Show();
         }
+        public void DisplayNotificationForm()
+        {
+
+            currentForm = "DisplayNotificationForm";
+            string t = Panel_FormContent.Size.ToString();
+            Panel_FormContent.Controls.Clear();
+            //Controls.Clear();
+            notificationForm = new NotificationsForm(this)
+            {
+                TopLevel = false
+            };
+            Panel_FormContent.Controls.Add(notificationForm);
+            //Controls.Add(projForm);
+            //Panel_FormContent.Size = Size;
+            //projForm.Size = Panel_FormContent.Size;
+            ResetButtons();
+            Label_Projects.ForeColor = Color.FromArgb(255, 85, 0);
+            notificationForm.Show();
+        }
 
 
         /// <summary>
@@ -276,6 +296,11 @@ namespace Bugtracker
             Panel_Management.Show();
             label1.Text = Convert.ToString(Panel_Management.Visible);
             label2.Text = Panel_Management.BackColor.Name;
+        }
+
+        private void Label_Notification_Click(object sender, EventArgs e)
+        {
+            DisplayNotificationForm();
         }
     }
 }
