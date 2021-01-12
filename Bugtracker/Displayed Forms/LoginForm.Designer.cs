@@ -60,6 +60,9 @@
             this.Label_RegisterTitle = new System.Windows.Forms.Label();
             this.Button_Register = new System.Windows.Forms.Button();
             this.TextBox_RegisterUsername = new System.Windows.Forms.TextBox();
+            this.PictureBox_RegisterEmail = new System.Windows.Forms.PictureBox();
+            this.PictureBox_RegisterPassword = new System.Windows.Forms.PictureBox();
+            this.PictureBox_RegisterUsername = new System.Windows.Forms.PictureBox();
             this.Button_RegisterPasswordVisibility = new System.Windows.Forms.Button();
             this.Button_RegisterMinimize = new System.Windows.Forms.Button();
             this.Button_RegisterClose = new System.Windows.Forms.Button();
@@ -72,6 +75,9 @@
             this.Panel_Login.SuspendLayout();
             this.Panel_TopBar.SuspendLayout();
             this.Panel_Registration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LogoSmall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginUsername)).BeginInit();
@@ -332,13 +338,14 @@
             // Panel_Registration
             // 
             this.Panel_Registration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Panel_Registration.Controls.Add(this.PictureBox_RegisterEmail);
+            this.Panel_Registration.Controls.Add(this.PictureBox_RegisterPassword);
+            this.Panel_Registration.Controls.Add(this.PictureBox_RegisterUsername);
             this.Panel_Registration.Controls.Add(this.Label_RegisterEmailSeparator);
-            this.Panel_Registration.Controls.Add(this.TextBox_RegisterEmail);
             this.Panel_Registration.Controls.Add(this.Label_RegisterEmail);
             this.Panel_Registration.Controls.Add(this.Button_RegisterPasswordVisibility);
             this.Panel_Registration.Controls.Add(this.Label_HaveAccount);
             this.Panel_Registration.Controls.Add(this.Label_RegisterPasswordSeparator);
-            this.Panel_Registration.Controls.Add(this.TextBox_RegisterPassword);
             this.Panel_Registration.Controls.Add(this.Label_RegisterPassword);
             this.Panel_Registration.Controls.Add(this.Label_RegisterUsernameSeparator);
             this.Panel_Registration.Controls.Add(this.Label_RegisterUsername);
@@ -346,6 +353,8 @@
             this.Panel_Registration.Controls.Add(this.Button_Register);
             this.Panel_Registration.Controls.Add(this.Button_GoToLogin);
             this.Panel_Registration.Controls.Add(this.TextBox_RegisterUsername);
+            this.Panel_Registration.Controls.Add(this.TextBox_RegisterPassword);
+            this.Panel_Registration.Controls.Add(this.TextBox_RegisterEmail);
             this.Panel_Registration.Location = new System.Drawing.Point(456, 32);
             this.Panel_Registration.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_Registration.MaximumSize = new System.Drawing.Size(456, 494);
@@ -368,24 +377,27 @@
             this.TextBox_RegisterEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TextBox_RegisterEmail.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.TextBox_RegisterEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
-            this.TextBox_RegisterEmail.Location = new System.Drawing.Point(32, 340);
+            this.TextBox_RegisterEmail.Location = new System.Drawing.Point(65, 340);
             this.TextBox_RegisterEmail.Margin = new System.Windows.Forms.Padding(32, 3, 32, 3);
             this.TextBox_RegisterEmail.Name = "TextBox_RegisterEmail";
-            this.TextBox_RegisterEmail.Size = new System.Drawing.Size(389, 19);
+            this.TextBox_RegisterEmail.Size = new System.Drawing.Size(356, 19);
             this.TextBox_RegisterEmail.TabIndex = 2;
             this.TextBox_RegisterEmail.TabStop = false;
+            this.TextBox_RegisterEmail.Enter += new System.EventHandler(this.TextBox_RegisterEmail_Enter);
+            this.TextBox_RegisterEmail.Leave += new System.EventHandler(this.TextBox_RegisterEmail_Leave);
             // 
             // Label_RegisterEmail
             // 
             this.Label_RegisterEmail.AutoSize = true;
             this.Label_RegisterEmail.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.Label_RegisterEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.Label_RegisterEmail.Location = new System.Drawing.Point(28, 312);
+            this.Label_RegisterEmail.Location = new System.Drawing.Point(61, 340);
             this.Label_RegisterEmail.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_RegisterEmail.Name = "Label_RegisterEmail";
             this.Label_RegisterEmail.Size = new System.Drawing.Size(51, 19);
             this.Label_RegisterEmail.TabIndex = 43;
             this.Label_RegisterEmail.Text = "Email";
+            this.Label_RegisterEmail.Click += new System.EventHandler(this.Label_RegisterEmail_Click);
             // 
             // Label_HaveAccount
             // 
@@ -413,26 +425,29 @@
             this.TextBox_RegisterPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TextBox_RegisterPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.TextBox_RegisterPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
-            this.TextBox_RegisterPassword.Location = new System.Drawing.Point(32, 253);
+            this.TextBox_RegisterPassword.Location = new System.Drawing.Point(65, 253);
             this.TextBox_RegisterPassword.Margin = new System.Windows.Forms.Padding(32, 3, 32, 3);
             this.TextBox_RegisterPassword.Name = "TextBox_RegisterPassword";
-            this.TextBox_RegisterPassword.Size = new System.Drawing.Size(389, 19);
+            this.TextBox_RegisterPassword.Size = new System.Drawing.Size(356, 19);
             this.TextBox_RegisterPassword.TabIndex = 1;
             this.TextBox_RegisterPassword.TabStop = false;
             this.TextBox_RegisterPassword.UseSystemPasswordChar = true;
             this.TextBox_RegisterPassword.TextChanged += new System.EventHandler(this.TextBox_RegisterPassword_TextChanged);
+            this.TextBox_RegisterPassword.Enter += new System.EventHandler(this.TextBox_RegisterPassword_Enter);
+            this.TextBox_RegisterPassword.Leave += new System.EventHandler(this.TextBox_RegisterPassword_Leave);
             // 
             // Label_RegisterPassword
             // 
             this.Label_RegisterPassword.AutoSize = true;
             this.Label_RegisterPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.Label_RegisterPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.Label_RegisterPassword.Location = new System.Drawing.Point(29, 223);
+            this.Label_RegisterPassword.Location = new System.Drawing.Point(61, 255);
             this.Label_RegisterPassword.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_RegisterPassword.Name = "Label_RegisterPassword";
             this.Label_RegisterPassword.Size = new System.Drawing.Size(86, 19);
             this.Label_RegisterPassword.TabIndex = 39;
             this.Label_RegisterPassword.Text = "Password";
+            this.Label_RegisterPassword.Click += new System.EventHandler(this.Label_RegisterPassword_Click);
             // 
             // Label_RegisterUsernameSeparator
             // 
@@ -448,12 +463,13 @@
             this.Label_RegisterUsername.AutoSize = true;
             this.Label_RegisterUsername.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.Label_RegisterUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.Label_RegisterUsername.Location = new System.Drawing.Point(29, 135);
+            this.Label_RegisterUsername.Location = new System.Drawing.Point(61, 164);
             this.Label_RegisterUsername.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_RegisterUsername.Name = "Label_RegisterUsername";
             this.Label_RegisterUsername.Size = new System.Drawing.Size(87, 19);
             this.Label_RegisterUsername.TabIndex = 5;
             this.Label_RegisterUsername.Text = "Username";
+            this.Label_RegisterUsername.Click += new System.EventHandler(this.Label_RegisterUsername_Click);
             // 
             // Label_RegisterTitle
             // 
@@ -490,12 +506,50 @@
             this.TextBox_RegisterUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TextBox_RegisterUsername.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.TextBox_RegisterUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
-            this.TextBox_RegisterUsername.Location = new System.Drawing.Point(32, 164);
+            this.TextBox_RegisterUsername.Location = new System.Drawing.Point(65, 164);
             this.TextBox_RegisterUsername.Margin = new System.Windows.Forms.Padding(32, 3, 32, 3);
             this.TextBox_RegisterUsername.Name = "TextBox_RegisterUsername";
-            this.TextBox_RegisterUsername.Size = new System.Drawing.Size(389, 19);
+            this.TextBox_RegisterUsername.Size = new System.Drawing.Size(356, 19);
             this.TextBox_RegisterUsername.TabIndex = 0;
             this.TextBox_RegisterUsername.TabStop = false;
+            this.TextBox_RegisterUsername.Enter += new System.EventHandler(this.TextBox_RegisterUsername_Enter);
+            this.TextBox_RegisterUsername.Leave += new System.EventHandler(this.TextBox_RegisterUsername_Leave);
+            // 
+            // PictureBox_RegisterEmail
+            // 
+            this.PictureBox_RegisterEmail.BackgroundImage = global::Bugtracker.Properties.Resources.bt_login_email;
+            this.PictureBox_RegisterEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_RegisterEmail.Location = new System.Drawing.Point(32, 335);
+            this.PictureBox_RegisterEmail.Margin = new System.Windows.Forms.Padding(0);
+            this.PictureBox_RegisterEmail.Name = "PictureBox_RegisterEmail";
+            this.PictureBox_RegisterEmail.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_RegisterEmail.TabIndex = 47;
+            this.PictureBox_RegisterEmail.TabStop = false;
+            this.PictureBox_RegisterEmail.Click += new System.EventHandler(this.PictureBox_RegisterEmail_Click);
+            // 
+            // PictureBox_RegisterPassword
+            // 
+            this.PictureBox_RegisterPassword.BackgroundImage = global::Bugtracker.Properties.Resources.bt_login_password;
+            this.PictureBox_RegisterPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_RegisterPassword.Location = new System.Drawing.Point(32, 248);
+            this.PictureBox_RegisterPassword.Margin = new System.Windows.Forms.Padding(0);
+            this.PictureBox_RegisterPassword.Name = "PictureBox_RegisterPassword";
+            this.PictureBox_RegisterPassword.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_RegisterPassword.TabIndex = 46;
+            this.PictureBox_RegisterPassword.TabStop = false;
+            this.PictureBox_RegisterPassword.Click += new System.EventHandler(this.PictureBox_RegisterPassword_Click);
+            // 
+            // PictureBox_RegisterUsername
+            // 
+            this.PictureBox_RegisterUsername.BackgroundImage = global::Bugtracker.Properties.Resources.bt_login_username;
+            this.PictureBox_RegisterUsername.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_RegisterUsername.Location = new System.Drawing.Point(32, 159);
+            this.PictureBox_RegisterUsername.Margin = new System.Windows.Forms.Padding(0);
+            this.PictureBox_RegisterUsername.Name = "PictureBox_RegisterUsername";
+            this.PictureBox_RegisterUsername.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_RegisterUsername.TabIndex = 45;
+            this.PictureBox_RegisterUsername.TabStop = false;
+            this.PictureBox_RegisterUsername.Click += new System.EventHandler(this.PictureBox_RegisterUsername_Click);
             // 
             // Button_RegisterPasswordVisibility
             // 
@@ -677,6 +731,9 @@
             this.Panel_TopBar.ResumeLayout(false);
             this.Panel_Registration.ResumeLayout(false);
             this.Panel_Registration.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LogoSmall)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginUsername)).EndInit();
@@ -725,5 +782,8 @@
         private System.Windows.Forms.Button Button_RegisterClose;
         private System.Windows.Forms.PictureBox PictureBox_LoginUsername;
         private System.Windows.Forms.PictureBox PictureBox_LoginPassword;
+        private System.Windows.Forms.PictureBox PictureBox_RegisterEmail;
+        private System.Windows.Forms.PictureBox PictureBox_RegisterPassword;
+        private System.Windows.Forms.PictureBox PictureBox_RegisterUsername;
     }
 }

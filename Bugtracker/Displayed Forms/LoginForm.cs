@@ -44,6 +44,12 @@ namespace Bugtracker
         int loginUserY;
         int loginPassX;
         int loginPassY;
+        int registerUserX;
+        int registerUserY;
+        int registerPassX;
+        int registerPassY;
+        int registerEmailX;
+        int registerEmailY;
 
         private bool passwordVisible = false;
 
@@ -213,9 +219,13 @@ namespace Bugtracker
                 loginPanel.Location = new Point(x, y);
             }
             position = 'r';
+
             passwordVisible = false;
             HidePasswords();
 
+            Label_RegisterUsername.Location = new Point(61, 164);
+            Label_RegisterPassword.Location = new Point(61, 255);
+            Label_RegisterEmail.Location = new Point(61, 340);
         }
 
         private void Button_RegisterClose_Click(object sender, EventArgs e)
@@ -369,6 +379,144 @@ namespace Bugtracker
         private void PictureBox_LoginPassword_Click(object sender, EventArgs e)
         {
             TextBox_LoginPassword.Focus();
+        }
+
+        private void TextBox_RegisterUsername_Enter(object sender, EventArgs e)
+        {
+            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 86, 0);
+
+            if (TextBox_RegisterUsername.TextLength == 0)
+            {
+                registerUserX = Label_RegisterUsername.Location.X;
+                registerUserY = Label_RegisterUsername.Location.Y;
+
+                while (Label_RegisterUsername.Location.Y != 135)
+                {
+                    registerUserY -= 1;
+                    Label_RegisterUsername.Location = new Point(registerUserX, registerUserY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_RegisterUsername_Leave(object sender, EventArgs e)
+        {
+            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
+            if (TextBox_RegisterUsername.TextLength == 0)
+            {
+                registerUserX = Label_RegisterUsername.Location.X;
+                registerUserY = Label_RegisterUsername.Location.Y;
+
+                while (Label_RegisterUsername.Location.Y != 164)
+                {
+                    registerUserY += 1;
+                    Label_RegisterUsername.Location = new Point(registerUserX, registerUserY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_RegisterPassword_Enter(object sender, EventArgs e)
+        {
+            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(255, 86, 0);
+
+            if (TextBox_RegisterPassword.TextLength == 0)
+            {
+                registerPassX = Label_RegisterPassword.Location.X;
+                registerPassY = Label_RegisterPassword.Location.Y;
+
+                while (Label_RegisterPassword.Location.Y != 223)
+                {
+                    registerPassY -= 1;
+                    Label_RegisterPassword.Location = new Point(registerPassX, registerPassY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_RegisterPassword_Leave(object sender, EventArgs e)
+        {
+            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
+            if (TextBox_RegisterPassword.TextLength == 0)
+            {
+                registerPassX = Label_RegisterPassword.Location.X;
+                registerPassY = Label_RegisterPassword.Location.Y;
+
+                while (Label_RegisterPassword.Location.Y != 255)
+                {
+                    registerPassY += 1;
+                    Label_RegisterPassword.Location = new Point(registerPassX, registerPassY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_RegisterEmail_Enter(object sender, EventArgs e)
+        {
+            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(255, 86, 0);
+
+            if (TextBox_RegisterEmail.TextLength == 0)
+            {
+                registerEmailX = Label_RegisterEmail.Location.X;
+                registerEmailY = Label_RegisterEmail.Location.Y;
+
+                while (Label_RegisterEmail.Location.Y != 312)
+                {
+                    registerEmailY -= 1;
+                    Label_RegisterEmail.Location = new Point(registerEmailX, registerEmailY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void TextBox_RegisterEmail_Leave(object sender, EventArgs e)
+        {
+            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
+            if (TextBox_RegisterEmail.TextLength == 0)
+            {
+                registerEmailX = Label_RegisterEmail.Location.X;
+                registerEmailY = Label_RegisterEmail.Location.Y;
+
+                while (Label_RegisterEmail.Location.Y != 340)
+                {
+                    registerEmailY += 1;
+                    Label_RegisterEmail.Location = new Point(registerEmailX, registerEmailY);
+                    Thread.Sleep(3);
+                }
+            }
+        }
+
+        private void Label_RegisterUsername_Click(object sender, EventArgs e)
+        {
+            TextBox_RegisterUsername.Focus();
+        }
+
+        private void Label_RegisterPassword_Click(object sender, EventArgs e)
+        {
+            TextBox_RegisterPassword.Focus();
+        }
+
+        private void Label_RegisterEmail_Click(object sender, EventArgs e)
+        {
+            TextBox_RegisterEmail.Focus();
+        }
+
+        private void PictureBox_RegisterUsername_Click(object sender, EventArgs e)
+        {
+            TextBox_RegisterUsername.Focus();
+        }
+
+        private void PictureBox_RegisterPassword_Click(object sender, EventArgs e)
+        {
+            TextBox_RegisterPassword.Focus();
+        }
+
+        private void PictureBox_RegisterEmail_Click(object sender, EventArgs e)
+        {
+            TextBox_RegisterEmail.Focus();
         }
     }
 }
