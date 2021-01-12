@@ -44,11 +44,11 @@ namespace Bugtracker
 
         }
 
-        public static string FollowProject(string userId, string projectId)
-        {
-            string query = $"INSERT INTO projectusers (user, project) VALUES ({userId}, {projectId})";
-            return query;
-        }
+        //public static string FollowProject(string userId, string projectId)
+        //{
+        //    string query = $"INSERT INTO projectusers (user, project) VALUES ({userId}, {projectId})";
+        //    return query;
+        //} handled in sqlfollow now as bugs, projects have their own follow, unfollow logic
         public static string GetProjects()
         {
             string query = $"SELECT * FROM project ORDER BY projName ASC";

@@ -31,7 +31,7 @@ namespace Bugtracker
         ///  have to check if an instance already exists (in case upgrading user from follow to allow)
         /// </summary>
         private MySqlCommand _insertNotification = new MySqlCommand("INSERT INTO notification " +
-        "(usernotif, project, bug, update, type, status, timestamp) " +
+        "(usernotif, project, bug, `update`, type, status, timestamp) " +
            "VALUES (@usernotif, @project, @bug, @update, @type, @status, @timestamp)", Connection.connToDb);
 
         public void InsertNotification(string usernotif, string project, string bug,  string update,
@@ -64,28 +64,28 @@ namespace Bugtracker
         /// <summary>
         /// handles notifying relevant users of a notification and tracking if they have read it or not
         /// </summary>
-        private MySqlCommand _insertNotifType = new MySqlCommand("INSERT INTO tonotify " +
-       "(notifid, userid, read) " +
+        private MySqlCommand _insertToNotify = new MySqlCommand("INSERT INTO tonotify " +
+       "(notifid, userid, `read`) " +
           "VALUES (@notifid, @userid, @read)", Connection.connToDb);
 
-        public void InsertNotifType(string notifid, string userid, string read)
+        public void InsertToNotify(string notifid, string userid, string read)
         {
             // Set parameters
-            _insertNotifType.Parameters.Clear();
-            _insertNotifType.Parameters.AddWithValue("@notifid", notifid);
-            _insertNotifType.Parameters.AddWithValue("@userid", userid);
-            _insertNotifType.Parameters.AddWithValue("@read", read);
+            _insertToNotify.Parameters.Clear();
+            _insertToNotify.Parameters.AddWithValue("@notifid", notifid);
+            _insertToNotify.Parameters.AddWithValue("@userid", userid);
+            _insertToNotify.Parameters.AddWithValue("@read", read);
             using (Connection.connToDb = new MySqlConnection(Connection.connStr))
             {
                 try
                 {
-                    _insertNotifType.Connection.Open();
-                    _insertNotifType.ExecuteNonQuery();
+                    //_insertToNotify.Connection.Open();
+                    _insertToNotify.ExecuteNonQuery();
                 }
                 catch (Exception e)
                 {
                     //Will trial this with a .ToString of the sql query (i have no idea if this will work)
-                    MessageBox.Show("This query will fail " + e.Message + _insertNotifType.ToString());
+                    MessageBox.Show("This query will fail " + e.Message + _insertToNotify.ToString());
                 }
             }
         }

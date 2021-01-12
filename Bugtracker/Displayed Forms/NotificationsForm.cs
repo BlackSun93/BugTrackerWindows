@@ -54,6 +54,13 @@ namespace Bugtracker
             // user.idnotification, newPost, update's.id, bug, timestamp
             // if it's a new post then user will want to see the bug's updated status - can deref relatedid for status
 
+            DataTable table = Connection.GetDbConn().GetDataTable($"SELECT * FROM tonotify INNER JOIN notification as n " +
+                $"on n.idnotification = tonotify.notifid WHERE tonotify.userid = {UserObject.loggedUser.iduser}");
+            //foreach { DataRow row in table}
+            //{
+            //    // display the notification differently depending on type, add on click to show related info
+            //}
+
         }
     }
 }

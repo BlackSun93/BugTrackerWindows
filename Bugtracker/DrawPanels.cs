@@ -287,7 +287,7 @@ namespace Bugtracker
             try
             {
                 SqlProject sq = new SqlProject();
-                Connection.GetDbConn().CreateCommand(SqlProject.FollowProject(UserObject.loggedUser.iduser, project.idproject));
+                Connection.GetDbConn().CreateCommand(SqlFollow.FollowProject(UserObject.loggedUser.iduser, project.idproject));
 
                 MessageBox.Show("Request sent to project creator");
             }

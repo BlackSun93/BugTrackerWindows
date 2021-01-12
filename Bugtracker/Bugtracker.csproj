@@ -182,6 +182,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL classes\SqlBug.cs" />
+    <Compile Include="SQL classes\SqlFollow.cs" />
     <Compile Include="SQL classes\SqlNotifications.cs" />
     <Compile Include="SQL classes\SqlProject.cs" />
     <Compile Include="SQL classes\SqlUpdate.cs" />

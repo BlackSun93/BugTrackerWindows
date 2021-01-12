@@ -31,6 +31,7 @@
             this.Panel_DisplayBugs = new System.Windows.Forms.Panel();
             this.Button_NewBug = new System.Windows.Forms.Button();
             this.Button_Back = new System.Windows.Forms.Button();
+            this.Button_Follow = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Panel_DisplayBugs
@@ -61,12 +62,22 @@
             this.Button_Back.UseVisualStyleBackColor = true;
             this.Button_Back.Click += new System.EventHandler(this.Button_Back_Click);
             // 
+            // Button_Follow
+            // 
+            this.Button_Follow.Location = new System.Drawing.Point(259, 9);
+            this.Button_Follow.Name = "Button_Follow";
+            this.Button_Follow.Size = new System.Drawing.Size(124, 23);
+            this.Button_Follow.TabIndex = 6;
+            this.Button_Follow.Text = "button1";
+            this.Button_Follow.UseVisualStyleBackColor = true;
+            // 
             // BugsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(620, 480);
+            this.Controls.Add(this.Button_Follow);
             this.Controls.Add(this.Button_Back);
             this.Controls.Add(this.Button_NewBug);
             this.Controls.Add(this.Panel_DisplayBugs);
@@ -84,5 +95,6 @@
         private System.Windows.Forms.Panel Panel_DisplayBugs;
         private System.Windows.Forms.Button Button_NewBug;
         private System.Windows.Forms.Button Button_Back;
+        private System.Windows.Forms.Button Button_Follow;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Bugtracker
 {
@@ -95,13 +96,34 @@ namespace Bugtracker
                 referencedBug = Combo_RefExistBug.SelectedValue.ToString();
             }
             
-
-
-
-
             SqlBug newBug = new SqlBug();
             newBug.InsertBug(title,  description,  location,  timePosted,  status,  poster,  project,  priority, referencedBug);
-
+            // now we need to get the bug's id 
+            Thread.Sleep(2000);
+            //string time = timePosted.ToString("yyyy-MM-dd HH:mm:ss");
+            DataSet ds = Connection.GetDbConn().GetDataSet($"SELECT idbug FROM bug WHERE poster = {poster} AND " +
+                $"title = '{title}' AND project = {project}");
+            //DataSet ds = Connection.GetDbConn().GetDataSet($"SELECT @@identity");
+            string newBugId = ds.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+            // not we make a notification for the new bug
+            SqlNotifications notif = new SqlNotifications();
+            notif.InsertNotification(poster, project, newBugId, "", "new bug", status, timePosted);
+            Thread.Sleep(5000);
+            // get the notification's id
+            DataSet getNotifId = Connection.GetDbConn().GetDataSet($"SELECT idnotification FROM notification" +
+                $" WHERE usernotif = {poster} AND project = {project} AND bug = {newBugId} AND `update` = '{"new bug"}'");
+            string newNotifId = getNotifId.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+            // now we can make a line to notify each user of this new bug
+            // creates a line for each user where the user is following this project
+            
+            DataTable toNotify = Connection.GetDbConn().GetDataTable($"SELECT user FROM followproject " +
+                $"WHERE project = {project}");
+            Connection.connToDb.Close(); // advising conn already open for query below
+            foreach (DataRow follower in toNotify.Rows)
+            {
+                notif.InsertToNotify(newNotifId, follower["user"].ToString(), "0");
+            }
+            
 
             //InsertBug(string title, int description, string location, DateTime timePosted, string status,
             //string poster, string project, string priority)

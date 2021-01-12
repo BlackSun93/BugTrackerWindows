@@ -26,6 +26,8 @@ namespace Bugtracker
                 currentProject = id; //need to track which project is being viewed so that newly reported bugs are
                 //connected to the correct project and so on returning from the new bug screen, the correct project
                 //is loaded. id is passed from a function applied to the panels in ProjectsForm
+                // a check to see if user is following this project, make a follow/ unfollow button depending
+                FollowButton();
                 DoResize();
             }
         }
@@ -201,6 +203,74 @@ namespace Bugtracker
             Panel_DisplayBugs.Height = display.Height - Window.heightOffset;
 
             LoadBugs();
+        }
+        private void FollowButton()
+        {
+            DataSet followCheck = Connection.GetDbConn().GetDataSet($"SELECT * FROM followproject " +
+                $" WHERE user = {UserObject.loggedUser.iduser} AND project = {currentProject}");
+            if (followCheck.Tables[0].Rows.Count != 0) // if user is following this project
+            {
+                //Button Button_Unfollow = new Button()
+                //{
+                //    Location = new Point(250, 9),
+                //    Text = "UnFollow project",
+                //    Font = new Font("Arial", 8f, FontStyle.Bold),
+                //    AutoSize = true,
+
+
+                //};
+                Button_Follow.Text = "Unfollow Project";
+                Button_Follow.Click += new EventHandler((sender, e) => Unfollow(sender, e, currentProject));
+                Button_Follow.Visible = true;
+            }
+            else
+            {
+                //Button Button_Follow = new Button()
+                //{
+                //    Location = new Point(250, 9),
+                //    Text = "Follow This Project",
+                //    Font = new Font("Arial", 8f, FontStyle.Bold),
+                //    AutoSize = true,
+
+                //};
+                Button_Follow.Text = "Follow Project";
+                Button_Follow.Click += new EventHandler((sender, e) => Follow(sender, e, currentProject));
+                Button_Follow.Visible = true;
+            }
+            
+         
+            //Button_RequestAccess.Click += new EventHandler((sender, e) => RequestAccess(sender, e, project));
+            //Panel_ProjectPanel.Controls.Add(Button_RequestAccess);
+            //containerPanel.Controls.Add(Panel_ProjectPanel);
+        }
+
+        private void Follow(object sender, EventArgs e, string project)
+        {
+            // create a follow project object which will notify the project poster that a user wants access
+            SqlFollow sq = new SqlFollow();
+            Connection.GetDbConn().CreateCommand(SqlFollow.FollowProject(UserObject.loggedUser.iduser, currentProject));
+
+            MessageBox.Show("Followed");
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Request already sent");
+            //}
+
+        }
+        private void Unfollow(object sender, EventArgs e, string project)
+        {
+            // create a follow project object which will notify the project poster that a user wants access
+            
+                SqlFollow sq = new SqlFollow();
+                Connection.GetDbConn().CreateCommand(SqlFollow.UnFollowProject(UserObject.loggedUser.iduser, currentProject));
+
+                MessageBox.Show("Unfollowed");
+            
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Request already sent");
+            //}
+
         }
     }
 }

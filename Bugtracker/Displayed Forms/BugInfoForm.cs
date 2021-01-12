@@ -53,7 +53,10 @@ namespace Bugtracker
             Label_Poster.Text = currentBug.poster;
             Label_Priority.Text = currentBug.priority;
             Label_Status.Text = currentBug.status;
-            if (currentBug.referencedBug != "")
+            // as bug list is no longer cleared when going into the bug info form, we can use the referenced
+            // bug's id to find the ref'd bug in the list so we have a bug to pass into the bugclicked 
+            // method. we can also get its title to display as label text.
+            if (currentBug.referencedBug != null)
             {
                 BugObject refBug = BugObject.Bugs.Find(i => i.idbug == currentBug.referencedBug);
                 Label_RefBug.Text = refBug.title;
