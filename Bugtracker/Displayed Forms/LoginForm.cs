@@ -58,6 +58,14 @@ namespace Bugtracker
         public LoginForm()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.StayLoggedIn == true)
+            {
+                CheckBox_StayLoggedIn.Checked = true;
+            }
+            else
+            {
+                CheckBox_StayLoggedIn.Checked = false;
+            }
             FormBorderStyle = FormBorderStyle.None;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
             loginPanel = new LoginPanel();
@@ -89,18 +97,31 @@ namespace Bugtracker
         /// <param name="e"></param>
         private void Button_Login_Click(object sender, EventArgs e)
         {
-            SqlUser login = new SqlUser();
-            string aaa = TextBox_LoginUsername.Text;
-            string bb = TextBox_LoginPassword.Text;
-            string oi = $"SELECT * from user WHERE username = '{aaa}' AND password = '{bb}'";
-            DataTable db = Connection.GetDbConn().GetDataTable(oi );
+            SqlUser loginUser = new SqlUser();
+            string tempUsername = TextBox_LoginUsername.Text;
+            string tempPassword = TextBox_LoginPassword.Text;
+            string tempQuery = $"SELECT * from user WHERE username = '{tempUsername}' AND password = '{tempPassword}'";
+            DataTable db = Connection.GetDbConn().GetDataTable(tempQuery );
             //login.GetUser(TextBox_LoginUsername.Text, TextBox_LoginPassword.Text);
 
             UserObject.loggedUser.username= db.Rows[0].ItemArray[1].ToString();
             UserObject.loggedUser.iduser = db.Rows[0].ItemArray[0].ToString();
+
             if (UserObject.loggedUser.username != "")
             {
+                if (CheckBox_StayLoggedIn.CheckState == CheckState.Checked)
+                {
+                    Properties.Settings.Default.StayLoggedIn = true;
+                    Properties.Settings.Default.Save();
+                }
+                else if (CheckBox_StayLoggedIn.CheckState == CheckState.Unchecked)
+                {
+                    Properties.Settings.Default.StayLoggedIn = false;
+                    Properties.Settings.Default.Save();
+                }
+
                 Hide();
+                loginPanel.Hide();
                 Window w = new Window();
                 w.Show();
             }
@@ -556,6 +577,11 @@ namespace Bugtracker
         private void Panel_Registration_Click(object sender, EventArgs e)
         {
             Panel_Registration.Focus();
+        }
+
+        private void CheckBox_StayLoggedIn_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

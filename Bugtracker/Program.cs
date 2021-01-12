@@ -31,8 +31,16 @@ namespace Bugtracker
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DriveApi.GetDriveService();
-           
-            Application.Run(new LoginForm());
+
+            if (Properties.Settings.Default.StayLoggedIn == true)
+            {
+                Application.Run(new Window());
+            }
+            else
+            {
+                Application.Run(new LoginForm());
+            }
+            
         }
     }
 }

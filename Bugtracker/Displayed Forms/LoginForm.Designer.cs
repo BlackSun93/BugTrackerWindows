@@ -34,6 +34,7 @@
             this.Button_Login = new System.Windows.Forms.Button();
             this.Button_GoToRegister = new System.Windows.Forms.Button();
             this.Panel_Login = new System.Windows.Forms.Panel();
+            this.CheckBox_StayLoggedIn = new System.Windows.Forms.CheckBox();
             this.PictureBox_LoginPassword = new System.Windows.Forms.PictureBox();
             this.PictureBox_LoginUsername = new System.Windows.Forms.PictureBox();
             this.Button_LoginPasswordVisibility = new System.Windows.Forms.Button();
@@ -141,6 +142,7 @@
             // Panel_Login
             // 
             this.Panel_Login.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Panel_Login.Controls.Add(this.CheckBox_StayLoggedIn);
             this.Panel_Login.Controls.Add(this.PictureBox_LoginPassword);
             this.Panel_Login.Controls.Add(this.PictureBox_LoginUsername);
             this.Panel_Login.Controls.Add(this.Button_LoginPasswordVisibility);
@@ -164,6 +166,18 @@
             this.Panel_Login.Size = new System.Drawing.Size(456, 494);
             this.Panel_Login.TabIndex = 6;
             this.Panel_Login.Click += new System.EventHandler(this.Panel_Login_Click);
+            // 
+            // CheckBox_StayLoggedIn
+            // 
+            this.CheckBox_StayLoggedIn.AutoSize = true;
+            this.CheckBox_StayLoggedIn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.CheckBox_StayLoggedIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.CheckBox_StayLoggedIn.Location = new System.Drawing.Point(32, 365);
+            this.CheckBox_StayLoggedIn.Name = "CheckBox_StayLoggedIn";
+            this.CheckBox_StayLoggedIn.Size = new System.Drawing.Size(159, 20);
+            this.CheckBox_StayLoggedIn.TabIndex = 45;
+            this.CheckBox_StayLoggedIn.Text = "Keep me logged in";
+            this.CheckBox_StayLoggedIn.UseVisualStyleBackColor = true;
             // 
             // PictureBox_LoginPassword
             // 
@@ -787,5 +801,6 @@
         private System.Windows.Forms.PictureBox PictureBox_RegisterEmail;
         private System.Windows.Forms.PictureBox PictureBox_RegisterPassword;
         private System.Windows.Forms.PictureBox PictureBox_RegisterUsername;
+        private System.Windows.Forms.CheckBox CheckBox_StayLoggedIn;
     }
 }

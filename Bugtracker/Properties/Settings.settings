@@ -12,5 +12,8 @@
     <Setting Name="managementPanel_Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">255, 85, 0</Value>
     </Setting>
+    <Setting Name="StayLoggedIn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

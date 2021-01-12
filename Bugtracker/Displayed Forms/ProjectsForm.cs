@@ -115,7 +115,9 @@ namespace Bugtracker
             ProjectObject.UserProjects.Clear();
             UserObject.loggedUser.username = "";
             UserObject.loggedUser.iduser = "";
-            this.Hide();
+            Properties.Settings.Default.StayLoggedIn = false;
+            Properties.Settings.Default.Save();
+            Hide();
             display.Hide();
             LoginForm lf = new LoginForm();
             lf.Show();
