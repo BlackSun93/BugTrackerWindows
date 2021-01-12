@@ -49,8 +49,8 @@
             this.Panel_TopBar = new System.Windows.Forms.Panel();
             this.Button_RegisterMinimize = new System.Windows.Forms.Button();
             this.Button_RegisterClose = new System.Windows.Forms.Button();
-            this.Label_Title = new System.Windows.Forms.Label();
-            this.PictureBox_LogoSmall = new System.Windows.Forms.PictureBox();
+            this.Label_LoginTopBarTitle = new System.Windows.Forms.Label();
+            this.PictureBox_LoginTopBarLogo = new System.Windows.Forms.PictureBox();
             this.Button_LoginMinimize = new System.Windows.Forms.Button();
             this.Button_LoginClose = new System.Windows.Forms.Button();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -72,15 +72,18 @@
             this.TextBox_RegisterPassword = new System.Windows.Forms.TextBox();
             this.TextBox_RegisterEmail = new System.Windows.Forms.TextBox();
             this.Label_RegisterOr = new System.Windows.Forms.Label();
+            this.PictureBox_RegisterTopBarLogo = new System.Windows.Forms.PictureBox();
+            this.Label_RegisterTopBarTitle = new System.Windows.Forms.Label();
             this.Panel_Login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginUsername)).BeginInit();
             this.Panel_TopBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LogoSmall)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginTopBarLogo)).BeginInit();
             this.Panel_Registration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterTopBarLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBox_LoginUsername
@@ -174,6 +177,7 @@
             this.CheckBox_StayLoggedIn.Name = "CheckBox_StayLoggedIn";
             this.CheckBox_StayLoggedIn.Size = new System.Drawing.Size(159, 20);
             this.CheckBox_StayLoggedIn.TabIndex = 45;
+            this.CheckBox_StayLoggedIn.TabStop = false;
             this.CheckBox_StayLoggedIn.Text = "Keep me logged in";
             this.CheckBox_StayLoggedIn.UseVisualStyleBackColor = true;
             // 
@@ -332,10 +336,12 @@
             // 
             // Panel_TopBar
             // 
+            this.Panel_TopBar.Controls.Add(this.Label_RegisterTopBarTitle);
+            this.Panel_TopBar.Controls.Add(this.PictureBox_RegisterTopBarLogo);
             this.Panel_TopBar.Controls.Add(this.Button_RegisterMinimize);
             this.Panel_TopBar.Controls.Add(this.Button_RegisterClose);
-            this.Panel_TopBar.Controls.Add(this.Label_Title);
-            this.Panel_TopBar.Controls.Add(this.PictureBox_LogoSmall);
+            this.Panel_TopBar.Controls.Add(this.Label_LoginTopBarTitle);
+            this.Panel_TopBar.Controls.Add(this.PictureBox_LoginTopBarLogo);
             this.Panel_TopBar.Controls.Add(this.Button_LoginMinimize);
             this.Panel_TopBar.Controls.Add(this.Button_LoginClose);
             this.Panel_TopBar.Location = new System.Drawing.Point(0, 0);
@@ -390,28 +396,28 @@
             this.Button_RegisterClose.UseVisualStyleBackColor = false;
             this.Button_RegisterClose.Click += new System.EventHandler(this.Button_RegisterClose_Click);
             // 
-            // Label_Title
+            // Label_LoginTopBarTitle
             // 
-            this.Label_Title.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.Label_Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
-            this.Label_Title.Location = new System.Drawing.Point(30, 0);
-            this.Label_Title.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_Title.Name = "Label_Title";
-            this.Label_Title.Size = new System.Drawing.Size(76, 32);
-            this.Label_Title.TabIndex = 4;
-            this.Label_Title.Text = "BugTracker";
-            this.Label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Label_LoginTopBarTitle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.Label_LoginTopBarTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.Label_LoginTopBarTitle.Location = new System.Drawing.Point(30, 0);
+            this.Label_LoginTopBarTitle.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_LoginTopBarTitle.Name = "Label_LoginTopBarTitle";
+            this.Label_LoginTopBarTitle.Size = new System.Drawing.Size(76, 32);
+            this.Label_LoginTopBarTitle.TabIndex = 4;
+            this.Label_LoginTopBarTitle.Text = "BugTracker";
+            this.Label_LoginTopBarTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // PictureBox_LogoSmall
+            // PictureBox_LoginTopBarLogo
             // 
-            this.PictureBox_LogoSmall.BackgroundImage = global::Bugtracker.Properties.Resources.bt_logo_small;
-            this.PictureBox_LogoSmall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PictureBox_LogoSmall.Location = new System.Drawing.Point(0, 0);
-            this.PictureBox_LogoSmall.Margin = new System.Windows.Forms.Padding(0);
-            this.PictureBox_LogoSmall.Name = "PictureBox_LogoSmall";
-            this.PictureBox_LogoSmall.Size = new System.Drawing.Size(30, 32);
-            this.PictureBox_LogoSmall.TabIndex = 3;
-            this.PictureBox_LogoSmall.TabStop = false;
+            this.PictureBox_LoginTopBarLogo.BackgroundImage = global::Bugtracker.Properties.Resources.bt_logo_small;
+            this.PictureBox_LoginTopBarLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_LoginTopBarLogo.Location = new System.Drawing.Point(0, 0);
+            this.PictureBox_LoginTopBarLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.PictureBox_LoginTopBarLogo.Name = "PictureBox_LoginTopBarLogo";
+            this.PictureBox_LoginTopBarLogo.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_LoginTopBarLogo.TabIndex = 3;
+            this.PictureBox_LoginTopBarLogo.TabStop = false;
             // 
             // Button_LoginMinimize
             // 
@@ -716,6 +722,29 @@
             this.Label_RegisterOr.Text = "or";
             this.Label_RegisterOr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // PictureBox_RegisterTopBarLogo
+            // 
+            this.PictureBox_RegisterTopBarLogo.BackgroundImage = global::Bugtracker.Properties.Resources.bt_logo_small;
+            this.PictureBox_RegisterTopBarLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PictureBox_RegisterTopBarLogo.Location = new System.Drawing.Point(456, 0);
+            this.PictureBox_RegisterTopBarLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.PictureBox_RegisterTopBarLogo.Name = "PictureBox_RegisterTopBarLogo";
+            this.PictureBox_RegisterTopBarLogo.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_RegisterTopBarLogo.TabIndex = 7;
+            this.PictureBox_RegisterTopBarLogo.TabStop = false;
+            // 
+            // Label_RegisterTopBarTitle
+            // 
+            this.Label_RegisterTopBarTitle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.Label_RegisterTopBarTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.Label_RegisterTopBarTitle.Location = new System.Drawing.Point(486, 0);
+            this.Label_RegisterTopBarTitle.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_RegisterTopBarTitle.Name = "Label_RegisterTopBarTitle";
+            this.Label_RegisterTopBarTitle.Size = new System.Drawing.Size(76, 32);
+            this.Label_RegisterTopBarTitle.TabIndex = 8;
+            this.Label_RegisterTopBarTitle.Text = "BugTracker";
+            this.Label_RegisterTopBarTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -737,12 +766,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginUsername)).EndInit();
             this.Panel_TopBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LogoSmall)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginTopBarLogo)).EndInit();
             this.Panel_Registration.ResumeLayout(false);
             this.Panel_Registration.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_RegisterTopBarLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -757,8 +787,8 @@
         private System.Windows.Forms.Button Button_LoginMinimize;
         private System.Windows.Forms.Button Button_LoginClose;
         private System.Windows.Forms.ToolTip ToolTip;
-        private System.Windows.Forms.PictureBox PictureBox_LogoSmall;
-        private System.Windows.Forms.Label Label_Title;
+        private System.Windows.Forms.PictureBox PictureBox_LoginTopBarLogo;
+        private System.Windows.Forms.Label Label_LoginTopBarTitle;
         private System.Windows.Forms.Label Label_LoginTitle;
         private System.Windows.Forms.Label Label_LoginUsername;
         private System.Windows.Forms.Label Label_LoginUsernameSeparator;
@@ -791,5 +821,7 @@
         private System.Windows.Forms.PictureBox PictureBox_RegisterUsername;
         private System.Windows.Forms.CheckBox CheckBox_StayLoggedIn;
         private System.Windows.Forms.Label Label_RegisterOr;
+        private System.Windows.Forms.Label Label_RegisterTopBarTitle;
+        private System.Windows.Forms.PictureBox PictureBox_RegisterTopBarLogo;
     }
 }
