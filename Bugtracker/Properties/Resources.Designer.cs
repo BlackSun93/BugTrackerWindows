@@ -63,6 +63,16 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_BackgroundShadow3 {
+            get {
+                object obj = ResourceManager.GetObject("bt_BackgroundShadow3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_close {
             get {
                 object obj = ResourceManager.GetObject("bt_close", resourceCulture);
@@ -106,6 +116,16 @@ namespace Bugtracker.Properties {
         internal static System.Drawing.Bitmap bt_login_username {
             get {
                 object obj = ResourceManager.GetObject("bt_login-username", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_loginPanelShadow {
+            get {
+                object obj = ResourceManager.GetObject("bt_loginPanelShadow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

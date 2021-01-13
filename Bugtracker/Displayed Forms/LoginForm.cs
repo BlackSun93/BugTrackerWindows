@@ -248,9 +248,9 @@ namespace Bugtracker
             passwordVisible = false;
             HidePasswords();
 
-            Label_RegisterUsername.Location = new Point(61, 164);
-            Label_RegisterPassword.Location = new Point(61, 253);
-            Label_RegisterEmail.Location = new Point(61, 339);
+            Label_RegisterUsername.Location = new Point(29, 164);
+            Label_RegisterPassword.Location = new Point(29, 253);
+            Label_RegisterEmail.Location = new Point(29, 339);
 
             Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
             Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
