@@ -121,9 +121,6 @@
   <data name="bt_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_login-email" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_login-email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="bt_BackgroundShadow3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_BackgroundShadow3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,6 +132,9 @@
   </data>
   <data name="bt_logo-large" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_logo-large.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_LoginPanelBackTopShadow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_LoginPanelBackTopShadow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,11 +148,17 @@
   <data name="bt_logo-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_logo-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bt_LoginPanelBackBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_LoginPanelBackBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bt_loginPanelShadow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_loginPanelShadow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_LoginPanelBackTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_LoginPanelBackTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_login-email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_login-email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_login-username" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_login-username.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,7 +175,7 @@
   <data name="bt_pass-show" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_pass-show.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_LoginPanelBackBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_LoginPanelBackBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bt_LoginPanelBackBottomShadow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_LoginPanelBackBottomShadow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

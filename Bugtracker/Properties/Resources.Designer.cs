@@ -143,9 +143,29 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_LoginPanelBackBottomShadow {
+            get {
+                object obj = ResourceManager.GetObject("bt_LoginPanelBackBottomShadow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_LoginPanelBackTop {
             get {
                 object obj = ResourceManager.GetObject("bt_LoginPanelBackTop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_LoginPanelBackTopShadow {
+            get {
+                object obj = ResourceManager.GetObject("bt_LoginPanelBackTopShadow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

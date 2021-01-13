@@ -693,21 +693,31 @@ namespace Bugtracker
             ForgotPasswordForm forgotPassword = new ForgotPasswordForm();
             DarkenForm dark1 = new DarkenForm(.7, forgotPassword);
             DarkenForm dark2 = new DarkenForm(.7, forgotPassword);
+            LoginPanelBack dark3 = new LoginPanelBack(.7, forgotPassword, dark2, "top");
+            LoginPanelBack dark4 = new LoginPanelBack(.7, forgotPassword, dark2, "bottom");
 
             dark1.Size = dark1.MinimumSize = dark1.MaximumSize = new Size(Width/2, Height);
             dark1.Location = new Point(Left, Top);
             dark1.Owner = this;
-            dark1.Show();
 
-            
             dark2.Size = dark2.MinimumSize = dark2.MaximumSize = new Size(loginPanel.Width, loginPanel.Height);
             dark2.Location = new Point(loginPanel.Left, loginPanel.Top);
             dark2.Owner = loginPanel;
-            dark2.Show();
 
-            forgotPassword.GetDarkenForms(dark1, dark2);
+            dark3.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+            dark3.Owner = this;
+
+            dark4.Location = new Point(Left + ((Width / 2) - 16), Bottom);
+            dark4.Owner = this;
+
+            forgotPassword.GetDarkenForms(dark1, dark2, dark3, dark4);
             forgotPassword.Location = new Point(Left + Width/4, Top + Height / 4);
             forgotPassword.Owner = this;
+
+            dark3.Show();
+            dark4.Show();
+            dark1.Show();
+            dark2.Show();
             forgotPassword.Show();
 
         }

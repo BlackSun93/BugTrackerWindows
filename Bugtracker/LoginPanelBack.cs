@@ -12,12 +12,15 @@ namespace Bugtracker
 {
     public partial class LoginPanelBack : Form
     {
-        LoginPanel loginForm;
+        private LoginPanel loginForm;
+        private ForgotPasswordForm focusedForm;
+        private DarkenForm darkForm;
+        private string mode;
         public LoginPanelBack(LoginPanel form, string position)
         {
             InitializeComponent();
             loginForm = form;
-
+            mode = "normal";
 
             if (position == "top")
             {
@@ -32,9 +35,39 @@ namespace Bugtracker
             FormBorderStyle = FormBorderStyle.None;
         }
 
+        public LoginPanelBack(double opacity, ForgotPasswordForm form1, DarkenForm form2, string position)
+        {
+            InitializeComponent();
+            Opacity = opacity;
+            focusedForm = form1;
+            darkForm = form2;
+            mode = "shadow";
+
+            if (position == "top")
+            {
+                BackgroundImage = Properties.Resources.bt_LoginPanelBackTopShadow;
+                TransparencyKey = Color.Black;
+            }
+            else if (position == "bottom")
+            {
+                BackgroundImage = Properties.Resources.bt_LoginPanelBackBottomShadow;
+                TransparencyKey = Color.Black;
+            }
+            FormBorderStyle = FormBorderStyle.None;
+        }
+
         private void LoginPanelBack_MouseDown(object sender, MouseEventArgs e)
         {
-            loginForm.Focus();
+            if (mode == "shadow")
+            {
+                darkForm.Focus();
+                focusedForm.Focus();
+            }
+            else if (mode == "normal")
+            {
+                loginForm.Focus();
+            }
+            
         }
     }
 }

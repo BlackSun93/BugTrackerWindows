@@ -14,16 +14,20 @@ namespace Bugtracker
     {
         private DarkenForm dark1;
         private DarkenForm dark2;
+        private LoginPanelBack dark3;
+        private LoginPanelBack dark4;
 
         public ForgotPasswordForm()
         {
             InitializeComponent();
         }
 
-        public void GetDarkenForms(DarkenForm form1, DarkenForm form2)
+        public void GetDarkenForms(DarkenForm form1, DarkenForm form2, LoginPanelBack form3, LoginPanelBack form4)
         {
             dark1 = form1;
             dark2 = form2;
+            dark3 = form3;
+            dark4 = form4;
         }
 
         private void PictureBox_Email_Click(object sender, EventArgs e)
@@ -67,6 +71,8 @@ namespace Bugtracker
         {
             dark1.Hide();
             dark2.Hide();
+            dark3.Hide();
+            dark4.Hide();
             Hide();
         }
 
