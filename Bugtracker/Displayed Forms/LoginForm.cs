@@ -73,7 +73,7 @@ namespace Bugtracker
             FormBorderStyle = FormBorderStyle.None;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
             loginPanel = new LoginPanel();
-            loginPanel.Location = new Point(Width/2, -10);
+            loginPanel.Location = new Point(Left + (Width / 2), Top - 20);
             loginPanel.Owner = this;
             loginPanel.Show();
 
@@ -137,6 +137,7 @@ namespace Bugtracker
                 TextBox_LoginPassword.ForeColor = Color.FromArgb(255, 85, 85);
                 PictureBox_LoginUsername.BackgroundImage = ERROR;
                 PictureBox_LoginPassword.BackgroundImage = ERROR;
+                Button_Login.BackColor = Color.FromArgb(255, 85, 85);
 
                 MessageBox.Show("incorrect credentials ");
             }
@@ -233,6 +234,7 @@ namespace Bugtracker
 
             Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
             Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            Button_Login.BackColor = Color.FromArgb(255, 85, 0);
 
             PictureBox_LoginUsername.BackgroundImage = USERNAME;
             PictureBox_LoginPassword.BackgroundImage = PASSWORD;
@@ -333,8 +335,8 @@ namespace Bugtracker
         {
             Label_LoginUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
             TextBox_LoginUsername.ForeColor = Color.FromArgb(82, 82, 82);
-            TextBox_LoginUsername.SelectAll();
             PictureBox_LoginUsername.BackgroundImage = USERNAME;
+            Button_Login.BackColor = Color.FromArgb(255, 85, 0);
 
             if (TextBox_LoginUsername.TextLength == 0)
             {
@@ -386,6 +388,7 @@ namespace Bugtracker
             Label_LoginPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
             TextBox_LoginPassword.ForeColor = Color.FromArgb(82, 82, 82);
             PictureBox_LoginPassword.BackgroundImage = PASSWORD;
+            Button_Login.BackColor = Color.FromArgb(255, 85, 0);
 
             if (TextBox_LoginPassword.TextLength == 0)
             {
@@ -454,7 +457,7 @@ namespace Bugtracker
 
         private void TextBox_RegisterUsername_Enter(object sender, EventArgs e)
         {
-            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 86, 0);
+            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 85, 0);
 
             if (TextBox_RegisterUsername.TextLength == 0)
             {
@@ -494,7 +497,7 @@ namespace Bugtracker
 
         private void TextBox_RegisterPassword_Enter(object sender, EventArgs e)
         {
-            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(255, 86, 0);
+            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(255, 85, 0);
 
             if (TextBox_RegisterPassword.TextLength == 0)
             {
@@ -534,7 +537,7 @@ namespace Bugtracker
 
         private void TextBox_RegisterEmail_Enter(object sender, EventArgs e)
         {
-            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(255, 86, 0);
+            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(255, 85, 0);
 
             if (TextBox_RegisterEmail.TextLength == 0)
             {
@@ -654,6 +657,30 @@ namespace Bugtracker
             {
                 CheckBox_StayLoggedIn.ImageIndex = 0;
             }
+        }
+
+        private void Button_ForgotPassword_Click(object sender, EventArgs e)
+        {
+            ForgotPasswordForm forgotPassword = new ForgotPasswordForm();
+            DarkenForm dark1 = new DarkenForm(.7, forgotPassword);
+            DarkenForm dark2 = new DarkenForm(.7, forgotPassword);
+
+            dark1.Size = dark1.MinimumSize = dark1.MaximumSize = new Size(Width/2, Height);
+            dark1.Location = new Point(Left, Top);
+            dark1.Owner = this;
+            dark1.Show();
+
+            
+            dark2.Size = dark2.MinimumSize = dark2.MaximumSize = new Size(loginPanel.Width, loginPanel.Height);
+            dark2.Location = new Point(loginPanel.Left, loginPanel.Top);
+            dark2.Owner = loginPanel;
+            dark2.Show();
+
+            
+            forgotPassword.Location = new Point(Left + Width/4, Top + Height / 4);
+            forgotPassword.Owner = this;
+            forgotPassword.Show();
+
         }
     }
 }

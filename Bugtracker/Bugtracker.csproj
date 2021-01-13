@@ -100,6 +100,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DarkenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DarkenForm.Designer.cs">
+      <DependentUpon>DarkenForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Displayed Forms\BugInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,12 @@
     <Compile Include="DrawBugPanels.cs" />
     <Compile Include="DriveApi.cs" />
     <Compile Include="DrawPanels.cs" />
+    <Compile Include="ForgotPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotPasswordForm.Designer.cs">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +204,9 @@
     <Compile Include="LoginPanel.Designer.cs">
       <DependentUpon>LoginPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DarkenForm.resx">
+      <DependentUpon>DarkenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\BugInfoForm.resx">
       <DependentUpon>BugInfoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPasswordForm.resx">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -264,6 +264,7 @@
             this.Button_ForgotPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ToolTip.SetToolTip(this.Button_ForgotPassword, "Recieve an email to reset your password");
             this.Button_ForgotPassword.UseVisualStyleBackColor = false;
+            this.Button_ForgotPassword.Click += new System.EventHandler(this.Button_ForgotPassword_Click);
             this.Button_ForgotPassword.MouseLeave += new System.EventHandler(this.Button_ForgotPassword_MouseLeave);
             this.Button_ForgotPassword.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button_ForgotPassword_MouseMove);
             // 
@@ -565,36 +566,36 @@
             this.Label_RegisterEmailNote.AutoSize = true;
             this.Label_RegisterEmailNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.Label_RegisterEmailNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_RegisterEmailNote.Location = new System.Drawing.Point(117, 343);
+            this.Label_RegisterEmailNote.Location = new System.Drawing.Point(31, 367);
             this.Label_RegisterEmailNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_RegisterEmailNote.Name = "Label_RegisterEmailNote";
-            this.Label_RegisterEmailNote.Size = new System.Drawing.Size(55, 12);
+            this.Label_RegisterEmailNote.Size = new System.Drawing.Size(160, 12);
             this.Label_RegisterEmailNote.TabIndex = 50;
-            this.Label_RegisterEmailNote.Text = "Username";
+            this.Label_RegisterEmailNote.Text = "name    @    domain    .top-level";
             // 
             // Label_RegisterPasswordNote
             // 
             this.Label_RegisterPasswordNote.AutoSize = true;
             this.Label_RegisterPasswordNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.Label_RegisterPasswordNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_RegisterPasswordNote.Location = new System.Drawing.Point(151, 257);
+            this.Label_RegisterPasswordNote.Location = new System.Drawing.Point(31, 281);
             this.Label_RegisterPasswordNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_RegisterPasswordNote.Name = "Label_RegisterPasswordNote";
-            this.Label_RegisterPasswordNote.Size = new System.Drawing.Size(214, 12);
+            this.Label_RegisterPasswordNote.Size = new System.Drawing.Size(213, 12);
             this.Label_RegisterPasswordNote.TabIndex = 49;
-            this.Label_RegisterPasswordNote.Text = "8-20 length, 1 upper, 1 lower, and 1 symbol";
+            this.Label_RegisterPasswordNote.Text = "8-20 length    1 upper    1 lower    1 symbol";
             // 
             // Label_RegisterUsernameNote
             // 
             this.Label_RegisterUsernameNote.AutoSize = true;
             this.Label_RegisterUsernameNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.Label_RegisterUsernameNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_RegisterUsernameNote.Location = new System.Drawing.Point(151, 168);
+            this.Label_RegisterUsernameNote.Location = new System.Drawing.Point(31, 191);
             this.Label_RegisterUsernameNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
             this.Label_RegisterUsernameNote.Name = "Label_RegisterUsernameNote";
-            this.Label_RegisterUsernameNote.Size = new System.Drawing.Size(164, 12);
+            this.Label_RegisterUsernameNote.Size = new System.Drawing.Size(248, 12);
             this.Label_RegisterUsernameNote.TabIndex = 48;
-            this.Label_RegisterUsernameNote.Text = "3-30 length, A-Z, a-z, 0-9, _, and -";
+            this.Label_RegisterUsernameNote.Text = "3-20 length    A-Z    a-z    0-9    [  .  _  -  !  ?  +  =  /  ]";
             // 
             // Label_RegisterOr
             // 
