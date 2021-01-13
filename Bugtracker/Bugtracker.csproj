@@ -176,6 +176,12 @@
     <Compile Include="Displayed Forms\PostUpdateForm.Designer.cs">
       <DependentUpon>PostUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginPanelBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginPanelBack.Designer.cs">
+      <DependentUpon>LoginPanelBack.cs</DependentUpon>
+    </Compile>
     <Compile Include="Object Classes\BugObject.cs" />
     <Compile Include="Object Classes\ProjectObject.cs" />
     <Compile Include="Object Classes\UserObject.cs" />
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\ProjectsForm.resx">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPanelBack.resx">
+      <DependentUpon>LoginPanelBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -321,6 +330,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bt_BackgroundShadow3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_LoginPanelBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

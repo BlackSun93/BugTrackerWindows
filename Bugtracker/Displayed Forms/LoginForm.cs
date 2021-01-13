@@ -47,10 +47,12 @@ namespace Bugtracker
         private bool passwordVisible = false;
 
         LoginPanel loginPanel;
+        LoginPanelBack loginPanelBack;
 
         public LoginForm()
         {
             InitializeComponent();
+
             if (Properties.Settings.Default.StayLoggedIn == true)
             {
                 CheckBox_StayLoggedIn.Checked = true;
@@ -59,10 +61,20 @@ namespace Bugtracker
             {
                 CheckBox_StayLoggedIn.Checked = false;
             }
+
+            loginPanelBack = new LoginPanelBack(this);
+            loginPanelBack.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+            this.
+
+
             loginPanel = new LoginPanel();
             loginPanel.Location = new Point(Left + (Width / 2), Top - 20);
             loginPanel.Owner = this;
+
             loginPanel.Show();
+            loginPanelBack.Show();
+
+
 
         }
 
@@ -77,7 +89,8 @@ namespace Bugtracker
             {
                 loginPanel.Location = new Point(Left, Top - 20);
             }
-            
+            loginPanelBack.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+
         }
 
         /// <summary>
