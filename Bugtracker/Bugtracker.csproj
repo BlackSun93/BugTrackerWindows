@@ -332,9 +332,6 @@
     <None Include="Resources\bt_BackgroundShadow3.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bt_LoginPanelBack.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\bt_LoginPanelBackTop.png" />
   </ItemGroup>
   <ItemGroup>

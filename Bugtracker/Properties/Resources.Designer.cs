@@ -123,16 +123,6 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bt_LoginPanelBack {
-            get {
-                object obj = ResourceManager.GetObject("bt_LoginPanelBack", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bt_LoginPanelBackBottom {
             get {
                 object obj = ResourceManager.GetObject("bt_LoginPanelBackBottom", resourceCulture);
