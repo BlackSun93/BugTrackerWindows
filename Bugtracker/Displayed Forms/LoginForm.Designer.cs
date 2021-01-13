@@ -58,6 +58,9 @@
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Button_GoToLogin = new System.Windows.Forms.Button();
             this.Panel_Registration = new System.Windows.Forms.Panel();
+            this.Label_RegisterEmailNote = new System.Windows.Forms.Label();
+            this.Label_RegisterPasswordNote = new System.Windows.Forms.Label();
+            this.Label_RegisterUsernameNote = new System.Windows.Forms.Label();
             this.Label_RegisterOr = new System.Windows.Forms.Label();
             this.PictureBox_RegisterEmail = new System.Windows.Forms.PictureBox();
             this.PictureBox_RegisterPassword = new System.Windows.Forms.PictureBox();
@@ -74,9 +77,7 @@
             this.TextBox_RegisterUsername = new System.Windows.Forms.TextBox();
             this.TextBox_RegisterPassword = new System.Windows.Forms.TextBox();
             this.TextBox_RegisterEmail = new System.Windows.Forms.TextBox();
-            this.Label_RegisterUsernameNote = new System.Windows.Forms.Label();
-            this.Label_RegisterPasswordNote = new System.Windows.Forms.Label();
-            this.Label_RegisterEmailNote = new System.Windows.Forms.Label();
+            this.ImageList_CheckBoxes = new System.Windows.Forms.ImageList(this.components);
             this.Panel_Login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_LoginUsername)).BeginInit();
@@ -177,20 +178,27 @@
             this.CheckBox_StayLoggedIn.Appearance = System.Windows.Forms.Appearance.Button;
             this.CheckBox_StayLoggedIn.AutoSize = true;
             this.CheckBox_StayLoggedIn.BackColor = System.Drawing.Color.Transparent;
+            this.CheckBox_StayLoggedIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CheckBox_StayLoggedIn.FlatAppearance.BorderSize = 0;
+            this.CheckBox_StayLoggedIn.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.CheckBox_StayLoggedIn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.CheckBox_StayLoggedIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.CheckBox_StayLoggedIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckBox_StayLoggedIn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.CheckBox_StayLoggedIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.CheckBox_StayLoggedIn.Image = global::Bugtracker.Properties.Resources.bt_close;
-            this.CheckBox_StayLoggedIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CheckBox_StayLoggedIn.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.CheckBox_StayLoggedIn.ImageIndex = 0;
+            this.CheckBox_StayLoggedIn.ImageList = this.ImageList_CheckBoxes;
             this.CheckBox_StayLoggedIn.Location = new System.Drawing.Point(32, 365);
             this.CheckBox_StayLoggedIn.Name = "CheckBox_StayLoggedIn";
-            this.CheckBox_StayLoggedIn.Size = new System.Drawing.Size(166, 26);
+            this.CheckBox_StayLoggedIn.Size = new System.Drawing.Size(174, 26);
             this.CheckBox_StayLoggedIn.TabIndex = 45;
             this.CheckBox_StayLoggedIn.TabStop = false;
-            this.CheckBox_StayLoggedIn.Text = "Keep me logged in";
+            this.CheckBox_StayLoggedIn.Text = "  Keep me logged in";
+            this.CheckBox_StayLoggedIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CheckBox_StayLoggedIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CheckBox_StayLoggedIn.UseVisualStyleBackColor = false;
+            this.CheckBox_StayLoggedIn.CheckedChanged += new System.EventHandler(this.CheckBox_StayLoggedIn_CheckedChanged);
             // 
             // PictureBox_LoginPassword
             // 
@@ -552,6 +560,42 @@
             this.Panel_Registration.TabIndex = 44;
             this.Panel_Registration.Click += new System.EventHandler(this.Panel_Registration_Click);
             // 
+            // Label_RegisterEmailNote
+            // 
+            this.Label_RegisterEmailNote.AutoSize = true;
+            this.Label_RegisterEmailNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.Label_RegisterEmailNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.Label_RegisterEmailNote.Location = new System.Drawing.Point(117, 343);
+            this.Label_RegisterEmailNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
+            this.Label_RegisterEmailNote.Name = "Label_RegisterEmailNote";
+            this.Label_RegisterEmailNote.Size = new System.Drawing.Size(55, 12);
+            this.Label_RegisterEmailNote.TabIndex = 50;
+            this.Label_RegisterEmailNote.Text = "Username";
+            // 
+            // Label_RegisterPasswordNote
+            // 
+            this.Label_RegisterPasswordNote.AutoSize = true;
+            this.Label_RegisterPasswordNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.Label_RegisterPasswordNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.Label_RegisterPasswordNote.Location = new System.Drawing.Point(151, 257);
+            this.Label_RegisterPasswordNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
+            this.Label_RegisterPasswordNote.Name = "Label_RegisterPasswordNote";
+            this.Label_RegisterPasswordNote.Size = new System.Drawing.Size(214, 12);
+            this.Label_RegisterPasswordNote.TabIndex = 49;
+            this.Label_RegisterPasswordNote.Text = "8-20 length, 1 upper, 1 lower, and 1 symbol";
+            // 
+            // Label_RegisterUsernameNote
+            // 
+            this.Label_RegisterUsernameNote.AutoSize = true;
+            this.Label_RegisterUsernameNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.Label_RegisterUsernameNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
+            this.Label_RegisterUsernameNote.Location = new System.Drawing.Point(151, 168);
+            this.Label_RegisterUsernameNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
+            this.Label_RegisterUsernameNote.Name = "Label_RegisterUsernameNote";
+            this.Label_RegisterUsernameNote.Size = new System.Drawing.Size(164, 12);
+            this.Label_RegisterUsernameNote.TabIndex = 48;
+            this.Label_RegisterUsernameNote.Text = "3-30 length, A-Z, a-z, 0-9, _, and -";
+            // 
             // Label_RegisterOr
             // 
             this.Label_RegisterOr.AutoSize = true;
@@ -760,41 +804,12 @@
             this.TextBox_RegisterEmail.Enter += new System.EventHandler(this.TextBox_RegisterEmail_Enter);
             this.TextBox_RegisterEmail.Leave += new System.EventHandler(this.TextBox_RegisterEmail_Leave);
             // 
-            // Label_RegisterUsernameNote
+            // ImageList_CheckBoxes
             // 
-            this.Label_RegisterUsernameNote.AutoSize = true;
-            this.Label_RegisterUsernameNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
-            this.Label_RegisterUsernameNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_RegisterUsernameNote.Location = new System.Drawing.Point(151, 168);
-            this.Label_RegisterUsernameNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
-            this.Label_RegisterUsernameNote.Name = "Label_RegisterUsernameNote";
-            this.Label_RegisterUsernameNote.Size = new System.Drawing.Size(164, 12);
-            this.Label_RegisterUsernameNote.TabIndex = 48;
-            this.Label_RegisterUsernameNote.Text = "3-30 length, A-Z, a-z, 0-9, _, and -";
-            // 
-            // Label_RegisterPasswordNote
-            // 
-            this.Label_RegisterPasswordNote.AutoSize = true;
-            this.Label_RegisterPasswordNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
-            this.Label_RegisterPasswordNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_RegisterPasswordNote.Location = new System.Drawing.Point(151, 257);
-            this.Label_RegisterPasswordNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
-            this.Label_RegisterPasswordNote.Name = "Label_RegisterPasswordNote";
-            this.Label_RegisterPasswordNote.Size = new System.Drawing.Size(214, 12);
-            this.Label_RegisterPasswordNote.TabIndex = 49;
-            this.Label_RegisterPasswordNote.Text = "8-20 length, 1 upper, 1 lower, and 1 symbol";
-            // 
-            // Label_RegisterEmailNote
-            // 
-            this.Label_RegisterEmailNote.AutoSize = true;
-            this.Label_RegisterEmailNote.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
-            this.Label_RegisterEmailNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(136)))));
-            this.Label_RegisterEmailNote.Location = new System.Drawing.Point(117, 343);
-            this.Label_RegisterEmailNote.Margin = new System.Windows.Forms.Padding(29, 32, 0, 6);
-            this.Label_RegisterEmailNote.Name = "Label_RegisterEmailNote";
-            this.Label_RegisterEmailNote.Size = new System.Drawing.Size(55, 12);
-            this.Label_RegisterEmailNote.TabIndex = 50;
-            this.Label_RegisterEmailNote.Text = "Username";
+            this.ImageList_CheckBoxes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList_CheckBoxes.ImageStream")));
+            this.ImageList_CheckBoxes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImageList_CheckBoxes.Images.SetKeyName(0, "bt_unchecked.png");
+            this.ImageList_CheckBoxes.Images.SetKeyName(1, "bt_checked.png");
             // 
             // LoginForm
             // 
@@ -877,5 +892,6 @@
         private System.Windows.Forms.Label Label_RegisterEmailNote;
         private System.Windows.Forms.Label Label_RegisterPasswordNote;
         private System.Windows.Forms.Label Label_RegisterUsernameNote;
+        private System.Windows.Forms.ImageList ImageList_CheckBoxes;
     }
 }

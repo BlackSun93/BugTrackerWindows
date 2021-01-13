@@ -236,6 +236,8 @@ namespace Bugtracker
 
             PictureBox_LoginUsername.BackgroundImage = USERNAME;
             PictureBox_LoginPassword.BackgroundImage = PASSWORD;
+
+            CheckBox_StayLoggedIn.CheckState = CheckState.Unchecked;
         }
 
         private void Button_GoToLogin_Click(object sender, EventArgs e)
@@ -640,6 +642,18 @@ namespace Bugtracker
         private void Button_GoToLogin_MouseLeave(object sender, EventArgs e)
         {
             Button_GoToLogin.ForeColor = Color.FromArgb(255, 85, 0);
+        }
+
+        private void CheckBox_StayLoggedIn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox_StayLoggedIn.Checked)
+            {
+                CheckBox_StayLoggedIn.ImageIndex = 1;
+            }
+            else
+            {
+                CheckBox_StayLoggedIn.ImageIndex = 0;
+            }
         }
     }
 }
