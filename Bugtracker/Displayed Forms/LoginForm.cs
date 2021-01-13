@@ -18,17 +18,6 @@ namespace Bugtracker
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // width of ellipse
-            int nHeightEllipse // height of ellipse
-        );
-
         public Bitmap CLOSE = Properties.Resources.bt_close;
         public Bitmap MINIMIZE = Properties.Resources.bt_minimize;
         public Bitmap MAXIMIZE = Properties.Resources.bt_maximize;
@@ -70,8 +59,6 @@ namespace Bugtracker
             {
                 CheckBox_StayLoggedIn.Checked = false;
             }
-            FormBorderStyle = FormBorderStyle.None;
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
             loginPanel = new LoginPanel();
             loginPanel.Location = new Point(Left + (Width / 2), Top - 20);
             loginPanel.Owner = this;
