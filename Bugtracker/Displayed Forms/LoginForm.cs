@@ -269,11 +269,29 @@ namespace Bugtracker
 
         private void Button_Register_Click(object sender, EventArgs e)
         {
-            string username = TextBox_RegisterUsername.Text;
-            string email = TextBox_RegisterEmail.Text;
-            string password = TextBox_RegisterPassword.Text;
-            SqlUser newUser = new SqlUser();
-            newUser.InsertUser(username, email, password);
+            if (TextBox_RegisterUsername.TextLength == 0)
+            {
+                Label_RegisterUsernameError.Text = "Generic Username Error";
+                Label_RegisterUsernameError.Show();
+            }
+            else if (TextBox_RegisterPassword.TextLength == 0)
+            {
+                Label_RegisterPasswordError.Text = "Generic Password Error";
+                Label_RegisterPasswordError.Show();
+            }
+            else if (TextBox_RegisterEmail.TextLength == 0)
+            {
+                Label_RegisterEmailError.Text = "Generic Email Error";
+                Label_RegisterEmailError.Show();
+            }
+            else
+            {
+                string username = TextBox_RegisterUsername.Text;
+                string email = TextBox_RegisterEmail.Text;
+                string password = TextBox_RegisterPassword.Text;
+                SqlUser newUser = new SqlUser();
+                newUser.InsertUser(username, email, password);
+            }
         }
 
         private void Button_RegisterPasswordVisibility_Click(object sender, EventArgs e)
