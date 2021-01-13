@@ -12,11 +12,23 @@ namespace Bugtracker
 {
     public partial class LoginPanelBack : Form
     {
-        LoginForm loginForm;
-        public LoginPanelBack(LoginForm form)
+        LoginPanel loginForm;
+        public LoginPanelBack(LoginPanel form, string position)
         {
             InitializeComponent();
             loginForm = form;
+
+
+            if (position == "top")
+            {
+                BackgroundImage = Properties.Resources.bt_LoginPanelBackTop;
+                TransparencyKey = Color.Black;
+            }
+            else if (position == "bottom")
+            {
+                BackgroundImage = Properties.Resources.bt_LoginPanelBackBottom;
+                TransparencyKey = Color.Black;
+            }
             FormBorderStyle = FormBorderStyle.None;
         }
 

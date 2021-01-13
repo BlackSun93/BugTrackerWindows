@@ -334,6 +334,12 @@
   <ItemGroup>
     <None Include="Resources\bt_LoginPanelBack.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_LoginPanelBackTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_LoginPanelBackBottom.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

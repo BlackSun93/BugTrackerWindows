@@ -47,7 +47,8 @@ namespace Bugtracker
         private bool passwordVisible = false;
 
         LoginPanel loginPanel;
-        LoginPanelBack loginPanelBack;
+        LoginPanelBack loginPanelBackTop;
+        LoginPanelBack loginPanelBackBottom;
 
         public LoginForm()
         {
@@ -62,16 +63,25 @@ namespace Bugtracker
                 CheckBox_StayLoggedIn.Checked = false;
             }
 
-            loginPanelBack = new LoginPanelBack(this);
-            loginPanelBack.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
-            //loginPanelBack.Owner = this;
-
             loginPanel = new LoginPanel();
             loginPanel.Location = new Point(Left + (Width / 2), Top - 20);
             loginPanel.Owner = this;
 
+            loginPanelBackTop = new LoginPanelBack(loginPanel, "top");
+            loginPanelBackTop.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+            loginPanelBackTop.Owner = this;
+
+            loginPanelBackBottom = new LoginPanelBack(loginPanel, "bottom");
+            loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 16), Bottom);
+            loginPanelBackBottom.Owner = this;
+
+            
+
+            
+            loginPanelBackTop.Show();
+            loginPanelBackBottom.Show();
             loginPanel.Show();
-            loginPanelBack.Show();
+            loginPanel.BringToFront();
             //loginPanelBack.SendToBack();
 
 
@@ -89,7 +99,8 @@ namespace Bugtracker
             {
                 loginPanel.Location = new Point(Left, Top - 20);
             }
-            loginPanelBack.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+            loginPanelBackTop.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+            loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 16), Bottom);
 
         }
 
