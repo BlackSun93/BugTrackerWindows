@@ -67,6 +67,8 @@ namespace Bugtracker
                 string timestamp = row[10].ToString();
                 string status = row[9].ToString();
                 // display the notification differently depending on type, add on click to show related info
+                // on click function will differ for each notification however the .click function
+                // has to be defined when the label text is created
                 switch (row[8])
                 {
                     case "new bug":
@@ -77,7 +79,6 @@ namespace Bugtracker
                     dataset.Rows[0]["status"].ToString(),
                      dataset.Rows[0]["poster"].ToString(), dataset.Rows[0]["project"].ToString(), dataset.Rows[0]["priority"].ToString(),
                       dataset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(dataset.Rows[0]["timePosted"]));
-
                         Label notifLabel = new Label
                         {
                             Location = new Point(16, panelYpos),
@@ -88,15 +89,32 @@ namespace Bugtracker
                             Text = labeltext
                         };
                         notifLabel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, newbug));
-
                         Panel_MasterPanel.Controls.Add(notifLabel);
                         break;
 
+                    case "follow":
+                        labeltext = "New follower: " + userNotifFrom + " on project: " + projId + " at: " + timestamp;
+                        Label followLabel = new Label
+                        {
+                            Location = new Point(16, panelYpos),
+                            Font = new Font("Arial", 8f, FontStyle.Bold),
+                            ForeColor = Color.FromArgb(82, 82, 82),
+                            //MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 4),
+                            AutoSize = true,
+                            Text = labeltext
+                        };
+                        followLabel.Click += new System.EventHandler((sender, e) => ProjectClicked(sender, e, projId));
+                        Panel_MasterPanel.Controls.Add(followLabel);
+
+                        break;
+
                 }
-               
-                    
-                    //add height of panel plus 10 pixel gap
-                    panelYpos += 56;
+
+              
+
+                
+                //add height of panel plus 10 pixel gap
+                panelYpos += 56;
                 
 
             }
@@ -106,6 +124,10 @@ namespace Bugtracker
         private void BugClicked(object sender, EventArgs e, BugObject bug)
         {
             display.DisplayBugInfoForm(bug);
+        }
+        private void ProjectClicked(object sender, EventArgs e, string project)
+        {
+            display.DisplayBugsForm(project);
         }
     }
 }

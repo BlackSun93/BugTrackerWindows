@@ -108,7 +108,7 @@ namespace Bugtracker
             // not we make a notification for the new bug
             SqlNotifications notif = new SqlNotifications();
             notif.InsertNotification(poster, project, newBugId, "", "new bug", status, timePosted);
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
             // get the notification's id
             DataSet getNotifId = Connection.GetDbConn().GetDataSet($"SELECT idnotification FROM notification" +
                 $" WHERE usernotif = {poster} AND project = {project} AND bug = {newBugId} AND `update` = '{"new bug"}'");

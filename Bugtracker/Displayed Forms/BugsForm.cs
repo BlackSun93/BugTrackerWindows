@@ -246,9 +246,28 @@ namespace Bugtracker
 
         private void Follow(object sender, EventArgs e, string project)
         {
+            // need a timestamp for the notification, also needs some leeway as sending to the server may take a second
+            // or more depending on connection.
+            DateTime timestamp = DateTime.Now;
+            string stringTime = timestamp.ToString("yyyy-MM-dd HH:mm:ss"); ;
+            string toStringTime = timestamp.AddSeconds(5).ToString("yyyy-MM-dd HH:mm:ss");
             // create a follow project object which will notify the project poster that a user wants access
             SqlFollow sq = new SqlFollow();
             Connection.GetDbConn().CreateCommand(SqlFollow.FollowProject(UserObject.loggedUser.iduser, currentProject));
+
+            // has to create a notification with relevant deatils
+            SqlNotifications notif = new SqlNotifications();
+            notif.InsertNotification(UserObject.loggedUser.iduser, project, "", "", "follow", "", timestamp);
+            // have to get the new notif's id to make a toNotif object, have to use time here as its possible
+            // that a user might make multiple requests or might follow, unfollow, then want back in
+            DataSet getNotifId = Connection.GetDbConn().GetDataSet($"SELECT idnotification FROM notification" +
+                $" WHERE usernotif = {UserObject.loggedUser.iduser} AND project = {project}  AND timestamp BETWEEN '{stringTime}' AND '{toStringTime}' ");
+            string newNotifId = getNotifId.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+            // need to get the project owner's id
+            DataSet projectOwner = Connection.GetDbConn().GetDataSet($"SELECT user FROM project WHERE idproject = {project}");
+            string ownerId = projectOwner.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+            notif.InsertToNotify(newNotifId, ownerId, "0");
+
 
             MessageBox.Show("Followed");
             //catch (Exception)

@@ -171,6 +171,7 @@
       <DependentUpon>PostUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Object Classes\BugObject.cs" />
+    <Compile Include="Object Classes\NotificationObject.cs" />
     <Compile Include="Object Classes\ProjectObject.cs" />
     <Compile Include="Object Classes\UserObject.cs" />
     <Compile Include="Program.cs" />
