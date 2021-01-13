@@ -64,8 +64,7 @@ namespace Bugtracker
 
             loginPanelBack = new LoginPanelBack(this);
             loginPanelBack.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
-            this.
-
+            //loginPanelBack.Owner = this;
 
             loginPanel = new LoginPanel();
             loginPanel.Location = new Point(Left + (Width / 2), Top - 20);
@@ -73,6 +72,7 @@ namespace Bugtracker
 
             loginPanel.Show();
             loginPanelBack.Show();
+            //loginPanelBack.SendToBack();
 
 
 
