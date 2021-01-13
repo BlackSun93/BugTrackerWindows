@@ -285,10 +285,26 @@ namespace Bugtracker
         {
             // create a follow project object which will notify the project poster that a user wants access
             try
-            {
+            { // creates follow table row, as this is a private project (public projects are followed on bugsform)
+                // sends a notification to the poster of the project to advise the user wants access.
+                DateTime now = DateTime.Now;
+                string timestamp = now.ToString("yyyy-MM-dd HH:mm:ss"); 
+                string timestampTo = now.AddSeconds(5).ToString("yyyy-MM-dd HH:mm:ss");
                 SqlProject sq = new SqlProject();
-                Connection.GetDbConn().CreateCommand(SqlFollow.FollowProject(UserObject.loggedUser.iduser, project.idproject));
+                SqlNotifications notif = new SqlNotifications();
 
+                Connection.GetDbConn().CreateCommand(SqlFollow.FollowProject(UserObject.loggedUser.iduser, project.idproject));
+               
+                notif.InsertNotification(UserObject.loggedUser.iduser, project.idproject, "", "", "request access", "", now);
+
+                DataSet getNotifId = Connection.GetDbConn().GetDataSet($"SELECT idnotification FROM notification" +
+                $" WHERE usernotif = {UserObject.loggedUser.iduser} AND project = {project.idproject} AND timestamp BETWEEN '{timestamp}' AND '{timestampTo}'");
+                string notifId = getNotifId.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+
+                DataSet getProjectOwner = Connection.GetDbConn().GetDataSet($"SELECT user FROM project WHERE idproject = { project.idproject}");
+                string projOwner = getProjectOwner.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+
+                notif.InsertToNotify(notifId, projOwner, "0");
                 MessageBox.Show("Request sent to project creator");
             }
             catch (Exception)

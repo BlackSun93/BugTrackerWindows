@@ -108,6 +108,23 @@ namespace Bugtracker
 
                         break;
 
+                    case "request access":
+                        labeltext = "User: " + userNotifFrom + " has requested access to private project: " 
+                            + projId + " at: " + timestamp;
+                        Label requestLabel = new Label
+                        {
+                            Location = new Point(16, panelYpos),
+                            Font = new Font("Arial", 8f, FontStyle.Bold),
+                            ForeColor = Color.FromArgb(82, 82, 82),
+                            //MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 4),
+                            AutoSize = true,
+                            Text = labeltext
+                        };
+                        // needs to make 2 buttons, accept/ decline / click for user profile
+                        requestLabel.Click += new System.EventHandler((sender, e) => ProjectClicked(sender, e, projId));
+                        Panel_MasterPanel.Controls.Add(requestLabel);
+                        break;
+
                 }
 
               
