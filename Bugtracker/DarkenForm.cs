@@ -5,7 +5,7 @@ namespace Bugtracker
 {
     public partial class DarkenForm : Form
     {
-        Form focusedForm;
+        private Form focusedForm;
         public DarkenForm(double opacity, Form form)
         {
             InitializeComponent();

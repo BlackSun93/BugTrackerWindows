@@ -663,7 +663,7 @@ namespace Bugtracker
             dark2.Owner = loginPanel;
             dark2.Show();
 
-            
+            forgotPassword.GetDarkenForms(dark1, dark2);
             forgotPassword.Location = new Point(Left + Width/4, Top + Height / 4);
             forgotPassword.Owner = this;
             forgotPassword.Show();

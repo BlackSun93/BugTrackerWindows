@@ -33,6 +33,8 @@
             this.Label_EmailSeparator = new System.Windows.Forms.Label();
             this.PictureBox_Email = new System.Windows.Forms.PictureBox();
             this.TextBox_RegisterEmail = new System.Windows.Forms.TextBox();
+            this.Button_Send = new System.Windows.Forms.Button();
+            this.Button_Cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Email)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,12 +86,55 @@
             this.TextBox_RegisterEmail.Enter += new System.EventHandler(this.TextBox_RegisterEmail_Enter);
             this.TextBox_RegisterEmail.Leave += new System.EventHandler(this.TextBox_RegisterEmail_Leave);
             // 
+            // Button_Send
+            // 
+            this.Button_Send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(0)))));
+            this.Button_Send.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Send.FlatAppearance.BorderSize = 0;
+            this.Button_Send.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(186)))), ((int)(((byte)(131)))));
+            this.Button_Send.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(174)))), ((int)(((byte)(71)))));
+            this.Button_Send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Send.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.Button_Send.ForeColor = System.Drawing.Color.White;
+            this.Button_Send.Location = new System.Drawing.Point(289, 186);
+            this.Button_Send.Name = "Button_Send";
+            this.Button_Send.Size = new System.Drawing.Size(128, 26);
+            this.Button_Send.TabIndex = 51;
+            this.Button_Send.TabStop = false;
+            this.Button_Send.Text = "Send";
+            this.Button_Send.UseVisualStyleBackColor = false;
+            // 
+            // Button_Cancel
+            // 
+            this.Button_Cancel.AutoSize = true;
+            this.Button_Cancel.BackColor = System.Drawing.Color.Transparent;
+            this.Button_Cancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Cancel.FlatAppearance.BorderSize = 0;
+            this.Button_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Button_Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Cancel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.Button_Cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.Button_Cancel.Location = new System.Drawing.Point(208, 186);
+            this.Button_Cancel.Margin = new System.Windows.Forms.Padding(0);
+            this.Button_Cancel.Name = "Button_Cancel";
+            this.Button_Cancel.Size = new System.Drawing.Size(78, 26);
+            this.Button_Cancel.TabIndex = 52;
+            this.Button_Cancel.TabStop = false;
+            this.Button_Cancel.Text = "Cancel";
+            this.Button_Cancel.UseVisualStyleBackColor = false;
+            this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
+            this.Button_Cancel.MouseLeave += new System.EventHandler(this.Button_Cancel_MouseLeave);
+            this.Button_Cancel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button_Cancel_MouseMove);
+            // 
             // ForgotPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(456, 224);
+            this.Controls.Add(this.Button_Cancel);
+            this.Controls.Add(this.Button_Send);
             this.Controls.Add(this.PictureBox_Email);
             this.Controls.Add(this.Label_EmailSeparator);
             this.Controls.Add(this.Label_PasswordReset);
@@ -116,5 +161,7 @@
         private System.Windows.Forms.Label Label_EmailSeparator;
         private System.Windows.Forms.PictureBox PictureBox_Email;
         private System.Windows.Forms.TextBox TextBox_RegisterEmail;
+        private System.Windows.Forms.Button Button_Send;
+        private System.Windows.Forms.Button Button_Cancel;
     }
 }

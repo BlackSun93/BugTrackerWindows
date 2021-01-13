@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="ImageList_CheckBoxes.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>109, 17</value>
   </metadata>
@@ -125,7 +131,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CQAAAk1TRnQBSQFMAgEBAgEAAQgBAAEIAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAARgBAAEYAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -156,7 +162,7 @@
         AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/0cAAfQC8gH0DAAB9ALy
         AfQqAAHzAZIB7QLvAe0BkgHzCAAB8gF3BE4BdwHyJwAB8AHtAfMB/wIAAf8B8wHtAfAGAAEICE4BCCUA
         AfMB7QH/BgAB/wHtAfMEAAHyCk4B8iMAAf8BkgHzCAAB8wGSAf8CAAH/AXcDTgEIAfQBdwROAXcB/yIA
-        AfQB7QH/CAAB/wHtAfQCAAH0A04BCAH1AfIB9AF3BE4B9CIAAfIB7woAAe8B8gIAAfICTgEIAfUBdwFU
+        AfQB7QH/CAAB/wHtAfQCAAH0A04BCAH/AfIB9AF3BE4B9CIAAfIB7woAAe8B8gIAAfICTgEIAf8BdwFU
         AfEB9AF3A04B8iIAAfIB7woAAe8B8gIAAfICTgGdAXcCTgFPAfEB9AF3Ak4B8iIAAfQB7QH/CAAB/wHt
         AfQCAAH0B04BTwHxAfQBdwFOAfQiAAH/AZIB8wgAAfMBkgH/AgAB/wF3B04BTwHyAfQBnSQAAfMB7QH/
         BgAB/wHtAfMEAAHyCE4BTwHyAQgB/yQAAfAB7QHzAf8CAAH/AfMB7QHwBgABCAhOAQgBmAGdJQAB8wGS
@@ -167,9 +173,6 @@
         Cw==
 </value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>49</value>
   </metadata>

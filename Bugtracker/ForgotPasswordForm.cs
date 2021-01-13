@@ -12,9 +12,18 @@ namespace Bugtracker
 {
     public partial class ForgotPasswordForm : Form
     {
+        private DarkenForm dark1;
+        private DarkenForm dark2;
+
         public ForgotPasswordForm()
         {
             InitializeComponent();
+        }
+
+        public void GetDarkenForms(DarkenForm form1, DarkenForm form2)
+        {
+            dark1 = form1;
+            dark2 = form2;
         }
 
         private void PictureBox_Email_Click(object sender, EventArgs e)
@@ -52,6 +61,23 @@ namespace Bugtracker
         private void ForgotPasswordForm_Click(object sender, EventArgs e)
         {
             Label_PasswordReset.Focus();
+        }
+
+        private void Button_Cancel_Click(object sender, EventArgs e)
+        {
+            dark1.Hide();
+            dark2.Hide();
+            Hide();
+        }
+
+        private void Button_Cancel_MouseMove(object sender, MouseEventArgs e)
+        {
+            Button_Cancel.ForeColor = Color.FromArgb(255, 85, 85);
+        }
+
+        private void Button_Cancel_MouseLeave(object sender, EventArgs e)
+        {
+            Button_Cancel.ForeColor = Color.FromArgb(82, 82, 82);
         }
     }
 }
