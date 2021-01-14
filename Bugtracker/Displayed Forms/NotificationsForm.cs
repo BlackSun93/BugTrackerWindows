@@ -73,12 +73,7 @@ namespace Bugtracker
                 {
                     case "new bug":
                         labeltext = "New bug: " +  bugId + " on project: " + projId + " from user: " + userNotifFrom + " at: " + timestamp + ".";
-                        DataTable dataset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
-                        BugObject newbug = new BugObject(dataset.Rows[0]["idbug"].ToString(),
-                    dataset.Rows[0]["title"].ToString(), dataset.Rows[0]["description"].ToString(), dataset.Rows[0]["location"].ToString(),
-                    dataset.Rows[0]["status"].ToString(),
-                     dataset.Rows[0]["poster"].ToString(), dataset.Rows[0]["project"].ToString(), dataset.Rows[0]["priority"].ToString(),
-                      dataset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(dataset.Rows[0]["timePosted"]));
+                        BugObject newbug = GetBug(bugId);
                         Label notifLabel = new Label
                         {
                             Location = new Point(16, panelYpos),
@@ -109,12 +104,8 @@ namespace Bugtracker
                         break;
 
                     case "request access":
-                        DataTable accessset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
-                        BugObject accessbug = new BugObject(accessset.Rows[0]["idbug"].ToString(),
-                    accessset.Rows[0]["title"].ToString(), accessset.Rows[0]["description"].ToString(), accessset.Rows[0]["location"].ToString(),
-                    accessset.Rows[0]["status"].ToString(),
-                     accessset.Rows[0]["poster"].ToString(), accessset.Rows[0]["project"].ToString(), accessset.Rows[0]["priority"].ToString(),
-                      accessset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(accessset.Rows[0]["timePosted"]));
+
+                        BugObject accessbug = GetBug(bugId);
                         labeltext = "User: " + userNotifFrom + " has requested access to private project: " 
                             + projId + " at: " + timestamp;
                         Label requestLabel = new Label
@@ -134,12 +125,7 @@ namespace Bugtracker
                     case "bugfollow":
                         labeltext = "User: " + userNotifFrom + " has followed bug: "
                             + bugId + " at: " + timestamp;
-                        DataTable followset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
-                        BugObject followbug = new BugObject(followset.Rows[0]["idbug"].ToString(),
-                    followset.Rows[0]["title"].ToString(), followset.Rows[0]["description"].ToString(), followset.Rows[0]["location"].ToString(),
-                    followset.Rows[0]["status"].ToString(),
-                     followset.Rows[0]["poster"].ToString(), followset.Rows[0]["project"].ToString(), followset.Rows[0]["priority"].ToString(),
-                      followset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(followset.Rows[0]["timePosted"]));
+                        BugObject followBug = GetBug(bugId);
                         Label bugFollowLabel = new Label
                         {
                             Location = new Point(16, panelYpos),
@@ -150,21 +136,37 @@ namespace Bugtracker
                             Text = labeltext
                         };
                         // needs to make 2 buttons, accept/ decline / click for user profile
-                        bugFollowLabel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, followbug));
+                        bugFollowLabel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, followBug));
                         Panel_MasterPanel.Controls.Add(bugFollowLabel);
+
+                        break;
+
+                    case "new update":
+
+                        labeltext = "User: " + userNotifFrom + " has posted an update on bug: "
+                            + bugId + " at: " + timestamp + ", its new status is: " + status;
+                        BugObject updateBug = GetBug(bugId);
+                        Label updateLabel = new Label
+                        {
+                            Location = new Point(16, panelYpos),
+                            Font = new Font("Arial", 8f, FontStyle.Bold),
+                            ForeColor = Color.FromArgb(82, 82, 82),
+                            //MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 4),
+                            AutoSize = true,
+                            Text = labeltext
+                        };
+                        // needs to make 2 buttons, accept/ decline / click for user profile
+                        updateLabel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, updateBug));
+                        Panel_MasterPanel.Controls.Add(updateLabel);
 
                         break;
 
 
                 }
 
-              
-
-                
                 //add height of panel plus 10 pixel gap
                 panelYpos += 56;
-                
-
+ 
             }
             
             
@@ -176,6 +178,18 @@ namespace Bugtracker
         private void ProjectClicked(object sender, EventArgs e, string project)
         {
             display.DisplayBugsForm(project);
+
+            
+        }
+        private BugObject GetBug(string bugId) // this should be a public function in bugobject class
+        {
+            DataTable followset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
+            BugObject followbug = new BugObject(followset.Rows[0]["idbug"].ToString(),
+        followset.Rows[0]["title"].ToString(), followset.Rows[0]["description"].ToString(), followset.Rows[0]["location"].ToString(),
+        followset.Rows[0]["status"].ToString(),
+         followset.Rows[0]["poster"].ToString(), followset.Rows[0]["project"].ToString(), followset.Rows[0]["priority"].ToString(),
+          followset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(followset.Rows[0]["timePosted"]));
+            return followbug;
         }
     }
 }

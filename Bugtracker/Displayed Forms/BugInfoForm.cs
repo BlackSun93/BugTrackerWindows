@@ -62,11 +62,29 @@ namespace Bugtracker
                 Label_RefBug.Text = "";
             }
             else
-            {
+            { // going to a bug with a referenced bug from the notification screen means there's no bug list to check
+                // to get around this, catch an exception by using the ref'd bug's id to make a bug object
                 BugObject refBug = BugObject.Bugs.Find(i => i.idbug == currentBug.referencedBug);
-                Label_RefBug.Text = refBug.title;
+                try
+                {
+                    
+                    Label_RefBug.Text = refBug.title;
 
-                Label_RefBug.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, refBug));
+                    Label_RefBug.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, refBug));
+                }
+                catch (System.NullReferenceException)
+                {
+                    DataTable followset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(currentBug.referencedBug));
+                    BugObject followbug = new BugObject(followset.Rows[0]["idbug"].ToString(),
+                followset.Rows[0]["title"].ToString(), followset.Rows[0]["description"].ToString(), followset.Rows[0]["location"].ToString(),
+                followset.Rows[0]["status"].ToString(),
+                 followset.Rows[0]["poster"].ToString(), followset.Rows[0]["project"].ToString(), followset.Rows[0]["priority"].ToString(),
+                  followset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(followset.Rows[0]["timePosted"]));
+                    Label_RefBug.Text = followbug.title;
+
+                    Label_RefBug.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, followbug));
+                }
+                
             }
              
                 
