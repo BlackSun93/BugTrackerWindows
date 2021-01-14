@@ -364,6 +364,12 @@
   <ItemGroup>
     <None Include="Resources\bt_splash-4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_page-inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_page-active.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

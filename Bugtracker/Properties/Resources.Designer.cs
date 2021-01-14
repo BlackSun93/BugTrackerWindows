@@ -253,6 +253,26 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_page_active {
+            get {
+                object obj = ResourceManager.GetObject("bt_page-active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_page_inactive {
+            get {
+                object obj = ResourceManager.GetObject("bt_page-inactive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_password_hide {
             get {
                 object obj = ResourceManager.GetObject("bt_password-hide", resourceCulture);
