@@ -117,40 +117,39 @@ namespace Bugtracker
         }
 
 
-        public Google.Apis.Drive.v3.Data.File UploadFile()
+        public void UploadFile()
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Image Files(*.JPG)| *.JPG";
-            string filePath = openFile.FileName;
+            string filePath;
 
-            if (System.IO.File.Exists(filePath))
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                Google.Apis.Drive.v3.Data.File body = new Google.Apis.Drive.v3.Data.File();
-                body.Name = Path.GetFileName(filePath);
-                body.MimeType = "image/jpeg";
-                byte[] byteArray = System.IO.File.ReadAllBytes(filePath);
-                MemoryStream stream = new MemoryStream(byteArray);
-                try
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "Image Files(*.JPG)| *.JPG";
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    FilesResource.CreateMediaUpload request = service.Files.Create(body, stream, body.MimeType);
-                    request.SupportsTeamDrives = true;
-                    // You can bind event handler with progress changed event and response recieved(completed event)
-                    //request.ProgressChanged += Request_ProgressChanged;
-                    //request.ResponseReceived += Request_ResponseReceived;
-                    request.Upload();
-                    return request.ResponseBody;
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message, "Error Occured");
-                    return null;
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    Google.Apis.Drive.v3.Data.File body = new Google.Apis.Drive.v3.Data.File();
+                    body.Name = Path.GetFileName(filePath);
+                    body.MimeType = "image/jpeg";
+                    byte[] byteArray = System.IO.File.ReadAllBytes(filePath);
+                    MemoryStream stream = new MemoryStream(byteArray);
+                    try
+                    {
+                        FilesResource.CreateMediaUpload request = service.Files.Create(body, stream, body.MimeType);
+                        request.Upload();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message, "Error Occured");
+                    }
+
                 }
             }
-            else
-            {
-                MessageBox.Show("The file does not exist.", "404");
-                return null;
-            }
+
         }
 
     }
