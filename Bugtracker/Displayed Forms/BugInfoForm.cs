@@ -31,6 +31,7 @@ namespace Bugtracker
             //label1.Text = this.Size.ToString();
             LoadInfo();
             DoResize();
+            FollowButton();
            
         }
 
@@ -210,6 +211,91 @@ namespace Bugtracker
             // if a bug is referenced, should be able to find that bug object in this list so
             // that the label showing that bug's id is clickable in the info form
             display.DisplayBugInfoForm(selectedBug);
+
+        }
+        private void FollowButton()
+        {
+            DataSet followCheck = Connection.GetDbConn().GetDataSet($"SELECT * FROM followbug " +
+                $" WHERE user = {UserObject.loggedUser.iduser} AND bug = {currentBug.idbug}");
+            if (followCheck.Tables[0].Rows.Count != 0) // if user is following this project
+            {
+                //Button Button_Unfollow = new Button()
+                //{
+                //    Location = new Point(250, 9),
+                //    Text = "UnFollow project",
+                //    Font = new Font("Arial", 8f, FontStyle.Bold),
+                //    AutoSize = true,
+
+
+                //};
+                Button_Follow.Text = "Unfollow Bug";
+                Button_Follow.Click += new EventHandler((sender, e) => Unfollow(sender, e));
+                Button_Follow.Visible = true;
+            }
+            else
+            {
+                //Button Button_Follow = new Button()
+                //{
+                //    Location = new Point(250, 9),
+                //    Text = "Follow This Project",
+                //    Font = new Font("Arial", 8f, FontStyle.Bold),
+                //    AutoSize = true,
+
+                //};
+                Button_Follow.Text = "Follow Bug";
+                Button_Follow.Click += new EventHandler((sender, e) => Follow(sender, e));
+                Button_Follow.Visible = true;
+            }
+
+
+            //Button_RequestAccess.Click += new EventHandler((sender, e) => RequestAccess(sender, e, project));
+            //Panel_ProjectPanel.Controls.Add(Button_RequestAccess);
+            //containerPanel.Controls.Add(Panel_ProjectPanel);
+        }
+
+        private void Follow(object sender, EventArgs e)
+        {
+            // add a folow object to link the logged in user and this bug
+            // need a timestamp for the notification, also needs some leeway as sending to the server may take a second
+            // or more depending on connection.
+            DateTime timestamp = DateTime.Now;
+            string stringTime = timestamp.ToString("yyyy-MM-dd HH:mm:ss"); ;
+            string toStringTime = timestamp.AddSeconds(5).ToString("yyyy-MM-dd HH:mm:ss");
+            // create a follow project object which will notify the project poster that a user wants access
+            SqlFollow sq = new SqlFollow();
+            Connection.GetDbConn().CreateCommand(SqlFollow.FollowBug(UserObject.loggedUser.iduser, currentBug.idbug));
+
+            // has to create a notification with relevant deatils
+            SqlNotifications notif = new SqlNotifications();
+            notif.InsertNotification(UserObject.loggedUser.iduser, currentBug.project, currentBug.idbug, "", "bugfollow", "", timestamp);
+            // have to get the new notif's id to make a toNotif object, have to use time here as its possible
+            // that a user might make multiple requests or might follow, unfollow, then want back in
+            // copied logic from following a project here as unlikely user will have multiple notifications on the same project
+            // with the same timestamp
+            DataSet getNotifId = Connection.GetDbConn().GetDataSet($"SELECT idnotification FROM notification" +
+                $" WHERE usernotif = {UserObject.loggedUser.iduser} AND project = {currentBug.project}  AND timestamp BETWEEN '{stringTime}' AND '{toStringTime}' ");
+            string newNotifId = getNotifId.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+            // need to notify the bug's poster
+            DataSet bugPoster = Connection.GetDbConn().GetDataSet($"SELECT poster FROM bug WHERE idbug = {currentBug.idbug}");
+            string posterId = bugPoster.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+            notif.InsertToNotify(newNotifId, posterId, "0");
+
+
+            MessageBox.Show("Followed");
+        }
+        private void Unfollow(object sender, EventArgs e)
+        {
+            // create a follow project object which will notify the project poster that a user wants access
+
+            SqlFollow sq = new SqlFollow();
+            Connection.GetDbConn().CreateCommand(SqlFollow.UnFollowBug(UserObject.loggedUser.iduser, currentBug.idbug));
+
+            MessageBox.Show("Unfollowed");
+
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Request already sent");
+            //}
 
         }
     }

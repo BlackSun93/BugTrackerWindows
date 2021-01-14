@@ -18,9 +18,9 @@ namespace Bugtracker
         }
 
         private MySqlCommand _insertUpdate = new MySqlCommand("INSERT INTO `update` " +
-         "(postedBy, comment, bug, newStatus) VALUES (@postedBy, @comment, @bug, @newStatus)", Connection.connToDb);
+         "(postedBy, comment, bug, newStatus, timestamp) VALUES (@postedBy, @comment, @bug, @newStatus, @timestamp)", Connection.connToDb);
 
-        public void InsertUpdate(string postedBy, string comment, string bug, string status)
+        public void InsertUpdate(string postedBy, string comment, string bug, string status, string timestamp)
         {
             // Set parameters
             _insertUpdate.Parameters.Clear();
@@ -28,6 +28,7 @@ namespace Bugtracker
             _insertUpdate.Parameters.AddWithValue("@comment", comment);
             _insertUpdate.Parameters.AddWithValue("@bug", bug);
             _insertUpdate.Parameters.AddWithValue("@newStatus", status);
+            _insertUpdate.Parameters.AddWithValue("@timestamp", timestamp);
 
             using (Connection.connToDb = new MySqlConnection(Connection.connStr))
             {

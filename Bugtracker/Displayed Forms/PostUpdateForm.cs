@@ -46,11 +46,11 @@ namespace Bugtracker
             SqlBug updateStatus = new SqlBug();
             updateStatus.UpdateStatus(bug, status);
             SqlUpdate newUpdate = new SqlUpdate();
-            newUpdate.InsertUpdate(postedBy, comment, bug, status);
+            newUpdate.InsertUpdate(postedBy, comment, bug, status, timeString);
             Thread.Sleep(1000); // to try and allow status update to reflect when form reloaded
 
             DataSet toGetUpdateId = Connection.GetDbConn().GetDataSet($"SELECT idupdate FROM `update`" +
-                $" WHERE postedBy = {postedBy} AND timestamp BETWEEN '{timeString}' AND '{timeStringTo}'");
+                $" WHERE postedBy = '{postedBy}' AND timestamp BETWEEN '{timeString}' AND '{timeStringTo}'");
             //DataSet ds = Connection.GetDbConn().GetDataSet($"SELECT @@identity");
             string newUpdateId = toGetUpdateId.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
 

@@ -109,6 +109,12 @@ namespace Bugtracker
                         break;
 
                     case "request access":
+                        DataTable accessset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
+                        BugObject accessbug = new BugObject(accessset.Rows[0]["idbug"].ToString(),
+                    accessset.Rows[0]["title"].ToString(), accessset.Rows[0]["description"].ToString(), accessset.Rows[0]["location"].ToString(),
+                    accessset.Rows[0]["status"].ToString(),
+                     accessset.Rows[0]["poster"].ToString(), accessset.Rows[0]["project"].ToString(), accessset.Rows[0]["priority"].ToString(),
+                      accessset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(accessset.Rows[0]["timePosted"]));
                         labeltext = "User: " + userNotifFrom + " has requested access to private project: " 
                             + projId + " at: " + timestamp;
                         Label requestLabel = new Label
@@ -121,9 +127,34 @@ namespace Bugtracker
                             Text = labeltext
                         };
                         // needs to make 2 buttons, accept/ decline / click for user profile
-                        requestLabel.Click += new System.EventHandler((sender, e) => ProjectClicked(sender, e, projId));
+                        requestLabel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, accessbug));
                         Panel_MasterPanel.Controls.Add(requestLabel);
                         break;
+
+                    case "bugfollow":
+                        labeltext = "User: " + userNotifFrom + " has followed bug: "
+                            + bugId + " at: " + timestamp;
+                        DataTable followset = Connection.GetDbConn().GetDataTable(SqlBug.GetOneBug(bugId));
+                        BugObject followbug = new BugObject(followset.Rows[0]["idbug"].ToString(),
+                    followset.Rows[0]["title"].ToString(), followset.Rows[0]["description"].ToString(), followset.Rows[0]["location"].ToString(),
+                    followset.Rows[0]["status"].ToString(),
+                     followset.Rows[0]["poster"].ToString(), followset.Rows[0]["project"].ToString(), followset.Rows[0]["priority"].ToString(),
+                      followset.Rows[0]["referencedBug"].ToString(), Convert.ToDateTime(followset.Rows[0]["timePosted"]));
+                        Label bugFollowLabel = new Label
+                        {
+                            Location = new Point(16, panelYpos),
+                            Font = new Font("Arial", 8f, FontStyle.Bold),
+                            ForeColor = Color.FromArgb(82, 82, 82),
+                            //MaximumSize = new Size(Panel_BugPanel.Width - 32, Panel_BugPanel.Height / 4),
+                            AutoSize = true,
+                            Text = labeltext
+                        };
+                        // needs to make 2 buttons, accept/ decline / click for user profile
+                        bugFollowLabel.Click += new System.EventHandler((sender, e) => BugClicked(sender, e, followbug));
+                        Panel_MasterPanel.Controls.Add(bugFollowLabel);
+
+                        break;
+
 
                 }
 

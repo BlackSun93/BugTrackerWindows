@@ -43,6 +43,7 @@
             this.Label_Status = new System.Windows.Forms.Label();
             this.Label_DescRefBug = new System.Windows.Forms.Label();
             this.Label_RefBug = new System.Windows.Forms.Label();
+            this.Button_Follow = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Label_DescBugTitle
@@ -181,11 +182,22 @@
             this.Label_RefBug.TabIndex = 16;
             this.Label_RefBug.Text = "label1";
             // 
+            // Button_Follow
+            // 
+            this.Button_Follow.Location = new System.Drawing.Point(187, 69);
+            this.Button_Follow.Name = "Button_Follow";
+            this.Button_Follow.Size = new System.Drawing.Size(75, 23);
+            this.Button_Follow.TabIndex = 17;
+            this.Button_Follow.Text = "Follow Bug";
+            this.Button_Follow.UseVisualStyleBackColor = true;
+
+            // 
             // BugInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 480);
+            this.Controls.Add(this.Button_Follow);
             this.Controls.Add(this.Label_RefBug);
             this.Controls.Add(this.Label_DescRefBug);
             this.Controls.Add(this.Label_Status);
@@ -227,5 +239,6 @@
         private System.Windows.Forms.Label Label_Status;
         private System.Windows.Forms.Label Label_DescRefBug;
         private System.Windows.Forms.Label Label_RefBug;
+        private System.Windows.Forms.Button Button_Follow;
     }
 }
