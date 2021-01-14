@@ -29,6 +29,9 @@ namespace Bugtracker
         private Bitmap PASSWORD = Properties.Resources.bt_login_password;
         private Bitmap EMAIL = Properties.Resources.bt_login_email;
         private Bitmap ERROR = Properties.Resources.bt_error;
+        private Bitmap USERNAME_SUCCESS = Properties.Resources.bt_login_username_success;
+        private Bitmap PASSWORD_SUCCESS = Properties.Resources.bt_login_password_success;
+        private Bitmap EMAIL_SUCCESS = Properties.Resources.bt_login_email_success;
 
         char position = 'r';
         int x;
@@ -422,6 +425,7 @@ namespace Bugtracker
             {
                 TextBox_LoginUsername.ForeColor = Color.FromArgb(38, 174, 96);
                 Label_LoginUsernameSeparator.BackColor = Color.FromArgb(38, 174, 96);
+                PictureBox_LoginUsername.BackgroundImage = USERNAME_SUCCESS;
             }
         }
 
@@ -474,6 +478,7 @@ namespace Bugtracker
             {
                 TextBox_LoginPassword.ForeColor = Color.FromArgb(38, 174, 96);
                 Label_LoginPasswordSeparator.BackColor = Color.FromArgb(38, 174, 96);
+                PictureBox_LoginPassword.BackgroundImage = PASSWORD_SUCCESS;
             }
         }
 

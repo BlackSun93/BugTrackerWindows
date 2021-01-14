@@ -103,6 +103,16 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_login_email_success {
+            get {
+                object obj = ResourceManager.GetObject("bt_login-email-success", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_login_password {
             get {
                 object obj = ResourceManager.GetObject("bt_login-password", resourceCulture);
@@ -113,9 +123,29 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_login_password_success {
+            get {
+                object obj = ResourceManager.GetObject("bt_login-password-success", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_login_username {
             get {
                 object obj = ResourceManager.GetObject("bt_login-username", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_login_username_success {
+            get {
+                object obj = ResourceManager.GetObject("bt_login-username-success", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
