@@ -578,8 +578,8 @@
             // 
             // Button_RegisterPasswordVisibility
             // 
-            this.Button_RegisterPasswordVisibility.BackgroundImage = global::Bugtracker.Properties.Resources.bt_pass_show;
-            this.Button_RegisterPasswordVisibility.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Button_RegisterPasswordVisibility.BackgroundImage = global::Bugtracker.Properties.Resources.bt_password_show;
+            this.Button_RegisterPasswordVisibility.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Button_RegisterPasswordVisibility.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_RegisterPasswordVisibility.FlatAppearance.BorderSize = 0;
             this.Button_RegisterPasswordVisibility.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -588,7 +588,7 @@
             this.Button_RegisterPasswordVisibility.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_RegisterPasswordVisibility.Location = new System.Drawing.Point(357, 246);
             this.Button_RegisterPasswordVisibility.Name = "Button_RegisterPasswordVisibility";
-            this.Button_RegisterPasswordVisibility.Size = new System.Drawing.Size(32, 32);
+            this.Button_RegisterPasswordVisibility.Size = new System.Drawing.Size(30, 32);
             this.Button_RegisterPasswordVisibility.TabIndex = 0;
             this.Button_RegisterPasswordVisibility.TabStop = false;
             this.Button_RegisterPasswordVisibility.UseVisualStyleBackColor = false;
@@ -801,8 +801,8 @@
             // 
             // Button_LoginPasswordVisibility
             // 
-            this.Button_LoginPasswordVisibility.BackgroundImage = global::Bugtracker.Properties.Resources.bt_pass_show;
-            this.Button_LoginPasswordVisibility.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Button_LoginPasswordVisibility.BackgroundImage = global::Bugtracker.Properties.Resources.bt_password_show;
+            this.Button_LoginPasswordVisibility.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Button_LoginPasswordVisibility.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_LoginPasswordVisibility.FlatAppearance.BorderSize = 0;
             this.Button_LoginPasswordVisibility.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -812,7 +812,7 @@
             this.Button_LoginPasswordVisibility.Location = new System.Drawing.Point(389, 246);
             this.Button_LoginPasswordVisibility.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.Button_LoginPasswordVisibility.Name = "Button_LoginPasswordVisibility";
-            this.Button_LoginPasswordVisibility.Size = new System.Drawing.Size(32, 32);
+            this.Button_LoginPasswordVisibility.Size = new System.Drawing.Size(30, 32);
             this.Button_LoginPasswordVisibility.TabIndex = 0;
             this.Button_LoginPasswordVisibility.TabStop = false;
             this.Button_LoginPasswordVisibility.UseVisualStyleBackColor = false;

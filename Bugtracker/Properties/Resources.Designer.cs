@@ -253,9 +253,9 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bt_pass_hide {
+        internal static System.Drawing.Bitmap bt_password_hide {
             get {
-                object obj = ResourceManager.GetObject("bt_pass-hide", resourceCulture);
+                object obj = ResourceManager.GetObject("bt_password-hide", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bt_pass_show {
+        internal static System.Drawing.Bitmap bt_password_show {
             get {
-                object obj = ResourceManager.GetObject("bt_pass-show", resourceCulture);
+                object obj = ResourceManager.GetObject("bt_password-show", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

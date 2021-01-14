@@ -23,8 +23,8 @@ namespace Bugtracker
         public Bitmap MAXIMIZE = Properties.Resources.bt_maximize;
         public Bitmap MAXIMIZE_DISABLED = Properties.Resources.bt_maximize_disabled;
         public Bitmap RESTORE = Properties.Resources.bt_restore;
-        private Bitmap HIDE = Properties.Resources.bt_pass_hide;
-        private Bitmap SHOW = Properties.Resources.bt_pass_show;
+        private Bitmap HIDE = Properties.Resources.bt_password_hide;
+        private Bitmap SHOW = Properties.Resources.bt_password_show;
         private Bitmap USERNAME = Properties.Resources.bt_login_username;
         private Bitmap PASSWORD = Properties.Resources.bt_login_password;
         private Bitmap EMAIL = Properties.Resources.bt_login_email;
