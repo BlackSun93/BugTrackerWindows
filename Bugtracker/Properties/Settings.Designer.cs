@@ -57,5 +57,29 @@ namespace Bugtracker.Properties {
                 this["StayLoggedIn"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LoggedUsername {
+            get {
+                return ((string)(this["LoggedUsername"]));
+            }
+            set {
+                this["LoggedUsername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LoggedUserId {
+            get {
+                return ((string)(this["LoggedUserId"]));
+            }
+            set {
+                this["LoggedUserId"] = value;
+            }
+        }
     }
 }

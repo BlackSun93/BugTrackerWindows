@@ -127,16 +127,22 @@ namespace Bugtracker
                 if (CheckBox_StayLoggedIn.CheckState == CheckState.Checked)
                 {
                     Properties.Settings.Default.StayLoggedIn = true;
+                    Properties.Settings.Default.LoggedUserId = UserObject.loggedUser.iduser;
+                    Properties.Settings.Default.LoggedUsername = UserObject.loggedUser.username;
                     Properties.Settings.Default.Save();
                 }
                 else if (CheckBox_StayLoggedIn.CheckState == CheckState.Unchecked)
                 {
                     Properties.Settings.Default.StayLoggedIn = false;
+                    Properties.Settings.Default.LoggedUserId = null;
+                    Properties.Settings.Default.LoggedUsername = null;
                     Properties.Settings.Default.Save();
                 }
 
                 Hide();
                 loginPanel.Hide();
+                loginPanelBackTop.Hide();
+                loginPanelBackBottom.Hide();
                 Window window = new Window();
                 window.Show();
             }
@@ -297,6 +303,13 @@ namespace Bugtracker
             {
                 Label_RegisterUsernameError.Text = "Generic Username Error";
                 Label_RegisterUsernameError.Show();
+
+                Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 85, 85);
+                TextBox_RegisterUsername.ForeColor = Color.FromArgb(255, 85, 85);
+                PictureBox_RegisterUsername.BackgroundImage = ERROR;
+                Button_Register.BackColor = Color.FromArgb(255, 85, 85);
+
+                MessageBox.Show("username invalid");
             }
             else if (TextBox_RegisterPassword.TextLength == 0)
             {
@@ -487,6 +500,11 @@ namespace Bugtracker
         private void TextBox_RegisterUsername_Enter(object sender, EventArgs e)
         {
             Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 85, 0);
+            TextBox_RegisterUsername.ForeColor = Color.FromArgb(82, 82, 82);
+            PictureBox_RegisterUsername.BackgroundImage = USERNAME;
+            Button_Login.BackColor = Color.FromArgb(255, 85, 0);
+            Label_RegisterEmailError.Hide();
+
 
             if (TextBox_RegisterUsername.TextLength == 0)
             {
@@ -521,6 +539,8 @@ namespace Bugtracker
             else
             {
                 Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(38, 174, 96);
+                TextBox_RegisterUsername.ForeColor = Color.FromArgb(38, 174, 96);
+                Label_RegisterUsernameError.Hide();
             }
         }
 

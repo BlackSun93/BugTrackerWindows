@@ -34,6 +34,9 @@ namespace Bugtracker
 
             if (Properties.Settings.Default.StayLoggedIn == true)
             {
+                UserObject.loggedUser.username = Properties.Settings.Default.LoggedUsername;
+                UserObject.loggedUser.iduser = Properties.Settings.Default.LoggedUserId;
+
                 Application.Run(new Window());
             }
             else
