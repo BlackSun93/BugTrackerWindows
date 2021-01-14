@@ -2,7 +2,7 @@
 using Google.Apis.Drive.v3;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
-using System.Drawing;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -115,5 +115,43 @@ namespace Bugtracker
             var request = service.Files.Get(file.Id);
             request.DownloadWithStatus(stream);
         }
+
+
+        public Google.Apis.Drive.v3.Data.File UploadFile()
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Image Files(*.JPG)| *.JPG";
+            string filePath = openFile.FileName;
+
+            if (System.IO.File.Exists(filePath))
+            {
+                Google.Apis.Drive.v3.Data.File body = new Google.Apis.Drive.v3.Data.File();
+                body.Name = Path.GetFileName(filePath);
+                body.MimeType = "image/jpeg";
+                byte[] byteArray = System.IO.File.ReadAllBytes(filePath);
+                MemoryStream stream = new MemoryStream(byteArray);
+                try
+                {
+                    FilesResource.CreateMediaUpload request = service.Files.Create(body, stream, body.MimeType);
+                    request.SupportsTeamDrives = true;
+                    // You can bind event handler with progress changed event and response recieved(completed event)
+                    //request.ProgressChanged += Request_ProgressChanged;
+                    //request.ResponseReceived += Request_ResponseReceived;
+                    request.Upload();
+                    return request.ResponseBody;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Error Occured");
+                    return null;
+                }
+            }
+            else
+            {
+                MessageBox.Show("The file does not exist.", "404");
+                return null;
+            }
+        }
+
     }
 }
