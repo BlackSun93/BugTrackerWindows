@@ -123,9 +123,9 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bt_LoginPanelBackBottom {
+        internal static System.Drawing.Bitmap bt_LoginPanel3DBottom {
             get {
-                object obj = ResourceManager.GetObject("bt_LoginPanelBackBottom", resourceCulture);
+                object obj = ResourceManager.GetObject("bt_LoginPanel3DBottom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bt_LoginPanelBackBottomShadow {
+        internal static System.Drawing.Bitmap bt_LoginPanel3DBottomShadow {
             get {
-                object obj = ResourceManager.GetObject("bt_LoginPanelBackBottomShadow", resourceCulture);
+                object obj = ResourceManager.GetObject("bt_LoginPanel3DBottomShadow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bt_LoginPanelBackTop {
+        internal static System.Drawing.Bitmap bt_LoginPanel3DTop {
             get {
-                object obj = ResourceManager.GetObject("bt_LoginPanelBackTop", resourceCulture);
+                object obj = ResourceManager.GetObject("bt_LoginPanel3DTop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bt_LoginPanelBackTopShadow {
+        internal static System.Drawing.Bitmap bt_LoginPanel3DTopShadow {
             get {
-                object obj = ResourceManager.GetObject("bt_LoginPanelBackTopShadow", resourceCulture);
+                object obj = ResourceManager.GetObject("bt_LoginPanel3DTopShadow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

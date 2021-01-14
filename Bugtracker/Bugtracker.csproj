@@ -332,16 +332,16 @@
     <None Include="Resources\bt_BackgroundShadow3.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bt_LoginPanelBackTop.png" />
+    <None Include="Resources\bt_LoginPanel3DTop.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bt_LoginPanelBackBottom.png" />
+    <None Include="Resources\bt_LoginPanel3DBottom.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bt_LoginPanelBackTopShadow.png" />
+    <None Include="Resources\bt_LoginPanel3DTopShadow.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bt_LoginPanelBackBottomShadow.png" />
+    <None Include="Resources\bt_LoginPanel3DBottomShadow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

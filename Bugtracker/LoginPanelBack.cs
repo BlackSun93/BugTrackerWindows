@@ -24,12 +24,12 @@ namespace Bugtracker
 
             if (position == "top")
             {
-                BackgroundImage = Properties.Resources.bt_LoginPanelBackTop;
+                BackgroundImage = Properties.Resources.bt_LoginPanel3DTop;
                 TransparencyKey = Color.Black;
             }
             else if (position == "bottom")
             {
-                BackgroundImage = Properties.Resources.bt_LoginPanelBackBottom;
+                BackgroundImage = Properties.Resources.bt_LoginPanel3DBottom;
                 TransparencyKey = Color.Black;
             }
             FormBorderStyle = FormBorderStyle.None;
@@ -45,12 +45,12 @@ namespace Bugtracker
 
             if (position == "top")
             {
-                BackgroundImage = Properties.Resources.bt_LoginPanelBackTopShadow;
+                BackgroundImage = Properties.Resources.bt_LoginPanel3DTopShadow;
                 TransparencyKey = Color.Black;
             }
             else if (position == "bottom")
             {
-                BackgroundImage = Properties.Resources.bt_LoginPanelBackBottomShadow;
+                BackgroundImage = Properties.Resources.bt_LoginPanel3DBottomShadow;
                 TransparencyKey = Color.Black;
             }
             FormBorderStyle = FormBorderStyle.None;

@@ -35,13 +35,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Bugtracker.Properties.Resources.bt_LoginPanelBackTop;
-            this.ClientSize = new System.Drawing.Size(32, 20);
+            this.BackgroundImage = global::Bugtracker.Properties.Resources.bt_LoginPanel3DTop;
+            this.ClientSize = new System.Drawing.Size(40, 20);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(32, 20);
-            this.MinimumSize = new System.Drawing.Size(32, 20);
+            this.MaximumSize = new System.Drawing.Size(40, 20);
+            this.MinimumSize = new System.Drawing.Size(40, 20);
             this.Name = "LoginPanelBack";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

@@ -68,11 +68,11 @@ namespace Bugtracker
             loginPanel.Owner = this;
 
             loginPanelBackTop = new LoginPanelBack(loginPanel, "top");
-            loginPanelBackTop.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+            loginPanelBackTop.Location = new Point(Left + ((Width / 2) - 20), Top - 20);
             loginPanelBackTop.Owner = this;
 
             loginPanelBackBottom = new LoginPanelBack(loginPanel, "bottom");
-            loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 16), Bottom);
+            loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 20), Bottom);
             loginPanelBackBottom.Owner = this;
 
             
@@ -99,8 +99,8 @@ namespace Bugtracker
             {
                 loginPanel.Location = new Point(Left, Top - 20);
             }
-            loginPanelBackTop.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
-            loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 16), Bottom);
+            loginPanelBackTop.Location = new Point(Left + ((Width / 2) - 20), Top - 20);
+            loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 20), Bottom);
 
         }
 
@@ -724,10 +724,10 @@ namespace Bugtracker
             dark2.Location = new Point(loginPanel.Left, loginPanel.Top);
             dark2.Owner = loginPanel;
 
-            dark3.Location = new Point(Left + ((Width / 2) - 16), Top - 20);
+            dark3.Location = new Point(Left + ((Width / 2) - 20), Top - 20);
             dark3.Owner = this;
 
-            dark4.Location = new Point(Left + ((Width / 2) - 16), Bottom);
+            dark4.Location = new Point(Left + ((Width / 2) - 20), Bottom);
             dark4.Owner = this;
 
             forgotPassword.GetDarkenForms(dark1, dark2, dark3, dark4);
