@@ -37,7 +37,7 @@ namespace Bugtracker
             Panel_Page1 = new Panel
             {
                 Name = "Panel_Page1",
-                BackColor = backgroundColour,
+                BackColor = Color.Blue,//backgroundColour,
                 Size = new Size(374, 292),
                 MaximumSize = new Size(374, 292),
                 MinimumSize = new Size(374, 292),
@@ -47,31 +47,31 @@ namespace Bugtracker
             Panel_Page2 = new Panel
             {
                 Name = "Panel_Page2",
-                BackColor = backgroundColour,
+                BackColor = Color.Magenta,//backgroundColour,
                 Size = new Size(374, 292),
                 MaximumSize = new Size(374, 292),
                 MinimumSize = new Size(374, 292),
-                Location = new Point(Right, 137),
+                Location = new Point(456, 137),
             };
 
             Panel_Page3 = new Panel
             {
                 Name = "Panel_Page3",
-                BackColor = backgroundColour,
+                BackColor = Color.Green,//backgroundColour,
                 Size = new Size(374, 292),
                 MaximumSize = new Size(374, 292),
                 MinimumSize = new Size(374, 292),
-                Location = new Point(Right, 137),
+                Location = new Point(456, 137),
             };
 
             Panel_Page4 = new Panel
             {
                 Name = "Panel_Page4",
-                BackColor = backgroundColour,
+                BackColor = Color.Black,//backgroundColour,
                 Size = new Size(374, 292),
                 MaximumSize = new Size(374, 292),
                 MinimumSize = new Size(374, 292),
-                Location = new Point(Right, 137),
+                Location = new Point(456, 137),
             };
 
             PictureBox PictureBox_SplashLogo1 = new PictureBox
@@ -234,7 +234,13 @@ namespace Bugtracker
             Panel_Page4.Controls.Add(Label_SplashText4);
 
             Controls.Add(Panel_Page1);
+            Controls.Add(Panel_Page2);
+            Controls.Add(Panel_Page3);
+            Controls.Add(Panel_Page4);
             Panel_Page1.Show();
+            Panel_Page2.Hide();
+            Panel_Page3.Hide();
+            Panel_Page4.Hide();
         }
 
         private void ActivePage(int page)
@@ -309,9 +315,9 @@ namespace Bugtracker
                     x2 -= 1;
                     Panel_Page2.Location = new Point(x2, y2);
                 }
-                Panel_Page2.Location = new Point(Right, 137);
+                Panel_Page2.Location = new Point(456, 137);
                 Panel_Page2.Hide();
-                Controls.Remove(Panel_Page2);
+                //Controls.Remove(Panel_Page2);
             }
             else if (Panel_Page3.Visible)
             {
@@ -320,9 +326,9 @@ namespace Bugtracker
                     x3 -= 1;
                     Panel_Page3.Location = new Point(x3, y3);
                 }
-                Panel_Page3.Location = new Point(Right, 137);
+                Panel_Page3.Location = new Point(456, 137);
                 Panel_Page3.Hide();
-                Controls.Remove(Panel_Page3);
+                //Controls.Remove(Panel_Page3);
             }
             else if (Panel_Page4.Visible)
             {
@@ -331,12 +337,12 @@ namespace Bugtracker
                     x4 -= 1;
                     Panel_Page4.Location = new Point(x4, y4);
                 }
-                Panel_Page4.Location = new Point(Right, 137);
+                Panel_Page4.Location = new Point(456, 137);
                 Panel_Page4.Hide();
-                Controls.Remove(Panel_Page4);
+                //Controls.Remove(Panel_Page4);
             }
 
-            Controls.Add(Panel_Page1);
+            //Controls.Add(Panel_Page1);
             Panel_Page1.Show();
 
             while (Panel_Page1.Location.X != 41)
@@ -357,16 +363,17 @@ namespace Bugtracker
             int x4 = Panel_Page4.Location.X;
             int y4 = Panel_Page4.Location.Y;
 
+
             if (Panel_Page1.Visible)
             {
-                while (Panel_Page1.Location.X != (0 - Panel_Page1.Width))
+                while (Panel_Page1.Location.X != (0 - Panel_Page1.Width) && Panel_Page2.Location.X != 41)
                 {
                     x1 -= 1;
                     Panel_Page1.Location = new Point(x1, y1);
                 }
-                Panel_Page1.Location = new Point(Right, 137);
+                Panel_Page1.Location = new Point(456, 137);
                 Panel_Page1.Hide();
-                Controls.Remove(Panel_Page1);
+                //Controls.Remove(Panel_Page1);
             }
             else if (Panel_Page3.Visible)
             {
@@ -375,9 +382,9 @@ namespace Bugtracker
                     x3 -= 1;
                     Panel_Page3.Location = new Point(x3, y3);
                 }
-                Panel_Page3.Location = new Point(Right, 137);
+                Panel_Page3.Location = new Point(456, 137);
                 Panel_Page3.Hide();
-                Controls.Remove(Panel_Page3);
+                //Controls.Remove(Panel_Page3);
             }
             else if (Panel_Page4.Visible)
             {
@@ -386,18 +393,19 @@ namespace Bugtracker
                     x4 -= 1;
                     Panel_Page4.Location = new Point(x4, y4);
                 }
-                Panel_Page4.Location = new Point(Right, 137);
+                Panel_Page4.Location = new Point(456, 137);
                 Panel_Page4.Hide();
-                Controls.Remove(Panel_Page4);
+                //Controls.Remove(Panel_Page4);
             }
 
-            Controls.Add(Panel_Page2);
+            //Controls.Add(Panel_Page2);
             Panel_Page2.Show();
 
             while (Panel_Page2.Location.X != 41)
             {
                 x2 -= 1;
                 Panel_Page2.Location = new Point(x2, y2);
+                Thread.Sleep(1);
             }
         }
 
@@ -419,9 +427,9 @@ namespace Bugtracker
                     x1 -= 1;
                     Panel_Page1.Location = new Point(x1, y1);
                 }
-                Panel_Page1.Location = new Point(Right, 137);
+                Panel_Page1.Location = new Point(456, 137);
                 Panel_Page1.Hide();
-                Controls.Remove(Panel_Page1);
+                //Controls.Remove(Panel_Page1);
             }
             else if (Panel_Page2.Visible)
             {
@@ -430,9 +438,9 @@ namespace Bugtracker
                     x2 -= 1;
                     Panel_Page2.Location = new Point(x2, y2);
                 }
-                Panel_Page2.Location = new Point(Right, 137);
+                Panel_Page2.Location = new Point(456, 137);
                 Panel_Page2.Hide();
-                Controls.Remove(Panel_Page2);
+                //Controls.Remove(Panel_Page2);
             }
             else if (Panel_Page4.Visible)
             {
@@ -441,12 +449,12 @@ namespace Bugtracker
                     x4 -= 1;
                     Panel_Page4.Location = new Point(x4, y4);
                 }
-                Panel_Page4.Location = new Point(Right, 137);
+                Panel_Page4.Location = new Point(456, 137);
                 Panel_Page4.Hide();
-                Controls.Remove(Panel_Page4);
+                //Controls.Remove(Panel_Page4);
             }
 
-            Controls.Add(Panel_Page3);
+            //Controls.Add(Panel_Page3);
             Panel_Page3.Show();
 
             while (Panel_Page3.Location.X != 41)
@@ -476,7 +484,7 @@ namespace Bugtracker
                 }
                 Panel_Page1.Location = new Point(Right, 137);
                 Panel_Page1.Hide();
-                Controls.Remove(Panel_Page1);
+                //Controls.Remove(Panel_Page1);
             }
             else if (Panel_Page2.Visible)
             {
@@ -487,7 +495,7 @@ namespace Bugtracker
                 }
                 Panel_Page2.Location = new Point(Right, 137);
                 Panel_Page2.Hide();
-                Controls.Remove(Panel_Page2);
+                //Controls.Remove(Panel_Page2);
             }
             else if (Panel_Page3.Visible)
             {
@@ -498,10 +506,10 @@ namespace Bugtracker
                 }
                 Panel_Page3.Location = new Point(Right, 137);
                 Panel_Page3.Hide();
-                Controls.Remove(Panel_Page3);
+                //Controls.Remove(Panel_Page3);
             }
 
-            Controls.Add(Panel_Page4);
+            //Controls.Add(Panel_Page4);
             Panel_Page4.Show();
 
             while (Panel_Page4.Location.X != 41)
