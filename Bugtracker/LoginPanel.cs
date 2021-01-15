@@ -133,7 +133,7 @@ namespace Bugtracker
                 ForeColor = Color.White,
                 Size = new Size(374, 94),
                 Location = new Point(0, 104),
-                Text = "Fix and clean the latest",
+                Text = "Fix and clean the latest issues",
                 Font = new Font("Arial", 18f, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft,
             };
@@ -157,7 +157,7 @@ namespace Bugtracker
                 ForeColor = Color.White,
                 Size = new Size(374, 94),
                 Location = new Point(0, 104),
-                Text = "Easily view your progress",
+                Text = "Easily view your contributions",
                 Font = new Font("Arial", 18f, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft,
             };
@@ -169,7 +169,9 @@ namespace Bugtracker
                 ForeColor = Color.White,
                 Size = new Size(374, 94),
                 Location = new Point(0, 198),
-                Text = "Found a bug? You can report it to a project so that it can be fixed.",
+                Text = "Found a bug? You can submit it to the relevant " +
+                       "project where other users will be notified." +
+                       "\nSimple and effective.",
                 Font = new Font("Arial", 10f, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopLeft,
             };
@@ -181,7 +183,9 @@ namespace Bugtracker
                 ForeColor = Color.White,
                 Size = new Size(374, 94),
                 Location = new Point(0, 198),
-                Text = "Text 2.",
+                Text = "Developer who loves to tinker? Browse an endless " +
+                       "supply of bugs that need your help. The new recent " +
+                       "tab will keep you busy.",
                 Font = new Font("Arial", 10f, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopLeft,
             };
@@ -193,7 +197,9 @@ namespace Bugtracker
                 ForeColor = Color.White,
                 Size = new Size(374, 94),
                 Location = new Point(0, 198),
-                Text = "Text 3.",
+                Text = "Want to know what the latest bugs are? Follow a " +
+                       "project or create your own to be notified as soon as " +
+                       "a bug has been reported.",
                 Font = new Font("Arial", 10f, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopLeft,
             };
@@ -205,7 +211,9 @@ namespace Bugtracker
                 ForeColor = Color.White,
                 Size = new Size(374, 94),
                 Location = new Point(0, 198),
-                Text = "Text 4.",
+                Text = "Like to see visual data? View your progress and " +
+                       "statistics on your dashboard. There are some " +
+                       "hidden rewards for your contributions.",
                 Font = new Font("Arial", 10f, FontStyle.Bold),
                 TextAlign = ContentAlignment.TopLeft,
             };
