@@ -294,6 +294,7 @@ namespace Bugtracker
             Panel_Management.BackColor = color;
             Panel_Management.BringToFront();
             Panel_Management.Show();
+            
             label1.Text = Convert.ToString(Panel_Management.Visible);
             label2.Text = Panel_Management.BackColor.Name;
         }

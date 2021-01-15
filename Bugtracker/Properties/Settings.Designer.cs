@@ -45,5 +45,17 @@ namespace Bugtracker.Properties {
                 this["managementPanel_Color"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255, 85, 0")]
+        public global::System.Drawing.Color containerPanel_Color {
+            get {
+                return ((global::System.Drawing.Color)(this["containerPanel_Color"]));
+            }
+            set {
+                this["containerPanel_Color"] = value;
+            }
+        }
     }
 }

@@ -12,5 +12,8 @@
     <Setting Name="managementPanel_Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">255, 85, 0</Value>
     </Setting>
+    <Setting Name="containerPanel_Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 85, 0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

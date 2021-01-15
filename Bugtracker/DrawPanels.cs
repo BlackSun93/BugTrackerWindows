@@ -38,7 +38,7 @@ namespace Bugtracker
                 Panel Panel_Container = new Panel
                 {
                     Location = new Point(16, 16), // this is updated in GridDraw, so redunadant here
-                    BackColor = Color.Yellow, //i apologise for the colour
+                    BackColor = Properties.Settings.Default.containerPanel_Color,
                     //MaximumSize = new Size(((display.Width / 2) - 200), toDrawTo.Height),
                     //Width = 530, // i want this size to fill the master panel on projectsForm when window at min size
                     // 2 project panels take up 536 px with their separators (3 * 32px) + (2*220px))

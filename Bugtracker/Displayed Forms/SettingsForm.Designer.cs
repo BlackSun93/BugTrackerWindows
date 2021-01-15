@@ -31,30 +31,30 @@ namespace Bugtracker
         {
             this.Button_Save = new System.Windows.Forms.Button();
             this.Panel_MiniWindow = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.Panel_Navigation = new System.Windows.Forms.Panel();
             this.Label_Settings = new System.Windows.Forms.Label();
             this.Label_Recent = new System.Windows.Forms.Label();
             this.Label_Projects = new System.Windows.Forms.Label();
             this.Panel_DisplayBugs = new System.Windows.Forms.Panel();
+            this.Panel_ContainerPanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.Label_Dashboard = new System.Windows.Forms.Label();
             this.Label_Tracker = new System.Windows.Forms.Label();
             this.Label_Bug = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Panel_Management = new System.Windows.Forms.Panel();
-            this.Panel_BackPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.colorDialog_TopBar = new System.Windows.Forms.ColorDialog();
+            this.colorDialog_ManagementPanel = new System.Windows.Forms.ColorDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.colorDialog_BackPanel = new System.Windows.Forms.ColorDialog();
+            this.colorDialog_ContainerPanel = new System.Windows.Forms.ColorDialog();
             this.button2 = new System.Windows.Forms.Button();
             this.Panel_MiniWindow.SuspendLayout();
             this.Panel_Navigation.SuspendLayout();
             this.Panel_DisplayBugs.SuspendLayout();
-            this.Panel_BackPanel.SuspendLayout();
+            this.Panel_ContainerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Button_Save
@@ -82,15 +82,6 @@ namespace Bugtracker
             this.Panel_MiniWindow.Name = "Panel_MiniWindow";
             this.Panel_MiniWindow.Size = new System.Drawing.Size(300, 225);
             this.Panel_MiniWindow.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Top bar";
             // 
             // Panel_Navigation
             // 
@@ -149,11 +140,56 @@ namespace Bugtracker
             // Panel_DisplayBugs
             // 
             this.Panel_DisplayBugs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.Panel_DisplayBugs.Controls.Add(this.Panel_BackPanel);
+            this.Panel_DisplayBugs.Controls.Add(this.Panel_ContainerPanel);
             this.Panel_DisplayBugs.Location = new System.Drawing.Point(76, 46);
             this.Panel_DisplayBugs.Name = "Panel_DisplayBugs";
             this.Panel_DisplayBugs.Size = new System.Drawing.Size(221, 179);
             this.Panel_DisplayBugs.TabIndex = 1;
+            // 
+            // Panel_ContainerPanel
+            // 
+            this.Panel_ContainerPanel.BackColor = System.Drawing.Color.Yellow;
+            this.Panel_ContainerPanel.Controls.Add(this.panel5);
+            this.Panel_ContainerPanel.Controls.Add(this.panel4);
+            this.Panel_ContainerPanel.Controls.Add(this.panel3);
+            this.Panel_ContainerPanel.Controls.Add(this.panel2);
+            this.Panel_ContainerPanel.Location = new System.Drawing.Point(26, 10);
+            this.Panel_ContainerPanel.Name = "Panel_ContainerPanel";
+            this.Panel_ContainerPanel.Size = new System.Drawing.Size(174, 166);
+            this.Panel_ContainerPanel.TabIndex = 0;
+            this.Panel_ContainerPanel.Click += new System.EventHandler(this.Panel_ContainerPanel_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(91, 86);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(80, 80);
+            this.panel5.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Location = new System.Drawing.Point(3, 86);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(80, 80);
+            this.panel4.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(91, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(80, 80);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(80, 80);
+            this.panel2.TabIndex = 0;
             // 
             // Label_Dashboard
             // 
@@ -189,6 +225,15 @@ namespace Bugtracker
             this.Label_Bug.TabIndex = 0;
             this.Label_Bug.Text = "BUG";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(62, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Top bar";
+            // 
             // Panel_Management
             // 
             this.Panel_Management.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -200,50 +245,7 @@ namespace Bugtracker
             this.Panel_Management.Name = "Panel_Management";
             this.Panel_Management.Size = new System.Drawing.Size(224, 43);
             this.Panel_Management.TabIndex = 6;
-            // 
-            // Panel_BackPanel
-            // 
-            this.Panel_BackPanel.BackColor = System.Drawing.Color.Yellow;
-            this.Panel_BackPanel.Controls.Add(this.panel5);
-            this.Panel_BackPanel.Controls.Add(this.panel4);
-            this.Panel_BackPanel.Controls.Add(this.panel3);
-            this.Panel_BackPanel.Controls.Add(this.panel2);
-            this.Panel_BackPanel.Location = new System.Drawing.Point(26, 10);
-            this.Panel_BackPanel.Name = "Panel_BackPanel";
-            this.Panel_BackPanel.Size = new System.Drawing.Size(174, 166);
-            this.Panel_BackPanel.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(80, 80);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(91, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(80, 80);
-            this.panel3.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(3, 86);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(80, 80);
-            this.panel4.TabIndex = 2;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(91, 86);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(80, 80);
-            this.panel5.TabIndex = 3;
+            this.Panel_Management.Click += new System.EventHandler(this.Panel_Management_Click);
             // 
             // button1
             // 
@@ -260,9 +262,9 @@ namespace Bugtracker
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(62, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Back panel";
+            this.label2.Text = "Container panel";
             // 
             // button2
             // 
@@ -293,7 +295,7 @@ namespace Bugtracker
             this.Panel_Navigation.ResumeLayout(false);
             this.Panel_Navigation.PerformLayout();
             this.Panel_DisplayBugs.ResumeLayout(false);
-            this.Panel_BackPanel.ResumeLayout(false);
+            this.Panel_ContainerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,15 +315,15 @@ namespace Bugtracker
         private System.Windows.Forms.Label Label_Tracker;
         private System.Windows.Forms.Label Label_Bug;
         private System.Windows.Forms.Panel Panel_Management;
-        private System.Windows.Forms.Panel Panel_BackPanel;
+        private System.Windows.Forms.Panel Panel_ContainerPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ColorDialog colorDialog_TopBar;
+        private System.Windows.Forms.ColorDialog colorDialog_ManagementPanel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ColorDialog colorDialog_BackPanel;
+        private System.Windows.Forms.ColorDialog colorDialog_ContainerPanel;
         private System.Windows.Forms.Button button2;
     }
 }
