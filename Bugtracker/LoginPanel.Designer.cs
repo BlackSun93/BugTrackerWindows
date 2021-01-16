@@ -62,10 +62,10 @@
             this.PictureBox_Page4.BackgroundImage = global::Bugtracker.Properties.Resources.bt_page_inactive;
             this.PictureBox_Page4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.PictureBox_Page4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PictureBox_Page4.Location = new System.Drawing.Point(217, 0);
+            this.PictureBox_Page4.Location = new System.Drawing.Point(207, 0);
             this.PictureBox_Page4.Margin = new System.Windows.Forms.Padding(0);
             this.PictureBox_Page4.Name = "PictureBox_Page4";
-            this.PictureBox_Page4.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_Page4.Size = new System.Drawing.Size(20, 32);
             this.PictureBox_Page4.TabIndex = 11;
             this.PictureBox_Page4.TabStop = false;
             this.PictureBox_Page4.Click += new System.EventHandler(this.PictureBox_Page4_Click);
@@ -79,7 +79,7 @@
             this.PictureBox_Page3.Location = new System.Drawing.Point(187, 0);
             this.PictureBox_Page3.Margin = new System.Windows.Forms.Padding(0);
             this.PictureBox_Page3.Name = "PictureBox_Page3";
-            this.PictureBox_Page3.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_Page3.Size = new System.Drawing.Size(20, 32);
             this.PictureBox_Page3.TabIndex = 10;
             this.PictureBox_Page3.TabStop = false;
             this.PictureBox_Page3.Click += new System.EventHandler(this.PictureBox_Page3_Click);
@@ -90,10 +90,10 @@
             this.PictureBox_Page1.BackgroundImage = global::Bugtracker.Properties.Resources.bt_page_active;
             this.PictureBox_Page1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.PictureBox_Page1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PictureBox_Page1.Location = new System.Drawing.Point(127, 0);
+            this.PictureBox_Page1.Location = new System.Drawing.Point(147, 0);
             this.PictureBox_Page1.Margin = new System.Windows.Forms.Padding(0);
             this.PictureBox_Page1.Name = "PictureBox_Page1";
-            this.PictureBox_Page1.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_Page1.Size = new System.Drawing.Size(20, 32);
             this.PictureBox_Page1.TabIndex = 9;
             this.PictureBox_Page1.TabStop = false;
             this.PictureBox_Page1.Click += new System.EventHandler(this.PictureBox_Page1_Click);
@@ -104,10 +104,10 @@
             this.PictureBox_Page2.BackgroundImage = global::Bugtracker.Properties.Resources.bt_page_inactive;
             this.PictureBox_Page2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.PictureBox_Page2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PictureBox_Page2.Location = new System.Drawing.Point(157, 0);
+            this.PictureBox_Page2.Location = new System.Drawing.Point(167, 0);
             this.PictureBox_Page2.Margin = new System.Windows.Forms.Padding(0);
             this.PictureBox_Page2.Name = "PictureBox_Page2";
-            this.PictureBox_Page2.Size = new System.Drawing.Size(30, 32);
+            this.PictureBox_Page2.Size = new System.Drawing.Size(20, 32);
             this.PictureBox_Page2.TabIndex = 8;
             this.PictureBox_Page2.TabStop = false;
             this.PictureBox_Page2.Click += new System.EventHandler(this.PictureBox_Page2_Click);
