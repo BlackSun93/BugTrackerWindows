@@ -205,6 +205,7 @@
             this.Button_ForgotPassword.Click += new System.EventHandler(this.Button_ForgotPassword_Click);
             this.Button_ForgotPassword.MouseLeave += new System.EventHandler(this.Button_ForgotPassword_MouseLeave);
             this.Button_ForgotPassword.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Button_ForgotPassword_MouseMove);
+            this.Button_ForgotPassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(0, 255, 255, 255);
             // 
             // Label_LoginOr
             // 

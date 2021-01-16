@@ -34,8 +34,7 @@ namespace Bugtracker
         private Bitmap EMAIL_SUCCESS = Properties.Resources.bt_login_email_success;
 
         char position = 'r';
-        int x;
-        int y;
+        int lpX, lpY, sp1X, sp1Y, sp2X, sp2Y, sp3X, sp3Y, sp4X, sp4Y;
         int loginUserX;
         int loginUserY;
         int loginPassX;
@@ -53,6 +52,11 @@ namespace Bugtracker
         LoginPanelBack loginPanelBackTop;
         LoginPanelBack loginPanelBackBottom;
 
+        private SplashForm SplashPage1;
+        private SplashForm SplashPage2;
+        private SplashForm SplashPage3;
+        private SplashForm SplashPage4;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -66,7 +70,12 @@ namespace Bugtracker
                 CheckBox_StayLoggedIn.Checked = false;
             }
 
-            loginPanel = new LoginPanel();
+            SplashPage1 = new SplashForm(1);
+            SplashPage2 = new SplashForm(2);
+            SplashPage3 = new SplashForm(3);
+            SplashPage4 = new SplashForm(4);
+
+            loginPanel = new LoginPanel(SplashPage1, SplashPage2, SplashPage3, SplashPage4);
             loginPanel.Location = new Point(Left + (Width / 2), Top - 20);
             loginPanel.Owner = this;
 
@@ -78,16 +87,29 @@ namespace Bugtracker
             loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 20), Bottom);
             loginPanelBackBottom.Owner = this;
 
-            
+            SplashPage1.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
+            SplashPage1.Owner = loginPanel;
 
-            
+            SplashPage2.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
+            SplashPage2.Owner = loginPanel;
+
+            SplashPage3.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
+            SplashPage3.Owner = loginPanel;
+
+            SplashPage4.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
+            SplashPage4.Owner = loginPanel;
+
+            SplashPage1.Opacity = 1;
+
             loginPanelBackTop.Show();
             loginPanelBackBottom.Show();
             loginPanel.Show();
             loginPanel.BringToFront();
-            //loginPanelBack.SendToBack();
 
-
+            SplashPage1.Show();
+            SplashPage2.Show();
+            SplashPage3.Show();
+            SplashPage4.Show();
 
         }
 
@@ -104,6 +126,10 @@ namespace Bugtracker
             }
             loginPanelBackTop.Location = new Point(Left + ((Width / 2) - 20), Top - 20);
             loginPanelBackBottom.Location = new Point(Left + ((Width / 2) - 20), Bottom);
+            SplashPage1.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
+            SplashPage2.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
+            SplashPage3.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
+            SplashPage4.Location = new Point(loginPanel.Left + 41, loginPanel.Top + 137);
 
         }
 
@@ -236,13 +262,29 @@ namespace Bugtracker
             TextBox_LoginUsername.Clear();
             TextBox_LoginPassword.Clear();
 
-            x = loginPanel.Location.X;
-            y = loginPanel.Location.Y;
+            lpX = loginPanel.Location.X;
+            lpY = loginPanel.Location.Y;
+            sp1X = SplashPage1.Location.X;
+            sp1Y = SplashPage1.Location.Y;
+            sp2X = SplashPage2.Location.X;
+            sp2Y = SplashPage2.Location.Y;
+            sp3X = SplashPage3.Location.X;
+            sp3Y = SplashPage3.Location.Y;
+            sp4X = SplashPage4.Location.X;
+            sp4Y = SplashPage4.Location.Y;
 
             while (loginPanel.Location.X != Left)
             {
-                x -= 1;
-                loginPanel.Location = new Point(x, y);
+                lpX -= 1;
+                sp1X -= 1;
+                sp2X -= 1;
+                sp3X -= 1;
+                sp4X -= 1;
+                loginPanel.Location = new Point(lpX, lpY);
+                SplashPage1.Location = new Point(sp1X, sp1Y);
+                SplashPage2.Location = new Point(sp2X, sp2Y);
+                SplashPage3.Location = new Point(sp3X, sp3Y);
+                SplashPage4.Location = new Point(sp4X, sp4Y);
             }
             position = 'l';
 
@@ -268,13 +310,29 @@ namespace Bugtracker
             TextBox_RegisterPassword.Clear();
             TextBox_RegisterEmail.Clear();
 
-            x = loginPanel.Location.X;
-            y = loginPanel.Location.Y;
+            lpX = loginPanel.Location.X;
+            lpY = loginPanel.Location.Y;
+            sp1X = SplashPage1.Location.X;
+            sp1Y = SplashPage1.Location.Y;
+            sp2X = SplashPage2.Location.X;
+            sp2Y = SplashPage2.Location.Y;
+            sp3X = SplashPage3.Location.X;
+            sp3Y = SplashPage3.Location.Y;
+            sp4X = SplashPage4.Location.X;
+            sp4Y = SplashPage4.Location.Y;
 
             while (loginPanel.Location.X != (Left + (Width / 2)))
             {
-                x += 1;
-                loginPanel.Location = new Point(x, y);
+                lpX += 1;
+                sp1X += 1;
+                sp2X += 1;
+                sp3X += 1;
+                sp4X += 1;
+                loginPanel.Location = new Point(lpX, lpY);
+                SplashPage1.Location = new Point(sp1X, sp1Y);
+                SplashPage2.Location = new Point(sp2X, sp2Y);
+                SplashPage3.Location = new Point(sp3X, sp3Y);
+                SplashPage4.Location = new Point(sp4X, sp4Y);
             }
             position = 'r';
 
