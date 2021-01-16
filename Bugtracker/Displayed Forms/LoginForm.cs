@@ -787,9 +787,11 @@ namespace Bugtracker
             dark2.Location = new Point(loginPanel.Left, loginPanel.Top);
             dark2.Owner = loginPanel;
 
+            dark3.Size = dark3.MinimumSize = dark3.MaximumSize = new Size(20, 20);
             dark3.Location = new Point(Left + ((Width / 2) - 20), Top - 20);
             dark3.Owner = this;
 
+            dark4.Size = dark4.MinimumSize = dark4.MaximumSize = new Size(20, 20);
             dark4.Location = new Point(Left + ((Width / 2) - 20), Bottom);
             dark4.Owner = this;
 
