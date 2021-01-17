@@ -184,8 +184,6 @@ namespace Bugtracker
                 PictureBox_LoginUsername.BackgroundImage = ERROR;
                 PictureBox_LoginPassword.BackgroundImage = ERROR;
                 Button_Login.BackColor = Color.FromArgb(255, 85, 85);
-
-                MessageBox.Show("incorrect credentials ");
             }
         }
 
@@ -346,6 +344,14 @@ namespace Bugtracker
             Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
             Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
             Label_RegisterEmailSeparator.BackColor = Color.FromArgb(119, 119, 136);
+
+            PictureBox_RegisterUsername.BackgroundImage = USERNAME;
+            PictureBox_RegisterPassword.BackgroundImage = PASSWORD;
+            PictureBox_RegisterEmail.BackgroundImage = EMAIL;
+
+            Label_RegisterUsernameError.Hide();
+            Label_RegisterPasswordError.Hide();
+            Label_RegisterEmailError.Hide();
         }
 
         private void Button_RegisterClose_Click(object sender, EventArgs e)
@@ -360,28 +366,41 @@ namespace Bugtracker
 
         private void Button_Register_Click(object sender, EventArgs e)
         {
+            // Username error checks
             if (TextBox_RegisterUsername.TextLength == 0)
             {
-                Label_RegisterUsernameError.Text = "Generic Username Error";
-                Label_RegisterUsernameError.Show();
-
-                Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 85, 85);
-                TextBox_RegisterUsername.ForeColor = Color.FromArgb(255, 85, 85);
-                PictureBox_RegisterUsername.BackgroundImage = ERROR;
-                Button_Register.BackColor = Color.FromArgb(255, 85, 85);
-
-                MessageBox.Show("username invalid");
+                ShowRegisterUsernameError("Please enter a username.");
             }
+            else if (TextBox_RegisterUsername.TextLength < 3)
+            {
+                ShowRegisterUsernameError("Please use 3 characters or more.");
+            }
+            else if (TextBox_RegisterUsername.TextLength > 30)
+            {
+                ShowRegisterUsernameError("Please use 30 characters or less.");
+            }
+
+            // Password error checks
             else if (TextBox_RegisterPassword.TextLength == 0)
             {
-                Label_RegisterPasswordError.Text = "Generic Password Error";
-                Label_RegisterPasswordError.Show();
+                ShowRegisterPasswordError("Please enter a password.");
             }
+            else if (TextBox_RegisterPassword.TextLength < 8)
+            {
+                ShowRegisterPasswordError("Please user 8 characters or more.");
+            }
+            else if (TextBox_RegisterPassword.TextLength < 8)
+            {
+                ShowRegisterPasswordError("Please enter a stronger password.");
+            }
+
+            // Email error checks
             else if (TextBox_RegisterEmail.TextLength == 0)
             {
-                Label_RegisterEmailError.Text = "Generic Email Error";
-                Label_RegisterEmailError.Show();
+                ShowRegisterEmailError("Please enter an email.");
             }
+
+            // Successful registration
             else
             {
                 string username = TextBox_RegisterUsername.Text;
@@ -390,6 +409,39 @@ namespace Bugtracker
                 SqlUser newUser = new SqlUser();
                 newUser.InsertUser(username, email, password);
             }
+        }
+
+        private void ShowRegisterUsernameError(string message)
+        {
+            Label_RegisterUsernameError.Text = message;
+            Label_RegisterUsernameError.Show();
+
+            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 85, 85);
+            TextBox_RegisterUsername.ForeColor = Color.FromArgb(255, 85, 85);
+            PictureBox_RegisterUsername.BackgroundImage = ERROR;
+            Button_Register.BackColor = Color.FromArgb(255, 85, 85);
+        }
+
+        private void ShowRegisterPasswordError(string message)
+        {
+            Label_RegisterPasswordError.Text = message;
+            Label_RegisterPasswordError.Show();
+
+            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(255, 85, 85);
+            TextBox_RegisterPassword.ForeColor = Color.FromArgb(255, 85, 85);
+            PictureBox_RegisterPassword.BackgroundImage = ERROR;
+            Button_Register.BackColor = Color.FromArgb(255, 85, 85);
+        }
+
+        private void ShowRegisterEmailError(string message)
+        {
+            Label_RegisterEmailError.Text = message;
+            Label_RegisterEmailError.Show();
+
+            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(255, 85, 85);
+            TextBox_RegisterEmail.ForeColor = Color.FromArgb(255, 85, 85);
+            PictureBox_RegisterEmail.BackgroundImage = ERROR;
+            Button_Register.BackColor = Color.FromArgb(255, 85, 85);
         }
 
         private void Button_RegisterPasswordVisibility_Click(object sender, EventArgs e)
@@ -562,11 +614,10 @@ namespace Bugtracker
 
         private void TextBox_RegisterUsername_Enter(object sender, EventArgs e)
         {
-            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(255, 85, 0);
+            Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(119, 119, 136);
             TextBox_RegisterUsername.ForeColor = Color.FromArgb(82, 82, 82);
             PictureBox_RegisterUsername.BackgroundImage = USERNAME;
             Button_Login.BackColor = Color.FromArgb(255, 85, 0);
-            Label_RegisterEmailError.Hide();
 
 
             if (TextBox_RegisterUsername.TextLength == 0)
@@ -603,13 +654,18 @@ namespace Bugtracker
             {
                 Label_RegisterUsernameSeparator.BackColor = Color.FromArgb(38, 174, 96);
                 TextBox_RegisterUsername.ForeColor = Color.FromArgb(38, 174, 96);
+                PictureBox_RegisterUsername.BackgroundImage = USERNAME_SUCCESS;
+                Button_Register.BackColor = Color.FromArgb(255, 85, 0);
                 Label_RegisterUsernameError.Hide();
             }
         }
 
         private void TextBox_RegisterPassword_Enter(object sender, EventArgs e)
         {
-            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(255, 85, 0);
+            Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            TextBox_RegisterPassword.ForeColor = Color.FromArgb(82, 82, 82);
+            PictureBox_RegisterPassword.BackgroundImage = PASSWORD;
+            Button_Login.BackColor = Color.FromArgb(255, 85, 0);
 
             if (TextBox_RegisterPassword.TextLength == 0)
             {
@@ -644,12 +700,19 @@ namespace Bugtracker
             else
             {
                 Label_RegisterPasswordSeparator.BackColor = Color.FromArgb(38, 174, 96);
+                TextBox_RegisterPassword.ForeColor = Color.FromArgb(38, 174, 96);
+                PictureBox_RegisterPassword.BackgroundImage = PASSWORD_SUCCESS;
+                Button_Register.BackColor = Color.FromArgb(255, 85, 0);
+                Label_RegisterPasswordError.Hide();
             }
         }
 
         private void TextBox_RegisterEmail_Enter(object sender, EventArgs e)
         {
-            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(255, 85, 0);
+            Label_RegisterEmailSeparator.BackColor = Color.FromArgb(119, 119, 136);
+            TextBox_RegisterEmail.ForeColor = Color.FromArgb(82, 82, 82);
+            PictureBox_RegisterEmail.BackgroundImage = EMAIL;
+            Button_Login.BackColor = Color.FromArgb(255, 85, 0);
 
             if (TextBox_RegisterEmail.TextLength == 0)
             {
@@ -686,6 +749,10 @@ namespace Bugtracker
             else
             {
                 Label_RegisterEmailSeparator.BackColor = Color.FromArgb(38, 174, 96);
+                TextBox_RegisterEmail.ForeColor = Color.FromArgb(38, 174, 96);
+                PictureBox_RegisterEmail.BackgroundImage = EMAIL_SUCCESS;
+                Button_Register.BackColor = Color.FromArgb(255, 85, 0);
+                Label_RegisterEmailError.Hide();
             }
         }
 
