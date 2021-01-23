@@ -366,6 +366,10 @@ namespace Bugtracker
 
         private void Button_Register_Click(object sender, EventArgs e)
         {
+            string tempUsername = TextBox_RegisterUsername.Text;
+            string tempQuery = $"SELECT * from user WHERE username = '{tempUsername}'";
+            DataTable db = Connection.GetDbConn().GetDataTable(tempQuery);
+
             // Username error checks
             if (TextBox_RegisterUsername.TextLength == 0)
             {
@@ -378,6 +382,10 @@ namespace Bugtracker
             else if (TextBox_RegisterUsername.TextLength > 30)
             {
                 ShowRegisterUsernameError("Please use 30 characters or less.");
+            }
+            else if (db.Rows.Count != 0)
+            {
+                ShowRegisterUsernameError("Please choose a different username.");
             }
 
             // Password error checks
@@ -398,6 +406,10 @@ namespace Bugtracker
             else if (TextBox_RegisterEmail.TextLength == 0)
             {
                 ShowRegisterEmailError("Please enter an email.");
+            }
+            else if (!TextBox_RegisterEmail.Text.Contains("@"))
+            {
+                ShowRegisterEmailError("Please enter a valid email address.");
             }
 
             // Successful registration
