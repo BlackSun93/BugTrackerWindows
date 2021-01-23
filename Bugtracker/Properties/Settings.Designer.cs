@@ -12,7 +12,7 @@ namespace Bugtracker.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -55,6 +55,37 @@ namespace Bugtracker.Properties {
             }
             set {
                 this["containerPanel_Color"] = value;
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StayLoggedIn {
+            get {
+                return ((bool)(this["StayLoggedIn"]));
+            }
+            set {
+                this["StayLoggedIn"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LoggedUsername {
+            get {
+                return ((string)(this["LoggedUsername"]));
+            }
+            set {
+                this["LoggedUsername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LoggedUserId {
+            get {
+                return ((string)(this["LoggedUserId"]));
+            }
+            set {
+                this["LoggedUserId"] = value;
             }
         }
     }

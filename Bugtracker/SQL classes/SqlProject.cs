@@ -53,7 +53,7 @@ namespace Bugtracker
         {
             string query = $"SELECT * FROM project ORDER BY projName ASC";
             return query;
-        }
+        } 
 
         public static string GetUserProjects(string userid)
         {

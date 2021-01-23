@@ -45,7 +45,7 @@ namespace Bugtracker
             // this is also written as dashboard will employ similar methods of panel drawings
             
             
-            DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
+             DataTable userProjects = Connection.GetDbConn().GetDataTable(SqlProject.GetUserProjects(UserObject.loggedUser.iduser));
             foreach (DataRow userProject in userProjects.Rows)
             {
                 ProjectObject up = new ProjectObject(userProject["idproject"].ToString(),
@@ -53,7 +53,7 @@ namespace Bugtracker
                     Convert.ToInt32(userProject["isPrivate"]));
                 ProjectObject.UserProjects.Add(up);
                 
-            }
+            } 
             //projectLists.Add(ProjectObject.UserProjects); 
 
             DataTable projects = Connection.GetDbConn().GetDataTable(SqlProject.GetProjects());
@@ -63,7 +63,7 @@ namespace Bugtracker
                     project["projName"].ToString(), project["user"].ToString(), project["description"].ToString(),
                     Convert.ToInt32(project["isPrivate"]));
                 ProjectObject.Projects.Add(up1);
-            }
+            } 
             projectLists.Add(ProjectObject.Projects);
             projectLists.Add(ProjectObject.UserProjects);
         }
@@ -117,7 +117,13 @@ namespace Bugtracker
             ProjectObject.UserProjects.Clear();
             UserObject.loggedUser.username = "";
             UserObject.loggedUser.iduser = "";
-            this.Hide();
+
+            Properties.Settings.Default.StayLoggedIn = false;
+            Properties.Settings.Default.LoggedUserId = null;
+            Properties.Settings.Default.LoggedUsername = null;
+            Properties.Settings.Default.Save();
+
+            Hide();
             display.Hide();
             LoginForm lf = new LoginForm();
             lf.Show();

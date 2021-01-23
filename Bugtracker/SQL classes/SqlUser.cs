@@ -47,7 +47,8 @@ namespace Bugtracker
             // GetFromDb(_getUser).ToString();// then we can use this string (which is the user id) to get the user's info
             //this means we get the data table and the request was parameterised 
             //UserObject.loggedUser = GetFromDbTable(_getUser);
-            GetFromDbTable(_getUser);
+            //GetFromDbTable(_getUser);
+            GetFromDb(_getUser);
         }
         
          private MySqlCommand _insertUser = new MySqlCommand("INSERT INTO user " +

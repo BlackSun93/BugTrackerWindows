@@ -100,6 +100,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DarkenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DarkenForm.Designer.cs">
+      <DependentUpon>DarkenForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Displayed Forms\BugInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,12 @@
     <Compile Include="DrawBugPanels.cs" />
     <Compile Include="DriveApi.cs" />
     <Compile Include="DrawPanels.cs" />
+    <Compile Include="ForgotPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotPasswordForm.Designer.cs">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +182,12 @@
     <Compile Include="Displayed Forms\PostUpdateForm.Designer.cs">
       <DependentUpon>PostUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginPanelBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginPanelBack.Designer.cs">
+      <DependentUpon>LoginPanelBack.cs</DependentUpon>
+    </Compile>
     <Compile Include="Object Classes\BugObject.cs" />
     <Compile Include="Object Classes\NotificationObject.cs" />
     <Compile Include="Object Classes\ProjectObject.cs" />
@@ -182,6 +200,17 @@
       <DependentUpon>ProjectsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SQL classes\SqlBug.cs" />
     <Compile Include="SQL classes\SqlFollow.cs" />
     <Compile Include="SQL classes\SqlNotifications.cs" />
@@ -195,6 +224,15 @@
     <Compile Include="Displayed Forms\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginPanel.Designer.cs">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DarkenForm.resx">
+      <DependentUpon>DarkenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Displayed Forms\BugInfoForm.resx">
       <DependentUpon>BugInfoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +257,9 @@
     <EmbeddedResource Include="Displayed Forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPasswordForm.resx">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,17 +272,22 @@
     <EmbeddedResource Include="Displayed Forms\ProjectsForm.resx">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginPanelBack.resx">
+      <DependentUpon>LoginPanelBack.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Displayed Forms\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPanel.resx">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\credentials.json">
@@ -260,6 +306,90 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_maximize-disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_logo-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_logo-large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_loginPanelShadow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_BackgroundShadow3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_LoginPanel3DTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_LoginPanel3DBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_LoginPanel3DTopShadow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_LoginPanel3DBottomShadow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-username-success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-password-success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_login-email-success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_password-show.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_password-hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_splash-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_splash-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_splash-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_splash-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_page-inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_page-active.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

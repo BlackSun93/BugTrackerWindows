@@ -14,6 +14,14 @@
     </Setting>
     <Setting Name="containerPanel_Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">255, 85, 0</Value>
+    <Setting Name="StayLoggedIn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LoggedUsername" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LoggedUserId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
