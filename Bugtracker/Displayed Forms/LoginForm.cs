@@ -172,6 +172,10 @@ namespace Bugtracker
                 loginPanel.Hide();
                 loginPanelBackTop.Hide();
                 loginPanelBackBottom.Hide();
+                SplashPage1.Hide();
+                SplashPage2.Hide();
+                SplashPage3.Hide();
+                SplashPage4.Hide();
                 Window window = new Window();
                 window.Show();
             }
