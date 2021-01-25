@@ -83,6 +83,16 @@ namespace Bugtracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_connection {
+            get {
+                object obj = ResourceManager.GetObject("bt_connection", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_error {
             get {
                 object obj = ResourceManager.GetObject("bt_error", resourceCulture);

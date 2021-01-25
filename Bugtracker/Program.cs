@@ -30,7 +30,15 @@ namespace Bugtracker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DriveApi.GetDriveService();
+            try
+            {
+                DriveApi.GetDriveService();
+            }
+            catch (Exception)
+            {
+                Application.Run(new ConnectionFailed());
+                return;
+            }
 
             if (Properties.Settings.Default.StayLoggedIn == true)
             {

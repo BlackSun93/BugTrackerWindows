@@ -100,6 +100,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionFailed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionFailed.Designer.cs">
+      <DependentUpon>ConnectionFailed.cs</DependentUpon>
+    </Compile>
     <Compile Include="DarkenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     <Compile Include="LoginPanel.Designer.cs">
       <DependentUpon>LoginPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConnectionFailed.resx">
+      <DependentUpon>ConnectionFailed.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DarkenForm.resx">
       <DependentUpon>DarkenForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +399,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bt_page-active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_connection.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

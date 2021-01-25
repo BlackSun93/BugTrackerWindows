@@ -145,6 +145,9 @@
   <data name="bt_logo-large" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_logo-large.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bt_page-active" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_page-active.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bt_login-password-success" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_login-password-success.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,8 +166,8 @@
   <data name="bt_login-username" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_login-username.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_splash-4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_splash-4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bt_maximize-disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_maximize-disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_LoginPanel3DTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_LoginPanel3DTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,10 +199,10 @@
   <data name="bt_restore" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_restore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_maximize-disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_maximize-disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bt_splash-4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_splash-4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_page-active" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_page-active.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bt_connection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_connection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
