@@ -1,6 +1,6 @@
 
 <h1>
-  <img src="bugtracker/resources/bt_readme-banner.png" alt="Bug Tracker">
+  <img src="Bugtracker/Resources/bt_readme-banner.png" alt="Bug Tracker">
 </h1>
 
 <p>
@@ -58,10 +58,10 @@ The project started using the waterfall method with design documents and plannin
   Screenshots
 </h2>
 
-<img src="bugtracker/resources/bt_readme-login.png" alt="Login page showing fields, buttons, and splash screen">
-<img src="bugtracker/resources/bt_readme-register-demo.png" alt="Register page showing fields, buttons, and splash screen">
-<img src="bugtracker/resources/bt_readme-projects-demo.png" alt="Projects page showing projects, buttons, and a navigation menu">
-<img src="bugtracker/resources/bt_readme-bugs-demo.png" alt="Bugs page showing bug reports, buttons, and a navigation menu">
+<img src="Bugtracker/Resources/bt_readme-login.png" alt="Login page showing fields, buttons, and splash screen">
+<img src="Bugtracker/Resources/bt_readme-register-demo.png" alt="Register page showing fields, buttons, and splash screen">
+<img src="Bugtracker/Resources/bt_readme-projects-demo.png" alt="Projects page showing projects, buttons, and a navigation menu">
+<img src="Bugtracker/Resources/bt_readme-bugs-demo.png" alt="Bugs page showing bug reports, buttons, and a navigation menu">
 
 <br>
 
@@ -116,9 +116,9 @@ The document containing the project specifications can be found <a href="specifi
 
 Following the project specification document, a prototype for the design and UI was mocked up by Oliver to assist in directing the production towards a visual goal. Below are the three main scenes that were created:
 
-<img src="bugtracker/resources/bt_readme-login-wireframe.png" alt="Wireframe of the login page showing fields and buttons">
-<img src="bugtracker/resources/bt_readme-dashboard-wireframe.png" alt="Wireframe of the dashboard page showing statistics, pending actions, and a taskboard">
-<img src="bugtracker/resources/bt_readme-projects-wireframe.png" alt="Wireframe of the projects page showing projects displayed in a grid with circular coloured symbols for bug states within the project">
+<img src="Bugtracker/Resources/bt_readme-login-wireframe.png" alt="Wireframe of the login page showing fields and buttons">
+<img src="Bugtracker/Resources/bt_readme-dashboard-wireframe.png" alt="Wireframe of the dashboard page showing statistics, pending actions, and a taskboard">
+<img src="Bugtracker/Resources/bt_readme-projects-wireframe.png" alt="Wireframe of the projects page showing projects displayed in a grid with circular coloured symbols for bug states within the project">
 
 <br>
 
