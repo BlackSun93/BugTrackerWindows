@@ -126,6 +126,6 @@ Following the project specification document, a prototype for the design and UI 
   Team
 </h2>
 
-|<img src="https://github.com/BlackSun93.png" width="50">|<img src="https://github.com/omosborne.png" width="50">|<img src="https://github.com/kb1107.png" width="50">|<img src="https://github.com/Steliana-Guta.png" width="50">|<img src="https://github.com/CCauston113.png" width="50">|
+|<img src="https://github.com/SunEmpire93.png" width="50">|<img src="https://github.com/omosborne.png" width="50">|<img src="https://github.com/kb1107.png" width="50">|<img src="https://github.com/Steliana-Guta.png" width="50">|<img src="https://github.com/CCauston113.png" width="50">|
 |:---:|:---:|:---:|:---:|:---:|
-|<a href="https://github.com/BlackSun93">Kean</a>|<a href="https://github.com/omosborne">Oliver</a>|<a href="https://github.com/kb1107">Kieran</a>|<a href="https://github.com/Steliana-Guta">Steliana</a>|<a href="https://github.com/CCauston113">Charlotte</a>|
+|<a href="https://github.com/SunEmpire93">Kean</a>|<a href="https://github.com/omosborne">Oliver</a>|<a href="https://github.com/kb1107">Kieran</a>|<a href="https://github.com/Steliana-Guta">Steliana</a>|<a href="https://github.com/CCauston113">Charlotte</a>|
